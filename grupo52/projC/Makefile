@@ -1,24 +1,31 @@
-CC= gcc
-CFLAGS= -Wall -g
+TARGET = projeto
+
+
 SRC= src
 INC= include
 LIB= libs
-
-SOURCE= $(wildcard $(SRC)/*.c)
-
+BIN=bin
 
 
-all: projeto
-
-projeto:
-
+SOURCE = $(wildcard $(SRC)/*.c)
+OBJECT = $(patsubst %,$(BIN)/%, $(notdir $(SOURCE:.c=.o)))
 
 
+CC= gcc
+CFLAGS= -Wall -g -I$(INC)
+
+
+$(BIN)/$(TARGET): $(OBJECT)
+	$(CC) -o $@ $^
+
+$(BIN)/%.o: $(SRC)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm *.o projeto
+	rm $(BIN)/*
 
 
 help:
 	@echo "src: $(SOURCE)"
+	@echo "obj: $(OBJECT)"
 
