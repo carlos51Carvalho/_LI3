@@ -24,7 +24,7 @@ int main(){
 	quicksortc(cliente,c);
 	//imprimecliente(cliente,c);
 	//ultimo cliente
-	printf("\n%s\n", cliente[c-1]);
+	//printf("\n%s\n", cliente[c-1]);
 	//Quantos clientes começam pela letra ?
 	//printf("%d\n", letra_cl(cliente,"B",c) );
 	printf("\n\n%d===============================================================\n",c);
