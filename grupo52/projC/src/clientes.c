@@ -36,7 +36,7 @@ void swapc(char **arg1, char **arg2)
     *arg2 = tmp;
 }
 
-void quicksortc(char **args, unsigned int len)
+void quicksortc(char **args, int len)
 {
     unsigned int i, pvt=0;
 
