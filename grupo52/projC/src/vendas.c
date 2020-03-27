@@ -2,71 +2,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "vendas.h"
-#include "produtos.h"
 #include "clientes.h"
-
-void imprimevendas(char **vendas, int v){
-	for (int i = 0; i < v; i++){
-		for (int j = 0; j < 7; j++){
-			printf("%s ", *(vendas+(7*i + j)));
-		}
-		printf("\n");
-	}
-}
-
-/*
-int existeproduto(char **produto, char *prod, int p){
-	int result=0;
-	for (int i = 0; i < p && result==0; ++i){
-		if(strcmp(produto[i],prod)==0) result = 1;
-	}
-	return result;
-}
+#include "produtos.h"
+#include "vendas.h"
 
 
-int existeProduto (char **produto, char *prod_vendas, int Tam)
-{
-     int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
-     int sup = Tam-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
-     int meio;
-     while (inf <= sup)
-     {
-          meio = inf +(sup - inf)/2;
-          if (strcmp(prod_vendas, produto[meio]) ==0)
-               return meio;
-          if (strcmp(prod_vendas, produto[meio])<0)
-               sup = meio-1;
-          else
-               inf = meio+1;
-     }
-     return -1;   // não encontrado
-}
 
 
-int existecliente(char **clientes,char *cliente,int c){
-	int result=1;
-	for (int i = 0; i < c && result>0; ++i){
-		result=strcmp(clientes[i],cliente);
-	}
-	return result;
-}
-
-int existe (char *emvendas, int ini, int fim, char **testado) {
-   if (ini > fim) return -1;
-   else {
-      int m = (ini + fim)/2;
-      if (strcmp(testado[m], emvendas) == 0) return m;
-      if (strcmp(testado[m], emvendas) < 0)  
-         return existe (emvendas, m+1, fim, testado);
-      else  
-         return existe (emvendas, ini, m-1, testado); 
-   } 
-}
-*/
-
-
-int existe(char **testado, char *nas_vendas, int Tam)
+int existe(Elem *testado, char *nas_vendas, int Tam)
 {
      int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
      int sup = Tam-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
@@ -75,9 +18,11 @@ int existe(char **testado, char *nas_vendas, int Tam)
      while (inf <= sup && r==0)
      {
           meio = inf +(sup- inf)/2;
-          if (strcmp(nas_vendas, testado[meio]) ==0)
-               r =1;
-          if (strcmp(nas_vendas, testado[meio])<0)
+          if (strcmp(nas_vendas, testado[meio].id) ==0){
+          		testado[meio].used =1;
+               	r =1;
+          }
+          if (strcmp(nas_vendas, testado[meio].id)<0)
                sup = meio-1;
           else
                inf = meio+1;
@@ -115,57 +60,83 @@ int valida7filial(char *filial){
 	else return -1;
 }
 
+TVendas* initTv(){
+	//int i;
+	TVendas *v = malloc(sizeof(TVendas));
+	v->size = 0;
+	v->arr = malloc(sizeof(Venda));
+	return v;
+}
+
+void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, int f){
+
+	int tam = v->size;
+	v->arr = realloc(v->arr, (tam +1)*sizeof(Venda));
+	v->arr[tam].prod = strdup(p);
+	v->arr[tam].preco = pr;
+	v->arr[tam].qnt = q;
+	v->arr[tam].est = e;
+	v->arr[tam].cliente = strdup(c);
+	v->arr[tam].mes = m;
+	v->arr[tam].fil = f;
+	v->size++;
+}
+
+void imprimevendas(TVendas *v){
+	int tam = v->size;
+	for (int i = 0; i < tam; i++){
+		printf("%s %f %d %c %s %d %d \n",v->arr[i].prod,v->arr[i].preco,v->arr[i].qnt,v->arr[i].est, v->arr[i].cliente, v->arr[i].mes, v->arr[i].fil);
+	}
+}
 
 
-int ler_venda(char ***vendas, int size,char **cliente, char **prod, int c, int p){
+int ler_venda(TVendas *v, THash *cliente, THash *prod){
 	FILE *ficheiro = NULL;
-	int i,j;
-	char* part = NULL, * aux = NULL;
+	char* part = NULL;
+	char* aux = NULL;
+	int i=0,j;
 	char linha[1024];
+	char *args[15];
 
-	char cenas[7][1024];
-	
 	ficheiro = fopen("Dados_Iniciais/Vendas_1M.txt", "r");
 
 	if (ficheiro == NULL) return -1;
 
+	while(fgets(linha,sizeof(linha), ficheiro)){
 
-	for (i = 0; i < size && fgets(linha,sizeof(linha), ficheiro);)
-	{
-
-		*vendas = realloc(*vendas, (i+1)*7*sizeof(char*));
 		aux = strtok(linha, "\r\n");
 	
 		//ler para cenas
 		for (part = strtok(aux, " "), j = 0; part != NULL ; part = strtok(NULL, " "),j++){
-
-
-			*(*vendas+(7*i + j)) = strdup(part);
-
-			strcpy(cenas[j],*(*vendas+(7*i + j)));
+			args[j] = strdup(part);
 		}
 
-		//se todos os campos estao certos
-		if(part==NULL && j==7 
-			//&& validaproduto(cenas[0])
-			&& existe(prod,   *(*vendas+(7*i+0)),  p) 
-			&& validapreco(*(*vendas+(7*i+1))) 
-			&& valida3campo(*(*vendas+(7*i+2))) 
-			&& valida4campo(*(*vendas+(7*i+3))) 
+
+		int keyp = hash(args[0]);
+		int keyc = hash(args[4]);
+
+		if (part==NULL && j==7 && 
+			existe(prod->tbl[keyp].arr , args[0],  prod->tbl[keyp].size)
+			//&& validapreco(*(*vendas+(7*i+1))) 
+			//&& valida3campo(*(*vendas+(7*i+2))) 
+			//&& valida4campo(*(*vendas+(7*i+3))) 
+			&& existe(cliente->tbl[keyc].arr, args[4], cliente->tbl[keyc].size) 
 			//&& validacliente(cenas[4])
-			&& existe(cliente,*(*vendas+(7*i+4)),c) 
-			&& valida6mes(*(*vendas+(7*i+5))) 
-			&& valida7filial(*(*vendas+(7*i+6)))
+			//&& valida6mes(*(*vendas+(7*i+5))) 
+			//&& valida7filial(*(*vendas+(7*i+6)))
 			){
+			acrescentaV(v,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
 			i++;
 		}
+		for(j = 0 ; j< 7 ; j++){
+			free(args[j]);
+		}
 	}
-
-	free(part);
 	fclose(ficheiro);
-	
+	free(part);
 	return i;
 }
+
 
 
 int vendas_1c(char **vendas, int size_v, char *cliente){
@@ -193,16 +164,7 @@ int vendas_fil1(char **vendas, int size_v, int filial){
 
 
 
-
-
-
-
-
-
-
-
-
-void escrever(char **vendas , char *s, int size) {
+void escrever_v(char **vendas , char *s, int size) {
 
     FILE *cena = fopen(s, "w");
 

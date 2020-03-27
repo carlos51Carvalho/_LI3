@@ -1,42 +1,107 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
 #include "clientes.h"
 
-int comparaclientes(char *c1,char *c2){
-	int result;
-	if (c1[0]==c2[0]){
-		result=atoi(c1+1)-atoi(c2+1);
-	}else{
-		result=c1[0]-c2[0];
+
+int hash(char *cont){
+	int r = cont[0] - 'A';
+	return r;
+}
+
+
+THash* initTab(){
+	int i;
+	THash *h = malloc(sizeof(THash));
+	h->size =HSIZE;
+	h->tbl = malloc(HSIZE *sizeof(Bucket));
+	for ( i =0; i < HSIZE ; i++){
+		h->tbl[i].size = 0;
+		h->tbl[i].arr = malloc(sizeof(Elem));
+		h->tbl[i].arr[i].used = 0;
+		//printf("%d\n",h->tbl[i].size );
 	}
-	return result;
+	//printf("%d\n",i );
+	return h;
 }
 /*
-void sortcliente(char ***cliente, int c){
-	char *aux=NULL;
-	for (int i = 0; i < c-1; ++i){
-		for (int j = i+1; j < c; j++){
-			if (comparaclientes(((*cliente)[i]),((*cliente)[j]))>0){
-				aux=(*cliente)[i];
-				(*cliente)[i]=(*cliente)[j];
-				(*cliente)[j]=aux;		
-			}
+void distroiElem(Elem arr){
+	int i;
 
+}
+
+void distroiBucket(Bucket b, int size){
+	int i;
+	for (i = 0; i < size; i++){
+		free(arr[i]);
+	}
+	free(arr);
+	free(b);
+}
+
+void distroiTab(THash *h){
+	int i;
+	for (i = 0; i < h->size; i++){
+		distroiBucket(h->tbl[i], h->tbl[i].size);
+	}
+	free(h);
+}
+
+*/
+void acrecenstaTab(THash *h, char *cont){
+	int key = hash(cont);
+	int tam = h->tbl[key].size;
+	h->tbl[key].arr = realloc(h->tbl[key].arr, (tam +1)*sizeof(Elem));
+	h->tbl[key].arr[tam].id = strdup(cont);
+	h->tbl[key].arr[tam].used = 1;
+	h->tbl[key].size++;
+	//printf("%s\n",h->tbl[key].arr[tam].id);
+	return ;
+}
+
+
+
+void imprimecliente(THash *h){
+	int tam = h->size;
+	int tam2;
+	for (int i = 0; (i < tam); i++){
+		tam2 = h->tbl[i].size;
+		for (int j = 0; j < tam2 ; j++){
+			printf("%s\n",  h->tbl[i].arr[j].id);
 		}
 	}
 }
-*/
 
-void swapc(char **arg1, char **arg2)
-{
-    char *tmp = *arg1;
-    *arg1 = *arg2;
-    *arg2 = tmp;
+
+void escrever_c(THash *h , char *s) {
+	int tam2=0;
+    FILE *cena = fopen(s, "w");
+
+    for (int i = 0; i < h->size; i++){
+    	tam2 = h->tbl[i].size;
+		for (int j = 0; j < tam2; j++){
+			fprintf(cena,"%s\n", h->tbl[i].arr[j].id );
+        }
+    }
+    fclose(cena);
 }
 
-void quicksortc(char **args, unsigned int len)
+
+
+
+void swapc(Elem *arr, int i1, int i2)
+{
+    char *tmp = arr[i1].id;
+    int use = arr[i1].used;
+    arr[i1].id = arr[i2].id;
+    arr[i1].used = arr[i2].used; 
+    arr[i2].id = tmp;
+    arr[i2].used = use;
+}
+
+
+
+void quicksortc(Elem *args, unsigned int len)
 {
     unsigned int i, pvt=0;
 
@@ -49,12 +114,14 @@ void quicksortc(char **args, unsigned int len)
     // reset the pivot index to zero, then scan
     for (i=0;i<len-1;++i)
     {
-        if (strcmp(args[i], args[len-1]) < 0)
-            swapc(args+i, args+pvt++);
+        if (strcmp(args[i].id, args[len-1].id) < 0)
+            //swapc(args+i->id, args+pvt++->id);
+        	swapc(args, i, pvt++);
     }
 
     // move the pivot value into its place
-    swapc(args+pvt, args+len-1);
+    swapc(args, pvt, len-1);
+    //swapid(args+pvt->used, args+(len-1)->used);
 
     // and invoke on the subsequences. does NOT include the pivot-slot
     quicksortc(args, pvt++);
@@ -63,14 +130,7 @@ void quicksortc(char **args, unsigned int len)
 
 
 
-void imprimecliente(char **cliente, int c){
-	for (int i = 0; i < c; ++i){
-		printf("%s\n", cliente[i]);
-	}
-}
-
-
-int ler_clientes (char ***cliente, int size){
+int ler_clientes (THash *cliente, int size){
 	FILE *ficheiro = NULL;
 	char *chave=NULL;
 	char linha[128];
@@ -83,9 +143,7 @@ int ler_clientes (char ***cliente, int size){
 		chave = strtok(linha, "\r\n");
 
 		if (validacliente(chave)){
-			*cliente = realloc(*cliente, (i+1)*sizeof(char*));
-			(*cliente)[i] =strdup(chave);
-			//printf("%s\n", (*cliente)[i]);
+			acrecenstaTab(cliente, chave);
 			i++;
 		}
 
@@ -94,25 +152,35 @@ int ler_clientes (char ***cliente, int size){
 	
 	fclose(ficheiro);
 
+	int j;
+
+	for (j = 0; j < cliente->size ; j++){
+		quicksortc(cliente->tbl[j].arr, cliente->tbl[j].size);
+	}
+
 	return i;
 }
 
+
 int validacliente(char *cliente){
 	return (cliente[0]>='A' && cliente[0]<='Z' && atoi(cliente+1)>=1000 && atoi(cliente+1)<=9999);
+}
+
+
+
+
+int letra_cl(THash *h, char* letra){
+	int k = hash(letra);
 	
+	return (h->tbl[k].size);
 }
 
-int let_c (char *cliente, char letra){
-	if (cliente[0] == letra){
-		return 1;
-	}
-	else return 0;
+/*
+char* ultimoElemTB(THash *h){
+	int tam = h->size -1;
+	int tam2 = h->tbl[tam].size-1;
+	return (h->tbl[tam].cl[tam2]);
 }
 
-int letra_cl(char **cliente, char letra, int size){
-	int cont =0, i;
-	for (i = 0; i < size; i++){
-		cont += let_c(cliente[i],letra); 
-	}
-	return cont;
-}
+
+*/

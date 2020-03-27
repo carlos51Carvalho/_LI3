@@ -24,10 +24,11 @@ $(BIN)/%.o: $(SRC)/%.c
 
 
 clean:
-	rm $(OBJECT) $(BIN)/$(TARGET)
+	rm $(OBJECT) $(BIN)/$(TARGET) $(BIN)/*.txt
 
 
 help:
 	@echo "src: $(SOURCE)"
 	@echo "obj: $(OBJECT)"
+
 
