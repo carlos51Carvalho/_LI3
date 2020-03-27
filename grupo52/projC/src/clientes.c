@@ -99,9 +99,13 @@ void swapc(Elem *arr, int i1, int i2)
     arr[i2].used = use;
 }
 
+<<<<<<< HEAD
 
 
 void quicksortc(Elem *args, unsigned int len)
+=======
+void quicksortc(char **args, int len)
+>>>>>>> 42add232be9b05b1817bf6959b7ed44623f85761
 {
     unsigned int i, pvt=0;
 
