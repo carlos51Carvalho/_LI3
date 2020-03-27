@@ -139,7 +139,7 @@ int ler_venda(TVendas *v, THash *cliente, THash *prod){
 
 
 
-int vendas_1c(char **vendas, int size_v, char *cliente){
+/*int vendas_1c(char **vendas, int size_v, char *cliente){
 	int cont =0, i;
 	for (i = 0; i < size_v; i++){
 		if (strcmp(*(vendas+(7*i+4)), cliente) == 0) {
@@ -156,6 +156,27 @@ int vendas_fil1(char **vendas, int size_v, int filial){
 	for (i = 0; i < size_v; i++){
 		fil = atoi(*(vendas+(7*i+6)));
 		if (fil==filial){
+			count++;
+		}
+	}
+	return count;
+}
+*/
+int vendas_1c(TVendas *v, char *cliente){
+	int cont =0, i;
+	for (i = 0; i < v->size; i++){
+		if (strcmp(v->arr[i].cliente, cliente) == 0) {
+			cont++;
+		}
+	}
+	return cont;
+}
+
+
+int vendas_fil1(TVendas *v, int filial){
+	int count =0,i;
+	for (i = 0; i < v->size; i++){
+		if (v->arr[i].fil==filial){
 			count++;
 		}
 	}
