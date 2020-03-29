@@ -24,30 +24,20 @@ THash* initTab(){
 	//printf("%d\n",i );
 	return h;
 }
-/*
-void distroiElem(Elem arr){
-	int i;
 
-}
-
-void distroiBucket(Bucket b, int size){
-	int i;
-	for (i = 0; i < size; i++){
-		free(arr[i]);
-	}
-	free(arr);
-	free(b);
-}
 
 void distroiTab(THash *h){
-	int i;
+	int i,j;
 	for (i = 0; i < h->size; i++){
-		distroiBucket(h->tbl[i], h->tbl[i].size);
+		for (j = 0; j < h->tbl[i].size; j++){
+			free((h->tbl[i]).arr);
+		}
+		free(h->tbl);
 	}
 	free(h);
 }
 
-*/
+
 void acrecenstaTab(THash *h, char *cont){
 	int key = hash(cont);
 	int tam = h->tbl[key].size;

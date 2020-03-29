@@ -24,7 +24,7 @@ $(BIN)/%.o: $(SRC)/%.c
 
 
 clean:
-	rm $(OBJECT) $(BIN)/$(TARGET) $(BIN)/*.txt
+	rm $(OBJECT) $(BIN)/$(TARGET)
 
 
 help:
