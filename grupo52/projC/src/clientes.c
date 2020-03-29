@@ -26,7 +26,7 @@ THash* initTab(){
 }
 
 
-void distroiTab(THash *h){
+void destroiTab(THash *h){
 	int i,j;
 	for (i = 0; i < h->size; i++){
 		for (j = 0; j < h->tbl[i].size; j++){
