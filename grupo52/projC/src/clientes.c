@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "faturacao.h"
 #include "clientes.h"
 
 
@@ -14,46 +15,34 @@ THash* initTab(){
 	int i;
 	THash *h = malloc(sizeof(THash));
 	h->size =HSIZE;
+	h->u1 = 0;
+	h->u2 = 0;
+	h->u3 = 0;
 	h->tbl = malloc(HSIZE *sizeof(Bucket));
 	for ( i =0; i < HSIZE ; i++){
 		h->tbl[i].size = 0;
-		h->tbl[i].arr = malloc(sizeof(Elem));
-		h->tbl[i].arr[i].used = 0;
+		h->tbl[i].arr = malloc(sizeof(char*));
 		//printf("%d\n",h->tbl[i].size );
 	}
 	//printf("%d\n",i );
 	return h;
 }
-/*
-void distroiElem(Elem arr){
-	int i;
-
-}
-
-void distroiBucket(Bucket b, int size){
-	int i;
-	for (i = 0; i < size; i++){
-		free(arr[i]);
-	}
-	free(arr);
-	free(b);
-}
-
-void distroiTab(THash *h){
-	int i;
+void destroiTab(THash *h){
+	int i,j;
 	for (i = 0; i < h->size; i++){
-		distroiBucket(h->tbl[i], h->tbl[i].size);
+		for (j = 0; j < h->tbl[i].size; j++){
+			free((h->tbl[i]).arr);
+		}
+		free(h->tbl);
 	}
 	free(h);
 }
 
-*/
 void acrecenstaTab(THash *h, char *cont){
 	int key = hash(cont);
 	int tam = h->tbl[key].size;
-	h->tbl[key].arr = realloc(h->tbl[key].arr, (tam +1)*sizeof(Elem));
-	h->tbl[key].arr[tam].id = strdup(cont);
-	h->tbl[key].arr[tam].used = 1;
+	h->tbl[key].arr = realloc(h->tbl[key].arr, (tam +1)*sizeof(char*));
+	h->tbl[key].arr[tam] = strdup(cont);
 	h->tbl[key].size++;
 	//printf("%s\n",h->tbl[key].arr[tam].id);
 	return ;
@@ -67,7 +56,7 @@ void imprimecliente(THash *h){
 	for (int i = 0; (i < tam); i++){
 		tam2 = h->tbl[i].size;
 		for (int j = 0; j < tam2 ; j++){
-			printf("%s\n",  h->tbl[i].arr[j].id);
+			printf("%s\n",  h->tbl[i].arr[j]);
 		}
 	}
 }
@@ -80,7 +69,7 @@ void escrever_c(THash *h , char *s) {
     for (int i = 0; i < h->size; i++){
     	tam2 = h->tbl[i].size;
 		for (int j = 0; j < tam2; j++){
-			fprintf(cena,"%s\n", h->tbl[i].arr[j].id );
+			fprintf(cena,"%s\n", h->tbl[i].arr[j] );
         }
     }
     fclose(cena);
@@ -88,24 +77,14 @@ void escrever_c(THash *h , char *s) {
 
 
 
-
-void swapc(Elem *arr, int i1, int i2)
+void swapc(char **arg1, char **arg2)
 {
-    char *tmp = arr[i1].id;
-    int use = arr[i1].used;
-    arr[i1].id = arr[i2].id;
-    arr[i1].used = arr[i2].used; 
-    arr[i2].id = tmp;
-    arr[i2].used = use;
+    char *tmp = *arg1;
+    *arg1 = *arg2;
+    *arg2 = tmp;
 }
 
-<<<<<<< HEAD
-
-
-void quicksortc(Elem *args, unsigned int len)
-=======
-void quicksortc(char **args, int len)
->>>>>>> 42add232be9b05b1817bf6959b7ed44623f85761
+void quicksortc(char **args, unsigned int len)
 {
     unsigned int i, pvt=0;
 
@@ -118,14 +97,12 @@ void quicksortc(char **args, int len)
     // reset the pivot index to zero, then scan
     for (i=0;i<len-1;++i)
     {
-        if (strcmp(args[i].id, args[len-1].id) < 0)
-            //swapc(args+i->id, args+pvt++->id);
-        	swapc(args, i, pvt++);
+        if (strcmp(args[i], args[len-1]) < 0)
+            swapc(args+i, args+pvt++);
     }
 
     // move the pivot value into its place
-    swapc(args, pvt, len-1);
-    //swapid(args+pvt->used, args+(len-1)->used);
+    swapc(args+pvt, args+len-1);
 
     // and invoke on the subsequences. does NOT include the pivot-slot
     quicksortc(args, pvt++);
@@ -134,16 +111,19 @@ void quicksortc(char **args, int len)
 
 
 
-int ler_clientes (THash *cliente, int size){
+int ler_clientes (THash *cliente , char *filespath){
 	FILE *ficheiro = NULL;
+	char aux[80];
+	strcpy(aux, filespath); 
+	strcat(aux,"/Clientes.txt");
 	char *chave=NULL;
 	char linha[128];
 	int i;
-	ficheiro = fopen("Dados_Iniciais/Clientes.txt", "r");
+	ficheiro = fopen(aux, "r");
 
 	if (ficheiro == NULL) return -1;
 
-	for (i = 0 ; i < size && fgets(linha, sizeof(linha), ficheiro) ;){
+	for (i = 0 ; fgets(linha, sizeof(linha), ficheiro) ;){
 		chave = strtok(linha, "\r\n");
 
 		if (validacliente(chave)){
@@ -172,13 +152,14 @@ int validacliente(char *cliente){
 
 
 
-
-int letra_cl(THash *h, char* letra){
+/*
+int letra_cl(THash *h, char* letra, char **p ){
 	int k = hash(letra);
+	char **p = h->tbl[k]->arr;
 	
 	return (h->tbl[k].size);
 }
-
+*/
 /*
 char* ultimoElemTB(THash *h){
 	int tam = h->size -1;

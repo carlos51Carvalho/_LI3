@@ -3,13 +3,14 @@
 #include <stdlib.h>
 
 #include "clientes.h"
+#include "faturacao.h"
 #include "produtos.h"
 #include "vendas.h"
 
 
 
 
-int existe(Elem *testado, char *nas_vendas, int Tam)
+int existe(char **testado, char *nas_vendas, int Tam)
 {
      int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
      int sup = Tam-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
@@ -18,11 +19,10 @@ int existe(Elem *testado, char *nas_vendas, int Tam)
      while (inf <= sup && r==0)
      {
           meio = inf +(sup- inf)/2;
-          if (strcmp(nas_vendas, testado[meio].id) ==0){
-          		testado[meio].used =1;
+          if (strcmp(nas_vendas, testado[meio]) ==0){
                	r =1;
           }
-          if (strcmp(nas_vendas, testado[meio].id)<0)
+          if (strcmp(nas_vendas, testado[meio])<0)
                sup = meio-1;
           else
                inf = meio+1;
@@ -60,6 +60,7 @@ int valida7filial(char *filial){
 	else return -1;
 }
 
+/*
 TVendas* initTv(){
 	//int i;
 	TVendas *v = malloc(sizeof(TVendas));
@@ -82,23 +83,20 @@ void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, i
 	v->size++;
 }
 
-void imprimevendas(TVendas *v){
-	int tam = v->size;
-	for (int i = 0; i < tam; i++){
-		printf("%s %f %d %c %s %d %d \n",v->arr[i].prod,v->arr[i].preco,v->arr[i].qnt,v->arr[i].est, v->arr[i].cliente, v->arr[i].mes, v->arr[i].fil);
-	}
-}
+*/
 
-
-int ler_venda(TVendas *v, THash *cliente, THash *prod){
+int ler_venda(FatP *fat, THash *cliente, THash *prod, char *filespath){
 	FILE *ficheiro = NULL;
+	char a[80];
+	strcpy(a, filespath); 
+	strcat(a,"/Vendas_1M.txt");
 	char* part = NULL;
 	char* aux = NULL;
 	int i=0,j;
 	char linha[1024];
 	char *args[15];
 
-	ficheiro = fopen("Dados_Iniciais/Vendas_1M.txt", "r");
+	ficheiro = fopen(a, "r");
 
 	if (ficheiro == NULL) return -1;
 
@@ -117,15 +115,16 @@ int ler_venda(TVendas *v, THash *cliente, THash *prod){
 
 		if (part==NULL && j==7 && 
 			existe(prod->tbl[keyp].arr , args[0],  prod->tbl[keyp].size)
-			//&& validapreco(*(*vendas+(7*i+1))) 
-			//&& valida3campo(*(*vendas+(7*i+2))) 
-			//&& valida4campo(*(*vendas+(7*i+3))) 
+			&& validapreco(args[1]) 
+			&& valida3campo(args[2]) 
+			&& valida4campo(args[3]) 
 			&& existe(cliente->tbl[keyc].arr, args[4], cliente->tbl[keyc].size) 
-			//&& validacliente(cenas[4])
-			//&& valida6mes(*(*vendas+(7*i+5))) 
-			//&& valida7filial(*(*vendas+(7*i+6)))
-			){
-			acrescentaV(v,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
+			&& valida6mes(args[5]) 
+			&& valida7filial(args[6])){
+			
+			//acrescentaV(v,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
+			acrescentaFat(fat,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
+			acrecenstaUsado(prod, atoi(args[6]));
 			i++;
 		}
 		for(j = 0 ; j< 7 ; j++){
@@ -137,31 +136,7 @@ int ler_venda(TVendas *v, THash *cliente, THash *prod){
 	return i;
 }
 
-
-
-/*int vendas_1c(char **vendas, int size_v, char *cliente){
-	int cont =0, i;
-	for (i = 0; i < size_v; i++){
-		if (strcmp(*(vendas+(7*i+4)), cliente) == 0) {
-			cont++;
-		}
-	}
-	return cont;
-}
-
-
-int vendas_fil1(char **vendas, int size_v, int filial){
-	int count =0,i;
-	int fil;
-	for (i = 0; i < size_v; i++){
-		fil = atoi(*(vendas+(7*i+6)));
-		if (fil==filial){
-			count++;
-		}
-	}
-	return count;
-}
-*/
+/*
 int vendas_1c(TVendas *v, char *cliente){
 	int cont =0, i;
 	for (i = 0; i < v->size; i++){
@@ -184,16 +159,23 @@ int vendas_fil1(TVendas *v, int filial){
 }
 
 
+void imprimevendas(TVendas *v){
+	int tam = v->size;
+	for (int i = 0; i < tam; i++){
+		printf("%s %f %d %c %s %d %d \n",v->arr[i].prod,v->arr[i].preco,v->arr[i].qnt,v->arr[i].est, v->arr[i].cliente, v->arr[i].mes, v->arr[i].fil);
+	}
+}
 
-void escrever_v(char **vendas , char *s, int size) {
-
+void escrever_v(TVendas *v , char *s) {
+	int tam = v->size;
     FILE *cena = fopen(s, "w");
 
-    for (int i = 0; i < size; i++){
-		for (int j = 0; j < 7; j++){
-			fprintf(cena,"%s ", *(vendas+(7*i + j)));
-        }
-        fprintf(cena,"\n");
+    for (int i = 0; i < tam; i++){
+		fprintf(cena, "%s %f %d %c %s %d %d \n",v->arr[i].prod,v->arr[i].preco,v->arr[i].qnt,v->arr[i].est, v->arr[i].cliente, v->arr[i].mes, v->arr[i].fil);
     }
     fclose(cena);
 }
+
+*/
+
+

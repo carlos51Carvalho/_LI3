@@ -18,6 +18,17 @@ typedef struct tvendas {
 }TVendas;
 
 
+
+TVendas* initTv();
+void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, int f);
+int ler_venda(FatP *fat, THash *cliente, THash *prod, char *filespath);
+//void imprimevendas(TVendas *v);
+//void escrever_v(TVendas *v , char *s);
+
+
+
+
+
 /*
 
 
@@ -35,18 +46,7 @@ int vendas_fil1(char **vendas, int size_v, int filial);
 int ler_venda(char ***vendas, int size,THash *cliente, THash *prod);
 
 
-void escrever_v(char **vendas , char *s, int size);
 */
-
-TVendas* initTv();
-void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, int f);
-void imprimevendas(TVendas *v);
-int ler_venda(TVendas *v, THash *cliente, THash *prod);
-
-
-
-
-
 
 
 
