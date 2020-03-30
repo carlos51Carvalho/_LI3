@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef _FAT_
 #define _FAT_
 
@@ -37,7 +36,6 @@ void quicksortFat(Ft *args, unsigned int len);
 
 
 /*
-=======
 
 #ifndef _FAT_
 #define _FAT_
