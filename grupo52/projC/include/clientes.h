@@ -40,7 +40,7 @@ THash* initTab();
 void destroiTab(THash *h);
 void acrecenstaTab(THash *h, char *cliente);
 void imprimecliente(THash *h);
-void distroiTab(THash *h);
+void destroiTab(THash *h);
 
 
 void escrever_c(THash *h , char *s);

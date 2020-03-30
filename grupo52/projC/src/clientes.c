@@ -27,6 +27,8 @@ THash* initTab(){
 	//printf("%d\n",i );
 	return h;
 }
+
+
 void destroiTab(THash *h){
 	int i,j;
 	for (i = 0; i < h->size; i++){
@@ -83,6 +85,7 @@ void swapc(char **arg1, char **arg2)
     *arg1 = *arg2;
     *arg2 = tmp;
 }
+
 
 void quicksortc(char **args, unsigned int len)
 {

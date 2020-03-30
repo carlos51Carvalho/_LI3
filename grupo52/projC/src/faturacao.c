@@ -131,6 +131,12 @@ void quicksortFat(Ft *args, unsigned int len){
 
 
 /*
+
+#include "produtos.h"
+#include "vendas.h"
+#include "faturacao.h"
+
+
 Fat* initfat ()
 {
 	Fat *f = malloc (sizeof (Fat));
@@ -174,3 +180,4 @@ void cliented(Fat *f, TVendas *v, THash *clientes){
 
 
 */
+

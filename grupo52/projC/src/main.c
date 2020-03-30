@@ -38,6 +38,11 @@ int main(){
 	THash *cliente = NULL;
 	THash *prod = NULL;
 	TVendas *vendas = NULL;
+<<<<<<< HEAD
+=======
+	int p=0;
+	int v=0;
+>>>>>>> 41b1f566b3f01a2d605fb00eec8467828ccf20f5
 	int c=0;
 	int v=0;
 	char *cl = "H4511" ;
@@ -65,7 +70,15 @@ int main(){
 
 	escrever_c(cliente, "ClientesVAL.txt");
 	escrever_c(prod, "ProdutosVAL.txt");
+<<<<<<< HEAD
 	escrever_v(vendas, "VendasVAL.txt");
+=======
+	//escrever_v(vendas, "VendasVAL.txt", v);
+
+	//printf("O ultimo elemento dos clientes é : %s\n", ultimoElemTB(cliente));
+	//printf("O ultimo elemento dos produtos é : %s\n", ultimoElemTB(prod));
+	//printf("O ultimo elemento das vendas é : %s\n", (*vendas +(7*(v)+0)));
+>>>>>>> 41b1f566b3f01a2d605fb00eec8467828ccf20f5
 
 	free(cliente);
 	free(prod);
