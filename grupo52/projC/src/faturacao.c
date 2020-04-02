@@ -17,10 +17,10 @@ int hashfat(char *cont){
 Prd* initPrd(){
 	Prd *p = malloc(sizeof(Prd));
 	p->u = 0;
-	p->mes = malloc(12*sizeof(Mes));
-	for (int i = 0; i < 12; i++)
+	p->fil = malloc(3*sizeof(Fil));
+	for (int i = 0; i < 3; i++)
 	{
-		p->mes = malloc(sizeof(Mes));
+		p->fil[i].mes = malloc(12*sizeof(Mes));
 	}
 	return p;
 }
@@ -42,7 +42,11 @@ void acrescenta_prod(Fat *f, char *p){
 	int tam = f->tbl[k].size;
 	f->tbl[k].arr = realloc(f->tbl[k].arr, (tam+1)*sizeof(Prd));
 	f->tbl[k].arr[tam].pid = strdup(p);
-	f->tbl[k].arr[tam].mes = malloc(12*sizeof(Mes));
+	f->tbl[k].arr[tam].fil = malloc(3*sizeof(Fil));
+	for (int i = 0; i < 3; ++i)
+	{
+		f->tbl[k].arr[tam].fil[i].mes = malloc(12*sizeof(Mes));
+	}
 	f->tbl[k].size++;
 }
 
@@ -87,16 +91,13 @@ void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int
 		h->tbl[k].arr[r].u =1;
 
 		if (e == 'N'){
-			h->tbl[k].arr[r].mes[m-1].vN++;
-			if(f==1) h->tbl[k].arr[r].mes[m-1].fN1 +=pr*q;
-			if(f==2) h->tbl[k].arr[r].mes[m-1].fN2 +=pr*q;
-			else h->tbl[k].arr[r].mes[m-1].fN3+=pr*q;  
+			h->tbl[k].arr[r].fil[f-1].mes[m-1].vN++;
+			h->tbl[k].arr[r].fil[f-1].mes[m-1].fN += pr*q;
+
 		}
 		else{
-			h->tbl[k].arr[r].mes[m-1].vP++;
-			if(f==1) h->tbl[k].arr[r].mes[m-1].fP1 +=pr*q;
-			if(f==2) h->tbl[k].arr[r].mes[m-1].fP2 +=pr*q;
-			else h->tbl[k].arr[r].mes[m-1].fP3 +=pr*q;
+			h->tbl[k].arr[r].fil[f-1].mes[m-1].vP++;
+			h->tbl[k].arr[r].fil[f-1].mes[m-1].fP += pr*q;
 		}
 	}
 }

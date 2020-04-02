@@ -1,9 +1,8 @@
 #ifndef _FAT_
 #define _FAT_
-/*
 typedef struct mes{
-	double fatN;
-	double fatP;
+	double fN;
+	double fP;
 	int vN;
 	int vP;
 	int m;
@@ -14,6 +13,7 @@ typedef struct fil{
 	Mes *mes;
 } Fil;
 
+/*
 typedef struct prd{
 	char *pid;
 	Fil *fil;
@@ -32,7 +32,7 @@ typedef struct fat{
 } Fat;
 
 */
-
+/*
 typedef struct mes{
 	double fN1;
 	double fP1;
@@ -43,11 +43,11 @@ typedef struct mes{
 	int vN;
 	int vP;
 } Mes ;
-
+*/
 typedef struct prd{
 	char *pid;
 	int u;
-	Mes *mes;
+	Fil *fil;
 } Prd;
 
 //void == Fil arr[3] 
