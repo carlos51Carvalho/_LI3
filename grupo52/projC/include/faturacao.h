@@ -68,10 +68,10 @@ Fat* initFat();
 //FatP* initFat();
 void acrescenta_prod(Fat *f, char* p);
 int acrescenta_prods (Fat *f,char **p, int tam );
+void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int f);
 //int acrescenta_prods (Fat *f,char *filespath );
 
 //int acrescenta_prods (Fat *f,char **p , int s)
-void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int f);
 //void swapf(Ft *arr, int i1, int i2);
 //void quicksortFat(Ft *args, unsigned int len);
 

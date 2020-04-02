@@ -7,6 +7,7 @@ typedef struct sgv{
 	THash *clientes;
 	//TVendas *vendas;
 	Fat *fat;
+	Filial *fil;
 } *SGV;
 
 

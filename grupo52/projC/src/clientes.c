@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "clientes.h"
-#include "faturacao.h"
+//#include "faturacao.h"
 
 
 int hash(char *cont){

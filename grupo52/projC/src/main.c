@@ -5,6 +5,7 @@
 #include "clientes.h"
 #include "produtos.h"
 #include "faturacao.h"
+#include "filiais.h"
 #include "vendas.h"
 #include "queries.h"
 
@@ -16,10 +17,10 @@
 int main(){
 
 	int p=0;
-	//char letra = 'D';
+	char letra = 'D';
 	SGV sgv = initSGV();
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
-	//p = getProductsStartedByLetter(sgv, letra);
+	p = getProductsStartedByLetter(sgv, letra);
 	//p = getProductsSalesAndProfit( sgv, "BR1925", 2, 1);
 	//p = getProductsNeverBought(sgv,1);
 	//p = getClientsOfAllBranches(sgv);

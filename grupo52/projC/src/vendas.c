@@ -4,6 +4,7 @@
 
 #include "clientes.h"
 #include "faturacao.h"
+#include "filiais.h"
 #include "produtos.h"
 #include "vendas.h"
 
@@ -82,7 +83,7 @@ void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, i
 }
 */
 
-int ler_venda(Fat *fat, THash *cliente, THash *prod, char *filespath){
+int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath){
 	FILE *ficheiro = NULL;
 	char a[80];
 	strcpy(a, filespath); 
@@ -121,6 +122,7 @@ int ler_venda(Fat *fat, THash *cliente, THash *prod, char *filespath){
 			
 			//acrescentaV(v,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
 			acrescentaFat(fat,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
+			acrescentaFil(fil,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
 			//acrecenstaUsado(prod, atoi(args[6]));
 			i++;
 		}

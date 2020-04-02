@@ -21,7 +21,7 @@ typedef struct tvendas {
 
 //TVendas* initTv();
 //void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, int f);
-int ler_venda(Fat *fat, THash *cliente, THash *prod, char *filespath);
+int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath);
 //void imprimevendas(TVendas *v);
 //void escrever_v(TVendas *v , char *s);
 

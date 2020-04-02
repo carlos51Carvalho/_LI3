@@ -5,6 +5,7 @@
 #include "clientes.h"
 #include "produtos.h"
 #include "faturacao.h"
+#include "filiais.h"
 #include "vendas.h"
 #include "queries.h"
 
@@ -16,6 +17,7 @@ SGV initSGV(){
 	q->clientes = initTab();
 	//q->vendas = initTv();
 	q->fat = initFat();
+	q->fil = initFilial();
 	return q;
 }
 
@@ -23,17 +25,21 @@ SGV initSGV(){
 
 
 SGV loadSGVFromFiles(SGV sgv, char *filespath ){
-	int p, c,d ,v;
-	p=c=d=v=0;
+	int p, c,d,e ,v;
+	p=c=d=e=v=0;
 	p = ler_prod(sgv->produtos,filespath);
 	c = ler_clientes(sgv->clientes, filespath);
 	for (int i = 0; i < 26; ++i){
 		d += acrescenta_prods(sgv->fat, sgv->produtos->tbl[i].arr, sgv->produtos->tbl[i].size );
 	}
-	v = ler_venda( sgv->fat, sgv->clientes, sgv->produtos,filespath);
+	for (int j = 0; j < 26; j++){
+		e += acrescenta_cls(sgv->fil, sgv->clientes->tbl[j].arr, sgv->clientes->tbl[j].size );
+	}
+	v = ler_venda( sgv->fat, sgv->fil, sgv->clientes, sgv->produtos, filespath);
 	printf("%d\n",p );
 	printf("%d\n",c );
 	printf("%d\n",d );
+	printf("%d\n",e );
 	printf("%d\n",v );
 
 	return sgv;
