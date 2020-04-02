@@ -20,7 +20,7 @@ int main(){
 	SGV sgv = initSGV();
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
 	//p = getProductsStartedByLetter(sgv, letra);
-	p = getProductsSalesAndProfit( sgv, "BR1925", 2, 1);
+	//p = getProductsSalesAndProfit( sgv, "BR1925", 2, 1);
 	//p = getProductsNeverBought(sgv,1);
 	//p = getClientsOfAllBranches(sgv);
 	/*
@@ -61,25 +61,20 @@ int main(){
 	//printf("\n%d\n", v);
 	
 	printf("Existem %d clientes começádos pela letra %c \n", letra_cl(cliente,&letra), letra);
-
 	printf("Vendas para o Cliente %s : %d\n",cl, vendas_1c(vendas,cl) );
-
 	printf("Vendas na filial 1 : %d\n",vendas_fil1(vendas,1) );
 	printf("Vendas na filial 2 : %d\n",vendas_fil1(vendas,2) );
 	printf("Vendas na filial 3 : %d\n",vendas_fil1(vendas,3) );
-
 	escrever_c(cliente, "ClientesVAL.txt");
 	escrever_c(prod, "ProdutosVAL.txt");
 <<<<<<< HEAD
 	escrever_v(vendas, "VendasVAL.txt");
 =======
 	//escrever_v(vendas, "VendasVAL.txt", v);
-
 	//printf("O ultimo elemento dos clientes é : %s\n", ultimoElemTB(cliente));
 	//printf("O ultimo elemento dos produtos é : %s\n", ultimoElemTB(prod));
 	//printf("O ultimo elemento das vendas é : %s\n", (*vendas +(7*(v)+0)));
 >>>>>>> 41b1f566b3f01a2d605fb00eec8467828ccf20f5
-
 	free(cliente);
 	free(prod);
 	free(vendas);

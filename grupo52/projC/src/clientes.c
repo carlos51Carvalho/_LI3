@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "faturacao.h"
 #include "clientes.h"
+#include "faturacao.h"
 
 
 int hash(char *cont){
@@ -15,9 +15,6 @@ THash* initTab(){
 	int i;
 	THash *h = malloc(sizeof(THash));
 	h->size =HSIZE;
-	h->u1 = 0;
-	h->u2 = 0;
-	h->u3 = 0;
 	h->tbl = malloc(HSIZE *sizeof(Bucket));
 	for ( i =0; i < HSIZE ; i++){
 		h->tbl[i].size = 0;
@@ -169,6 +166,4 @@ char* ultimoElemTB(THash *h){
 	int tam2 = h->tbl[tam].size-1;
 	return (h->tbl[tam].cl[tam2]);
 }
-
-
 */

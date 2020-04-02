@@ -68,9 +68,7 @@ TVendas* initTv(){
 	v->arr = malloc(sizeof(Venda));
 	return v;
 }
-
 void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, int f){
-
 	int tam = v->size;
 	v->arr = realloc(v->arr, (tam +1)*sizeof(Venda));
 	v->arr[tam].prod = strdup(p);
@@ -82,10 +80,9 @@ void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, i
 	v->arr[tam].fil = f;
 	v->size++;
 }
-
 */
 
-int ler_venda(FatP *fat, THash *cliente, THash *prod, char *filespath){
+int ler_venda(Fat *fat, THash *cliente, THash *prod, char *filespath){
 	FILE *ficheiro = NULL;
 	char a[80];
 	strcpy(a, filespath); 
@@ -124,7 +121,7 @@ int ler_venda(FatP *fat, THash *cliente, THash *prod, char *filespath){
 			
 			//acrescentaV(v,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
 			acrescentaFat(fat,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
-			acrecenstaUsado(prod, atoi(args[6]));
+			//acrecenstaUsado(prod, atoi(args[6]));
 			i++;
 		}
 		for(j = 0 ; j< 7 ; j++){
@@ -146,8 +143,6 @@ int vendas_1c(TVendas *v, char *cliente){
 	}
 	return cont;
 }
-
-
 int vendas_fil1(TVendas *v, int filial){
 	int count =0,i;
 	for (i = 0; i < v->size; i++){
@@ -157,25 +152,18 @@ int vendas_fil1(TVendas *v, int filial){
 	}
 	return count;
 }
-
-
 void imprimevendas(TVendas *v){
 	int tam = v->size;
 	for (int i = 0; i < tam; i++){
 		printf("%s %f %d %c %s %d %d \n",v->arr[i].prod,v->arr[i].preco,v->arr[i].qnt,v->arr[i].est, v->arr[i].cliente, v->arr[i].mes, v->arr[i].fil);
 	}
 }
-
 void escrever_v(TVendas *v , char *s) {
 	int tam = v->size;
     FILE *cena = fopen(s, "w");
-
     for (int i = 0; i < tam; i++){
 		fprintf(cena, "%s %f %d %c %s %d %d \n",v->arr[i].prod,v->arr[i].preco,v->arr[i].qnt,v->arr[i].est, v->arr[i].cliente, v->arr[i].mes, v->arr[i].fil);
     }
     fclose(cena);
 }
-
 */
-
-

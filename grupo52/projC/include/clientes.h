@@ -17,9 +17,6 @@ typedef struct bucket{
 
 typedef struct thash{
 	int size;
-	int u1;
-	int u2;
-	int u3;
 	Bucket *tbl;
 } THash;
 

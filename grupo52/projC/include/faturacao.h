@@ -1,59 +1,81 @@
 #ifndef _FAT_
 #define _FAT_
-
-
-typedef struct ft {
-	char *p;
-	double pr;
-	int q;
-	char e;
-	char *cl;
-	int m;
-} Ft;
-
-typedef struct bucketv {
-	int size;
-	Ft *arr;
-}Bucketv;
-
-
-typedef struct fill{
-	Bucketv *p;
-	Bucketv *c;
-} Fill ;
-
-
-typedef struct fatp{
-	Fill *fil;
-} FatP;
-
-
-FatP* initFat();
-void acrescentaFat(FatP *h, char*p, double pr, int q, char e, char *c, int m, int f);
-void swapf(Ft *arr, int i1, int i2);
-void quicksortFat(Ft *args, unsigned int len);
-
-
-
 /*
+typedef struct mes{
+	double fatN;
+	double fatP;
+	int vN;
+	int vP;
+	int m;
+} Mes ;
 
-#ifndef _FAT_
-#define _FAT_
+// mes size = 12
+typedef struct fil{
+	Mes *mes;
+} Fil;
 
->>>>>>> 41b1f566b3f01a2d605fb00eec8467828ccf20f5
+typedef struct prd{
+	char *pid;
+	Fil *fil;
+} Prd;
+
+//void == Fil arr[3] 
+typedef struct bucketv{
+	int size;
+	Prd *arr;
+} Bucketv ;
+
+
 typedef struct fat{
-	double total;
-	int univ;
-	int cliented;
-	int prodc;
-}Fat;
+	int size;
+	Bucketv *tbl;
+} Fat;
 
-Fat* initfat ();
-void fatt(Fat *f, TVendas *v);
-void univ(Fat *f, TVendas *v);
-void cliented(Fat *f, TVendas *v, THash *clientes);
-<<<<<<< HEAD
 */
+
+typedef struct mes{
+	double fN1;
+	double fP1;
+	double fN2;
+	double fP2;
+	double fN3;
+	double fP3;
+	int vN;
+	int vP;
+} Mes ;
+
+typedef struct prd{
+	char *pid;
+	int u;
+	Mes *mes;
+} Prd;
+
+//void == Fil arr[3] 
+typedef struct bucketv{
+	int size;
+	Prd *arr;
+} Bucketv ;
+
+
+typedef struct fat{
+	int size;
+	Bucketv *tbl;
+} Fat;
+
+
+//void quicksortFat(Prd *args, int len);
+Fat* initFat();
+//FatP* initFat();
+void acrescenta_prod(Fat *f, char* p);
+int acrescenta_prods (Fat *f,char **p, int tam );
+//int acrescenta_prods (Fat *f,char *filespath );
+
+//int acrescenta_prods (Fat *f,char **p , int s)
+void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int f);
+//void swapf(Ft *arr, int i1, int i2);
+//void quicksortFat(Ft *args, unsigned int len);
+
+
 
 #endif /* _FAT_ */
 

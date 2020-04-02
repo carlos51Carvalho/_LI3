@@ -60,7 +60,7 @@ int ler_prod (THash *prod,char *filespath ){
 	return i;
 }
 
-
+/*
 void acrecenstaUsado(THash *prod, int fil){
 
 	if (fil == 1){
@@ -71,3 +71,4 @@ void acrecenstaUsado(THash *prod, int fil){
 	}
 	else prod->u3++;
 }
+*/

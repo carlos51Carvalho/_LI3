@@ -23,13 +23,17 @@ SGV initSGV(){
 
 
 SGV loadSGVFromFiles(SGV sgv, char *filespath ){
-	int p, c ,v;
-	p=c=v=0;
+	int p, c,d ,v;
+	p=c=d=v=0;
 	p = ler_prod(sgv->produtos,filespath);
 	c = ler_clientes(sgv->clientes, filespath);
+	for (int i = 0; i < 26; ++i){
+		d += acrescenta_prods(sgv->fat, sgv->produtos->tbl[i].arr, sgv->produtos->tbl[i].size );
+	}
 	v = ler_venda( sgv->fat, sgv->clientes, sgv->produtos,filespath);
 	printf("%d\n",p );
 	printf("%d\n",c );
+	printf("%d\n",d );
 	printf("%d\n",v );
 
 	return sgv;
@@ -39,15 +43,14 @@ int getProductsStartedByLetter(SGV sgv, char letter){
 	int k = hash(&letter);
 	int tam = sgv->produtos->tbl[k].size;
 	char **p = malloc(tam*sizeof(char*));
-	for (int i = 0; i < tam; i++)
-	{
+	for (int i = 0; i < tam; i++){
 		p[i] = sgv->produtos->tbl[k].arr[i];
 		printf("%s\n", p[i]);
 	}
 	return tam;
 }
 
-
+/*
 
 int vendas_emMes(SGV sgv, char *productID,int month, double aux[], int f){
 	int kp = hash(productID);
@@ -98,7 +101,7 @@ int getProductsSalesAndProfit( SGV sgv, char *productID, int month, int porfil){
 	}
 
 	return tv;
-}
+}*/
 
 // falta ver a filial e provavelmente não está bem feito
 
