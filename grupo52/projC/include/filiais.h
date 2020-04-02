@@ -22,7 +22,6 @@ typedef struct fili{
 
 typedef struct cl{
 	char *cid;
-	int u;
 	Fili *fil;
 } Cl;
 

@@ -61,27 +61,6 @@ int valida7filial(char *filial){
 	else return -1;
 }
 
-/*
-TVendas* initTv(){
-	//int i;
-	TVendas *v = malloc(sizeof(TVendas));
-	v->size = 0;
-	v->arr = malloc(sizeof(Venda));
-	return v;
-}
-void acrescentaV(TVendas *v, char*p, double pr, int q, char e, char *c, int m, int f){
-	int tam = v->size;
-	v->arr = realloc(v->arr, (tam +1)*sizeof(Venda));
-	v->arr[tam].prod = strdup(p);
-	v->arr[tam].preco = pr;
-	v->arr[tam].qnt = q;
-	v->arr[tam].est = e;
-	v->arr[tam].cliente = strdup(c);
-	v->arr[tam].mes = m;
-	v->arr[tam].fil = f;
-	v->size++;
-}
-*/
 
 int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath){
 	FILE *ficheiro = NULL;
@@ -136,24 +115,6 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 }
 
 /*
-int vendas_1c(TVendas *v, char *cliente){
-	int cont =0, i;
-	for (i = 0; i < v->size; i++){
-		if (strcmp(v->arr[i].cliente, cliente) == 0) {
-			cont++;
-		}
-	}
-	return cont;
-}
-int vendas_fil1(TVendas *v, int filial){
-	int count =0,i;
-	for (i = 0; i < v->size; i++){
-		if (v->arr[i].fil==filial){
-			count++;
-		}
-	}
-	return count;
-}
 void imprimevendas(TVendas *v){
 	int tam = v->size;
 	for (int i = 0; i < tam; i++){

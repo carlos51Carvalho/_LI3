@@ -2,10 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-//#include "clientes.h"
-//#include "produtos.h"
+
 #include "faturacao.h"
-//#include "vendas.h"
+
 
 
 
@@ -14,16 +13,7 @@ int hashfat(char *cont){
 	return r;
 }
 
-Prd* initPrd(){
-	Prd *p = malloc(sizeof(Prd));
-	p->u = 0;
-	p->fil = malloc(3*sizeof(Fil));
-	for (int i = 0; i < 3; i++)
-	{
-		p->fil[i].mes = malloc(12*sizeof(Mes));
-	}
-	return p;
-}
+
 
 Fat* initFat(){
 	int i;
@@ -31,7 +21,7 @@ Fat* initFat(){
 	h->tbl = malloc(26 *sizeof(Bucketv));
 	for ( i =0; i < 26 ; i++){
 		h->tbl[i].size = 0;
-		h->tbl[i].arr = initPrd();
+		h->tbl[i].arr = NULL;
 		
 	}
 	return h ;
@@ -46,6 +36,13 @@ void acrescenta_prod(Fat *f, char *p){
 	for (int i = 0; i < 3; ++i)
 	{
 		f->tbl[k].arr[tam].fil[i].mes = malloc(12*sizeof(Mes));
+		for (int j = 0; j < 12; j++)
+		{
+			f->tbl[k].arr[tam].fil[i].mes[j].fN =0;
+			f->tbl[k].arr[tam].fil[i].mes[j].fP =0;
+			f->tbl[k].arr[tam].fil[i].mes[j].vN =0;
+			f->tbl[k].arr[tam].fil[i].mes[j].vP =0;
+		}
 	}
 	f->tbl[k].size++;
 }
@@ -67,8 +64,8 @@ int existe_fat(Prd *arr, char *procurado, int Tam)
      int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
      int sup = Tam-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
      int meio;
-     int r=0;
-     while (inf <= sup && r==0)
+     int r = -1;
+     while (inf <= sup && r==-1)
      {
           meio = inf +(sup- inf)/2;
           if (strcmp(procurado, arr[meio].pid) ==0){
@@ -86,9 +83,8 @@ int existe_fat(Prd *arr, char *procurado, int Tam)
 void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int f){
 	int k = hashfat(p);
 	int tam = h->tbl[k].size;
-	int  r= existe_fat(h->tbl[k].arr, p, tam);
-	if (r > 0){
-		h->tbl[k].arr[r].u =1;
+	int  r = existe_fat(h->tbl[k].arr, p, tam);
+	if (r >= 0){
 
 		if (e == 'N'){
 			h->tbl[k].arr[r].fil[f-1].mes[m-1].vN++;

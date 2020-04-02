@@ -42,6 +42,20 @@ SGV loadSGVFromFiles(SGV sgv, char *filespath ){
 		e += acrescenta_cls(sgv->fil, sgv->clientes->tbl[j].arr, sgv->clientes->tbl[j].size );
 	}
 	v = ler_venda( sgv->fat, sgv->fil, sgv->clientes, sgv->produtos, filespath);
+	printf("%s\n", sgv->fat->tbl[3].arr[2].pid );
+	printf("%f\n", sgv->fat->tbl[3].arr[2].fil[1].mes[4].fP );
+	printf("%d\n", sgv->fat->tbl[3].arr[2].fil[1].mes[4].vP );
+	printf("%f\n", sgv->fat->tbl[0].arr[0].fil[2].mes[4].fN );
+	printf("%d\n\n\n", sgv->fat->tbl[0].arr[0].fil[2].mes[4].vN );
+
+	printf("%s\n", sgv->fil->tbl[0].arr[0].cid );
+	printf("%d\n", sgv->fil->tbl[0].arr[10].fil[0].mes[0].size);
+	printf("%s\n", sgv->fil->tbl[0].arr[0].fil[0].mes[0].prs[0].pid);
+	printf("%d\n", sgv->fil->tbl[6].arr[3].fil[2].mes[7].prs[1].qP );
+	printf("%d\n\n\n", sgv->fil->tbl[0].arr[0].fil[2].mes[7].prs[0].qN );
+
+
+
 	printf("%d\n",p );
 	printf("%d\n",c );
 	printf("%d\n",d );

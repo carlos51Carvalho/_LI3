@@ -151,19 +151,3 @@ int validacliente(char *cliente){
 }
 
 
-
-/*
-int letra_cl(THash *h, char* letra, char **p ){
-	int k = hash(letra);
-	char **p = h->tbl[k]->arr;
-	
-	return (h->tbl[k].size);
-}
-*/
-/*
-char* ultimoElemTB(THash *h){
-	int tam = h->size -1;
-	int tam2 = h->tbl[tam].size-1;
-	return (h->tbl[tam].cl[tam2]);
-}
-*/

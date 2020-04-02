@@ -4,16 +4,9 @@
 
 #include "clientes.h"
 #include "produtos.h"
-//#include "faturacao.h"
 
 
-/*
-void imprimeprod(char **prod, int p){
-	for (int i = 0; i < p; ++i){
-		printf("%s\n", prod[i]);
-	}
-}
-*/
+
 /*
 int hashP(char *cont){
 	int r = cont[0] - 'A' + cont[1]-'A';
@@ -59,16 +52,3 @@ int ler_prod (THash *prod,char *filespath ){
 	}
 	return i;
 }
-
-/*
-void acrecenstaUsado(THash *prod, int fil){
-
-	if (fil == 1){
-		prod->u1++;
-	}
-	else if (fil == 2){
-		prod->u2++;
-	}
-	else prod->u3++;
-}
-*/

@@ -5,7 +5,6 @@ typedef struct mes{
 	double fP;
 	int vN;
 	int vP;
-	int m;
 } Mes ;
 
 // mes size = 12
@@ -13,40 +12,9 @@ typedef struct fil{
 	Mes *mes;
 } Fil;
 
-/*
+
 typedef struct prd{
 	char *pid;
-	Fil *fil;
-} Prd;
-
-//void == Fil arr[3] 
-typedef struct bucketv{
-	int size;
-	Prd *arr;
-} Bucketv ;
-
-
-typedef struct fat{
-	int size;
-	Bucketv *tbl;
-} Fat;
-
-*/
-/*
-typedef struct mes{
-	double fN1;
-	double fP1;
-	double fN2;
-	double fP2;
-	double fN3;
-	double fP3;
-	int vN;
-	int vP;
-} Mes ;
-*/
-typedef struct prd{
-	char *pid;
-	int u;
 	Fil *fil;
 } Prd;
 
