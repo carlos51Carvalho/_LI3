@@ -4,6 +4,12 @@
 
 #include "clientes.h"
 #include "produtos.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "clientes.h"
+#include "produtos.h"
 #include "faturacao.h"
 #include "filiais.h"
 #include "vendas.h"
@@ -57,14 +63,12 @@ int getProductsStartedByLetter(SGV sgv, char letter){
 }
 
 /*
-
 int vendas_emMes(SGV sgv, char *productID,int month, double aux[], int f){
 	int kp = hash(productID);
 	int t = sgv->fat->fil[f].p[kp].size;
 	int tv=0;
 	int cn=0;
 	int cp=0;
-
 	for (int i = 0; i < t; i++){
 		if(strcmp(sgv->fat->fil[f].p[kp].arr[i].p, productID)==0 && sgv->fat->fil[f].p[kp].arr[i].m == month){
 			tv++;
@@ -79,19 +83,16 @@ int vendas_emMes(SGV sgv, char *productID,int month, double aux[], int f){
 	aux[1] = cp;
 	return tv;
 }
-
 int getProductsSalesAndProfit( SGV sgv, char *productID, int month, int porfil){
 	double a1[2]={0}; 
 	double a2[2]={0}; 
 	double a3[2]={0};
-
 	int tv1 = vendas_emMes(sgv, productID,month, a1,0);
 	int tv2 = vendas_emMes(sgv, productID,month, a2,1);
 	int tv3 = vendas_emMes(sgv, productID,month, a3,2);
 	int tv = tv1+tv2+tv3;
 	double n = a1[0]+a1[0]+a2[0];
 	double p = a1[1]+a1[1]+a2[1];
-
 	if(porfil == 1){
 		printf("O total de vendas em f1 é %d\n", tv1);
 		printf("Em N faturou-se %f\nEm P faturou-se %f\n ",a1[0],a1[1]);
@@ -99,13 +100,11 @@ int getProductsSalesAndProfit( SGV sgv, char *productID, int month, int porfil){
 		printf("Em N faturou-se %f\nEm P faturou-se %f\n ",a2[0],a2[1]);
 		printf("O total de vendas em f3 é %d\n", tv3);
 		printf("Em N faturou-se %f\nEm P faturou-se %f\n ",a3[0],a3[1]);
-
 	}
 	else{
 		printf("O total de vendas é %d\n", tv);
 		printf("Em N faturou-se %f\nEm P faturou-se %f\n ",n,p);
 	}
-
 	return tv;
 }*/
 

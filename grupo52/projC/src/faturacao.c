@@ -103,5 +103,3 @@ void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int
 }
 
 
-
-
