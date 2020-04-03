@@ -7,13 +7,9 @@
 
 
 int getPosicaoProd(Fat *fat,char *productID){
-	int i,result=-1;
 	int hash = hashfat(productID);
-	for (i = 0; i < fat->tbl[hash].size; i++){
-		if(strcmp(fat->tbl[hash].arr[i].pid, productID)==0)
-			result=i;
-	}
-	return result;
+
+	return existe_fat(fat->tbl[hash].arr, productID, fat->tbl[hash].size);
 }
 
 int getVendasN(Fat *fat,int h,int pos,int m,int f){

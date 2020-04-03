@@ -56,7 +56,7 @@ int main(){
 
 
 	//p = getProductsStartedByLetter(sgv, letra);
-	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
+	getProductsSalesAndProfit(sgv,"ZM1712", 12);
     
 
 	//p = getProductsStartedByLetter(sgv, letra);
