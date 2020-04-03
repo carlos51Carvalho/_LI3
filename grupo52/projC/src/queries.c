@@ -24,8 +24,6 @@ SGV initSGV(){
 // void distroySGV(SGV sgv)
 
 
-//Querie 1
-
 SGV loadSGVFromFiles(SGV sgv, char *filespath ){
 	int p, c,d,e ,v;
 	p=c=d=e=v=0;
@@ -42,11 +40,6 @@ SGV loadSGVFromFiles(SGV sgv, char *filespath ){
 	return sgv;
 }
 
-
-
-
-//Querie 2
-
 int getProductsStartedByLetter(SGV sgv, char letter){
 	int k = hash(&letter);
 	int tam = sgv->produtos->tbl[k].size;
@@ -59,54 +52,52 @@ int getProductsStartedByLetter(SGV sgv, char letter){
 }
 
 
-// Querie 3
-
-
-
-Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
+double* getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 	int h=hashfat(productID);
 	int posProd = getPosicaoProd(sgv->fat,productID);
+	double result[12]={0};
+	int a,b;
+	printf("->%d\n", h);
+	for (int i = 1; i <=3; ++i){
+		a=getVendasN(sgv->fat,h,posProd,month,i);
+		result[(i-1)*4+0]=(double) a;
+		printf("%f\n", result[(i-1)*4+0]);
 
-	Q3 q3 = malloc(sizeof(Q3));
-	q3->vN1 = getVendasN(sgv->fat,h,posProd,month,1);
-	q3->vP1 = getVendasP(sgv->fat,h,posProd,month,1);
-	q3->fN1 = getFaturacaoN(sgv->fat,h,posProd,month,1);
-	q3->fP1 = getFaturacaoP(sgv->fat,h,posProd,month,1);
-	printf("%d\n%d\n%f\n%f\n\n", q3->vN1,q3->vP1,q3->fN1,q3->fP1 );
+		b=getVendasP(sgv->fat,h,posProd,month,i);
+		result[(i-1)*4+1]=(double) b;
+		printf("%f\n", result[(i-1)*4+1]);
 
-	q3->vN2 = getVendasN(sgv->fat,h,posProd,month,2);
-	q3->vP2 = getVendasP(sgv->fat,h,posProd,month,2);
-	q3->fN2 = getFaturacaoN(sgv->fat,h,posProd,month,2);
-	q3->fP2 = getFaturacaoP(sgv->fat,h,posProd,month,2);
-	printf("%d\n%d\n%f\n%f\n\n", q3->vN2,q3->vP2,q3->fN2,q3->fP2 );
+		result[(i-1)*4+2]=getFaturacaoN(sgv->fat,h,posProd,month,i);
+		printf("%f\n", result[(i-1)*4+2]);
 
-	q3->vN3 = getVendasN(sgv->fat,h,posProd,month,3);
-	q3->vP3 = getVendasP(sgv->fat,h,posProd,month,3);
-	q3->fN3 = getFaturacaoN(sgv->fat,h,posProd,month,3);
-	q3->fP3 = getFaturacaoP(sgv->fat,h,posProd,month,3);
-	printf("%d\n%d\n%f\n%f\n\n", q3->vN3,q3->vP3,q3->fN3,q3->fP3 );
+		result[(i-1)*4+3]=getFaturacaoP(sgv->fat,h,posProd,month,i);
+		printf("%f\n", result[(i-1)*4+3]);
+	}
 
-
-	return q3;
+	return result;
 }
 
+// falta ver a filial e provavelmente não está bem feito
 
-
-
-
-// Querie 4
-/*
-int getProductsNeverBought(SGV sgv , int branchID){
-	char **p = NULL;
-	int tam = 0;
-
-	if(branchID > 0 && branchID <=3 ){
-		tam = neverBoughtFil(sgv->fat, branchID -1, p, tam);
+/*int getProductsNeverBought(SGV sgv , int branchID){
+	int i,j,tam, cont =0;
+	char **p = malloc(sizeof(char*));
+	for (i = 0; i < 26; i++){
+		tam = sgv->produtos->tbl[i].size;
+		for (j = 0; j< tam; j++){
+			if (sgv->produtos->tbl[i].arr[j].used == 0){
+				cont++;
+				p = realloc(p,cont*sizeof(char*));
+				p[cont-1]= sgv->produtos->tbl[i].arr[j].id;
+			}
+		}
 	}
-	for (int i = 0; i < tam; i++){
+	for (i = 0; i < cont; ++i)
+	{
 		printf("%s\n",p[i] );
 	}
-	return tam;
+	printf("%d dos produtos não foram usados\n",cont );
+	return cont;
 }
 */
 
