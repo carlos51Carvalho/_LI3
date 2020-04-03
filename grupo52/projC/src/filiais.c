@@ -19,20 +19,7 @@ int hashfil(char *cont){
 	return r;
 }
 
-Cl* initCl(){
-	Cl *p = malloc(sizeof(Cl));
-	p->fil = malloc(3*sizeof(Fili));
-	for (int i = 0; i < 3; i++)
-	{
-		p->fil[i].mes = malloc(12*sizeof(Mesf));
-		for (int j = 0; j < 12; j++)
-		{
-			p->fil[i].mes[j].size = 0;
-			p->fil[i].mes[j].prs = malloc(sizeof(Qprd));
-		}
-	}
-	return p;
-}
+
 
 Filial* initFilial(){
 	int i;
@@ -154,20 +141,21 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 	}
 }
 
-int ClientsOfAllBranches (Filial *f, char **c, int tam){
+char** ClientsOfAllBranches (Filial *f, int *tam){
 	int count =0;
+	char **c = NULL;
 	for(int i=0; i<26; i++)
 	{
 		int t= f->tbl[i].size;
 		for(int j=0; j<t;j++)
 		{
 			if(getFilUsed(f,i,j,0)==1 && getFilUsed(f,i,j,1)==1 && getFilUsed(f,i,j,2)==1){
-				c = realloc (c,(tam+1) *sizeof (char*));
-				c[tam] = strdup(getCLiente(f,i,j));
-				tam++;
+				c = realloc (c,(count+1) *sizeof (char*));
+				c[count] = strdup(getCLiente(f,i,j));
 				count++;
 			}
 		}
 	}
-	return count;
+	*tam = count;
+	return c;
 }

@@ -46,6 +46,6 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 int getFilUsed(Filial *f, int k, int ip, int fil);
 char* getCLiente(Filial *f, int k, int ip);
 
-int ClientsOfAllBranches (Filial *f, char **c, int tam);
+char** ClientsOfAllBranches (Filial *f, int *tam);
 
 #endif /* _FILIAL_ */
