@@ -64,7 +64,9 @@ int main(){
 	//p = getProductsNeverBought(sgv , 1);
 	//getClientsOfAllBranches(sgv);
 	//getProductsBoughtByClient(sgv, "A3234");
-	getSalesAndProfif(sgv, 2, 12);
+	//getSalesAndProfif(sgv, 1, 2);
+
+	getClientTopProfitProducts(sgv,"A1231", 6);
 
 
 	/*

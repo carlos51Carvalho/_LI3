@@ -33,7 +33,17 @@ int getQuantP(Filial *f, int k, int id, int fil, int m, int pid){
 	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].qP;
 }
 
+int getGastoP(Filial *f, int k, int id, int fil, int m, int pid){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].gP;
+}
 
+int getGastoN(Filial *f, int k, int id, int fil, int m, int pid){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].gN;
+}
+
+char* getOneProd(Filial *f, int k, int id, int fil, int m, int p){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[p].pid;
+}
 
 
 int hashfil(char *cont){
@@ -147,8 +157,8 @@ void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, i
 
 void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, int f){
 	int k = hashfil(c);
-	int tam = h->tbl[k].size;
-	int r= existe_fil(h->tbl[k].arr, c, tam);
+	int tam = getSizeArrClient(h,k);
+	int r= existe_fil(getArrByLetter(h,k), c, tam);
 	int pi=0, t=0;
 	if (r >= 0){
 		t = h->tbl[k].arr[r].fil[f-1].mes[m-1].size;

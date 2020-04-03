@@ -174,3 +174,107 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Q12
+
+void swapq12(SpentOnP *args , int i1, int i2)
+{
+    char *tmp = args[i1].pid;
+    double s = args[i1].spent;
+    args[i1].pid = args[i2].pid;
+    args[i1].spent = args[i2].spent;
+    args[i2].pid = tmp;
+    args[i2].spent = s;
+}
+
+/*Função que ordena um array de strings*/
+void queriesort(SpentOnP *args, int len)
+{
+    unsigned int i, pvt=0;
+
+    if (len <= 1)
+        return;
+
+    for (i=0;i<len-1;++i)
+    {
+        if (args[i].spent > args[len-1].spent)
+            swapq12(args,i,pvt++);
+    }
+    swapq12(args,pvt,len-1);
+
+    queriesort(args, pvt++);
+    queriesort(args+pvt, len - pvt);
+}
+
+
+
+
+Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
+	int tam2 =0,size;
+	Q12 q12 = malloc(sizeof(Q12));
+	q12->tam = 0;
+	q12->arr = NULL;
+	int k = hashfat(clientID);
+	int tam = getSizeArrClient(sgv->fil,k);
+	int r= existe_fil(getArrByLetter(sgv->fil,k), clientID, tam);
+
+	if (r>=0 && limit > 0){
+		for (int i = 0; i < 3; i++){
+			for (int j = 0; j < 12; j++){
+				tam2 = getSizeQprd(sgv->fil,k,r,i,j);
+				if(tam2 != 0){
+					for (int c = 0; c < tam2; c++){
+						size = q12->tam;
+						q12->arr = realloc(q12->arr, (size+1)*sizeof(SpentOnP));
+						q12->arr[size].pid = strdup(getOneProd(sgv->fil,k,r,i,j,c));
+						q12->arr[size].spent = getGastoP(sgv->fil,k,r,i, j, c)+ getGastoN(sgv->fil,k,r,i, j, c);
+						q12->tam++;
+					}
+				}
+			}
+		}
+		queriesort(q12->arr, q12->tam);
+		//q12->tam = limit;
+
+		//seria nice limpar todas as posiçoes daqui ate limite
+
+		for (int i = 0; i < limit; i++){
+				printf("%f %s\n", q12->arr[i].spent, q12->arr[i].pid );
+		}	
+	}
+	return q12;
+}

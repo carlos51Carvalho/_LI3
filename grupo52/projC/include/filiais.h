@@ -52,6 +52,9 @@ Cl* getArrByLetter(Filial *f, int key);
 int getSizeQprd(Filial *f, int k, int id, int fil, int m);
 int getQuantN(Filial *f, int k, int id, int fil, int m, int pid);
 int getQuantP(Filial *f, int k, int id, int fil, int m, int pid);
+int getGastoP(Filial *f, int k, int id, int fil, int m, int pid);
+int getGastoN(Filial *f, int k, int id, int fil, int m, int pid);
+char* getOneProd(Filial *f, int k, int id, int fil, int m, int p);
 
 
 int ClientesSemCompras (Filial *f);
