@@ -9,6 +9,7 @@ typedef struct mes{
 
 // mes size = 12
 typedef struct fil{
+	int used ;
 	Mes *mes;
 } Fil;
 
@@ -47,6 +48,13 @@ int getVendasN(Fat *fat,int h,int pos,int m,int f);
 int getVendasP(Fat *fat,int h,int pos,int m,int f);
 double getFaturacaoN(Fat *fat,int h,int pos,int m,int f);
 double getFaturacaoP(Fat *fat,int h,int pos,int m,int f);
+int getSizeArrayP(Fat *f, int key);
+int getFilialUsed(Fat *f, int key, int ip, int fil);
+char* getProdFat(Fat *f, int key, int ip);
+
 int hashfat(char *cont);
+
+
+int neverBoughtFil(Fat *f, int fil, char **p, int tamp);
 #endif /* _FAT_ */
 

@@ -43,6 +43,7 @@ int main(){
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
 	//p = getProductsStartedByLetter(sgv, letra);
 	getProductsSalesAndProfit(sgv,"ZM1712", 12);
+	//p = getProductsNeverBought(sgv , 1);
 
 
 	/*

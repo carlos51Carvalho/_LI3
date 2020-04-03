@@ -46,6 +46,18 @@ double getFaturacaoP(Fat *fat,int h,int pos,int m,int f){
 	return result;
 }
 
+int getSizeArrayP(Fat *f, int key){
+	return f->tbl[key].size;
+}
+
+int getFilialUsed(Fat *f, int key, int ip, int fil){
+	return f->tbl[key].arr[ip].fil[fil].used;
+}
+
+char* getProdFat(Fat *f, int key, int ip){
+	return f->tbl[key].arr[ip].pid;
+}
+
 
 int hashfat(char *cont){
 	int r = cont[0] - 'A';
@@ -74,6 +86,7 @@ void acrescenta_prod(Fat *f, char *p){
 	f->tbl[k].arr[tam].fil = malloc(3*sizeof(Fil));
 	for (int i = 0; i < 3; ++i)
 	{
+		f->tbl[k].arr[tam].fil[i].used = 0;
 		f->tbl[k].arr[tam].fil[i].mes = malloc(12*sizeof(Mes));
 		for (int j = 0; j < 12; j++)
 		{
@@ -125,6 +138,7 @@ void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int
 	int  r = existe_fat(h->tbl[k].arr, p, tam);
 	if (r >= 0){
 
+		h->tbl[k].arr[r].fil[f-1].used = 1;
 		if (e == 'N'){
 			h->tbl[k].arr[r].fil[f-1].mes[m-1].vN++;
 			h->tbl[k].arr[r].fil[f-1].mes[m-1].fN += pr*q;
@@ -138,3 +152,23 @@ void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int
 }
 
 
+/*
+int neverBoughtFil(Fat *f, int fil, char **p, int tamp){
+	int cont =0;
+
+	for (int i = 0; i < 26 ; i++){
+		
+		for (int j = 0; j < getSizeArrayP(f, i); j++){
+			if (getFilialUsed(f,i,j,fil) == 0)
+			{
+				p = realloc(p, (tamp+1)*sizeof(char*));
+				p[tamp] = strdup(getProdFat(f,i,j));
+				tamp++;
+				cont++;
+			}
+		}
+	}
+	return cont;
+}
+
+*/
