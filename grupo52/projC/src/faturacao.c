@@ -182,30 +182,7 @@ int ProdutosNaoComprados (Fat *f){
 	}
 	return count;
 }
-/*
-int VendasIntervalo (Fat *f, int m1, int m2){
-	int count = 0;
-	for(int i =0; i<26; i++){
-		int t = f->tbl[i].size;
-		
-		for(int j= 0; j<t; j++){
-			
-			for(int fil =0; fil<3; fil++){
-				if (getFilialUsed(f,i,j,fil) == 1){
-					
-<<<<<<< HEAD
-					for(int m =m1 ; m<=m2; m++) count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
-=======
-					for(int m =m1 ; m<m2; m++) count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
->>>>>>> 62c6a6f30bc76ff268e37948d365b7e43b3bfd48
 
-				}
-			}
-		}
-	}
-	return count;
-}
-*/
 void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *result2){
 	int count=0;
 	double count2 = 0;
@@ -231,4 +208,95 @@ void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *res
 	*result=count;
 	*result2=count2;
 }
+
+/*void MaisVendidos (Fat *f, Filiais *fi, int fil){
+	for(int i = 0; i<26; i++){
+		int tam=0;
+		int t= f->tbl[i].size;
+		for(int j =0; j<t; j++){
+			for(int m=0; m<12; m++){
+				fi->qts = realloc (fi.qts, tam+t *sizeof (Qt));
+				fi->qts[i+j].vendas += getVendasN(f,i,j,m,fil) + getVendasP(f,i,j,m,fil);
+			}
+			fi->qts[i+j].p = realloc(fi->qts[i+j].p,sizeof(char*));
+			fi->qts[i+j].p = strdup (getProdFat(f,i,j));
+			tam+=t;
+		}
+	}
+}*/
+
+/*void quicksortp(Qt **args, unsigned int len)
+{
+    unsigned int i, pvt=0;
+
+    if (len <= 1)
+        return;
+
+    // swap a randomly selected value to the last node
+    //swapc(args+((unsigned int)rand() % len), args+len-1);
+
+    // reset the pivot index to zero, then scan
+    for (i=0;i<len-1;++i)
+    {
+        if (strcmp(args[i], args[len-1]) < 0)
+            swapc(args+i, args+pvt++);
+    }
+
+    // move the pivot value into its place
+    swapc(args+pvt, args+len-1);
+
+    // and invoke on the subsequences. does NOT include the pivot-slot
+    quicksortc(args, pvt++);
+    quicksortc(args+pvt, len - pvt);
+}
+*/
+
+/*char* getMaisVendidos(Fat *f, int fil, char **c, int pos){
+	int maior=0;
+	char* pr=NULL;
+	for(int i =0; i<26; i++){
+		int t = f->tbl[i].size;
+		
+		for(int j=0; j<t; j++){
+            
+            for(int m=0; m<12; m++){
+            	int n = getVendasN(f,i,j,m,fil);
+            	int pro = getVendasP(f,i,j,m,fil);
+            	int vendas = n+pro;
+                if(vendas > maior){
+                	for(int p =0; p<pos && strcmp(c[p], getProdFat(f,i,j)) !=0; p++){
+                		if(p == pos){
+                			maior = vendas;
+                	        pr = strdup(getProdFat(f,i,j));
+                		}
+                	 }         
+                }
+            }
+		}
+	}
+	return pr;
+}
+
+char* getMaisVendido(Fat *f, int fil, char **c){
+	int maior=0;
+	char* pr=NULL;
+	for(int i =0; i<26; i++){
+		int t = f->tbl[i].size;
+		
+		for(int j=0; j<t; j++){
+            
+            for(int m=0; m<12; m++){
+            	int vendas = getVendasN(f,i,j,m,fil) + getVendasP(f,i,j,m,fil);
+                if(vendas > maior){
+                			maior = vendas;
+                	        pr = strdup(getProdFat(f,i,j));
+                }
+            }
+		}
+	}
+
+	return pr;
+}*/
+
+
 

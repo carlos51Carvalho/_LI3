@@ -65,13 +65,24 @@ typedef struct q8{
 	double f;
 }*Q8;
 
+//Estrutura Querie 11
 
+
+typedef struct q11{
+	Filiais f1;
+	Filiais f2;
+	Filiais f3;
+}*Q11;
+
+///////////////////
 
 SGV initSGV();
 SGV loadSGVFromFiles(SGV sgv, char *filespath );
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month);
 
 Q5 getClientsOfAllBranches(SGV sgv);
+
+Q11 getTopSelledProducts(SGV sgv, int limit);
 /*int getProductsSalesAndProfit( SGV sgv, char *productID, int month, int porfil);
 int getProductsNeverBought(SGV sgv , int branchID);
 int getClientsOfAllBranches(SGV sgv);
