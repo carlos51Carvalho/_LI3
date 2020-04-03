@@ -172,3 +172,52 @@ int neverBoughtFil(Fat *f, int fil, char **p, int tamp){
 }
 
 */
+int ProdutosNaoComprados (Fat *f){
+	int count=0;
+	for(int i=0;i<26;i++){
+		int t=f->tbl[i].size;
+		for(int j=0;j<t;j++){
+			if(getFilialUsed(f,i,j,0) == 0 && getFilialUsed(f,i,j,1) == 0 && getFilialUsed(f,i,j,2) == 0) count ++;
+		}
+	}
+	return count;
+}
+
+int VendasIntervalo (Fat *f, int m1, int m2){
+	int count = 0;
+	for(int i =0; i<26; i++){
+		int t = f->tbl[i].size;
+		
+		for(int j= 0; j<t; j++){
+			
+			for(int fil =0; fil<3; fil++){
+				if (getFilialUsed(f,i,j,fil) == 1){
+					
+					for(int m =0 ; m<12; m++) count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
+
+				}
+			}
+		}
+	}
+	return count;
+}
+
+double FaturacaoIntervalo (Fat *f, int m1, int m2){
+	double count = 0;
+	for(int i =0; i<26; i++){
+		int t = f->tbl[i].size;
+		
+		for(int j= 0; j<t; j++){
+			
+			for(int fil =0; fil<3; fil++){
+				if (getFilialUsed(f,i,j,fil) == 1){
+					
+					for(int m =0 ; m<12; m++) count += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
+
+				}
+			}
+		}
+	}
+	return count;
+
+}

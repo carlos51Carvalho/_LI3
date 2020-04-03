@@ -49,13 +49,18 @@ void flush(){
 
 int main(){
 
-	int p=0;
+	int p=0,c=0;
 	char letra = 'D';
 	SGV sgv = initSGV();
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
-	//p = getProductsStartedByLetter(sgv, letra);
-	getProductsSalesAndProfit(sgv,"ZM1712", 12);
+	p=ClientesSemCompras(sgv->fil);
+	printf ("%d\n", p);
+	c = ProdutosNaoComprados (sgv->fat);
+	printf ("%d\n",c);
 
+	//p = getProductsStartedByLetter(sgv, letra);
+	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
+    
 
 
 	/*
