@@ -109,19 +109,15 @@ int getProductsNeverBought(SGV sgv , int branchID){
 	return tam;
 }
 */
-/*
+
 int getClientsOfAllBranches(SGV sgv){
 	int tam=0;
-	for (int i = 0; i < 3; i++){
-		printf("Na filial %d :\n",i+1 );
-		for (int j = 0; j < 26; j++){
-			tam = sgv->fat->fil[i].c[j].size;
-			for (int k = 0; k < tam ; k++)
-			{
-				printf("%s\n",sgv->fat->fil[i].c[j].arr[k].cl );
-			}
-		}
+	char **c = malloc(sizeof(char*));
+	int r = ClientsOfAllBranches(sgv->fil,c,tam);
+	for(int i=0; i<r ;i++){
+	printf("%s\n", c[i]);
 	}
-	return tam;
+	return r;
 }
-*/
+
+

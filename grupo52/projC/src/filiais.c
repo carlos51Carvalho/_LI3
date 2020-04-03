@@ -6,6 +6,13 @@
 
 
 
+int getFilUsed(Filial *f, int k, int ip, int fil){
+	return f->tbl[k].arr[ip].fil[fil].used;
+}
+
+char* getCLiente(Filial *f, int k, int ip){
+	return f->tbl[k].arr[ip].cid;
+}
 
 int hashfil(char *cont){
 	int r = cont[0] - 'A';
@@ -47,6 +54,7 @@ void acrescenta_cl(Filial *f, char *p){
 	f->tbl[k].arr[tam].fil = malloc(3*sizeof(Fili));
 	for (int i = 0; i < 3; ++i)
 	{
+		f->tbl[k].arr[tam].fil[i].used =0;
 		f->tbl[k].arr[tam].fil[i].mes = malloc(12*sizeof(Mesf));
 		for (int j = 0; j < 12 ; j++)
 		{
@@ -131,6 +139,7 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 	if (r >= 0){
 		t = h->tbl[k].arr[r].fil[f-1].mes[m-1].size;
 		pi = existe_prod(h->tbl[k].arr[r].fil[f-1].mes[m-1].prs, p, t);
+		h->tbl[k].arr[r].fil[f-1].used=1;
 
 		if (pi < 0){
 			acrescentaPtoFil(h, p,k,r,f-1,m-1,e,q);
@@ -143,4 +152,22 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 			}
 		}
 	}
+}
+
+int ClientsOfAllBranches (Filial *f, char **c, int tam){
+	int count =0;
+	for(int i=0; i<26; i++)
+	{
+		int t= f->tbl[i].size;
+		for(int j=0; j<t;j++)
+		{
+			if(getFilUsed(f,i,j,0)==1 && getFilUsed(f,i,j,1)==1 && getFilUsed(f,i,j,2)==1){
+				c = realloc (c,(tam+1) *sizeof (char*));
+				c[tam] = strdup(getCLiente(f,i,j));
+				tam++;
+				count++;
+			}
+		}
+	}
+	return count;
 }
