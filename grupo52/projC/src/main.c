@@ -10,6 +10,18 @@
 #include "vendas.h"
 #include "queries.h"
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#include "clientes.h"
+#include "produtos.h"
+#include "faturacao.h"
+#include "filiais.h"
+#include "vendas.h"
+#include "queries.h"
+
 #define SIZE_CL 1000000
 #define SIZE_PR 1000000
 #define SIZE_VD 1000000
@@ -43,7 +55,7 @@ int main(){
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
 	//p = getProductsStartedByLetter(sgv, letra);
 	getProductsSalesAndProfit(sgv,"ZM1712", 12);
-	getClientsOfAllBranches(sgv);
+
 
 
 	/*
@@ -55,16 +67,13 @@ int main(){
 		printf("A sua opção: ");
 		scanf("%10s",buf);
 		getchar();//gets the enter
-
 		op=toint(buf);
 		printf("%d\n", op);
 		
 		//switch op
-
 		printf("\n");
 		printf("press Enter to continue");
 		getchar();//pausa para observar o resultado
-
 	}while(op);
 	*/
 

@@ -11,15 +11,33 @@ typedef struct sgv{
 } *SGV;
 
 
+//Estrutura Querie 3
+typedef struct q3{
+	int vN1;
+	int vP1;
+	int vN2;
+	int vP2;
+	int vN3;
+	int vP3;
+	double fN1;
+	double fP1;
+	double fN2;
+	double fP2;
+	double fN3;
+	double fP3;
+}*Q3;
+
+////////////////////////////////////////////////
+
 SGV initSGV();
 SGV loadSGVFromFiles(SGV sgv, char *filespath );
-int getProductsStartedByLetter(SGV sgv, char letter);
+Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month);
 /*int getProductsSalesAndProfit( SGV sgv, char *productID, int month, int porfil);
 int getProductsNeverBought(SGV sgv , int branchID);
 int getClientsOfAllBranches(SGV sgv);
 
 */
-double* getProductsSalesAndProfit( SGV sgv, char *productID, int month);
+int getProductsNeverBought(SGV sgv , int branchID);
 
 
 #endif /* _QUERIES_ */
