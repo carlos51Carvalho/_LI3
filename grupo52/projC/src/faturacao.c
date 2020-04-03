@@ -6,6 +6,45 @@
 #include "faturacao.h"
 
 
+int getPosicaoProd(Fat *fat,char *productID){
+	int i,result=-1;
+	int hash = hashfat(productID);
+	for (i = 0; i < fat->tbl[hash].size; i++){
+		if(strcmp(fat->tbl[hash].arr[i].pid, productID)==0)
+			result=i;
+	}
+	return result;
+}
+
+int getVendasN(Fat *fat,int h,int pos,int m,int f){
+	int result=0;
+	if(pos>=0){
+		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].vN;
+	}
+	return result;
+}
+int getVendasP(Fat *fat,int h,int pos,int m,int f){
+	int result=0;
+	if(pos>=0){
+		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].vP;
+	}
+	return result;
+}
+
+double getFaturacaoN(Fat *fat,int h,int pos,int m,int f){
+	double result=0;
+	if(pos>=0){
+		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].fN;
+	}
+	return result;
+}
+double getFaturacaoP(Fat *fat,int h,int pos,int m,int f){
+	double result=0;
+	if(pos>=0){
+		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].fP;
+	}
+	return result;
+}
 
 
 int hashfat(char *cont){

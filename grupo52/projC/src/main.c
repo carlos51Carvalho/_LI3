@@ -42,9 +42,10 @@ int main(){
 	SGV sgv = initSGV();
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
 	//p = getProductsStartedByLetter(sgv, letra);
+	getProductsSalesAndProfit(sgv,"ZM1712", 12);
 
 
-
+	/*
 	char buf[10];
 	int op;
 	do{
@@ -64,7 +65,7 @@ int main(){
 		getchar();//pausa para observar o resultado
 
 	}while(op);
-
+	*/
 
 
 

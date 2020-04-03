@@ -19,7 +19,7 @@ int getProductsNeverBought(SGV sgv , int branchID);
 int getClientsOfAllBranches(SGV sgv);
 
 */
-
+double* getProductsSalesAndProfit( SGV sgv, char *productID, int month);
 
 
 #endif /* _QUERIES_ */
