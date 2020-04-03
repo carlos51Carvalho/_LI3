@@ -47,6 +47,11 @@ typedef struct q5{
 	int tam;
 } *Q5;
 
+//Estrutura Querie 8
+typedef struct q8{
+	int v;
+	double f;
+}*Q8;
 
 SGV initSGV();
 SGV loadSGVFromFiles(SGV sgv, char *filespath );

@@ -116,3 +116,19 @@ Q5 getClientsOfAllBranches(SGV sgv){
 }
 
 
+
+Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
+	Q8 q8 = malloc(sizeof(Q8));
+
+	int v=0;
+	double f=0;
+
+	FaturacaoeVendasIntervalo(sgv->fat,minMonth, maxMonth, &v, &f);
+
+	q8->v=v;
+	q8->f=f;
+
+	return q8;
+}
+
+
