@@ -40,6 +40,8 @@ SGV loadSGVFromFiles(SGV sgv, char *filespath ){
 	return sgv;
 }
 
+//	Q2
+
 int getProductsStartedByLetter(SGV sgv, char letter){
 	int k = hash(&letter);
 	int tam = sgv->produtos->tbl[k].size;
@@ -51,7 +53,7 @@ int getProductsStartedByLetter(SGV sgv, char letter){
 	return tam;
 }
 
-
+// Q3
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 	int h=hashfat(productID);
 	int posProd = getPosicaoProd(sgv->fat,productID);
@@ -75,6 +77,10 @@ Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 
 	return q3;
 }
+
+
+
+// Q4
 
 // falta ver a filial e provavelmente não está bem feito
 
@@ -101,6 +107,7 @@ Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 */
 
 
+//Q5
 Q5 getClientsOfAllBranches(SGV sgv){
 	Q5 q5 = malloc(sizeof(Q5));
 	q5->tam = 0;
@@ -116,6 +123,16 @@ Q5 getClientsOfAllBranches(SGV sgv){
 }
 
 
+//Q6
+
+Q6 getClientsAndProductsNeverBoughtCount(SGV sgv){
+	Q6 q6 = malloc(sizeof(Q6));
+	q6->p = ProdutosNaoComprados(sgv->fat);
+	q6->c = ClientesSemCompras(sgv->fil);
+	return q6;
+}
+
+//Q8
 
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 	Q8 q8 = malloc(sizeof(Q8));
