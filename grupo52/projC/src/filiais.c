@@ -13,6 +13,28 @@ int getFilUsed(Filial *f, int k, int ip, int fil){
 char* getCLiente(Filial *f, int k, int ip){
 	return f->tbl[k].arr[ip].cid;
 }
+int getSizeArrClient(Filial *f, int k){
+	return f->tbl[k].size;
+}
+
+Cl* getArrByLetter(Filial *f, int key){
+	return f->tbl[key].arr;
+}
+
+int getSizeQprd(Filial *f, int k, int id, int fil, int m){
+	return f->tbl[k].arr[id].fil[fil].mes[m].size;
+}
+
+int getQuantN(Filial *f, int k, int id, int fil, int m, int pid){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].qN;
+}
+
+int getQuantP(Filial *f, int k, int id, int fil, int m, int pid){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].qP;
+}
+
+
+
 
 int hashfil(char *cont){
 	int r = cont[0] - 'A';
@@ -169,4 +191,21 @@ int ClientesSemCompras (Filial *f){
 		}
 	}
 	return count;
+}
+
+
+
+
+int QuantidadesUmClientePorMes(Filial *f, char *clienteID ,int fil, int mes){
+	int k = hashfil(clienteID);
+	int r = existe_fil(getArrByLetter(f,k), clienteID, getSizeArrClient(f,k));
+	int result =0;
+
+	if (r >= 0){
+		for (int i = 0; i < getSizeQprd(f,k,r,fil,mes); i++)
+		{
+			result += getQuantN(f,k,r,fil,mes,i) + getQuantP(f,k,r,fil,mes,i);
+		}
+	}
+	return result;
 }

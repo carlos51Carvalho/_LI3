@@ -54,10 +54,6 @@ int main(){
 	SGV sgv = initSGV();
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
 
-	p=ClientesSemCompras(sgv->fil);
-	printf ("%d\n", p);
-	c = ProdutosNaoComprados (sgv->fat);
-	printf ("%d\n",c);
 
 	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
@@ -66,9 +62,9 @@ int main(){
 	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
 	//p = getProductsNeverBought(sgv , 1);
-	getClientsOfAllBranches(sgv);
-	
-
+	//getClientsOfAllBranches(sgv);
+	//getProductsBoughtByClient(sgv, "A3234");
+	getSalesAndProfif(sgv, 2, 12);
 
 
 	/*

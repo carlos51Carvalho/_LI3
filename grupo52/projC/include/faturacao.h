@@ -58,7 +58,8 @@ int hashfat(char *cont);
 int neverBoughtFil(Fat *f, int fil, char **p, int tamp);
 int ProdutosNaoComprados (Fat *f);
 int VendasIntervalo (Fat *f, int m1, int m2);
-double FaturacaoIntervalo (Fat *f, int m1, int m2);
+void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *result2);
+
 
 #endif /* _FAT_ */
 

@@ -45,12 +45,18 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 
 int getFilUsed(Filial *f, int k, int ip, int fil);
 char* getCLiente(Filial *f, int k, int ip);
+int getSizeArrClient(Filial *f, int k);
+Cl* getArrByLetter(Filial *f, int key);
+int getSizeQprd(Filial *f, int k, int id, int fil, int m);
+int getQuantN(Filial *f, int k, int id, int fil, int m, int pid);
+int getQuantP(Filial *f, int k, int id, int fil, int m, int pid);
 
 
 int ClientesSemCompras (Filial *f);
 
 char** ClientsOfAllBranches (Filial *f, int *tam);
 
-void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *result2);
+
+int QuantidadesUmClientePorMes(Filial *f, char *clienteID ,int fil, int mes);
 
 #endif /* _FILIAL_ */
