@@ -84,16 +84,31 @@ typedef struct q8{
 
 ///////////////////////////////////////////
 
+
+// Estrutura Querie 11
+
+typedef struct q11{
+	Filiais f1;
+	Filiais f2;
+	Filiais f3;
+}*Q11;
+
+//////////////////////////////////////////
+
 // Estrutura Querie 12
 typedef struct spentonP{
 	char *pid;
 	double spent;
 } SpentOnP;
 
+
 typedef struct q12{
 	int tam ;
 	SpentOnP *arr;
 }*Q12;
+
+
+
 
 
 SGV initSGV();
@@ -106,10 +121,11 @@ Q6 getClientsAndProductsNeverBoughtCount(SGV sgv);
 Q7 getProductsBoughtByClient(SGV sgv, char *clientID);
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth);
 
-
-
+Q11 getTopSelledProducts(SGV sgv, int limit);
 Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit);
 void queriesort(SpentOnP *args, int len);
+
+
 
 
 

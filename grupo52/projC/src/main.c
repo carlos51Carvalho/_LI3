@@ -10,17 +10,6 @@
 #include "vendas.h"
 #include "queries.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <ctype.h>
-
-#include "clientes.h"
-#include "produtos.h"
-#include "faturacao.h"
-#include "filiais.h"
-#include "vendas.h"
-#include "queries.h"
 
 #define SIZE_CL 1000000
 #define SIZE_PR 1000000
@@ -56,17 +45,23 @@ int main(){
 
 
 	//p = getProductsStartedByLetter(sgv, letra);
-	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
+	getProductsSalesAndProfit(sgv,"ZM1712", 12);
     
 
 	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
 	//p = getProductsNeverBought(sgv , 1);
+
+	getClientsOfAllBranches(sgv);
+	
+	
+
 	//getClientsOfAllBranches(sgv);
 	//getProductsBoughtByClient(sgv, "A3234");
 	//getSalesAndProfif(sgv, 1, 2);
 
 	getClientTopProfitProducts(sgv,"A1231", 6);
+
 
 
 	/*

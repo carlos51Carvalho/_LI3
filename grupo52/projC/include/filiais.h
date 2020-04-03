@@ -64,4 +64,5 @@ char** ClientsOfAllBranches (Filial *f, int *tam);
 
 int QuantidadesUmClientePorMes(Filial *f, char *clienteID ,int fil, int mes);
 
+
 #endif /* _FILIAL_ */

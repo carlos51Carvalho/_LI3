@@ -132,16 +132,7 @@ Q6 getClientsAndProductsNeverBoughtCount(SGV sgv){
 }
 
 //Q7
-/*
-Q7 initQ7(){
-	Q7 q7 = malloc(sizeof(Q7));
-	q7->f = malloc(3*sizeof(BYFil));
-	for (int i = 0; i < 3; i++){
-		q7
-	}
-	return q7;
-}
-*/
+
 
 Q7 getProductsBoughtByClient(SGV sgv, char *clientID){
 	Q7 q7 = malloc(sizeof(Q7));
@@ -173,39 +164,34 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 	return q8;
 }
 
+//Q11
 
+/*Q11 getTopSelledProducts(SGV sgv, int limit){
+	Q11 q11 = malloc (sizeof(Q11));
+	q11->cl = 0;
+	q11->un = 0;
 
+	q11->c1= malloc(limit * sizeof(char*));
+	q11->c2= malloc(limit * sizeof(char*));
+	q11->c3= malloc(limit * sizeof(char*));
 
+    q11->c1[0]=getMaisVendido(sgv->fat, 0, q11->c1);
+    q11->c2[0]=getMaisVendido(sgv->fat, 1, q11->c2);
+    q11->c3[0]=getMaisVendido(sgv->fat, 2, q11->c3);
+    
+    for(int i=1; i<limit; i++){
+   	    q11->c1[i] = getMaisVendidos(sgv->fat,0,q11->c1,i);
+   	    q11->c2[i] = getMaisVendidos(sgv->fat,1,q11->c2,i);
+   	    q11->c3[i] = getMaisVendidos(sgv->fat,2,q11->c3,i);
+	}
+	
+	for(int i=0; i< limit ;i++){
+		printf("%s\n", q11->c1[i]);	
+	}
+	
+	return q11;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
