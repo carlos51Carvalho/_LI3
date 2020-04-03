@@ -193,7 +193,7 @@ int VendasIntervalo (Fat *f, int m1, int m2){
 			for(int fil =0; fil<3; fil++){
 				if (getFilialUsed(f,i,j,fil) == 1){
 					
-					for(int m =0 ; m<12; m++) count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
+					for(int m =m1 ; m<m2; m++) count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
 
 				}
 			}
@@ -212,7 +212,7 @@ double FaturacaoIntervalo (Fat *f, int m1, int m2){
 			for(int fil =0; fil<3; fil++){
 				if (getFilialUsed(f,i,j,fil) == 1){
 					
-					for(int m =0 ; m<12; m++) count += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
+					for(int m =m1; m<m2; m++) count += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
 
 				}
 			}
