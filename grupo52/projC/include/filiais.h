@@ -30,9 +30,8 @@ typedef struct bucketf{
 	Cl *arr;
 } Bucketf ;
 
-
+//26 (26letras)
 typedef struct filial{
-	int size;
 	Bucketf *tbl;
 } Filial;
 

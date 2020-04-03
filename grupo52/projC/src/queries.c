@@ -49,8 +49,8 @@ SGV loadSGVFromFiles(SGV sgv, char *filespath ){
 	printf("%d\n\n\n", sgv->fat->tbl[0].arr[0].fil[2].mes[4].vN );
 
 	printf("%s\n", sgv->fil->tbl[0].arr[0].cid );
-	printf("%d\n", sgv->fil->tbl[0].arr[10].fil[0].mes[0].size);
-	printf("%s\n", sgv->fil->tbl[0].arr[0].fil[0].mes[0].prs[0].pid);
+	printf("%d\n", sgv->fil->tbl[0].arr[0].fil[0].mes[0].size);
+	printf("%s\n", sgv->fil->tbl[0].arr[10].fil[0].mes[0].prs[0].pid);
 	printf("%d\n", sgv->fil->tbl[6].arr[3].fil[2].mes[7].prs[1].qP );
 	printf("%d\n\n\n", sgv->fil->tbl[0].arr[0].fil[2].mes[7].prs[0].qN );
 

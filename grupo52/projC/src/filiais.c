@@ -106,11 +106,18 @@ int existe_prod(Qprd *arr, char *procurado, int Tam)
 
 void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt){
 	int size = h->tbl[it].arr[a].fil[f].mes[m].size;
+	printf("%d\n",size);
 	h->tbl[it].arr[a].fil[f].mes[m].prs = realloc(h->tbl[it].arr[a].fil[f].mes[m].prs, (size+1)*sizeof(Qprd));
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].pid = strdup(p);
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].qN = 0;
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].qP = 0;
 
+	if (e == 'N'){
+		h->tbl[it].arr[a].fil[f].mes[m].prs[size].qN += qnt;
+	}
+	else{
+		h->tbl[it].arr[a].fil[f].mes[m].prs[size].qP += qnt;
+	}
 	h->tbl[it].arr[a].fil[f].mes[m].size++;
 }
 
@@ -119,22 +126,22 @@ void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, i
 void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, int f){
 	int k = hashfil(c);
 	int tam = h->tbl[k].size;
-	int  r= existe_fil(h->tbl[k].arr, p, tam);
+	int r= existe_fil(h->tbl[k].arr, c, tam);
 	int pi=0, t=0;
 	if (r >= 0){
 		t = h->tbl[k].arr[r].fil[f-1].mes[f-1].size;
 		pi = existe_prod(h->tbl[k].arr[r].fil[f-1].mes[f-1].prs, p, t);
 
-		printf("%s    %d\n", p, pi);
+		printf("%d      %s    %d\n",t, p, pi);
 		if (pi < 0){
 			acrescentaPtoFil(h, p,k,r,f-1,m-1,e,q);
-		}
-
-		if (e == 'N'){
-			h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].qN += q;
-		}
-		else{
-			h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].qP += q;
+		}else{
+			if (e == 'N'){
+				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].qN += q;
+			}
+			else{
+				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].qP += q;
+			}
 		}
 	}
 }
