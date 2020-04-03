@@ -7,6 +7,8 @@ typedef struct qprd{
 	char *pid;
 	int qN;
 	int qP;
+	double gN;    // gasto em N
+	double gP;    //gasto em P
 } Qprd ;
 
 
@@ -40,7 +42,7 @@ Filial* initFilial();
 void acrescenta_cl(Filial *f, char *p);
 int acrescenta_cls (Filial *f, char **p, int tam );
 int existe_fil(Cl *arr, char *procurado, int Tam);
-void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt);
+void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt, int preco);
 void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, int f);
 
 int getFilUsed(Filial *f, int k, int ip, int fil);

@@ -121,19 +121,24 @@ int existe_prod(Qprd *arr, char *procurado, int Tam)
 
 
 
-void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt){
+void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt, int preco){
 	int size = h->tbl[it].arr[a].fil[f].mes[m].size;
 
 	h->tbl[it].arr[a].fil[f].mes[m].prs = realloc(h->tbl[it].arr[a].fil[f].mes[m].prs, (size+1)*sizeof(Qprd));
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].pid = strdup(p);
+
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].qN = 0;
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].qP = 0;
+	h->tbl[it].arr[a].fil[f].mes[m].prs[size].gN = 0;
+	h->tbl[it].arr[a].fil[f].mes[m].prs[size].gP = 0;
 
 	if (e == 'N'){
 		h->tbl[it].arr[a].fil[f].mes[m].prs[size].qN += qnt;
+		h->tbl[it].arr[a].fil[f].mes[m].prs[size].gN += qnt * preco;
 	}
 	else{
 		h->tbl[it].arr[a].fil[f].mes[m].prs[size].qP += qnt;
+		h->tbl[it].arr[a].fil[f].mes[m].prs[size].gP += qnt * preco;
 	}
 	h->tbl[it].arr[a].fil[f].mes[m].size++;
 }
@@ -151,13 +156,15 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 		h->tbl[k].arr[r].fil[f-1].used=1;
 
 		if (pi < 0){
-			acrescentaPtoFil(h, p,k,r,f-1,m-1,e,q);
+			acrescentaPtoFil(h, p,k,r,f-1,m-1,e,q, pr);
 		}else{
 			if (e == 'N'){
 				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].qN += q;
+				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].gN += q * pr;
 			}
 			else{
 				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].qP += q;
+				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].gP += q * pr;
 			}
 		}
 	}
