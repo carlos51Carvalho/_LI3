@@ -76,6 +76,10 @@ int getProductsStartedByLetter(SGV sgv, char letter){
 	return tam;
 }
 
+int getCenas(int i){
+	if(i >0) return i;
+}
+
 /*
 int vendas_emMes(SGV sgv, char *productID,int month, double aux[], int f){
 	int kp = hash(productID);
@@ -161,3 +165,7 @@ int getClientsOfAllBranches(SGV sgv){
 	return tam;
 }
 */
+
+int ola(int k){
+	return 0;
+}
