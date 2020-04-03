@@ -156,8 +156,8 @@ char** ClientsOfAllBranches (Filial *f, int *tam){
 			}
 		}
 	}
-<<<<<<< HEAD
-	return count;
+	*tam = count;
+	return c;
 }
 
 int ClientesSemCompras (Filial *f){
@@ -169,8 +169,4 @@ int ClientesSemCompras (Filial *f){
 		}
 	}
 	return count;
-=======
-	*tam = count;
-	return c;
->>>>>>> bec0e8907d7c82b22d257f34a2b6fb6a4f7f1d55
 }
