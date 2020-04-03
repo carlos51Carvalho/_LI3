@@ -66,7 +66,7 @@ int main(){
 	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
 	//p = getProductsNeverBought(sgv , 1);
-	p = getClientsOfAllBranches(sgv);
+	getClientsOfAllBranches(sgv);
 	
 
 
