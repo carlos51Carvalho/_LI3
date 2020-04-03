@@ -19,14 +19,14 @@ int getPosicaoProd(Fat *fat,char *productID){
 int getVendasN(Fat *fat,int h,int pos,int m,int f){
 	int result=0;
 	if(pos>=0){
-		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].vN;
+		result=fat->tbl[h].arr[pos].fil[f].mes[m].vN;
 	}
 	return result;
 }
 int getVendasP(Fat *fat,int h,int pos,int m,int f){
 	int result=0;
 	if(pos>=0){
-		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].vP;
+		result=fat->tbl[h].arr[pos].fil[f].mes[m].vP;
 	}
 	return result;
 }
@@ -34,14 +34,14 @@ int getVendasP(Fat *fat,int h,int pos,int m,int f){
 double getFaturacaoN(Fat *fat,int h,int pos,int m,int f){
 	double result=0;
 	if(pos>=0){
-		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].fN;
+		result=fat->tbl[h].arr[pos].fil[f].mes[m].fN;
 	}
 	return result;
 }
 double getFaturacaoP(Fat *fat,int h,int pos,int m,int f){
 	double result=0;
 	if(pos>=0){
-		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].fP;
+		result=fat->tbl[h].arr[pos].fil[f].mes[m].fP;
 	}
 	return result;
 }

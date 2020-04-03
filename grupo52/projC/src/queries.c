@@ -58,21 +58,21 @@ Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 	int posProd = getPosicaoProd(sgv->fat,productID);
 	Q3 q3 = malloc(sizeof(Q3));
 
-	q3->vN1=getVendasN(sgv->fat,h,posProd,month,1);
-	q3->vP1=getVendasP(sgv->fat,h,posProd,month,1);
-	q3->fN1=getFaturacaoN(sgv->fat,h,posProd,month,1);
-	q3->fP1=getFaturacaoP(sgv->fat,h,posProd,month,1);
+	q3->vN1=getVendasN(sgv->fat,h,posProd,month-1,0);
+	q3->vP1=getVendasP(sgv->fat,h,posProd,month-1,0);
+	q3->fN1=getFaturacaoN(sgv->fat,h,posProd,month-1,0);
+	q3->fP1=getFaturacaoP(sgv->fat,h,posProd,month-1,0);
 
 
-	q3->vN2=getVendasN(sgv->fat,h,posProd,month,2);
-	q3->vP2=getVendasP(sgv->fat,h,posProd,month,2);
-	q3->fN2=getFaturacaoN(sgv->fat,h,posProd,month,2);
-	q3->fP2=getFaturacaoP(sgv->fat,h,posProd,month,2);
+	q3->vN2=getVendasN(sgv->fat,h,posProd,month-1,1);
+	q3->vP2=getVendasP(sgv->fat,h,posProd,month-1,1);
+	q3->fN2=getFaturacaoN(sgv->fat,h,posProd,month-1,1);
+	q3->fP2=getFaturacaoP(sgv->fat,h,posProd,month-1,1);
 
-	q3->vN3=getVendasN(sgv->fat,h,posProd,month,3);
-	q3->vP3=getVendasP(sgv->fat,h,posProd,month,3);
-	q3->fN3=getFaturacaoN(sgv->fat,h,posProd,month,3);
-	q3->fP3=getFaturacaoP(sgv->fat,h,posProd,month,3);
+	q3->vN3=getVendasN(sgv->fat,h,posProd,month-1,2);
+	q3->vP3=getVendasP(sgv->fat,h,posProd,month-1,2);
+	q3->fN3=getFaturacaoN(sgv->fat,h,posProd,month-1,2);
+	q3->fP3=getFaturacaoP(sgv->fat,h,posProd,month-1,2);
 
 	return q3;
 }
