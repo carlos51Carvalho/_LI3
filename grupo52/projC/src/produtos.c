@@ -13,11 +13,13 @@ int hashP(char *cont){
 	return r;
 }*/
 
+/*Função que recebe uma string de um prdotu e verifica se este é valido */
 int validaproduto(char *produto){ 
 	return (produto[0]>='A' && produto[0]<='Z' && produto[1]>='A' && produto[1]<='Z' && atoi(produto+2)>=1000 && atoi(produto+2)<=9999);
 }
 
-
+/*Função que recebendo uma Thash e um file path, lê de um ficheiro linha a linha e vai colocando cada linha na thash
+na sua posição correspondente na mesma */
 int ler_prod (THash *prod,char *filespath ){
 	FILE *ficheiro = NULL;
 	char aux[80];
@@ -51,4 +53,11 @@ int ler_prod (THash *prod,char *filespath ){
 		quicksortc(prod->tbl[j].arr, prod->tbl[j].size);
 	}
 	return i;
+}
+
+char* getProduto(THash *p, int key, int i){
+	return p->tbl[key].arr[i];
+}
+char** getArrayProd(THash *p, int key){
+	return p->tbl[key].arr;
 }

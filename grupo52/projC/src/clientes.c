@@ -4,13 +4,14 @@
 #include "clientes.h"
 //#include "faturacao.h"
 
-
+/* Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A devolvendo o resultado inteiro 
+dessa subtração*/
 int hash(char *cont){
 	int r = cont[0] - 'A';
 	return r;
 }
 
-
+/*Função que inicia uma estrutura Thash alocando espaço para todas as estruturas adjacentes*/
 THash* initTab(){
 	int i;
 	THash *h = malloc(sizeof(THash));
@@ -25,7 +26,7 @@ THash* initTab(){
 	return h;
 }
 
-
+/*Funçao que destroi uma estrutura Thash libertando o espaço ocupado por esta */
 void destroiTab(THash *h){
 	int i,j;
 	for (i = 0; i < h->size; i++){
@@ -37,6 +38,8 @@ void destroiTab(THash *h){
 	free(h);
 }
 
+/*Função que acrescenta a uma Thash uma derminada string na posição correta para esta na tabela aplicando a função hash a descobrir
+e sucessivamente realocando espaço para a adicionar*/
 void acrecenstaTab(THash *h, char *cont){
 	int key = hash(cont);
 	int tam = h->tbl[key].size;
@@ -83,7 +86,7 @@ void swapc(char **arg1, char **arg2)
     *arg2 = tmp;
 }
 
-
+/*Função que ordena um array de strings*/
 void quicksortc(char **args, unsigned int len)
 {
     unsigned int i, pvt=0;
@@ -110,7 +113,8 @@ void quicksortc(char **args, unsigned int len)
 }
 
 
-
+/*Função que recebendo uma Thash e um file path, lê de um ficheiro linha a linha e vai colocando cada linha na thash
+na sua posição correspondente na mesma */
 int ler_clientes (THash *cliente , char *filespath){
 	FILE *ficheiro = NULL;
 	char aux[80];
@@ -145,9 +149,15 @@ int ler_clientes (THash *cliente , char *filespath){
 	return i;
 }
 
-
+/*Função que recebe uma string de um cliente e verifica se este é valido */
 int validacliente(char *cliente){
 	return (cliente[0]>='A' && cliente[0]<='Z' && atoi(cliente+1)>=1000 && atoi(cliente+1)<=9999);
 }
 
+char* getCliente(THash *c, int key, int i){
+	return c->tbl[key].arr[i];
+}
+char** getArrayCl(THash *c, int key){
+	return c->tbl[key].arr;
+}
 

@@ -9,7 +9,8 @@
 #include "vendas.h"
 
 
-
+/*Função de procura binária, que procura num array de strings uma string, quando a encontra retorna
+1 , caso não encontre retorna 0*/
 
 int existe(char **testado, char *nas_vendas, int Tam)
 {
@@ -32,36 +33,45 @@ int existe(char **testado, char *nas_vendas, int Tam)
 }
 
 
-
+/*Função que verifica se um preçe é valido testando se esse preço se encontra entre dois valores
+caso sim dá retorno 1, caso contrário -1*/
 int validapreco(char *preco){
 	double p = atof(preco);
 	if (p>0.0 && p<=999.99) return 1;
 	else return -1;
 }
-
+/*Função que verifica se uma quantidade é valida testando se esse valor se encontra entre dois valores
+caso sim dá retorno 1, caso contrário -1*/
 int valida3campo(char *campo){
 	int uni = atoi(campo);
 	if (uni>0 && uni<=200) return 1;
 	else return -1;
 }
 
+/*Função que verifica se um tipo de compra é valido testando se o char dado é válidp 
+caso sim dá retorno 1, caso contrário -1*/
 int valida4campo(char *campo){
 	return ((campo[0]=='P' || campo[0]=='N') && campo[1]=='\0');
 }
-
+/*Função que verifica se um mes é valido testando se o int dado está entre 0 e 12 
+caso sim dá retorno 1, caso contrário -1*/
 int valida6mes(char *campo){
 	int mes = atoi(campo);
 	if (mes>0 && mes<13) return 1;
 	else return -1;
 }
-
+/*Função que verifica se uma filial é valida testando se o int dado está entre 1 e 3 
+caso sim dá retorno 1, caso contrário -1*/
 int valida7filial(char *filial){
 	int fil = atoi(filial);
 	if (fil>0 && fil<4) return 1;
 	else return -1;
 }
 
-
+/* Função que recebendo uma Fat (estrutura Faturação),uma Filial (estrutura Filial) e duas THash(estruturas clientes e produtos) e um file path, lê linha a linha de um determinado ficheiro
+fazendo enquanto este válido a divisão por espaços \r e \n, vai repassando as partes retiradas dessa linha para uma string part, que vai sendo guardada em auxiliares-
+Postriormente os campos retirados da linha são validados e são alocados pelas funcçoes acrescentaFat e acrescentaFil as respetivas estruturas que estas recebem como argumento;
+*/
 int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath){
 	FILE *ficheiro = NULL;
 	char a[80];

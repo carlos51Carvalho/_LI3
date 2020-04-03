@@ -2,10 +2,9 @@
 #ifndef _PRODUTOS_
 #define _PRODUTOS_
 
-void imprimeprod(char **prod, int p);
 int validaproduto(char *produto);
 int ler_prod(THash *prod, char *filespath );
-void acrecenstaUsado(THash *prod, int fil);
-
+char* getProduto(THash *p, int key, int i);
+char** getArrayProd(THash *p, int key);
 
 #endif /* PRODUTOS */
