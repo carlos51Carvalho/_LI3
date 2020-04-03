@@ -7,6 +7,8 @@ typedef struct qprd{
 	char *pid;
 	int qN;
 	int qP;
+	double gN;    // gasto em N
+	double gP;    //gasto em P
 } Qprd ;
 
 
@@ -40,16 +42,26 @@ Filial* initFilial();
 void acrescenta_cl(Filial *f, char *p);
 int acrescenta_cls (Filial *f, char **p, int tam );
 int existe_fil(Cl *arr, char *procurado, int Tam);
-void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt);
+void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt, int preco);
 void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, int f);
 
 int getFilUsed(Filial *f, int k, int ip, int fil);
 char* getCLiente(Filial *f, int k, int ip);
+int getSizeArrClient(Filial *f, int k);
+Cl* getArrByLetter(Filial *f, int key);
+int getSizeQprd(Filial *f, int k, int id, int fil, int m);
+int getQuantN(Filial *f, int k, int id, int fil, int m, int pid);
+int getQuantP(Filial *f, int k, int id, int fil, int m, int pid);
 
 
 int ClientesSemCompras (Filial *f);
 
 char** ClientsOfAllBranches (Filial *f, int *tam);
 
+<<<<<<< HEAD
+=======
+
+int QuantidadesUmClientePorMes(Filial *f, char *clienteID ,int fil, int mes);
+>>>>>>> 3193153972268dcb4a297593efc2fefda401a0c5
 
 #endif /* _FILIAL_ */

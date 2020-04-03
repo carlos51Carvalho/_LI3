@@ -48,7 +48,6 @@ int getProductsStartedByLetter(SGV sgv, char letter){
 	char **p = malloc(tam*sizeof(char*));
 	for (int i = 0; i < tam; i++){
 		p[i] = sgv->produtos->tbl[k].arr[i];
-		printf("%s\n", p[i]);
 	}
 	return tam;
 }
@@ -59,21 +58,21 @@ Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 	int posProd = getPosicaoProd(sgv->fat,productID);
 	Q3 q3 = malloc(sizeof(Q3));
 
-	q3->vN1=getVendasN(sgv->fat,h,posProd,month,1);
-	q3->vP1=getVendasP(sgv->fat,h,posProd,month,1);
-	q3->fN1=getFaturacaoN(sgv->fat,h,posProd,month,1);
-	q3->fP1=getFaturacaoP(sgv->fat,h,posProd,month,1);
+	q3->vN1=getVendasN(sgv->fat,h,posProd,month-1,0);
+	q3->vP1=getVendasP(sgv->fat,h,posProd,month-1,0);
+	q3->fN1=getFaturacaoN(sgv->fat,h,posProd,month-1,0);
+	q3->fP1=getFaturacaoP(sgv->fat,h,posProd,month-1,0);
 
 
-	q3->vN2=getVendasN(sgv->fat,h,posProd,month,2);
-	q3->vP2=getVendasP(sgv->fat,h,posProd,month,2);
-	q3->fN2=getFaturacaoN(sgv->fat,h,posProd,month,2);
-	q3->fP2=getFaturacaoP(sgv->fat,h,posProd,month,2);
+	q3->vN2=getVendasN(sgv->fat,h,posProd,month-1,1);
+	q3->vP2=getVendasP(sgv->fat,h,posProd,month-1,1);
+	q3->fN2=getFaturacaoN(sgv->fat,h,posProd,month-1,1);
+	q3->fP2=getFaturacaoP(sgv->fat,h,posProd,month-1,1);
 
-	q3->vN3=getVendasN(sgv->fat,h,posProd,month,3);
-	q3->vP3=getVendasP(sgv->fat,h,posProd,month,3);
-	q3->fN3=getFaturacaoN(sgv->fat,h,posProd,month,3);
-	q3->fP3=getFaturacaoP(sgv->fat,h,posProd,month,3);
+	q3->vN3=getVendasN(sgv->fat,h,posProd,month-1,2);
+	q3->vP3=getVendasP(sgv->fat,h,posProd,month-1,2);
+	q3->fN3=getFaturacaoN(sgv->fat,h,posProd,month-1,2);
+	q3->fP3=getFaturacaoP(sgv->fat,h,posProd,month-1,2);
 
 	return q3;
 }
@@ -132,6 +131,31 @@ Q6 getClientsAndProductsNeverBoughtCount(SGV sgv){
 	return q6;
 }
 
+//Q7
+/*
+Q7 initQ7(){
+	Q7 q7 = malloc(sizeof(Q7));
+	q7->f = malloc(3*sizeof(BYFil));
+	for (int i = 0; i < 3; i++){
+		q7
+	}
+	return q7;
+}
+*/
+
+Q7 getProductsBoughtByClient(SGV sgv, char *clientID){
+	Q7 q7 = malloc(sizeof(Q7));
+	q7->f = malloc(3*sizeof(BYFil));
+	for (int i = 0; i < 3; i++){
+		for (int j = 0; j < 12; j++)
+		{
+			q7->f[i].m[j] = QuantidadesUmClientePorMes(sgv->fil, clientID ,i, j);
+		}
+	}
+	return q7;
+} 
+
+
 //Q8
 
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
@@ -144,6 +168,7 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 
 	q8->v=v;
 	q8->f=f;
+	printf("%d %f\n",q8->v,q8->f );
 
 	return q8;
 }

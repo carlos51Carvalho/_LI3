@@ -59,6 +59,22 @@ typedef struct q6{
 
 /////////////////////////////////////////////
 
+//Estrutura 7
+
+typedef struct byfil{
+	int m[12];
+} BYFil;
+
+//tamanho 3
+typedef struct q7{
+	BYFil *f; 
+} *Q7;
+
+
+
+///////////////////////////////////////////
+
+
 //Estrutura Querie 8
 typedef struct q8{
 	int v;
@@ -78,17 +94,25 @@ typedef struct q11{
 
 SGV initSGV();
 SGV loadSGVFromFiles(SGV sgv, char *filespath );
+int getProductsStartedByLetter(SGV sgv, char letter);
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month);
-
+//int getProductsNeverBought(SGV sgv , int branchID);
 Q5 getClientsOfAllBranches(SGV sgv);
 
+Q6 getClientsAndProductsNeverBoughtCount(SGV sgv);
+Q7 getProductsBoughtByClient(SGV sgv, char *clientID);
+Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth);
 Q11 getTopSelledProducts(SGV sgv, int limit);
 /*int getProductsSalesAndProfit( SGV sgv, char *productID, int month, int porfil);
 int getProductsNeverBought(SGV sgv , int branchID);
 int getClientsOfAllBranches(SGV sgv);
 
-*/
-int getProductsNeverBought(SGV sgv , int branchID);
+Q6 getClientsAndProductsNeverBoughtCount(SGV sgv);
+Q7 getProductsBoughtByClient(SGV sgv, char *clientID);
+Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth);
+
+
+
 
 
 #endif /* _QUERIES_ */
