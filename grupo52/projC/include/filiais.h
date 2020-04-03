@@ -47,5 +47,6 @@ int getFilUsed(Filial *f, int k, int ip, int fil);
 char* getCLiente(Filial *f, int k, int ip);
 
 int ClientsOfAllBranches (Filial *f, char **c, int tam);
+int ClientesSemCompras (Filial *f);
 
 #endif /* _FILIAL_ */

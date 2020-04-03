@@ -52,7 +52,7 @@ int getProductsStartedByLetter(SGV sgv, char letter){
 }
 
 
-double* getProductsSalesAndProfit( SGV sgv, char *productID, int month){
+/*double* getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 	int h=hashfat(productID);
 	int posProd = getPosicaoProd(sgv->fat,productID);
 	double result[12]={0};
@@ -75,7 +75,7 @@ double* getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 	}
 
 	return result;
-}
+}*/
 
 // falta ver a filial e provavelmente não está bem feito
 

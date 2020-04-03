@@ -56,5 +56,6 @@ int hashfat(char *cont);
 
 
 int neverBoughtFil(Fat *f, int fil, char **p, int tamp);
+int ProdutosNaoComprados (Fat *f);
 #endif /* _FAT_ */
 

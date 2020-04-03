@@ -171,3 +171,14 @@ int ClientsOfAllBranches (Filial *f, char **c, int tam){
 	}
 	return count;
 }
+
+int ClientesSemCompras (Filial *f){
+	int count =0;
+	for(int i=0;i<26;i++){
+		int t = f->tbl[i].size;
+		for(int j =0; j<t; j++){
+			if(getFilUsed(f,i,j,0)==0 && getFilUsed(f,i,j,1)==0 && getFilUsed(f,i,j,2)==0) count++;
+		}
+	}
+	return count;
+}
