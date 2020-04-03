@@ -51,4 +51,6 @@ int ClientesSemCompras (Filial *f);
 
 char** ClientsOfAllBranches (Filial *f, int *tam);
 
+void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *result2);
+
 #endif /* _FILIAL_ */
