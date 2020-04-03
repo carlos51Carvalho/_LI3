@@ -29,9 +29,30 @@ typedef struct q3{
 
 ////////////////////////////////////////////////
 
+//Estrutura Querie 4
+/*
+typedef struct q4{
+	cahr **p;
+
+
+};
+*/
+
+///////////////////////////////////////////////
+
+//Estrutura Querie 5
+
+typedef struct q5{
+	char** c;
+	int tam;
+} *Q5;
+
+
 SGV initSGV();
 SGV loadSGVFromFiles(SGV sgv, char *filespath );
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month);
+
+Q5 getClientsOfAllBranches(SGV sgv);
 /*int getProductsSalesAndProfit( SGV sgv, char *productID, int month, int porfil);
 int getProductsNeverBought(SGV sgv , int branchID);
 int getClientsOfAllBranches(SGV sgv);
