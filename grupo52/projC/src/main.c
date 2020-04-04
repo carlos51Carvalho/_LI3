@@ -52,7 +52,14 @@ int main(){
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
 	//p = getProductsNeverBought(sgv , 1);
 
+<<<<<<< HEAD
 
+=======
+	//getClientsOfAllBranches(sgv);
+	
+	
+	//getClientFavouriteProducts(sgv, "A1231", 3);
+>>>>>>> 17060c027c18bb4f74338d194a416f1d7a1f646d
 	//getClientsOfAllBranches(sgv);
 	//getProductsBoughtByClient(sgv, "A3234");
 	//getSalesAndProfif(sgv, 1, 2);
@@ -88,6 +95,6 @@ int main(){
 	//p = getClientsOfAllBranches(sgv);
 	
 
-	//distroySGV(sgv);
+	distroySGV(sgv);
 	return p;
 }
