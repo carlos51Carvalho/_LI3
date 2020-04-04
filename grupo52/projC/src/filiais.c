@@ -133,6 +133,7 @@ int existe_fil(Cl *arr, char *procurado, int Tam)
           if (strcmp(procurado, arr[meio].cid) ==0){
                	r = meio;
           }
+
           if (strcmp(procurado, arr[meio].cid)<0)
                sup = meio-1;
           else

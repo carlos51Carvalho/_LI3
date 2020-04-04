@@ -31,17 +31,6 @@ typedef struct fat{
 	Bucketv *tbl;
 } Fat;
 
-/*
-typedef struct qt{
-	int vendas;
-	char* p;
-}*Qt;
-
-
-typedef struct filiais{
-	Qt *qts;	
-}*Filiais;
-*/
 
 //void quicksortFat(Prd *args, int len);
 Fat* initFat();
