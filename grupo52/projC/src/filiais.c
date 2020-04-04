@@ -67,24 +67,25 @@ Filial* initFilial(){
 
 
 void destroiFilial(Filial *f){
-	int i,j,fi,m,p;
+	int i,j,fi,m,p,sizeQprod;
 	for (i = 0; i < 26; i++){
 		for (j = 0; j < f->tbl[i].size; j++){
 			for (fi = 0; fi < 3; fi++){
 				for (m = 0; m < 12; m++){
-					for (p = 0; i <getSizeQprd(f, i, j,fi,m) ; p++){
+					sizeQprod=getSizeQprd(f, i, j,fi,m);
+					for (p = 0; p <sizeQprod ; p++){
 						free(f->tbl[i].arr[j].fil[fi].mes[m].prs[p].pid);
-						free(f->tbl[i].arr[j].fil[fi].mes[m].prs);
 					}
-					free(f->tbl[i].arr[j].fil[fi].mes);
+					free(f->tbl[i].arr[j].fil[fi].mes[m].prs);
 				}
-				free(f->tbl[i].arr[j].fil);
+				free(f->tbl[i].arr[j].fil[fi].mes);
 			}
+			free(f->tbl[i].arr[j].fil);
 			free(f->tbl[i].arr[j].cid);
-			free(f->tbl[i].arr);
 		}
-		free(f->tbl);
+		free(f->tbl[i].arr);
 	}
+	free(f->tbl);
 	free(f);
 }
 
