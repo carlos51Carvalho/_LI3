@@ -179,6 +179,43 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 
 
 
+//Q9
+
+/*Q9 getProductBuyers (SGV sgv, char *productID, int branch){
+	Q9 q = malloc (sizeof(Q9));
+	q->sizeN = 0;
+	q->sizeP = 0;
+	int t;
+	int u;
+	int s;
+	int found=0;
+	int sn,qn,
+
+	for(int i=0;i<26;i++){
+		t = getSizeArrClient (sgv->fil, i);
+		for(int j=0; j<t; j++){
+			u = getFilUsed(sgv->fil, i, j, branch);
+			if(u==1);
+			for(int m = 0; m<12 && !found; m++){
+				s = getSizeQprd(sgv->fil, i, j, branch, m);
+				for(int mid =0; mid < s && !found; mid++){
+					if (strcmp(productID, getOneProd(sgv->fil, i, j, branch, m, p)) == 0){
+                         if()
+
+
+					}
+				}
+			}
+			
+		}
+
+	}
+}*/
+
+
+
+
+
 
 
 //Q10
@@ -482,7 +519,6 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 	}
 	return q12;
 }
-
 
 
 

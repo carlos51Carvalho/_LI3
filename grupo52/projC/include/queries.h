@@ -86,7 +86,17 @@ typedef struct q8{
 
 
 ///////////////////////////////////////////
+ 
+/*
+//Estrutura Querie 9
 
+typedef struct q9{
+	int sizeN;
+	int sizeP;
+	char** n;
+	char** p;
+}*Q9;
+*/
 
 // Estrutura Querie 11
 typedef struct qt{
