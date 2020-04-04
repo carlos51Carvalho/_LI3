@@ -117,9 +117,9 @@ void quicksortc(char **args, unsigned int len)
 na sua posição correspondente na mesma */
 int ler_clientes (THash *cliente , char *filespath){
 	FILE *ficheiro = NULL;
-	char aux[80];
-	strcpy(aux, filespath); 
-	strcat(aux,"/Clientes.txt");
+	//char aux[80];
+	//strcpy(aux, filespath); 
+	//strcat(aux,"/Clientes.txt");
 	char *chave=NULL;
 	char linha[128];
 	int i;

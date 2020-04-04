@@ -55,10 +55,11 @@ int main(){
 	//getClientsOfAllBranches(sgv);
 	
 	
-	getClientFavouriteProducts(sgv, "A1231", 3);
+	//getClientFavouriteProducts(sgv, "A1231", 3);
 	//getClientsOfAllBranches(sgv);
 	//getProductsBoughtByClient(sgv, "A3234");
 	//getSalesAndProfif(sgv, 1, 2);
+	getTopSelledProducts(sgv, 152);
 
 	//getClientTopProfitProducts(sgv,"A1231", 6);
 

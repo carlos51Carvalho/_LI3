@@ -15,6 +15,8 @@ SGV initSGV(){
 	SGV q = malloc(sizeof(SGV));
 	q->produtos = initTab();
 	q->clientes = initTab();
+	//q->cvalidos = 0;
+	//q->pvalidos = 0;
 	//q->vendas = initTv();
 	q->fat = initFat();
 	q->fil = initFilial();
@@ -165,6 +167,15 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 }
 
 
+
+
+
+
+
+
+
+
+
 //Q10
 
 
@@ -194,6 +205,8 @@ void q10sort(QntNSpent *args, int len){
     q10sort(args, pvt++);
     q10sort(args+pvt, len - pvt);
 }
+
+
 
 
 Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month){
@@ -239,51 +252,144 @@ Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Q11
 
-/*Q11 getTopSelledProducts(SGV sgv, int limit){
-	Q11 q11 = malloc (sizeof(Q11));
-	q11->cl = 0;
-	q11->un = 0;
 
-	q11->c1= malloc(limit * sizeof(char*));
-	q11->c2= malloc(limit * sizeof(char*));
-	q11->c3= malloc(limit * sizeof(char*));
 
-    q11->c1[0]=getMaisVendido(sgv->fat, 0, q11->c1);
-    q11->c2[0]=getMaisVendido(sgv->fat, 1, q11->c2);
-    q11->c3[0]=getMaisVendido(sgv->fat, 2, q11->c3);
-    
-    for(int i=1; i<limit; i++){
-   	    q11->c1[i] = getMaisVendidos(sgv->fat,0,q11->c1,i);
-   	    q11->c2[i] = getMaisVendidos(sgv->fat,1,q11->c2,i);
-   	    q11->c3[i] = getMaisVendidos(sgv->fat,2,q11->c3,i);
+void swapq11(Qt *args , int i1, int i2)
+{
+    char *tmp = args[i1].pid;
+    int c = args[i1].clientes;
+    int q = args[i1].quant;
+    args[i1].pid = args[i2].pid;
+    args[i1].clientes = args[i2].clientes;
+    args[i1].quant = args[i2].quant;
+    args[i2].pid = tmp;
+    args[i2].clientes = c;
+    args[i2].quant = q;
+}
+
+void q11sort(Qt *args, int len){
+    int i, pvt=0;
+    if (len <= 1)
+        return;
+
+    for (i=0;i<len-1;++i){
+        if (args[i].quant > args[len-1].quant)
+            swapq11(args,i,pvt++);
+    }
+    swapq11(args,pvt,len-1);
+    q11sort(args, pvt++);
+    q11sort(args+pvt, len - pvt);
+}
+
+
+Q11 initQ11(){
+	Q11 q = malloc (sizeof(Q11));
+	q->f = malloc (3 * sizeof(Filiais));
+	for(int i=0; i<3; i++){
+		q->f[i].size = 0;
+		q->f[i].qts = NULL;
 	}
-	
-	for(int i=0; i< limit ;i++){
-		printf("%s\n", q11->c1[i]);	
-	}
-	
-	return q11;
+	return q;
+}
 
-*/
+int existeProd(Qt *arr, char *procurado, int Tam)
+{
+     int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
+     int sup = Tam-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
+     int meio;
+     int r=-1;
+     while (inf <= sup && r==-1)
+     {
+          meio = inf +(sup- inf)/2;
+          if (strcmp(procurado, arr[meio].pid) ==0){
+               	r = meio;
+          }
+
+          if (strcmp(procurado, arr[meio].pid)<0)
+               sup = meio-1;
+          else
+               inf = meio+1;
+     }
+     return r; 
+}
+
+Q11 toArray (SGV sgv){
+    Q11 q = initQ11();
+    int t = 0; 
+    int u = 0;
+    int s = 0;
+
+	for(int i =0; i<26; i++){
+		t = getSizeArrayP(sgv->fat, i);
+		for(int j=0; j<t; j++){
+			for(int fi=0; fi<3;fi++){
+				u = getFilialUsed(sgv->fat, i, j, fi);
+                if( u==1){
+                	s = q->f[fi].size;
+                	q->f[fi].qts = realloc ( q->f[fi].qts, (s+1) * sizeof(Qt));
+                	q->f[fi].qts[s].clientes = 0;
+                	q->f[fi].qts[s].quant = 0;
+                	q->f[fi].qts[s].pid = strdup(getProdFat(sgv->fat,i,j));
+                	q->f[fi].size++;
+                }
+
+			}
+		}
+	}
+	return q;
+}
+
+void umCliente (SGV sgv, Q11 q, int k, int id){
+     int u = 0;
+     int s = 0;
+     int e = 0;
+
+     for(int i=0; i<3; i++){
+     	u= getFilUsed(sgv->fil, k, id, i);
+     	if(u == 1){
+     		for(int m =0; m<12; m++){
+     			s = getSizeQprd ( sgv->fil, k, id, i, m);
+     			for(int mid = 0; mid <s; mid++){
+
+     				e = existeProd(q->f[i].qts, getOneProd(sgv->fil, k, id, i, m, mid), q->f[i].size);
+     				q->f[i].qts[e].clientes++;
+     				q->f[i].qts[e].quant += getQuantN(sgv->fil, k, id, i, m, mid) + getQuantP(sgv->fil, k, id, i, m, mid);
+     			}
+     		}
+     	}
+
+     }
+}
+
+Q11 getTopSelledProducts (SGV sgv, int limit){
+
+	Q11 q = toArray(sgv);
+	int t = 0;
+
+	for(int i=0; i<26; i++){
+		t = getSizeArrClient(sgv->fil, i);
+        for(int j = 0; j<t; j++){
+        	umCliente(sgv, q, i, j);
+        }
+	}
+
+	for(int i= 0; i<3; i++){
+		q11sort(q->f[i].qts, q->f[i].size);
+    }
+	
+	return q;
+}
+
+
+
+
+
+
+
+
+
 
 
 

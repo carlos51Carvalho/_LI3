@@ -5,6 +5,8 @@
 typedef struct sgv{
 	THash *produtos;
 	THash *clientes;
+	//int pvalidos;
+	//int cvalidos;
 	//TVendas *vendas;
 	Fat *fat;
 	Filial *fil;
@@ -87,13 +89,21 @@ typedef struct q8{
 
 
 // Estrutura Querie 11
-/*
+typedef struct qt{
+	int clientes;
+	int quant;
+    char* pid;
+}Qt;
+
+typedef struct filiais{
+	int size;
+	Qt *qts;	
+}Filiais;
+
 typedef struct q11{
-	Filiais f1;
-	Filiais f2;
-	Filiais f3;
+	Filiais *f;
 }*Q11;
-*/
+
 //////////////////////////////////////////
 
 // Estrutura Querie 12
@@ -125,6 +135,14 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth);
 Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month);
 
 //Q11 getTopSelledProducts(SGV sgv, int limit);
+void swapq11(Qt *args , int i1, int i2);
+void q11sort(Qt *args, int len);
+Q11 initQ11();
+int existeProd(Qt *arr, char *procurado, int Tam);
+Q11 toArray (SGV sgv);
+void umCliente (SGV sgv, Q11 q, int k, int id);
+Q11 getTopSelledProducts (SGV sgv, int limit);
+
 Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit);
 Q12 initQ12();
 void q12sort(QntNSpent *args, int len);
