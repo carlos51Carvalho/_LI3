@@ -28,10 +28,7 @@ void distroySGV(SGV sgv){
 	destroiTab(sgv->clientes);
 	destroiFat(sgv->fat);
 	destroiFilial(sgv->fil);
-<<<<<<< HEAD
-	free(sgv);
-=======
->>>>>>> 17060c027c18bb4f74338d194a416f1d7a1f646d
+
 }
 
 
@@ -321,11 +318,7 @@ Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month){
 		q10sort(q10->arr, q10->tam);
 		for (int i = 0; i < q10->tam; i++){
 			printf("%d %s\n", q10->arr[i].qnt, q10->arr[i].pid );
-<<<<<<< HEAD
 		}
-=======
-		}	
->>>>>>> 17060c027c18bb4f74338d194a416f1d7a1f646d
 	}
 	return q10;
 }
