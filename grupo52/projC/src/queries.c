@@ -181,36 +181,73 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 
 //Q9
 
-/*Q9 getProductBuyers (SGV sgv, char *productID, int branch){
+Q9 getProductBuyers (SGV sgv, char *productID, int branch){
 	Q9 q = malloc (sizeof(Q9));
 	q->sizeN = 0;
 	q->sizeP = 0;
+	q->n = NULL;
+	q->p = NULL;
 	int t;
 	int u;
 	int s;
-	int found=0;
-	int sn,qn,
+	int sn,qn,sp,qp;
 
 	for(int i=0;i<26;i++){
 		t = getSizeArrClient (sgv->fil, i);
+		
 		for(int j=0; j<t; j++){
-			u = getFilUsed(sgv->fil, i, j, branch);
-			if(u==1);
-			for(int m = 0; m<12 && !found; m++){
-				s = getSizeQprd(sgv->fil, i, j, branch, m);
-				for(int mid =0; mid < s && !found; mid++){
-					if (strcmp(productID, getOneProd(sgv->fil, i, j, branch, m, p)) == 0){
-                         if()
+			u = getFilUsed(sgv->fil, i, j, branch-1);
+			if(u==1){
+				int found=0;
 
+			   for(int m = 0; m<12 && !found; m++){
+				   s = getSizeQprd(sgv->fil, i, j, branch-1, m);
+				
+				   for(int mid =0; mid < s && !found; mid++){
+					   if (strcmp(productID, getOneProd(sgv->fil, i, j, branch-1, m, mid)) == 0){
+					   	   qn = getQuantN (sgv->fil, i, j, branch-1, m, mid);
+					   	   qp = getQuantP (sgv->fil, i, j, branch-1, m, mid);
+					   	   sn = q->sizeN;
+					   	   sp = q->sizeP;
+					   	   if(qn>0 && qp>0){
+					   	   	q->n = realloc (q->n, (sn+1) * sizeof(char*));
+					   	   	q->n[sn] = strdup(getCLiente(sgv->fil, i, j));
+					   	   	q->sizeN++;
+					   	   	q->p = realloc (q->p, (sp+1) * sizeof(char*));
+					   	   	q->p[sp] = strdup(getCLiente(sgv->fil, i, j));
+					   	   	q->sizeP++;
+					   	   	found=1;
+					   	   }
+					   	   else if(qn>0){
+					   	   	q->n = realloc (q->n, (sn+1) * sizeof(char*));
+					   	   	q->n[sn] = strdup(getCLiente(sgv->fil, i, j));
+					   	   	q->sizeN++;
+					   	   	found=1;
+					   	   }
+					   	   else if (qp>0){
+					   	   	q->p = realloc (q->p, (sp+1) * sizeof(char*));
+					   	   	q->p[sp] = strdup(getCLiente(sgv->fil, i, j));
+					   	   	q->sizeP++;
+					   	   	found=1;
+					   	   }
 
-					}
+					   }
+				   }
 				}
 			}
 			
 		}
 
 	}
-}*/
+	for(int i=0; i<q->sizeN;i++){
+		printf("Compras N %s\n", q->n[i]);
+	}
+
+	for(int i=0;i<q->sizeP;i++){
+		printf("Compras P %s\n",q->p[i]);
+	}
+	return q;
+}
 
 
 

@@ -87,7 +87,7 @@ typedef struct q8{
 
 ///////////////////////////////////////////
  
-/*
+
 //Estrutura Querie 9
 
 typedef struct q9{
@@ -96,7 +96,7 @@ typedef struct q9{
 	char** n;
 	char** p;
 }*Q9;
-*/
+
 
 // Estrutura Querie 11
 typedef struct qt{
@@ -143,6 +143,7 @@ Q5 getClientsOfAllBranches(SGV sgv);
 Q6 getClientsAndProductsNeverBoughtCount(SGV sgv);
 Q7 getProductsBoughtByClient(SGV sgv, char *clientID);
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth);
+Q9 getProductBuyers (SGV sgv, char *productID, int branch);
 Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month);
 
 //Q11 getTopSelledProducts(SGV sgv, int limit);
