@@ -32,13 +32,11 @@ typedef struct q3{
 ////////////////////////////////////////////////
 
 //Estrutura Querie 4
-/*
+
 typedef struct q4{
-	cahr **p;
-
-
-};
-*/
+	char** p;
+	int tam;
+} *Q4;
 
 ///////////////////////////////////////////////
 
@@ -138,7 +136,7 @@ void distroySGV(SGV sgv);
 SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, char *salesFilePath );
 int getProductsStartedByLetter(SGV sgv, char letter);
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month);
-//int getProductsNeverBought(SGV sgv , int branchID);
+Q4 getProductsNeverBought(SGV sgv , int branchID);
 Q5 getClientsOfAllBranches(SGV sgv);
 Q6 getClientsAndProductsNeverBoughtCount(SGV sgv);
 Q7 getProductsBoughtByClient(SGV sgv, char *clientID);

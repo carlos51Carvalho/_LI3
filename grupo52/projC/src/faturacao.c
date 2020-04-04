@@ -167,26 +167,42 @@ void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int
 }
 
 
-/*
-int neverBoughtFil(Fat *f, int fil, char **p, int tamp){
-	int cont =0;
+char** neverBoughtFil(Fat *f, int fil, int *tamp){
+	int count =0;
+	char **p = NULL;
 
 	for (int i = 0; i < 26 ; i++){
-		
 		for (int j = 0; j < getSizeArrayP(f, i); j++){
 			if (getFilialUsed(f,i,j,fil) == 0)
 			{
-				p = realloc(p, (tamp+1)*sizeof(char*));
-				p[tamp] = strdup(getProdFat(f,i,j));
-				tamp++;
-				cont++;
+				p = realloc (p,(count+1) *sizeof (char*));
+				p[count] = strdup(getProdFat(f,i,j));
+				count++;
 			}
 		}
 	}
-	return cont;
+	*tamp = count;
+	return p;
 }
 
-*/
+
+char** neverBoughtAllFil(Fat *f, int *tamp){
+	int count =0;
+	char **p = NULL;
+
+	for (int i = 0; i < 26 ; i++){
+		for (int j = 0; j < getSizeArrayP(f, i); j++){
+			if (getFilialUsed(f,i,j,0) == 0 && getFilialUsed(f,i,j,1) == 0  && getFilialUsed(f,i,j,2) == 0)
+			{
+				p = realloc (p,(count+1) *sizeof (char*));
+				p[count] = strdup(getProdFat(f,i,j));
+				count++;
+			}
+		}
+	}
+	*tamp = count;
+	return p;
+}
 int ProdutosNaoComprados (Fat *f){
 	int count=0;
 	for(int i=0;i<26;i++){

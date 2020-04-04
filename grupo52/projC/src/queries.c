@@ -89,29 +89,28 @@ Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 
 // Q4
 
-// falta ver a filial e provavelmente não está bem feito
-
-/*int getProductsNeverBought(SGV sgv , int branchID){
-	int i,j,tam, cont =0;
-	char **p = malloc(sizeof(char*));
-	for (i = 0; i < 26; i++){
-		tam = sgv->produtos->tbl[i].size;
-		for (j = 0; j< tam; j++){
-			if (sgv->produtos->tbl[i].arr[j].used == 0){
-				cont++;
-				p = realloc(p,cont*sizeof(char*));
-				p[cont-1]= sgv->produtos->tbl[i].arr[j].id;
-			}
-		}
+Q4 getProductsNeverBought(SGV sgv , int branchID){
+	int j =0;
+	Q4 q4 = malloc(sizeof(Q4));
+	q4->tam = 0;
+	q4->p = NULL;
+	if (branchID >0 && branchID <=3){
+		q4->p = neverBoughtFil(sgv->fat, branchID -1, &j);
+		q4->tam = j;
 	}
-	for (i = 0; i < cont; ++i)
+	else{
+		q4->p = neverBoughtAllFil(sgv->fat, &j);
+		q4->tam = j;
+	}
+	for (int i = 0; i < q4->tam; ++i)
 	{
-		printf("%s\n",p[i] );
+		printf("%s\n", q4->p[i] );
 	}
-	printf("%d dos produtos não foram usados\n",cont );
-	return cont;
+	printf("%d\n", q4->tam);
+
+	return q4;
 }
-*/
+
 
 
 //Q5
