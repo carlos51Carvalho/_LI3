@@ -74,16 +74,16 @@ Postriormente os campos retirados da linha são validados e são alocados pelas 
 */
 int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath){
 	FILE *ficheiro = NULL;
-	char a[80];
-	strcpy(a, filespath); 
-	strcat(a,"/Vendas_1M.txt");
+	//char a[80];
+	//strcpy(a, filespath); 
+	//strcat(a,"/Vendas_1M.txt");
 	char* part = NULL;
 	char* aux = NULL;
 	int i=0,j;
 	char linha[1024];
 	char *args[15];
 
-	ficheiro = fopen(a, "r");
+	ficheiro = fopen(filespath, "r");
 
 	if (ficheiro == NULL) return -1;
 

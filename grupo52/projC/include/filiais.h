@@ -39,6 +39,9 @@ typedef struct filial{
 } Filial;
 
 Filial* initFilial();
+void destroiFilial(Filial *f);
+
+
 void acrescenta_cl(Filial *f, char *p);
 int acrescenta_cls (Filial *f, char **p, int tam );
 int existe_fil(Cl *arr, char *procurado, int Tam);

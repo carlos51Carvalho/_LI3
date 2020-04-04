@@ -1,5 +1,6 @@
 #ifndef _FAT_
 #define _FAT_
+
 typedef struct mes{
 	double fN;
 	double fP;
@@ -33,7 +34,11 @@ typedef struct fat{
 
 //void quicksortFat(Prd *args, int len);
 Fat* initFat();
-//FatP* initFat();
+
+void destroiFat(Fat *f);
+
+
+
 void acrescenta_prod(Fat *f, char* p);
 int acrescenta_prods (Fat *f,char **p, int tam );
 void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int f);

@@ -22,13 +22,13 @@ int validaproduto(char *produto){
 na sua posição correspondente na mesma */
 int ler_prod (THash *prod,char *filespath ){
 	FILE *ficheiro = NULL;
-	char aux[80];
-	strcpy(aux, filespath); 
-	strcat(aux,"/Produtos.txt");
+	//char aux[80];
+	//strcpy(aux, filespath); 
+	//strcat(aux,"/Produtos.txt");
 	char *chave=NULL;
 	char linha[128];
 	int i;
-	ficheiro = fopen(aux, "r");
+	ficheiro = fopen(filespath, "r");
 
 	if (ficheiro == NULL) return -1;
 

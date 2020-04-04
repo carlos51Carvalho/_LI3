@@ -124,7 +124,8 @@ typedef struct q12{
 
 
 SGV initSGV();
-SGV loadSGVFromFiles(SGV sgv, char *filespath );
+void distroySGV(SGV sgv);
+SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, char *salesFilePath );
 int getProductsStartedByLetter(SGV sgv, char letter);
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month);
 //int getProductsNeverBought(SGV sgv , int branchID);

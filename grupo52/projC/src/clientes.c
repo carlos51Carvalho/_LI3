@@ -123,7 +123,7 @@ int ler_clientes (THash *cliente , char *filespath){
 	char *chave=NULL;
 	char linha[128];
 	int i;
-	ficheiro = fopen(aux, "r");
+	ficheiro = fopen(filespath, "r");
 
 	if (ficheiro == NULL) return -1;
 
