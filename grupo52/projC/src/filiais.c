@@ -13,6 +13,38 @@ int getFilUsed(Filial *f, int k, int ip, int fil){
 char* getCLiente(Filial *f, int k, int ip){
 	return f->tbl[k].arr[ip].cid;
 }
+int getSizeArrClient(Filial *f, int k){
+	return f->tbl[k].size;
+}
+
+Cl* getArrByLetter(Filial *f, int key){
+	return f->tbl[key].arr;
+}
+
+int getSizeQprd(Filial *f, int k, int id, int fil, int m){
+	return f->tbl[k].arr[id].fil[fil].mes[m].size;
+}
+
+int getQuantN(Filial *f, int k, int id, int fil, int m, int pid){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].qN;
+}
+
+int getQuantP(Filial *f, int k, int id, int fil, int m, int pid){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].qP;
+}
+
+int getGastoP(Filial *f, int k, int id, int fil, int m, int pid){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].gP;
+}
+
+int getGastoN(Filial *f, int k, int id, int fil, int m, int pid){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].gN;
+}
+
+char* getOneProd(Filial *f, int k, int id, int fil, int m, int p){
+	return f->tbl[k].arr[id].fil[fil].mes[m].prs[p].pid;
+}
+
 
 int hashfil(char *cont){
 	int r = cont[0] - 'A';
@@ -32,6 +64,31 @@ Filial* initFilial(){
 	}
 	return h ;
 }
+
+
+void destroiFilial(Filial *f){
+	int i,j,fi,m,p,sizeQprod;
+	for (i = 0; i < 26; i++){
+		for (j = 0; j < f->tbl[i].size; j++){
+			for (fi = 0; fi < 3; fi++){
+				for (m = 0; m < 12; m++){
+					sizeQprod=getSizeQprd(f, i, j,fi,m);
+					for (p = 0; p <sizeQprod ; p++){
+						free(f->tbl[i].arr[j].fil[fi].mes[m].prs[p].pid);
+					}
+					free(f->tbl[i].arr[j].fil[fi].mes[m].prs);
+				}
+				free(f->tbl[i].arr[j].fil[fi].mes);
+			}
+			free(f->tbl[i].arr[j].fil);
+			free(f->tbl[i].arr[j].cid);
+		}
+		free(f->tbl[i].arr);
+	}
+	free(f->tbl);
+	free(f);
+}
+
 
 void acrescenta_cl(Filial *f, char *p){
 	int k = hashfil(p);
@@ -76,6 +133,7 @@ int existe_fil(Cl *arr, char *procurado, int Tam)
           if (strcmp(procurado, arr[meio].cid) ==0){
                	r = meio;
           }
+
           if (strcmp(procurado, arr[meio].cid)<0)
                sup = meio-1;
           else
@@ -99,19 +157,24 @@ int existe_prod(Qprd *arr, char *procurado, int Tam)
 
 
 
-void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt){
+void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt, int preco){
 	int size = h->tbl[it].arr[a].fil[f].mes[m].size;
 
 	h->tbl[it].arr[a].fil[f].mes[m].prs = realloc(h->tbl[it].arr[a].fil[f].mes[m].prs, (size+1)*sizeof(Qprd));
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].pid = strdup(p);
+
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].qN = 0;
 	h->tbl[it].arr[a].fil[f].mes[m].prs[size].qP = 0;
+	h->tbl[it].arr[a].fil[f].mes[m].prs[size].gN = 0;
+	h->tbl[it].arr[a].fil[f].mes[m].prs[size].gP = 0;
 
 	if (e == 'N'){
 		h->tbl[it].arr[a].fil[f].mes[m].prs[size].qN += qnt;
+		h->tbl[it].arr[a].fil[f].mes[m].prs[size].gN += qnt * preco;
 	}
 	else{
 		h->tbl[it].arr[a].fil[f].mes[m].prs[size].qP += qnt;
+		h->tbl[it].arr[a].fil[f].mes[m].prs[size].gP += qnt * preco;
 	}
 	h->tbl[it].arr[a].fil[f].mes[m].size++;
 }
@@ -120,8 +183,8 @@ void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, i
 
 void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, int f){
 	int k = hashfil(c);
-	int tam = h->tbl[k].size;
-	int r= existe_fil(h->tbl[k].arr, c, tam);
+	int tam = getSizeArrClient(h,k);
+	int r= existe_fil(getArrByLetter(h,k), c, tam);
 	int pi=0, t=0;
 	if (r >= 0){
 		t = h->tbl[k].arr[r].fil[f-1].mes[m-1].size;
@@ -129,13 +192,15 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 		h->tbl[k].arr[r].fil[f-1].used=1;
 
 		if (pi < 0){
-			acrescentaPtoFil(h, p,k,r,f-1,m-1,e,q);
+			acrescentaPtoFil(h, p,k,r,f-1,m-1,e,q, pr);
 		}else{
 			if (e == 'N'){
 				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].qN += q;
+				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].gN += q * pr;
 			}
 			else{
 				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].qP += q;
+				h->tbl[k].arr[r].fil[f-1].mes[m-1].prs[pi].gP += q * pr;
 			}
 		}
 	}
@@ -169,4 +234,21 @@ int ClientesSemCompras (Filial *f){
 		}
 	}
 	return count;
+}
+
+
+
+
+int QuantidadesUmClientePorMes(Filial *f, char *clienteID ,int fil, int mes){
+	int k = hashfil(clienteID);
+	int r = existe_fil(getArrByLetter(f,k), clienteID, getSizeArrClient(f,k));
+	int result =0;
+
+	if (r >= 0){
+		for (int i = 0; i < getSizeQprd(f,k,r,fil,mes); i++)
+		{
+			result += getQuantN(f,k,r,fil,mes,i) + getQuantP(f,k,r,fil,mes,i);
+		}
+	}
+	return result;
 }

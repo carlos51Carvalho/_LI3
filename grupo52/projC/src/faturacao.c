@@ -7,26 +7,22 @@
 
 
 int getPosicaoProd(Fat *fat,char *productID){
-	int i,result=-1;
 	int hash = hashfat(productID);
-	for (i = 0; i < fat->tbl[hash].size; i++){
-		if(strcmp(fat->tbl[hash].arr[i].pid, productID)==0)
-			result=i;
-	}
-	return result;
+
+	return existe_fat(fat->tbl[hash].arr, productID, fat->tbl[hash].size);
 }
 
 int getVendasN(Fat *fat,int h,int pos,int m,int f){
 	int result=0;
 	if(pos>=0){
-		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].vN;
+		result=fat->tbl[h].arr[pos].fil[f].mes[m].vN;
 	}
 	return result;
 }
 int getVendasP(Fat *fat,int h,int pos,int m,int f){
 	int result=0;
 	if(pos>=0){
-		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].vP;
+		result=fat->tbl[h].arr[pos].fil[f].mes[m].vP;
 	}
 	return result;
 }
@@ -34,14 +30,14 @@ int getVendasP(Fat *fat,int h,int pos,int m,int f){
 double getFaturacaoN(Fat *fat,int h,int pos,int m,int f){
 	double result=0;
 	if(pos>=0){
-		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].fN;
+		result=fat->tbl[h].arr[pos].fil[f].mes[m].fN;
 	}
 	return result;
 }
 double getFaturacaoP(Fat *fat,int h,int pos,int m,int f){
 	double result=0;
 	if(pos>=0){
-		result=fat->tbl[h].arr[pos].fil[f-1].mes[m-1].fP;
+		result=fat->tbl[h].arr[pos].fil[f].mes[m].fP;
 	}
 	return result;
 }
@@ -51,7 +47,8 @@ int getSizeArrayP(Fat *f, int key){
 }
 
 int getFilialUsed(Fat *f, int key, int ip, int fil){
-	return f->tbl[key].arr[ip].fil[fil].used;
+	int i=f->tbl[key].arr[ip].fil[fil].used;
+	return i;
 }
 
 char* getProdFat(Fat *f, int key, int ip){
@@ -77,6 +74,24 @@ Fat* initFat(){
 	}
 	return h ;
 }
+
+
+void destroiFat(Fat *f){
+	int i,j,fi,m;
+	for (i = 0; i < 26; i++){
+		for (j = 0; j < f->tbl[i].size; j++){
+			for (fi = 0; fi < 3; fi++){
+				free(f->tbl[i].arr[j].fil[fi].mes);
+			}
+			free(f->tbl[i].arr[j].fil);
+			free(f->tbl[i].arr[j].pid);
+		}
+		free(f->tbl[i].arr);
+	}
+	free(f->tbl);
+	free(f);
+}
+
 
 void acrescenta_prod(Fat *f, char *p){
 	int k = hashfat(p);
@@ -183,8 +198,9 @@ int ProdutosNaoComprados (Fat *f){
 	return count;
 }
 
-int VendasIntervalo (Fat *f, int m1, int m2){
-	int count = 0;
+void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *result2){
+	int count=0;
+	double count2 = 0;
 	for(int i =0; i<26; i++){
 		int t = f->tbl[i].size;
 		
@@ -193,31 +209,23 @@ int VendasIntervalo (Fat *f, int m1, int m2){
 			for(int fil =0; fil<3; fil++){
 				if (getFilialUsed(f,i,j,fil) == 1){
 					
-					for(int m =0 ; m<12; m++) count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
+					for(int m =m1 ; m<=m2; m++) count += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
+
+					for(int m =m1; m<m2; m++){ 
+						count2 += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
+						count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
+					}
 
 				}
 			}
 		}
 	}
-	return count;
+	*result=count;
+	*result2=count2;
 }
 
-double FaturacaoIntervalo (Fat *f, int m1, int m2){
-	double count = 0;
-	for(int i =0; i<26; i++){
-		int t = f->tbl[i].size;
-		
-		for(int j= 0; j<t; j++){
-			
-			for(int fil =0; fil<3; fil++){
-				if (getFilialUsed(f,i,j,fil) == 1){
-					
-					for(int m =0 ; m<12; m++) count += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
 
-				}
-			}
-		}
-	}
-	return count;
 
-}
+
+
+

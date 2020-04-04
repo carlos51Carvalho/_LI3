@@ -31,11 +31,12 @@ void destroiTab(THash *h){
 	int i,j;
 	for (i = 0; i < h->size; i++){
 		for (j = 0; j < h->tbl[i].size; j++){
-			free((h->tbl[i]).arr);
+			free((h->tbl[i]).arr[j]);
 		}
-		free(h->tbl);
+		free((h->tbl[i]).arr);
 	}
-	free(h);
+	free(h->tbl);
+	//free(h);                  //-> descobrir o porque de dar double free or corruption (out) -> dá este erro quando a funcao é usada pela THash prod (dunno why)
 }
 
 /*Função que acrescenta a uma Thash uma derminada string na posição correta para esta na tabela aplicando a função hash a descobrir
@@ -117,13 +118,13 @@ void quicksortc(char **args, unsigned int len)
 na sua posição correspondente na mesma */
 int ler_clientes (THash *cliente , char *filespath){
 	FILE *ficheiro = NULL;
-	char aux[80];
-	strcpy(aux, filespath); 
-	strcat(aux,"/Clientes.txt");
+	//char aux[80];
+	//strcpy(aux, filespath); 
+	//strcat(aux,"/Clientes.txt");
 	char *chave=NULL;
 	char linha[128];
 	int i;
-	ficheiro = fopen(aux, "r");
+	ficheiro = fopen(filespath, "r");
 
 	if (ficheiro == NULL) return -1;
 

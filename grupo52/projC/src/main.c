@@ -10,17 +10,6 @@
 #include "vendas.h"
 #include "queries.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <ctype.h>
-
-#include "clientes.h"
-#include "produtos.h"
-#include "faturacao.h"
-#include "filiais.h"
-#include "vendas.h"
-#include "queries.h"
 
 #define SIZE_CL 1000000
 #define SIZE_PR 1000000
@@ -49,15 +38,11 @@ void flush(){
 
 int main(){
 
-	int p=0,c=0;
+	int p=0;
 	char letra = 'D';
 	SGV sgv = initSGV();
-	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
+	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
 
-	p=ClientesSemCompras(sgv->fil);
-	printf ("%d\n", p);
-	c = ProdutosNaoComprados (sgv->fat);
-	printf ("%d\n",c);
 
 	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
@@ -66,8 +51,14 @@ int main(){
 	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
 	//p = getProductsNeverBought(sgv , 1);
-	getClientsOfAllBranches(sgv);
-	
+
+
+	//getClientsOfAllBranches(sgv);
+	//getProductsBoughtByClient(sgv, "A3234");
+	//getSalesAndProfif(sgv, 1, 2);
+	//getTopSelledProducts(sgv, 152);
+    //getProductBuyers(sgv,"JL1895",3);
+	//getClientTopProfitProducts(sgv,"A1231", 6);
 
 
 
@@ -96,5 +87,7 @@ int main(){
 	//p = getProductsNeverBought(sgv,1);
 	//p = getClientsOfAllBranches(sgv);
 	
+
+	//distroySGV(sgv);
 	return p;
 }
