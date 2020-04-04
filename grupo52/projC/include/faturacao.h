@@ -64,7 +64,7 @@ int getFilialUsed(Fat *f, int key, int ip, int fil);
 char* getProdFat(Fat *f, int key, int ip);
 
 int hashfat(char *cont);
-void MaisVendidos (Fat *f, Filiais *fi, int fil);
+//void MaisVendidos (Fat *f, Filiais *fi, int fil);
 //char* getMaisVendidos(Fat *f, int fil, char **c, int pos);
 //char* getMaisVendido(Fat *f, int fil, char **c);
 int neverBoughtFil(Fat *f, int fil, char **p, int tamp);

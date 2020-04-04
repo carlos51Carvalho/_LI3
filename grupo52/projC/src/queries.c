@@ -164,6 +164,98 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 	return q8;
 }
 
+
+//Q10
+
+
+void swapq12(QntNSpent *args , int i1, int i2)
+{
+    char *tmp = args[i1].pid;
+    double s = args[i1].spent;
+    int q = args[i1].qnt;
+    args[i1].pid = args[i2].pid;
+    args[i1].spent = args[i2].spent;
+    args[i1].qnt = args[i2].qnt;
+    args[i2].pid = tmp;
+    args[i2].spent = s;
+    args[i2].qnt = q;
+}
+
+void q10sort(QntNSpent *args, int len){
+    int i, pvt=0;
+    if (len <= 1)
+        return;
+
+    for (i=0;i<len-1;++i){
+        if (args[i].qnt > args[len-1].qnt)
+            swapq12(args,i,pvt++);
+    }
+    swapq12(args,pvt,len-1);
+    q10sort(args, pvt++);
+    q10sort(args+pvt, len - pvt);
+}
+
+
+Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month){
+	int tam2 =0,size, id;
+	Q12 q10 = initQ12();
+	int k = hashfat(clientID);
+	int tam = getSizeArrClient(sgv->fil,k);
+	int r = existe_fil(getArrByLetter(sgv->fil,k), clientID, tam);
+
+	if (r>=0 ){
+		for (int i = 0; i < 3; i++){
+			tam2 = getSizeQprd(sgv->fil,k,r,i,month-1);
+			if(tam2 != 0){
+				for (int c = 0; c < tam2; c++){
+					size = q10->tam;
+					id = existe_q12(q10->arr,getOneProd(sgv->fil,k,r,i,month-1,c),size );
+					if (id >= 0){
+						q10->arr[id].qnt += getQuantP(sgv->fil,k,r,i, month-1, c)+ getQuantN(sgv->fil,k,r,i, month-1, c);
+					}
+					else{
+						q10->arr = realloc(q10->arr, (size+1)*sizeof(QntNSpent));
+						q10->arr[size].pid = strdup(getOneProd(sgv->fil,k,r,i,month-1,c));
+						q10->arr[size].qnt = getQuantP(sgv->fil,k,r,i, month-1, c)+ getQuantN(sgv->fil,k,r,i, month-1, c);
+						q10->tam++;
+					}
+				}
+			}
+		}
+		q10sort(q10->arr, q10->tam);
+		for (int i = 0; i < q10->tam; i++){
+			printf("%d %s\n", q10->arr[i].qnt, q10->arr[i].pid );
+		}	
+	}
+	return q10;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Q11
 
 /*Q11 getTopSelledProducts(SGV sgv, int limit){
@@ -197,43 +289,52 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 
 //Q12
 
-void swapq12(SpentOnP *args , int i1, int i2)
-{
-    char *tmp = args[i1].pid;
-    double s = args[i1].spent;
-    args[i1].pid = args[i2].pid;
-    args[i1].spent = args[i2].spent;
-    args[i2].pid = tmp;
-    args[i2].spent = s;
+Q12 initQ12(){
+	Q12 q12 = malloc(sizeof(Q12));
+	q12->tam = 0;
+	q12->arr = NULL;
+	return q12;
 }
 
-/*Função que ordena um array de strings*/
-void queriesort(SpentOnP *args, int len)
-{
-    unsigned int i, pvt=0;
 
+/*Função que ordena um array de strings*/
+void q12sort(QntNSpent *args, int len){
+    int i, pvt=0;
     if (len <= 1)
         return;
 
-    for (i=0;i<len-1;++i)
-    {
+    for (i=0;i<len-1;++i){
         if (args[i].spent > args[len-1].spent)
             swapq12(args,i,pvt++);
     }
     swapq12(args,pvt,len-1);
+    q12sort(args, pvt++);
+    q12sort(args+pvt, len - pvt);
+}
 
-    queriesort(args, pvt++);
-    queriesort(args+pvt, len - pvt);
+int existe_q12(QntNSpent *arr, char *procurado, int Tam){
+     int inf = 0;  
+     int sup = Tam-1; 
+     int meio;
+     int r=-1;
+     while (inf <= sup && r==-1){
+          meio = inf +(sup- inf)/2;
+          if (strcmp(procurado, arr[meio].pid) ==0){
+               	r = meio;
+          }
+          if (strcmp(procurado, arr[meio].pid)<0)
+               sup = meio-1;
+          else
+               inf = meio+1;
+     }
+     return r; 
 }
 
 
 
-
 Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
-	int tam2 =0,size;
-	Q12 q12 = malloc(sizeof(Q12));
-	q12->tam = 0;
-	q12->arr = NULL;
+	int tam2 =0,size, id;
+	Q12 q12 = initQ12();
 	int k = hashfat(clientID);
 	int tam = getSizeArrClient(sgv->fil,k);
 	int r= existe_fil(getArrByLetter(sgv->fil,k), clientID, tam);
@@ -245,15 +346,21 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 				if(tam2 != 0){
 					for (int c = 0; c < tam2; c++){
 						size = q12->tam;
-						q12->arr = realloc(q12->arr, (size+1)*sizeof(SpentOnP));
-						q12->arr[size].pid = strdup(getOneProd(sgv->fil,k,r,i,j,c));
-						q12->arr[size].spent = getGastoP(sgv->fil,k,r,i, j, c)+ getGastoN(sgv->fil,k,r,i, j, c);
-						q12->tam++;
+						id = existe_q12(q12->arr,getOneProd(sgv->fil,k,r,i,j,c),size );
+						if (id >= 0){
+							q12->arr[id].spent += getGastoP(sgv->fil,k,r,i, j, c)+ getGastoN(sgv->fil,k,r,i, j, c);
+						}
+						else{
+							q12->arr = realloc(q12->arr, (size+1)*sizeof(QntNSpent));
+							q12->arr[size].pid = strdup(getOneProd(sgv->fil,k,r,i,j,c));
+							q12->arr[size].spent = getGastoP(sgv->fil,k,r,i, j, c)+ getGastoN(sgv->fil,k,r,i, j, c);
+							q12->tam++;
+						}
 					}
 				}
 			}
 		}
-		queriesort(q12->arr, q12->tam);
+		q12sort(q12->arr, q12->tam);
 		//q12->tam = limit;
 
 		//seria nice limpar todas as posiçoes daqui ate limite

@@ -38,29 +38,29 @@ void flush(){
 
 int main(){
 
-	int p=0,c=0;
+	int p=0;
 	char letra = 'D';
 	SGV sgv = initSGV();
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
 
 
 	//p = getProductsStartedByLetter(sgv, letra);
-	getProductsSalesAndProfit(sgv,"ZM1712", 12);
+	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
     
 
 	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
 	//p = getProductsNeverBought(sgv , 1);
 
-	getClientsOfAllBranches(sgv);
+	//getClientsOfAllBranches(sgv);
 	
 	
-
+	getClientFavouriteProducts(sgv, "A1231", 3);
 	//getClientsOfAllBranches(sgv);
 	//getProductsBoughtByClient(sgv, "A3234");
 	//getSalesAndProfif(sgv, 1, 2);
 
-	getClientTopProfitProducts(sgv,"A1231", 6);
+	//getClientTopProfitProducts(sgv,"A1231", 6);
 
 
 
