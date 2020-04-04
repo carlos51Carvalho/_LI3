@@ -41,7 +41,7 @@ int main(){
 	int p=0;
 	char letra = 'D';
 	SGV sgv = initSGV();
-	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais");
+	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
 
 
 	//p = getProductsStartedByLetter(sgv, letra);
@@ -89,5 +89,7 @@ int main(){
 	//p = getProductsNeverBought(sgv,1);
 	//p = getClientsOfAllBranches(sgv);
 	
+
+	distroySGV(sgv);
 	return p;
 }

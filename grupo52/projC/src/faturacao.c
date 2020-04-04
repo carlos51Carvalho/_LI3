@@ -74,6 +74,26 @@ Fat* initFat(){
 	return h ;
 }
 
+
+void destroiFat(Fat *f){
+	int i,j,fi,m;
+	for (i = 0; i < 26; i++){
+		for (j = 0; j < f->tbl[i].size; j++){
+			for (fi = 0; fi < 3; fi++){
+				for (m = 0; m < 12; m++){
+					free(f->tbl[i].arr[j].fil[fi].mes);
+				}
+				free(f->tbl[i].arr[j].fil);
+			}
+			free(f->tbl[i].arr[j].pid);
+			free(f->tbl[i].arr);
+		}
+		free(f->tbl);
+	}
+	free(f);
+}
+
+
 void acrescenta_prod(Fat *f, char *p){
 	int k = hashfat(p);
 	int tam = f->tbl[k].size;

@@ -21,21 +21,26 @@ SGV initSGV(){
 	return q;
 }
 
-// void distroySGV(SGV sgv)
+void distroySGV(SGV sgv){
+	destroiTab(sgv->produtos);
+	destroiTab(sgv->clientes);
+	destroiFat(sgv->fat);
+	destroiFilial(sgv->fil);
+}
 
 
-SGV loadSGVFromFiles(SGV sgv, char *filespath ){
+SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, char *salesFilePath ){
 	int p, c,d,e ,v;
 	p=c=d=e=v=0;
-	p = ler_prod(sgv->produtos,filespath);
-	c = ler_clientes(sgv->clientes, filespath);
+	p = ler_prod(sgv->produtos,productsFilePath);
+	c = ler_clientes(sgv->clientes, clientsFilePath);
 	for (int i = 0; i < 26; ++i){
 		d += acrescenta_prods(sgv->fat, sgv->produtos->tbl[i].arr, sgv->produtos->tbl[i].size );
 	}
 	for (int j = 0; j < 26; j++){
 		e += acrescenta_cls(sgv->fil, sgv->clientes->tbl[j].arr, sgv->clientes->tbl[j].size );
 	}
-	v = ler_venda( sgv->fat, sgv->fil, sgv->clientes, sgv->produtos, filespath);
+	v = ler_venda( sgv->fat, sgv->fil, sgv->clientes, sgv->produtos, salesFilePath);
 
 	return sgv;
 }
@@ -371,3 +376,12 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 	}
 	return q12;
 }
+
+
+
+
+
+
+// Q13
+
+
