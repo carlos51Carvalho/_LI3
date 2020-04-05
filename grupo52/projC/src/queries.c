@@ -15,11 +15,11 @@ SGV initSGV(){
 	SGV q = malloc(sizeof(SGV));
 	q->produtos = initTab();
 	q->clientes = initTab();
-	//q->cvalidos = 0;
-	//q->pvalidos = 0;
-	//q->vendas = initTv();
 	q->fat = initFat();
 	q->fil = initFilial();
+	//q->cvalidos = 0;
+	//q->pvalidos = 0;
+	//q->vvalidos = 0; 
 	return q;
 }
 
@@ -47,6 +47,14 @@ SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, cha
 
 	return sgv;
 }
+
+// Q1
+/*
+Q1 getCurrentFilesInfo(SGV sgv){
+
+}
+*/
+
 
 //	Q2
 
@@ -561,6 +569,6 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 
 
 
-// Q13
+
 
 

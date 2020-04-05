@@ -5,11 +5,11 @@
 typedef struct sgv{
 	THash *produtos;
 	THash *clientes;
-	//int pvalidos;
-	//int cvalidos;
-	//TVendas *vendas;
 	Fat *fat;
 	Filial *fil;
+	//int pvalidos;
+	//int cvalidos;
+	//int vvalidos;
 } *SGV;
 
 
@@ -129,6 +129,11 @@ typedef struct q12{
 
 
 
+/////////////////////////////////////////
+
+
+
+
 
 
 SGV initSGV();
@@ -142,7 +147,10 @@ Q6 getClientsAndProductsNeverBoughtCount(SGV sgv);
 Q7 getProductsBoughtByClient(SGV sgv, char *clientID);
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth);
 Q9 getProductBuyers (SGV sgv, char *productID, int branch);
+
+//Q10
 Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month);
+void q10sort(QntNSpent *args, int len);
 
 //Q11 getTopSelledProducts(SGV sgv, int limit);
 void swapq11(Qt *args , int i1, int i2);
@@ -153,10 +161,10 @@ Q11 toArray (SGV sgv);
 void umCliente (SGV sgv, Q11 q, int k, int id);
 Q11 getTopSelledProducts (SGV sgv, int limit);
 
+//Q12
 Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit);
 Q12 initQ12();
 void q12sort(QntNSpent *args, int len);
-void q10sort(QntNSpent *args, int len);
 int existe_q12(QntNSpent *arr, char *procurado, int Tam);
 
 

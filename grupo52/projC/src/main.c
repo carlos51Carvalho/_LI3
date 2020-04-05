@@ -58,7 +58,7 @@ int main(){
 	//getSalesAndProfif(sgv, 1, 2);
 	//getTopSelledProducts(sgv, 152);
     //getProductBuyers(sgv,"JL1895",3);
-	//getClientTopProfitProducts(sgv,"A1231", 6);
+	getClientTopProfitProducts(sgv,"A1231", 6);
 
 
 
