@@ -13,7 +13,7 @@
 
 SGV initSGV(){
 	SGV q = malloc(sizeof(SGV));
-	q->produtos = initTab();
+	q->produtos = initTab_p();
 	q->clientes = initTab();
 	//q->cvalidos = 0;
 	//q->pvalidos = 0;
@@ -24,24 +24,39 @@ SGV initSGV(){
 }
 
 void distroySGV(SGV sgv){
-	destroiTab(sgv->produtos);
+	destroiTab_p(sgv->produtos);
 	destroiTab(sgv->clientes);
 	destroiFat(sgv->fat);
 	destroiFilial(sgv->fil);
 
 }
 
+void destroiArrayStrings(char** a, int size){
+	for (int j = 0; j < size; j++){
+		free(a[j]);
+	}
+	free(a);
+}
 
 SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, char *salesFilePath ){
 	int p, c,d,e ,v;
+	char** pr=NULL;
+	char** cl=NULL;
+	int prsize,clsize;
 	p=c=d=e=v=0;
 	p = ler_prod(sgv->produtos,productsFilePath);
 	c = ler_clientes(sgv->clientes, clientsFilePath);
 	for (int i = 0; i < 26; ++i){
-		d += acrescenta_prods(sgv->fat, sgv->produtos->tbl[i].arr, sgv->produtos->tbl[i].size );
+		pr=getArrayProd(sgv->produtos,i);
+		prsize=getArrayProdSize(sgv->produtos,i);
+		d += acrescenta_prods(sgv->fat,pr,prsize);
+		destroiArrayStrings(pr,prsize);
 	}
 	for (int j = 0; j < 26; j++){
-		e += acrescenta_cls(sgv->fil, sgv->clientes->tbl[j].arr, sgv->clientes->tbl[j].size );
+		cl=getArrayCl(sgv->produtos,j);
+		clsize=getArrayClSize(sgv->produtos,j);
+		e += acrescenta_cls(sgv->fil, cl, clsize );
+		destroiArrayStrings(cl,clsize);
 	}
 	v = ler_venda( sgv->fat, sgv->fil, sgv->clientes, sgv->produtos, salesFilePath);
 
@@ -51,12 +66,14 @@ SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, cha
 //	Q2
 
 int getProductsStartedByLetter(SGV sgv, char letter){
-	int k = hash(&letter);
-	int tam = sgv->produtos->tbl[k].size;
-	char **p = malloc(tam*sizeof(char*));
+	int k = hash_p(&letter);
+	int tam = getArrayProdSize(sgv->produtos,k);
+	char **p = getArrayProd(sgv->produtos,k);
+	/*
 	for (int i = 0; i < tam; i++){
-		p[i] = sgv->produtos->tbl[k].arr[i];
-	}
+		printf("%s\n", p[i]);
+	}*/
+
 	return tam;
 }
 

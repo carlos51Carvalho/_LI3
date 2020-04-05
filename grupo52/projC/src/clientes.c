@@ -4,6 +4,18 @@
 #include "clientes.h"
 //#include "faturacao.h"
 
+typedef struct bucket{
+	int size;
+	char **arr;
+} Bucket ;
+
+
+typedef struct thash{
+	int size;
+	Bucket *tbl;
+} THash;
+
+
 /* Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A devolvendo o resultado inteiro 
 dessa subtração*/
 int hash(char *cont){
@@ -156,9 +168,18 @@ int validacliente(char *cliente){
 }
 
 char* getCliente(THash *c, int key, int i){
-	return c->tbl[key].arr[i];
+	return strdup(c->tbl[key].arr[i]);
 }
 char** getArrayCl(THash *c, int key){
-	return c->tbl[key].arr;
-}
+	int tam = getArrayClSize(c,key);
+	char **res = malloc(tam*sizeof(char*));
 
+	for (int i = 0; i < tam; i++){
+		res[i] = getCliente(c, key, i);
+	}
+
+	return res;
+}
+int getArrayClSize(THash *c, int key){
+	return (c->tbl[key].size);
+}

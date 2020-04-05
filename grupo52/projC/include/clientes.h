@@ -4,16 +4,7 @@
 
 #define HSIZE 26
 
-typedef struct bucket{
-	int size;
-	char **arr;
-} Bucket ;
-
-
-typedef struct thash{
-	int size;
-	Bucket *tbl;
-} THash;
+typedef struct thash THash;
 
 
 
@@ -30,7 +21,7 @@ void acrecenstaTab(THash *h, char *cliente);
 
 char* getCliente(THash *c, int key, int i);
 char** getArrayCl(THash *c, int key);
-
+int getArrayClSize(THash *c, int key);
 
 void escrever_c(THash *h , char *s);
 

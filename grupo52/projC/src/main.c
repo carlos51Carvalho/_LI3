@@ -44,7 +44,7 @@ int main(){
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
 
 
-	//p = getProductsStartedByLetter(sgv, letra);
+	p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
     
 

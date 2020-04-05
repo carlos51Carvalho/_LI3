@@ -1,38 +1,18 @@
 #ifndef _FAT_
 #define _FAT_
 
-typedef struct mes{
-	double fN;
-	double fP;
-	int vN;
-	int vP;
-} Mes ;
+typedef struct mes Mes ;
 
 // mes size = 12
-typedef struct fil{
-	int used ;
-	Mes *mes;
-} Fil;
+typedef struct fil Fil;
+
+typedef struct prd Prd;
+
+typedef struct bucketv Bucketv ;
+
+typedef struct fat Fat;
 
 
-typedef struct prd{
-	char *pid;
-	Fil *fil;
-} Prd;
-
-//void == Fil arr[3] 
-typedef struct bucketv{
-	int size;
-	Prd *arr;
-} Bucketv ;
-
-
-typedef struct fat{
-	Bucketv *tbl;
-} Fat;
-
-
-//void quicksortFat(Prd *args, int len);
 Fat* initFat();
 
 void destroiFat(Fat *f);

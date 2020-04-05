@@ -1,42 +1,19 @@
 #ifndef _FILIAL_
 #define _FILIAL_
 
+typedef struct qprd Qprd ;
 
 
-typedef struct qprd{
-	char *pid;
-	int qN;
-	int qP;
-	double gN;    // gasto em N
-	double gP;    //gasto em P
-} Qprd ;
+typedef struct mesf Mesf;
 
+typedef struct fili Fili;
 
-typedef struct mesf{
-	int size;
-	Qprd *prs;
-} Mesf ;
+typedef struct cl Cl;
 
-typedef struct fili{
-	int used;
-	Mesf *mes;
-} Fili;
-
-
-typedef struct cl{
-	char *cid;
-	Fili *fil;
-} Cl;
-
-typedef struct bucketf{
-	int size;
-	Cl *arr;
-} Bucketf ;
+typedef struct bucketf Bucketf ;
 
 //26 (26letras)
-typedef struct filial{
-	Bucketf *tbl;
-} Filial;
+typedef struct filial Filial;
 
 Filial* initFilial();
 void destroiFilial(Filial *f);

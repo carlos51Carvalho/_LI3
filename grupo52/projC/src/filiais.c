@@ -5,6 +5,40 @@
 #include "filiais.h"
 
 
+typedef struct qprd{
+	char *pid;
+	int qN;
+	int qP;
+	double gN;    // gasto em N
+	double gP;    //gasto em P
+} Qprd ;
+
+
+typedef struct mesf{
+	int size;
+	Qprd *prs;
+} Mesf ;
+
+typedef struct fili{
+	int used;
+	Mesf *mes;
+} Fili;
+
+
+typedef struct cl{
+	char *cid;
+	Fili *fil;
+} Cl;
+
+typedef struct bucketf{
+	int size;
+	Cl *arr;
+} Bucketf ;
+
+//26 (26letras)
+typedef struct filial{
+	Bucketf *tbl;
+} Filial;
 
 int getFilUsed(Filial *f, int k, int ip, int fil){
 	return f->tbl[k].arr[ip].fil[fil].used;
