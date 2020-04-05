@@ -100,12 +100,12 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 		int keyp = hash(args[0]);
 		int keyc = hash(args[4]);
 
-		if (part==NULL && j==7 && 
-			existe(prod->tbl[keyp].arr , args[0],  prod->tbl[keyp].size)
+		if (part==NULL && j==7 
+			//&& existe(prod->tbl[keyp].arr , args[0],  prod->tbl[keyp].size)
 			&& validapreco(args[1]) 
 			&& valida3campo(args[2]) 
 			&& valida4campo(args[3]) 
-			&& existe(cliente->tbl[keyc].arr, args[4], cliente->tbl[keyc].size) 
+			//&& existe(cliente->tbl[keyc].arr, args[4], cliente->tbl[keyc].size) 
 			&& valida6mes(args[5]) 
 			&& valida7filial(args[6])){
 			

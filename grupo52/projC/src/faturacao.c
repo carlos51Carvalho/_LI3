@@ -5,6 +5,35 @@
 
 #include "faturacao.h"
 
+typedef struct mes{
+	double fN;
+	double fP;
+	int vN;
+	int vP;
+} Mes ;
+
+// mes size = 12
+typedef struct fil{
+	int used ;
+	Mes *mes;
+} Fil;
+
+
+typedef struct prd{
+	char *pid;
+	Fil *fil;
+} Prd;
+
+//void == Fil arr[3] 
+typedef struct bucketv{
+	int size;
+	Prd *arr;
+} Bucketv ;
+
+
+typedef struct fat{
+	Bucketv *tbl;
+} Fat;
 
 int getPosicaoProd(Fat *fat,char *productID){
 	int hash = hashfat(productID);
