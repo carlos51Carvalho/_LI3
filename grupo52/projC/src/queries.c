@@ -53,8 +53,8 @@ SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, cha
 		destroiArrayStrings(pr,prsize);
 	}
 	for (int j = 0; j < 26; j++){
-		cl=getArrayCl(sgv->produtos,j);
-		clsize=getArrayClSize(sgv->produtos,j);
+		cl=getArrayCl(sgv->clientes,j);
+		clsize=getArrayClSize(sgv->clientes,j);
 		e += acrescenta_cls(sgv->fil, cl, clsize );
 		destroiArrayStrings(cl,clsize);
 	}

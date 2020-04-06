@@ -20,4 +20,6 @@ int validaproduto(char *produto);
 char* getProduto(THash *p, int key, int i);
 char** getArrayProd(THash *p, int key);
 int getArrayProdSize(THash *p, int key);
+
+char** badgetArrayProd(THash *p, int key);
 #endif /* PRODUTOS */
