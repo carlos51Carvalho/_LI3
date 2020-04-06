@@ -10,22 +10,34 @@
 #include "queries.h"
 
 typedef struct sgv{
+	int pv;
+	int cv;
+	int vv;
+	int pl;
+	int cl;
+	int vl;
+	char *p;
+	char *c;
+	char *v;
 	THash *produtos;
 	THash *clientes;
-	//int pvalidos;
-	//int cvalidos;
-	//TVendas *vendas;
 	Fat *fat;
 	Filial *fil;
 } *SGV;
 
 SGV initSGV(){
-	SGV q = malloc(sizeof(SGV));
+	SGV q = malloc(sizeof(struct sgv));
+	q->pv = 0;
+	q->cv= 0;
+	q->vv = 0;
+	q->pl = 0;
+	q->cl= 0;
+	q->vl = 0;
+	q->p =NULL;
+	q->c = NULL;
+	q->v =NULL;
 	q->produtos = initTab_p();
 	q->clientes = initTab();
-	//q->cvalidos = 0;
-	//q->pvalidos = 0;
-	//q->vendas = initTv();
 	q->fat = initFat();
 	q->fil = initFilial();
 	return q;
@@ -47,13 +59,13 @@ void destroiArrayStrings(char** a, int size){
 }
 
 SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, char *salesFilePath ){
-	int p, c,d,e ,v;
+	int p,c,v,d,e;
 	char** pr=NULL;
 	char** cl=NULL;
 	int prsize,clsize;
-	p=c=d=e=v=0;
-	p = ler_prod(sgv->produtos,productsFilePath);
-	c = ler_clientes(sgv->clientes, clientsFilePath);
+	p=c=v=d=e=0;
+	sgv->pv = ler_prod(sgv->produtos,productsFilePath, &p);
+	sgv->cv = ler_clientes(sgv->clientes, clientsFilePath, &c);
 	for (int i = 0; i < 26; ++i){
 		pr=getArrayProd(sgv->produtos,i);
 		prsize=getArrayProdSize(sgv->produtos,i);
@@ -66,7 +78,13 @@ SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, cha
 		e += acrescenta_cls(sgv->fil, cl, clsize );
 		destroiArrayStrings(cl,clsize);
 	}
-	v = ler_venda( sgv->fat, sgv->fil, sgv->clientes, sgv->produtos, salesFilePath);
+	sgv->vv = ler_venda( sgv->fat, sgv->fil, sgv->clientes, sgv->produtos, salesFilePath, &v);
+	sgv->p = strdup(productsFilePath);
+	sgv->c = strdup(clientsFilePath);
+	sgv->v = strdup(salesFilePath);
+	sgv->pl = p;
+	sgv->cl = c;
+	sgv->vl = v;
 
 	return sgv;
 }
@@ -565,6 +583,36 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 
 
 
-
+///////////////////////////////////////////////////////////////////////
 
 // Q13
+
+char* getReadFile(char *filePath){
+	char *part = NULL;
+	char *ant = NULL;
+	char *file = strdup(filePath);
+	for (part = strtok(file, "/"); part != NULL ; part = strtok(NULL, "/")){
+
+		ant = strdup(part);
+	}
+	free(part);
+	return ant;
+}
+
+
+
+Q13 getCurrentFilesInfo(SGV sgv){
+	Q13 q = malloc(sizeof(Q13));
+	q->pv = sgv->pv;
+	q->cv = sgv->cv;
+	q->vv = sgv->vv;
+	q->pl = sgv->pl;
+	q->cl = sgv->cl;
+	q->vl = sgv->vl;
+	q->p = getReadFile(sgv->p);
+	q->c = getReadFile(sgv->c);
+	q->v = getReadFile(sgv->v);
+
+	return q;
+}
+

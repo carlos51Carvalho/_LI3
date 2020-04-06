@@ -8,7 +8,7 @@ typedef struct thash THash;
 
 int hash_p(char *cont);
 
-int ler_prod(THash *prod, char *filespath );
+int ler_prod (THash *prod,char *filespath, int *p );
 void quicksortp(char **args, unsigned int len);
 
 THash* initTab_p();

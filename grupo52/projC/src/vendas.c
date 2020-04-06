@@ -77,14 +77,14 @@ int valida7filial(char *filial){
 fazendo enquanto este válido a divisão por espaços \r e \n, vai repassando as partes retiradas dessa linha para uma string part, que vai sendo guardada em auxiliares-
 Postriormente os campos retirados da linha são validados e são alocados pelas funcçoes acrescentaFat e acrescentaFil as respetivas estruturas que estas recebem como argumento;
 */
-int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath){
+int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath, int *v){
 	FILE *ficheiro = NULL;
 	//char a[80];
 	//strcpy(a, filespath); 
 	//strcat(a,"/Vendas_1M.txt");
 	char* part = NULL;
 	char* aux = NULL;
-	int i=0,j;
+	int i=0,j, vl =0;
 	char linha[1024];
 	char *args[15];
 
@@ -100,7 +100,7 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 	}
 
 	while(fgets(linha,sizeof(linha), ficheiro)){
-
+		vl++;
 		aux = strtok(linha, "\r\n");
 	
 		//ler para cenas
@@ -137,6 +137,7 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 		destroiArrayString(prds[i],getArrayProdSize(prod,i));
 		destroiArrayString(clts[i],getArrayClSize(cliente,i));
 	}
+	*v = vl;
 	free(prds);
 	free(clts);
 	return i;

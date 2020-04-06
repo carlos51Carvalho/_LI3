@@ -79,7 +79,7 @@ void imprimeQ8(Q8 q, int us, int op){
 
 void imprimeQ9(Q9 q, int fil){
     int i, j;
-    printf("Na filial %d:\n" );
+    printf("Na filial %d:\n", fil);
     printf("Em modo N:          Em modo P:\n");
     for (i = 0 , j = 0; i < q->sizeN || j< q->sizeP; i++,j++)
     {
@@ -91,11 +91,14 @@ void imprimeQ9(Q9 q, int fil){
 }
 
 void imprimeQ10(Q12 q, int mes){
-    printf("A lista de produtos que o cliente mais comprou e respetivas quantidades para o mês %d são:\n", mes);
-    for (int i = 0; i < q->tam; ++i)
-    {
-        printf("%s  %d\n",q->arr[i].pid, q->arr[i].qnt );
+    if(q->tam > 0){
+        printf("A lista de produtos que o cliente mais comprou e respetivas quantidades para o mês %d são:\n", mes);
+        for (int i = 0; i < q->tam; ++i)
+        {
+            printf("%s  %d\n",q->arr[i].pid, q->arr[i].qnt );
+        }
     }
+    else printf("O cliente não realizou compras nesse mes\n");
 }
 
 
@@ -114,6 +117,14 @@ void imprimeQ12(Q12 q, int lim){
     {
         printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
     }
+}
+
+
+void imprimeQ13(Q13 q){
+    printf("%s\n",q->p );
+    printf("Os produtos lidos: %d\nOs produtos validos: %d\nNome do ficheiro lido : %s\n\n",q->pl, q->pv, q->p);
+    printf("Os clientes lidos: %d\nOs clientes validos: %d\nNome do ficheiro lido : %s\n\n",q->cl, q->cv, q->c);
+    printf("As vendas lidas: %d\nAs vendas validas: %d\nNome do ficheiro lido : %s\n\n",q->vl, q->vv, q->v);
 }
 
 
@@ -149,7 +160,7 @@ void interpertador(){
                " A - Determinar uma lista dos produtos mais comprados num determinado mes por um cliente\n"
                " B - Determinar os N produtos mais vendidos durante um ano\n"
                " C - Determinar os codigos dos N produtos que um cliente gastou mais dinheiro durante um ano\n"
-              // " D - Apresentar os resultados de leitura dos ficheiros da Opção 1\n\n"
+               " D - Apresentar os resultados de leitura dos ficheiros da Opção 1\n\n"
                " COMANDO >");
 
 
@@ -189,7 +200,7 @@ void interpertador(){
                     scanf("%c", us);
                     imprimeQ2(getProductsStartedByLetter(sgv,toupper(us)),us);
                 }
-                else printf("Leia os ficheiros primeiro|");
+                else printf("Leia os ficheiros primeiro!\n");
                 break;
             }
 
@@ -203,7 +214,7 @@ void interpertador(){
                     scanf("%d",&x );
                     imprimeQ3(getProductsSalesAndProfit(sgv,c,z),z,x);
                 }
-                else printf("Leia os ficheiros primeiro|");
+                else printf("Leia os ficheiros primeiro!\n");
                
                 break;
             }
@@ -214,21 +225,21 @@ void interpertador(){
                     scanf("%d", &z);
                     imprimeQ4(getProductsNeverBought(sgv,z), z);
                 }
-                else printf("Leia os ficheiros primeiro|");
+                else printf("Leia os ficheiros primeiro!\n");
                 break;
             }
             case '5': {
                 if(l ==1){
                 imprimeQ5(getClientsOfAllBranches(sgv));
                 }
-                else printf("Leia os ficheiros primeiro|");
+                else printf("Leia os ficheiros primeiro!\n");
                 break;
             }
             case '6': {
                 if(l ==1){
                 imprimeQ6(getClientsAndProductsNeverBoughtCount(sgv));
                 }
-                else printf("Leia os ficheiros primeiro|");
+                else printf("Leia os ficheiros primeiro!\n");
                 break;
             }
             case '7': {
@@ -237,7 +248,7 @@ void interpertador(){
                     scanf("%s", c);
                     imprimeQ7(getProductsBoughtByClient(sgv, c));
                 }
-                else printf("Leia os ficheiros primeiro|");
+                else printf("Leia os ficheiros primeiro!\n");
                 break;
             }
             case '8': {
@@ -251,7 +262,7 @@ void interpertador(){
                     }
                     else printf("Intervalo não valido\n");
                 }
-                else printf("Leia os ficheiros primeiro|"); 
+                else printf("Leia os ficheiros primeiro!\n"); 
                 break;
             }
 
@@ -267,13 +278,13 @@ void interpertador(){
                     else printf("Filial ou Produto não valido\n");
 
                 }
-                else printf("Leia os ficheiros primeiro|"); 
+                else printf("Leia os ficheiros primeiro!\n"); 
                 break;
             }
         
             case 'A': {
                 if(l ==1){
-                    printf("Insira um código de cliente\n");
+                    printf("Insira um código de cliente!\n");
                     scanf("%s", c);
                     printf("Insira um mês (1 a 12):\n");
                     scanf("%d", &x);
@@ -282,7 +293,7 @@ void interpertador(){
                     }
                     else printf("Mes invalido\n");
                 }
-                else printf("Leia os ficheiros primeiro|"); 
+                else printf("Leia os ficheiros primeiro!\n"); 
                 break;
             }
             case 'B': {
@@ -294,7 +305,7 @@ void interpertador(){
                     }
                     else printf("Intervalo não valido\n");
                 }
-                else printf("Leia os ficheiros primeiro|"); 
+                else printf("Leia os ficheiros primeiro!\n"); 
                 break;
             }
             case 'C': {
@@ -308,12 +319,20 @@ void interpertador(){
                     }
                     else printf("Intervalo não valido\n");
                 }
-                else printf("Leia os ficheiros primeiro|"); 
+                else printf("Leia os ficheiros primeiro!\n"); 
                 break;
             }
+            case 'D': {
+                if(l ==1){
+                    imprimeQ13(getCurrentFilesInfo(sgv));
+                }
+                else printf("Leia os ficheiros primeiro!\n"); 
+                break;
+            }
+
             
             case 'Q':
-                distroySGV(sgv);
+                if(l ==1) distroySGV(sgv);
                 exit(0);
 
             default: {

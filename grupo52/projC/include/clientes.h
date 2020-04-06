@@ -8,7 +8,7 @@ typedef struct thash THash;
 
 
 
-int ler_clientes (THash *cliente , char *filespath);
+int ler_clientes (THash *cliente , char *filespath, int *c);
 void quicksortc(char **args, unsigned int len);
 
 int validacliente(char *cliente);

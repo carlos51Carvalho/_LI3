@@ -112,6 +112,22 @@ typedef struct q12{
 
 
 
+//////////////////////////////////////////
+
+//Estrutura Querie 13
+
+typedef struct q13{
+	int pv;
+	int cv;
+	int vv;
+	int pl;
+	int cl;
+	int vl;
+	char *p;
+	char *c;
+	char *v;
+} *Q13;
+
 
 
 SGV initSGV();
@@ -141,6 +157,9 @@ Q12 initQ12();
 void q12sort(QntNSpent *args, int len);
 void q10sort(QntNSpent *args, int len);
 int existe_q12(QntNSpent *arr, char *procurado, int Tam);
+
+Q13 getCurrentFilesInfo(SGV sgv);
+char* getReadFile(char *filePath);
 
 
 

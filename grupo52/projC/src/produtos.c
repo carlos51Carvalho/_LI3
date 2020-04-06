@@ -118,11 +118,12 @@ int validaproduto(char *produto){
 
 /*Função que recebendo uma Thash e um file path, lê de um ficheiro linha a linha e vai colocando cada linha na thash
 na sua posição correspondente na mesma */
-int ler_prod (THash *prod,char *filespath ){
+int ler_prod (THash *prod,char *filespath, int *p ){
 	FILE *ficheiro = NULL;
 	//char aux[80];
 	//strcpy(aux, filespath); 
 	//strcat(aux,"/Produtos.txt");
+	int pl =0;
 	char *chave=NULL;
 	char linha[128];
 	int i;
@@ -131,6 +132,7 @@ int ler_prod (THash *prod,char *filespath ){
 	if (ficheiro == NULL) return -1;
 
 	for (i = 0 ; fgets(linha, sizeof(linha), ficheiro) ; ){
+		pl++;
 		chave = strtok(linha, " \r\n");
 		
 		if (validaproduto(chave)){
@@ -150,6 +152,7 @@ int ler_prod (THash *prod,char *filespath ){
 	for (j = 0; j < prod->size ; j++){
 		quicksortp(prod->tbl[j].arr, prod->tbl[j].size);
 	}
+	*p = pl;
 	return i;
 }
 

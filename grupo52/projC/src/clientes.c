@@ -128,19 +128,20 @@ void quicksortc(char **args, unsigned int len)
 
 /*Função que recebendo uma Thash e um file path, lê de um ficheiro linha a linha e vai colocando cada linha na thash
 na sua posição correspondente na mesma */
-int ler_clientes (THash *cliente , char *filespath){
+int ler_clientes (THash *cliente , char *filespath, int *c){
 	FILE *ficheiro = NULL;
 	//char aux[80];
 	//strcpy(aux, filespath); 
 	//strcat(aux,"/Clientes.txt");
 	char *chave=NULL;
 	char linha[128];
-	int i;
+	int i,cl=0;
 	ficheiro = fopen(filespath, "r");
 
 	if (ficheiro == NULL) return -1;
 
 	for (i = 0 ; fgets(linha, sizeof(linha), ficheiro) ;){
+		cl++;
 		chave = strtok(linha, "\r\n");
 
 		if (validacliente(chave)){
@@ -158,6 +159,7 @@ int ler_clientes (THash *cliente , char *filespath){
 	for (j = 0; j < cliente->size ; j++){
 		quicksortc(cliente->tbl[j].arr, cliente->tbl[j].size);
 	}
+	*c = cl;
 
 	return i;
 }
