@@ -169,3 +169,7 @@ char** getArrayProd(THash *p, int key){
 int getArrayProdSize(THash *p, int key){
 	return (p->tbl[key].size);
 }
+/*
+char** badgetArrayProd(THash *p, int key){
+	return p->tbl[key].arr;
+}*/
