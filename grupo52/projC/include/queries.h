@@ -2,15 +2,7 @@
 #define _QUERIES_
 
 
-typedef struct sgv{
-	THash *produtos;
-	THash *clientes;
-	Fat *fat;
-	Filial *fil;
-	//int pvalidos;
-	//int cvalidos;
-	//int vvalidos;
-} *SGV;
+typedef struct sgv *SGV;
 
 
 //Estrutura Querie 3
@@ -31,24 +23,15 @@ typedef struct q3{
 
 ////////////////////////////////////////////////
 
-//Estrutura Querie 4
+//Estrutura Querie 245
 
-typedef struct q4{
+typedef struct q245{
 	char** p;
 	int tam;
-} *Q4;
+} *Q245;
 
 ///////////////////////////////////////////////
 
-//Estrutura Querie 5
-
-typedef struct q5{
-	char** c;
-	int tam;
-} *Q5;
-
-
-/////////////////////////////////////////////
 
 // Estrutura Querie 6
 
@@ -129,28 +112,20 @@ typedef struct q12{
 
 
 
-/////////////////////////////////////////
-
-
-
-
 
 
 SGV initSGV();
 void distroySGV(SGV sgv);
 SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, char *salesFilePath );
-int getProductsStartedByLetter(SGV sgv, char letter);
+Q245 getProductsStartedByLetter(SGV sgv, char letter);
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month);
-Q4 getProductsNeverBought(SGV sgv , int branchID);
-Q5 getClientsOfAllBranches(SGV sgv);
+Q245 getProductsNeverBought(SGV sgv , int branchID);
+Q245 getClientsOfAllBranches(SGV sgv);
 Q6 getClientsAndProductsNeverBoughtCount(SGV sgv);
 Q7 getProductsBoughtByClient(SGV sgv, char *clientID);
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth);
 Q9 getProductBuyers (SGV sgv, char *productID, int branch);
-
-//Q10
 Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month);
-void q10sort(QntNSpent *args, int len);
 
 //Q11 getTopSelledProducts(SGV sgv, int limit);
 void swapq11(Qt *args , int i1, int i2);
@@ -161,10 +136,10 @@ Q11 toArray (SGV sgv);
 void umCliente (SGV sgv, Q11 q, int k, int id);
 Q11 getTopSelledProducts (SGV sgv, int limit);
 
-//Q12
 Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit);
 Q12 initQ12();
 void q12sort(QntNSpent *args, int len);
+void q10sort(QntNSpent *args, int len);
 int existe_q12(QntNSpent *arr, char *procurado, int Tam);
 
 

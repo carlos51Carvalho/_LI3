@@ -1,20 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 
-#include "clientes.h"
-#include "produtos.h"
-#include "faturacao.h"
-#include "filiais.h"
-#include "vendas.h"
-#include "queries.h"
+#include "interface.h"
 
 
 #define SIZE_CL 1000000
 #define SIZE_PR 1000000
 #define SIZE_VD 1000000
-
+/*
 void prettyprintmenu(){
 	printf("op1->blah\n");
 }
@@ -35,19 +29,20 @@ int toint(char* buf){
 void flush(){
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
-
+*/
 int main(){
-
+	interpertador();
+	/*
 	int p=0;
 	char letra = 'D';
 	SGV sgv = initSGV();
 	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
+	*/
 
-
-	p = getProductsStartedByLetter(sgv, letra);
+	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
     
-
+	//getClientsAndProductsNeverBoughtCount(sgv);
 	//p = getProductsStartedByLetter(sgv, letra);
 	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
 	//p = getProductsNeverBought(sgv , 1);
@@ -55,10 +50,10 @@ int main(){
 
 	//getClientsOfAllBranches(sgv);
 	//getProductsBoughtByClient(sgv, "A3234");
-	//getSalesAndProfif(sgv, 1, 2);
+	//getSalesAndProfif(sgv, 1, 3);
 	//getTopSelledProducts(sgv, 152);
     //getProductBuyers(sgv,"JL1895",3);
-	getClientTopProfitProducts(sgv,"A1231", 6);
+	//getClientTopProfitProducts(sgv,"A1231", 6);
 
 
 
@@ -88,6 +83,6 @@ int main(){
 	//p = getClientsOfAllBranches(sgv);
 	
 
-	distroySGV(sgv);
-	return p;
+	//distroySGV(sgv);
+	return 0;
 }

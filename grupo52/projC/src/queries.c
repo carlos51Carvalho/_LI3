@@ -9,17 +9,25 @@
 #include "vendas.h"
 #include "queries.h"
 
-
+typedef struct sgv{
+	THash *produtos;
+	THash *clientes;
+	//int pvalidos;
+	//int cvalidos;
+	//TVendas *vendas;
+	Fat *fat;
+	Filial *fil;
+} *SGV;
 
 SGV initSGV(){
 	SGV q = malloc(sizeof(SGV));
 	q->produtos = initTab_p();
 	q->clientes = initTab();
-	q->fat = initFat();
-	q->fil = initFilial();
 	//q->cvalidos = 0;
 	//q->pvalidos = 0;
-	//q->vvalidos = 0; 
+	//q->vendas = initTv();
+	q->fat = initFat();
+	q->fil = initFilial();
 	return q;
 }
 
@@ -53,8 +61,8 @@ SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, cha
 		destroiArrayStrings(pr,prsize);
 	}
 	for (int j = 0; j < 26; j++){
-		cl=getArrayCl(sgv->produtos,j);
-		clsize=getArrayClSize(sgv->produtos,j);
+		cl=getArrayCl(sgv->clientes,j);
+		clsize=getArrayClSize(sgv->clientes,j);
 		e += acrescenta_cls(sgv->fil, cl, clsize );
 		destroiArrayStrings(cl,clsize);
 	}
@@ -63,26 +71,21 @@ SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, cha
 	return sgv;
 }
 
-// Q1
-/*
-Q1 getCurrentFilesInfo(SGV sgv){
-
-}
-*/
-
-
 //	Q2
 
-int getProductsStartedByLetter(SGV sgv, char letter){
+Q245 getProductsStartedByLetter(SGV sgv, char letter){
+	Q245 q2 = malloc(sizeof(Q245));
+	q2->tam = 0;
+	q2->p = NULL;
 	int k = hash_p(&letter);
-	int tam = getArrayProdSize(sgv->produtos,k);
-	char **p = getArrayProd(sgv->produtos,k);
+	q2->tam = getArrayProdSize(sgv->produtos,k);
+	q2->p = getArrayProd(sgv->produtos,k);
 	/*
 	for (int i = 0; i < tam; i++){
 		printf("%s\n", p[i]);
 	}*/
 
-	return tam;
+	return q2;
 }
 
 // Q3
@@ -114,9 +117,9 @@ Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 
 // Q4
 
-Q4 getProductsNeverBought(SGV sgv , int branchID){
+Q245 getProductsNeverBought(SGV sgv , int branchID){
 	int j =0;
-	Q4 q4 = malloc(sizeof(Q4));
+	Q245 q4 = malloc(sizeof(Q245));
 	q4->tam = 0;
 	q4->p = NULL;
 	if (branchID >0 && branchID <=3){
@@ -127,11 +130,6 @@ Q4 getProductsNeverBought(SGV sgv , int branchID){
 		q4->p = neverBoughtAllFil(sgv->fat, &j);
 		q4->tam = j;
 	}
-	for (int i = 0; i < q4->tam; ++i)
-	{
-		printf("%s\n", q4->p[i] );
-	}
-	printf("%d\n", q4->tam);
 
 	return q4;
 }
@@ -139,17 +137,14 @@ Q4 getProductsNeverBought(SGV sgv , int branchID){
 
 
 //Q5
-Q5 getClientsOfAllBranches(SGV sgv){
-	Q5 q5 = malloc(sizeof(Q5));
+Q245 getClientsOfAllBranches(SGV sgv){
+	Q245 q5 = malloc(sizeof(Q245));
 	q5->tam = 0;
-	q5->c = NULL;
+	q5->p = NULL;
 	int j = 0;
-	q5->c= ClientsOfAllBranches(sgv->fil, &j );
+	q5->p= ClientsOfAllBranches(sgv->fil, &j );
 	q5->tam = j;
 
-	for(int i=0; i< q5->tam ;i++){
-		printf("%s\n", q5->c[i]);
-	}
 	return q5;
 }
 
@@ -191,7 +186,6 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 
 	q8->v=v;
 	q8->f=f;
-	printf("%d %f\n",q8->v,q8->f );
 
 	return q8;
 }
@@ -264,13 +258,6 @@ Q9 getProductBuyers (SGV sgv, char *productID, int branch){
 		}
 
 	}
-	for(int i=0; i<q->sizeN;i++){
-		printf("Compras N %s\n", q->n[i]);
-	}
-
-	for(int i=0;i<q->sizeP;i++){
-		printf("Compras P %s\n",q->p[i]);
-	}
 	return q;
 }
 
@@ -340,9 +327,6 @@ Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month){
 			}
 		}
 		q10sort(q10->arr, q10->tam);
-		for (int i = 0; i < q10->tam; i++){
-			printf("%d %s\n", q10->arr[i].qnt, q10->arr[i].pid );
-		}
 	}
 	return q10;
 }
@@ -575,9 +559,6 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 
 		//seria nice limpar todas as posiçoes daqui ate limite
 
-		for (int i = 0; i < limit; i++){
-				printf("%f %s\n", q12->arr[i].spent, q12->arr[i].pid );
-		}	
 	}
 	return q12;
 }
@@ -586,6 +567,4 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 
 
 
-
-
-
+// Q13

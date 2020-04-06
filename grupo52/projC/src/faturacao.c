@@ -106,7 +106,7 @@ Fat* initFat(){
 
 
 void destroiFat(Fat *f){
-	int i,j,fi,m;
+	int i,j,fi;
 	for (i = 0; i < 26; i++){
 		for (j = 0; j < f->tbl[i].size; j++){
 			for (fi = 0; fi < 3; fi++){
@@ -254,8 +254,6 @@ void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *res
 			for(int fil =0; fil<3; fil++){
 				if (getFilialUsed(f,i,j,fil) == 1){
 					
-					for(int m =m1 ; m<=m2; m++) count += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
-
 					for(int m =m1; m<m2; m++){ 
 						count2 += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
 						count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
@@ -268,7 +266,6 @@ void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *res
 	*result=count;
 	*result2=count2;
 }
-
 
 
 

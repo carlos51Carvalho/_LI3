@@ -8,7 +8,12 @@
 #include "produtos.h"
 #include "vendas.h"
 
-
+void destroiArrayString(char** a, int size){
+	for (int j = 0; j < size; j++){
+		free(a[j]);
+	}
+	free(a);
+}
 /*Função de procura binária, que procura num array de strings uma string, quando a encontra retorna
 1 , caso não encontre retorna 0*/
 
@@ -87,6 +92,13 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 
 	if (ficheiro == NULL) return -1;
 
+	char ***prds=malloc(26*sizeof(char*));
+	char ***clts=malloc(26*sizeof(char*));
+	for (int i = 0; i < 26; ++i){
+		prds[i]=getArrayProd(prod,i);
+		clts[i]=getArrayCl(cliente,i);
+	}
+
 	while(fgets(linha,sizeof(linha), ficheiro)){
 
 		aux = strtok(linha, "\r\n");
@@ -101,11 +113,11 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 		int keyc = hash(args[4]);
 
 		if (part==NULL && j==7 
-			//&& existe(prod->tbl[keyp].arr , args[0],  prod->tbl[keyp].size)
+			&& existe(prds[keyp], args[0],  getArrayProdSize(prod,keyp))
 			&& validapreco(args[1]) 
 			&& valida3campo(args[2]) 
 			&& valida4campo(args[3]) 
-			//&& existe(cliente->tbl[keyc].arr, args[4], cliente->tbl[keyc].size) 
+			&& existe(clts[keyc], args[4], getArrayClSize(cliente,keyc)) 
 			&& valida6mes(args[5]) 
 			&& valida7filial(args[6])){
 			
@@ -121,6 +133,12 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 	}
 	fclose(ficheiro);
 	free(part);
+	for (int i = 0; i < 26; ++i){
+		destroiArrayString(prds[i],getArrayProdSize(prod,i));
+		destroiArrayString(clts[i],getArrayClSize(cliente,i));
+	}
+	free(prds);
+	free(clts);
 	return i;
 }
 
