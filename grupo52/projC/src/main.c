@@ -32,28 +32,7 @@ void flush(){
 */
 int main(){
 	interpertador();
-	/*
-	int p=0;
-	char letra = 'D';
-	SGV sgv = initSGV();
-	sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
-	*/
 
-	//p = getProductsStartedByLetter(sgv, letra);
-	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
-    
-	//getClientsAndProductsNeverBoughtCount(sgv);
-	//p = getProductsStartedByLetter(sgv, letra);
-	//getProductsSalesAndProfit(sgv,"ZM1712", 12);
-	//p = getProductsNeverBought(sgv , 1);
-
-
-	//getClientsOfAllBranches(sgv);
-	//getProductsBoughtByClient(sgv, "A3234");
-	//getSalesAndProfif(sgv, 1, 3);
-	//getTopSelledProducts(sgv, 152);
-    //getProductBuyers(sgv,"JL1895",3);
-	//getClientTopProfitProducts(sgv,"A1231", 6);
 
 
 

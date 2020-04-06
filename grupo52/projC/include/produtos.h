@@ -22,4 +22,7 @@ char** getArrayProd(THash *p, int key);
 int getArrayProdSize(THash *p, int key);
 
 char** badgetArrayProd(THash *p, int key);
+
+
 #endif /* PRODUTOS */
+
