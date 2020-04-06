@@ -60,7 +60,7 @@ void imprimeQ6(Q6 q){
 }
 
 void imprimeQ7(Q7 q){
-    printf("Mes :             1         2         3         4         5         6         7         8         9        10        11        12 \n\n");
+    printf("          MES :   1         2         3         4         5         6         7         8         9        10        11        12 \n\n\n\n");
     for (int i = 0; i < 3; i++)
     {
         printf("FILIAL %d:", i+1);
@@ -68,7 +68,7 @@ void imprimeQ7(Q7 q){
         {
             printf("      %4d", q->f[i].m[j]);
         }
-        printf("\n");
+        printf("\n\n\n\n\n\n");
     }
 }
 

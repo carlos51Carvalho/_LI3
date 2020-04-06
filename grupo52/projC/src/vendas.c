@@ -8,14 +8,37 @@
 #include "produtos.h"
 #include "vendas.h"
 
+
+
+   /**
+    * Função que destroi (liberta) um array de strings
+    * @param char **a
+    * @param int size
+    */
+
 void destroiArrayString(char** a, int size){
 	for (int j = 0; j < size; j++){
 		free(a[j]);
 	}
 	free(a);
 }
-/*Função de procura binária, que procura num array de strings uma string, quando a encontra retorna
-1 , caso não encontre retorna 0*/
+
+
+
+
+
+   /**
+    * @brief Função de procura binária, que procura num array de strings uma string
+    *
+    * Quando a encontra retorna 1 , caso não encontre retorna 0
+    *
+    * @param char **testado                      Array genérico
+    * @param char *nas_vendas                    Uma string genérica
+    * @param int Tam                             Um int size
+    *
+    * @return int r                              O indice se encontrado 
+    */
+
 
 int existe(char **testado, char *nas_vendas, int Tam)
 {
@@ -38,45 +61,107 @@ int existe(char **testado, char *nas_vendas, int Tam)
 }
 
 
-/*Função que verifica se um preçe é valido testando se esse preço se encontra entre dois valores
-caso sim dá retorno 1, caso contrário -1*/
+
+
+   /**
+    * @brief Função que verifica se um preçe é valido testando se esse preço se encontra entre dois valores
+    *
+    * caso sim dá retorno 1, caso contrário -1
+    *
+    * @param char *preco                         Preco testetado
+    *
+    * @return int 
+    */
+
 int validapreco(char *preco){
 	double p = atof(preco);
 	if (p>0.0 && p<=999.99) return 1;
 	else return -1;
 }
-/*Função que verifica se uma quantidade é valida testando se esse valor se encontra entre dois valores
-caso sim dá retorno 1, caso contrário -1*/
+
+
+   /**
+    * @brief Função que verifica se uma quantidade é valida testando se esse valor se encontra entre dois valores
+    *
+    * caso sim dá retorno 1, caso contrário -1
+    *
+    * @param char *campo                         Quantidade testetada
+    *
+    * @return int 
+    */
+
 int valida3campo(char *campo){
 	int uni = atoi(campo);
 	if (uni>0 && uni<=200) return 1;
 	else return -1;
 }
 
-/*Função que verifica se um tipo de compra é valido testando se o char dado é válidp 
-caso sim dá retorno 1, caso contrário -1*/
+   /**
+    * @brief Função que verifica se um tipo de compra é valido testando se o char dado é válido
+    *
+    * caso sim dá retorno 1, caso contrário -1
+    *
+    * @param char *campo                         Modo a testar
+    *
+    * @return int 
+    */
 int valida4campo(char *campo){
 	return ((campo[0]=='P' || campo[0]=='N') && campo[1]=='\0');
 }
-/*Função que verifica se um mes é valido testando se o int dado está entre 0 e 12 
-caso sim dá retorno 1, caso contrário -1*/
+
+
+
+   /**
+    * @brief Função que verifica se um mes é valido testando se o int dado está entre 0 e 12
+    *
+    * caso sim dá retorno 1, caso contrário -1
+    *
+    * @param char *campo                         Mes a testar
+    *
+    * @return int 
+    */
+
 int valida6mes(char *campo){
 	int mes = atoi(campo);
 	if (mes>0 && mes<13) return 1;
 	else return -1;
 }
-/*Função que verifica se uma filial é valida testando se o int dado está entre 1 e 3 
-caso sim dá retorno 1, caso contrário -1*/
+
+   /**
+    * @brief Função que verifica se uma filial é valida testando se o int dado está entre 1 e 3 
+    *
+    * caso sim dá retorno 1, caso contrário -1
+    *
+    * @param char *filial                        Filial a testar
+    *
+    * @return int 
+    */
+
 int valida7filial(char *filial){
 	int fil = atoi(filial);
 	if (fil>0 && fil<4) return 1;
 	else return -1;
 }
 
-/* Função que recebendo uma Fat (estrutura Faturação),uma Filial (estrutura Filial) e duas THash(estruturas clientes e produtos) e um file path, lê linha a linha de um determinado ficheiro
-fazendo enquanto este válido a divisão por espaços \r e \n, vai repassando as partes retiradas dessa linha para uma string part, que vai sendo guardada em auxiliares-
-Postriormente os campos retirados da linha são validados e são alocados pelas funcçoes acrescentaFat e acrescentaFil as respetivas estruturas que estas recebem como argumento;
-*/
+
+
+/**
+    * @brief Função que le de um ficheiro Vendas
+    *
+    * Recebendo uma Fat (estrutura Faturação),uma Filial (estrutura Filial) e duas THash(estruturas clientes e produtos) e um file path, lê linha a linha de um determinado ficheiro
+    * fazendo enquanto este válido a divisão por espaços \r e \n, vai repassando as partes retiradas dessa linha para uma string part, que vai sendo guardada em auxiliares-
+    * Postriormente os campos retirados da linha são validados e são alocados pelas funcçoes acrescentaFat e acrescentaFil as respetivas estruturas que estas recebem como argumento;
+    *
+    * @param Fat *fat                            Estrutura Fat para onde vai ser extraida informação do ficheiro
+    * @param Filial *fil                         Estrutura Filial para onde vai ser extraida informação do ficheiro
+    * @param THash *cliente                      Estrutura THash para onde vai ser extraida informação do ficheiro
+    * @param char *filespath                     File path do ficheiro a ler
+    * @param int *v                              *int onde se vai guardar o total de vendas lidas
+    *
+    *
+    * @return int                                int numero de vendas válidas
+    */
+
 int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath, int *v){
 	FILE *ficheiro = NULL;
 	//char a[80];
@@ -143,19 +228,3 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 	return i;
 }
 
-/*
-void imprimevendas(TVendas *v){
-	int tam = v->size;
-	for (int i = 0; i < tam; i++){
-		printf("%s %f %d %c %s %d %d \n",v->arr[i].prod,v->arr[i].preco,v->arr[i].qnt,v->arr[i].est, v->arr[i].cliente, v->arr[i].mes, v->arr[i].fil);
-	}
-}
-void escrever_v(TVendas *v , char *s) {
-	int tam = v->size;
-    FILE *cena = fopen(s, "w");
-    for (int i = 0; i < tam; i++){
-		fprintf(cena, "%s %f %d %c %s %d %d \n",v->arr[i].prod,v->arr[i].preco,v->arr[i].qnt,v->arr[i].est, v->arr[i].cliente, v->arr[i].mes, v->arr[i].fil);
-    }
-    fclose(cena);
-}
-*/

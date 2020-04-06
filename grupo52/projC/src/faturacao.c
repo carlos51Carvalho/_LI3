@@ -35,6 +35,10 @@ typedef struct fat{
 	Bucketv *tbl;
 } Fat;
 
+
+
+
+
 int getPosicaoProd(Fat *fat,char *productID){
 	int hash = hashfat(productID);
 

@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "clientes.h"
-//#include "faturacao.h"
+
 
 typedef struct bucket{
 	int size;
@@ -15,15 +15,26 @@ typedef struct thash{
 	Bucket *tbl;
 } THash;
 
+   /**
+    * @brief Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A
+    *
+    * @param char *cont                          String genérica
+    *
+    * @return int                                O resultado inteiro dessa subtração
+    */
 
-/* Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A devolvendo o resultado inteiro 
-dessa subtração*/
 int hash(char *cont){
 	int r = cont[0] - 'A';
 	return r;
 }
 
-/*Função que inicia uma estrutura Thash alocando espaço para todas as estruturas adjacentes*/
+
+   /**
+    * @brief Função que inicia uma estrutura Thash alocando espaço para todas as estruturas adjacentes
+    *
+    * @return THash*                             Devolve a THash inicializada
+    */
+
 THash* initTab(){
 	int i;
 	THash *h = malloc(sizeof(THash));
@@ -32,13 +43,16 @@ THash* initTab(){
 	for ( i =0; i < HSIZE ; i++){
 		h->tbl[i].size = 0;
 		h->tbl[i].arr = malloc(sizeof(char*));
-		//printf("%d\n",h->tbl[i].size );
 	}
-	//printf("%d\n",i );
 	return h;
 }
 
-/*Funçao que destroi uma estrutura Thash libertando o espaço ocupado por esta */
+   /**
+    * @brief Funçao que destroi uma estrutura Thash libertando o espaço ocupado por esta
+    *
+    * @param THash *h                            THash previamente inicializada
+    */
+
 void destroiTab(THash *h){
 	int i,j;
 	for (i = 0; i < h->size; i++){
@@ -51,46 +65,35 @@ void destroiTab(THash *h){
 	//free(h);                  //-> descobrir o porque de dar double free or corruption (out) -> dá este erro quando a funcao é usada pela THash prod (dunno why)
 }
 
-/*Função que acrescenta a uma Thash uma derminada string na posição correta para esta na tabela aplicando a função hash a descobrir
-e sucessivamente realocando espaço para a adicionar*/
+
+   /**
+    * @brief Função que acrescenta a uma Thash uma derminada string
+    *
+    * Aplicando a função hash descobre a posicao correta desta na THash e sucessivamente realocando espaço para a adicionar á mesma
+    *
+    *
+    * @param THash *h                            THash previamente inicializada
+    * @param char *cont                          String genérica
+    *
+    */
+
 void acrecenstaTab(THash *h, char *cont){
 	int key = hash(cont);
 	int tam = h->tbl[key].size;
 	h->tbl[key].arr = realloc(h->tbl[key].arr, (tam +1)*sizeof(char*));
 	h->tbl[key].arr[tam] = strdup(cont);
 	h->tbl[key].size++;
-	//printf("%s\n",h->tbl[key].arr[tam].id);
 	return ;
 }
 
 
-
-void imprimecliente(THash *h){
-	int tam = h->size;
-	int tam2;
-	for (int i = 0; (i < tam); i++){
-		tam2 = h->tbl[i].size;
-		for (int j = 0; j < tam2 ; j++){
-			printf("%s\n",  h->tbl[i].arr[j]);
-		}
-	}
-}
-
-
-void escrever_c(THash *h , char *s) {
-	int tam2=0;
-    FILE *cena = fopen(s, "w");
-
-    for (int i = 0; i < h->size; i++){
-    	tam2 = h->tbl[i].size;
-		for (int j = 0; j < tam2; j++){
-			fprintf(cena,"%s\n", h->tbl[i].arr[j] );
-        }
-    }
-    fclose(cena);
-}
-
-
+   /**
+    * @brief Função que troca duas strings de posicao
+    *
+    * @param char **arg1                         String genérica
+    * @param char **arg2                         String genérica
+    *
+    */
 
 void swapc(char **arg1, char **arg2)
 {
@@ -99,7 +102,15 @@ void swapc(char **arg1, char **arg2)
     *arg2 = tmp;
 }
 
-/*Função que ordena um array de strings*/
+
+   /**
+    * @brief Função que ordena um array de strings
+    *
+    *
+    * @param unsigned int len                    int tam generico
+    * @param char **args                         String genérica
+    *
+    */
 void quicksortc(char **args, unsigned int len)
 {
     unsigned int i, pvt=0;
@@ -126,8 +137,19 @@ void quicksortc(char **args, unsigned int len)
 }
 
 
-/*Função que recebendo uma Thash e um file path, lê de um ficheiro linha a linha e vai colocando cada linha na thash
-na sua posição correspondente na mesma */
+
+   /**
+    * @brief Função que le de um ficheiro para uma Thash
+    *
+    * Recebendo uma Thash e um file path, lê de um ficheiro linha a linha e vai colocando cada linha na thash
+    * na sua posição correspondente na mesma
+    *
+    * @param THash *cliente                      THash onde vai ser colocada a informação
+    * @param char *filespath                     String com o file path
+    * @param int *c                              Inteiro onde é guardado o numero de clientes lidos
+    *
+    * @return int                                O numero de clientes válidos
+    */
 int ler_clientes (THash *cliente , char *filespath, int *c){
 	FILE *ficheiro = NULL;
 	//char aux[80];
@@ -164,14 +186,43 @@ int ler_clientes (THash *cliente , char *filespath, int *c){
 	return i;
 }
 
-/*Função que recebe uma string de um cliente e verifica se este é valido */
+
+
+   /**
+    * @brief Função que recebe uma string de um cliente e verifica se este é valido 
+    *
+    * @param char *cliente                       String (um cliente)
+    *
+    * @return int 
+    */
+
 int validacliente(char *cliente){
 	return (cliente[0]>='A' && cliente[0]<='Z' && atoi(cliente+1)>=1000 && atoi(cliente+1)<=9999);
 }
 
+
+   /**
+    * @brief Função que cria um clone de uma string cliente
+    *
+    * @param THash *c                            Tabela de onde é retirado o cliente
+    * @param int key                             indice na tabela
+    * @param int i                               indice no array
+    *
+    * @return char*                              Retorno da copia
+    */
 char* getCliente(THash *c, int key, int i){
 	return strdup(c->tbl[key].arr[i]);
 }
+
+
+   /**
+    * @brief Função que cria um clone de um array de strings cliente
+    *
+    * @param THash *c                            Tabela de onde é retirado o cliente
+    * @param int key                             indice na tabela
+    *
+    * @return char**                             Retorno da copia
+    */
 char** getArrayCl(THash *c, int key){
 	int tam = getArrayClSize(c,key);
 	char **res = malloc(tam*sizeof(char*));
@@ -182,6 +233,15 @@ char** getArrayCl(THash *c, int key){
 
 	return res;
 }
+
+   /**
+    * @brief Função que retorna o size um determinado array na tabela
+    *
+    * @param THash *c                            Tabela de onde é retirado o cliente
+    * @param int key                             indice na tabela
+    *
+    * @return int                                Retorno do size
+    */
 int getArrayClSize(THash *c, int key){
 	return (c->tbl[key].size);
 }
