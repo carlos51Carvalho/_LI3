@@ -48,13 +48,27 @@ void flush(){
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
+void getstr(char *text,char *s){
+	printf("%s", text);
+	scanf("%s", s);
+	getchar();
+}
+
+
+
 int main(){
 	//interpertador();
 
+	//get strings -> arg is the messages displayed before getting the string
+	char c[256];
+	getstr("cenas coiso e tal: ",c);
 
+	printf("%s\n", c);
 
-
+	getchar();
 	
+	//return 0;
+
 	char buf[10];
 	int op;
 	do{
