@@ -38,13 +38,31 @@ typedef struct fat{
 
 
 
-
+   /**
+    * @brief Função que retorna o indice de um determinado produto da estrutura Fat
+    *
+    * @param Fat *fat                            Tabela de onde é retirado o cliente
+    * @param *productID                          O produto a ser procurado
+    *
+    * @return int                                Retorno do indice deste na Fat
+    */
 int getPosicaoProd(Fat *fat,char *productID){
 	int hash = hashfat(productID);
 
 	return existe_fat(fat->tbl[hash].arr, productID, fat->tbl[hash].size);
 }
 
+   /**
+    * @brief Função que retorna o numero de vendas em N de um terminado produto
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int h                               O indice do produto na tabela
+    * @param int pos                             O indice do produto dentro do seu respetivo array
+    * @param int m                               O indice do mes
+    * @param int f                               O indice da filial
+    *
+    * @return int                                Retorno do numero de vendas em N
+    */
 int getVendasN(Fat *fat,int h,int pos,int m,int f){
 	int result=0;
 	if(pos>=0){
@@ -52,6 +70,19 @@ int getVendasN(Fat *fat,int h,int pos,int m,int f){
 	}
 	return result;
 }
+
+
+   /**
+    * @brief Função que retorna o numero de vendas em P de um terminado produto
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int h                               O indice do produto na tabela
+    * @param int pos                             O indice do produto dentro do seu respetivo array
+    * @param int m                               O indice do mes
+    * @param int f                               O indice da filial
+    *
+    * @return int                                Retorno do numero de vendas em P
+    */
 int getVendasP(Fat *fat,int h,int pos,int m,int f){
 	int result=0;
 	if(pos>=0){
@@ -60,6 +91,17 @@ int getVendasP(Fat *fat,int h,int pos,int m,int f){
 	return result;
 }
 
+   /**
+    * @brief Função que retorna a faturacao em N de um terminado produto
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int h                               O indice do produto na tabela
+    * @param int pos                             O indice do produto dentro do seu respetivo array
+    * @param int m                               O indice do mes
+    * @param int f                               O indice da filial
+    *
+    * @return int                                Retorno do faturado em N
+    */
 double getFaturacaoN(Fat *fat,int h,int pos,int m,int f){
 	double result=0;
 	if(pos>=0){
@@ -67,6 +109,18 @@ double getFaturacaoN(Fat *fat,int h,int pos,int m,int f){
 	}
 	return result;
 }
+
+   /**
+    * @brief Função que retorna a faturacao em P de um terminado produto
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int h                               O indice do produto na tabela
+    * @param int pos                             O indice do produto dentro do seu respetivo array
+    * @param int m                               O indice do mes
+    * @param int f                               O indice da filial
+    *
+    * @return int                                Retorno do faturado em P
+    */    
 double getFaturacaoP(Fat *fat,int h,int pos,int m,int f){
 	double result=0;
 	if(pos>=0){
@@ -75,27 +129,67 @@ double getFaturacaoP(Fat *fat,int h,int pos,int m,int f){
 	return result;
 }
 
+   /**
+    * @brief Função que retorna o tamanho de um array num determinado indice da tabela
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int key                             O indice do arr na tabela
+    *
+    * @return int                                Retorno do size do array
+    */
 int getSizeArrayP(Fat *f, int key){
 	return f->tbl[key].size;
 }
 
+   /**
+    * @brief Função que retorna se a filiaĺ foi "usada" ou não 
+    *
+    * Esta encontra-se usada se tiverem sido realizadas compras desse produto nessa filial
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int key                             O indice do array na tabela
+    * @param int ip                              O indice do produto dentro do seu respetivo array
+    * @param int fil                             O indice da filial
+    *
+    * @return int                                Retorno do faturado em N
+    */  
 int getFilialUsed(Fat *f, int key, int ip, int fil){
 	int i=f->tbl[key].arr[ip].fil[fil].used;
 	return i;
 }
 
+   /**
+    * @brief Função que retorna a string correspodente ao produto nos indices dados
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int key                             O indice do produto na tabela
+    * @param int ip                              O indice do produto dentro do seu respetivo array
+    *
+    * @return int                                Retorno do faturado em N
+    */  
 char* getProdFat(Fat *f, int key, int ip){
 	return f->tbl[key].arr[ip].pid;
 }
 
 
+   /**
+    * @brief Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A
+    *
+    * @param char *cont                          String genérica
+    *
+    * @return int                                O resultado inteiro dessa subtração
+    */
 int hashfat(char *cont){
 	int r = cont[0] - 'A';
 	return r;
 }
 
 
-
+   /**
+    * @brief Função que inicia uma estrutura Fat alocando espaço para todas as estruturas adjacentes
+    *
+    * @return Fat*                             Devolve a Fat inicializada
+    */
 Fat* initFat(){
 	int i;
 	Fat *h = malloc(sizeof(Fat));
@@ -108,6 +202,11 @@ Fat* initFat(){
 	return h ;
 }
 
+   /**
+    * @brief Funçao que destroi uma estrutura Fat libertando o espaço ocupado por esta
+    *
+    * @param Fat *f                              Fat previamente inicializada
+    */
 
 void destroiFat(Fat *f){
 	int i,j,fi;
@@ -126,6 +225,16 @@ void destroiFat(Fat *f){
 }
 
 
+   /**
+    * @brief Função que acrescenta a uma Fat um produto
+    *
+    * Aplicando a função hash descobre a posicao correta desta na Fat e sucessivamente realocando espaço para o adicionar á mesma
+    *
+    *
+    * @param Fat *f                              Fat previamente inicializada
+    * @param char *cont                          String genérica (produto)
+    *
+    */
 void acrescenta_prod(Fat *f, char *p){
 	int k = hashfat(p);
 	int tam = f->tbl[k].size;
@@ -148,7 +257,15 @@ void acrescenta_prod(Fat *f, char *p){
 }
 
 
-
+   /**
+    * @brief Função que acrescenta a uma Fat vários produtos lidos de um array a strings
+    *
+    *
+    * @param Fat *f                              Fat previamente inicializada
+    * @param char **p                            Array de strings(produtos)
+    * @param int Tam                             Size do array de strings
+    *
+    */
 int acrescenta_prods (Fat *f, char **p, int tam ){
 	int i;
 	for (i = 0; i < tam; i++){
@@ -159,6 +276,18 @@ int acrescenta_prods (Fat *f, char **p, int tam ){
 }
 
 
+
+   /**
+    * @brief Função que retorna o indice de um determinado produto da estrutura Fat caso ele exista -1 caso não
+    *
+    *
+    * @param Prd *arr                            Array de Prd ( estrutura complementar de Fat)
+    * @param char *procurado                     Produto procurado
+    * @param int Tam                             Size do array de Prd
+    *
+    *
+    * @return int r                              Indice do produto se encontrado 
+    */
 int existe_fat(Prd *arr, char *procurado, int Tam)
 {
      int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
@@ -180,6 +309,21 @@ int existe_fat(Prd *arr, char *procurado, int Tam)
 }
 
 
+   /**
+    * @brief Função que acrescenta a uma Fat informção que recebe como argumento ao respetivo produto. 
+    *
+    *
+    * @param Fat *h                              Estrutua Fat
+    * @param char *p                             Produto 
+    * @param double pr                           Preco
+    * @param int q                               Quantidade
+    * @param char e                              Modo de compra
+    * @param char *c                             Cliente
+    * @param int m                               Mes
+    * @param int f                               Filial
+    *
+    *
+    */
 void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int f){
 	int k = hashfat(p);
 	int tam = h->tbl[k].size;
@@ -200,6 +344,17 @@ void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int
 }
 
 
+
+   /**
+    * @brief Função que retorna um array de strings com os produtos que nunca foram comprados numa filial em especifico
+    *
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int fil                             Filial
+    * @param int tamp                            um size que a função vai alterar
+    *
+    * @return char**                             array de strings com os produtos
+    */  
 char** neverBoughtFil(Fat *f, int fil, int *tamp){
 	int count =0;
 	char **p = NULL;
@@ -218,7 +373,15 @@ char** neverBoughtFil(Fat *f, int fil, int *tamp){
 	return p;
 }
 
-
+   /**
+    * @brief Função que retorna um array de strings com os produtos que nunca foram comprados em nenhuma filial
+    *
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int tamp                            um size que a função vai alterar
+    *
+    * @return char**                             array de strings com os produtos
+    */  
 char** neverBoughtAllFil(Fat *f, int *tamp){
 	int count =0;
 	char **p = NULL;
@@ -236,6 +399,16 @@ char** neverBoughtAllFil(Fat *f, int *tamp){
 	*tamp = count;
 	return p;
 }
+
+
+   /**
+    * @brief Função que retorna o numero do produtos que nunca foram comprados
+    *
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    *
+    * @return int                                Numero de produtos nunca comprados
+    */  
 int ProdutosNaoComprados (Fat *f){
 	int count=0;
 	for(int i=0;i<26;i++){
@@ -247,6 +420,19 @@ int ProdutosNaoComprados (Fat *f){
 	return count;
 }
 
+
+
+   /**
+    * @brief Função que retorna a faturacao(numero de vendas e faturado) num intervalo de meses
+    *
+    *
+    * @param Fat *fat                            Estrutura Faturaçao
+    * @param int m1                              Primeiro mes
+    * @param int m2                              Segundo mes
+    * @param int *result                         Resultado a ser preenchido com o numero de vendas
+    * @param double *result2                     Resultado a ser preenchido com o total faturado 
+    *
+    */ 
 void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *result2){
 	int count=0;
 	double count2 = 0;
