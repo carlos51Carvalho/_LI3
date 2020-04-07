@@ -57,7 +57,7 @@ void getstr(char *text,char *s){
 
 
 int main(){
-	//interpertador();
+	interpertador();
 
 	//get strings -> arg is the messages displayed before getting the string
 	char c[256];
@@ -69,6 +69,8 @@ int main(){
 	
 	//return 0;
 
+
+	/*
 	char buf[10];
 	int op;
 	do{
@@ -138,7 +140,7 @@ int main(){
 	
 
 
-
+*/
 	//p = getProductsSalesAndProfit( sgv, "BR1925", 2, 1);
 	//p = getProductsNeverBought(sgv,1);
 	//p = getClientsOfAllBranches(sgv);

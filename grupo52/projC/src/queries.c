@@ -58,6 +58,49 @@ void destroiArrayStrings(char** a, int size){
 	free(a);
 }
 
+
+
+
+
+
+
+   /**
+    * @brief Função que verifica se um mes é valido testando se o int dado está entre 0 e 12
+    *
+    * caso sim dá retorno 1, caso contrário -1
+    *
+    * @param int m                               Mes a testar
+    *
+    * @return int 
+    */
+
+int validames(int m){
+	if (m>0 && m<13) return 1;
+	else return -1;
+}
+
+   /**
+    * @brief Função que verifica se uma filial é valida testando se o int dado está entre 1 e 3 
+    *
+    * caso sim dá retorno 1, caso contrário -1
+    *
+    * @param int f                               Filial a testar
+    *
+    * @return int 
+    */
+
+int validafilial(int f){
+	if (f>0 && f<4) return 1;
+	else return -1;
+}
+
+int letravalida(char l){
+	if (l>='A' && l<='Z') return 1;
+	else return -1;
+}
+
+
+
 SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, char *salesFilePath ){
 	int p,c,v,d,e;
 	char** pr=NULL;
@@ -92,41 +135,50 @@ SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, cha
 //	Q2
 
 Q245 getProductsStartedByLetter(SGV sgv, char letter){
+
 	Q245 q2 = malloc(sizeof(Q245));
 	q2->tam = 0;
 	q2->p = NULL;
-	int k = hash_p(&letter);
-	q2->tam = getArrayProdSize(sgv->produtos,k);
-	q2->p = getArrayProd(sgv->produtos,k);
-	/*
-	for (int i = 0; i < tam; i++){
-		printf("%s\n", p[i]);
-	}*/
-
+	if (letravalida(letter)){
+	
+		int k = hash_p(&letter);
+		q2->tam = getArrayProdSize(sgv->produtos,k);
+		q2->p = getArrayProd(sgv->produtos,k);
+	}
+	else{
+		q2->tam = -1;
+	}
 	return q2;
 }
 
 // Q3
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
-	int h=hashfat(productID);
-	int posProd = getPosicaoProd(sgv->fat,productID);
 	Q3 q3 = malloc(sizeof(Q3));
 
-	q3->vN1=getVendasN(sgv->fat,h,posProd,month-1,0);
-	q3->vP1=getVendasP(sgv->fat,h,posProd,month-1,0);
-	q3->fN1=getFaturacaoN(sgv->fat,h,posProd,month-1,0);
-	q3->fP1=getFaturacaoP(sgv->fat,h,posProd,month-1,0);
+	if (validaproduto(productID) && validames(month)){
+
+		int h=hashfat(productID);
+		int posProd = getPosicaoProd(sgv->fat,productID);
+
+		q3->vN1=getVendasN(sgv->fat,h,posProd,month-1,0);
+		q3->vP1=getVendasP(sgv->fat,h,posProd,month-1,0);
+		q3->fN1=getFaturacaoN(sgv->fat,h,posProd,month-1,0);
+		q3->fP1=getFaturacaoP(sgv->fat,h,posProd,month-1,0);
 
 
-	q3->vN2=getVendasN(sgv->fat,h,posProd,month-1,1);
-	q3->vP2=getVendasP(sgv->fat,h,posProd,month-1,1);
-	q3->fN2=getFaturacaoN(sgv->fat,h,posProd,month-1,1);
-	q3->fP2=getFaturacaoP(sgv->fat,h,posProd,month-1,1);
+		q3->vN2=getVendasN(sgv->fat,h,posProd,month-1,1);
+		q3->vP2=getVendasP(sgv->fat,h,posProd,month-1,1);
+		q3->fN2=getFaturacaoN(sgv->fat,h,posProd,month-1,1);
+		q3->fP2=getFaturacaoP(sgv->fat,h,posProd,month-1,1);
 
-	q3->vN3=getVendasN(sgv->fat,h,posProd,month-1,2);
-	q3->vP3=getVendasP(sgv->fat,h,posProd,month-1,2);
-	q3->fN3=getFaturacaoN(sgv->fat,h,posProd,month-1,2);
-	q3->fP3=getFaturacaoP(sgv->fat,h,posProd,month-1,2);
+		q3->vN3=getVendasN(sgv->fat,h,posProd,month-1,2);
+		q3->vP3=getVendasP(sgv->fat,h,posProd,month-1,2);
+		q3->fN3=getFaturacaoN(sgv->fat,h,posProd,month-1,2);
+		q3->fP3=getFaturacaoP(sgv->fat,h,posProd,month-1,2);
+	}
+	else{
+		q3->vN1 = -1;
+	}
 
 	return q3;
 }
@@ -140,7 +192,7 @@ Q245 getProductsNeverBought(SGV sgv , int branchID){
 	Q245 q4 = malloc(sizeof(Q245));
 	q4->tam = 0;
 	q4->p = NULL;
-	if (branchID >0 && branchID <=3){
+	if (validafilial(branchID)){
 		q4->p = neverBoughtFil(sgv->fat, branchID -1, &j);
 		q4->tam = j;
 	}
@@ -181,29 +233,43 @@ Q6 getClientsAndProductsNeverBoughtCount(SGV sgv){
 
 Q7 getProductsBoughtByClient(SGV sgv, char *clientID){
 	Q7 q7 = malloc(sizeof(Q7));
-	q7->f = malloc(3*sizeof(BYFil));
-	for (int i = 0; i < 3; i++){
-		for (int j = 0; j < 12; j++)
-		{
-			q7->f[i].m[j] = QuantidadesUmClientePorMes(sgv->fil, clientID ,i, j);
+	q7->use = 0;
+	q7->f = NULL;
+	if (validacliente(clientID)){
+		q7->f = malloc(3*sizeof(BYFil));
+		for (int i = 0; i < 3; i++){
+			for (int j = 0; j < 12; j++)
+			{
+				q7->f[i].m[j] = QuantidadesUmClientePorMes(sgv->fil, clientID ,i, j);
+			}
 		}
+
+	}
+	else{
+		q7->use = -1;
 	}
 	return q7;
 } 
-
 
 //Q8
 
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 	Q8 q8 = malloc(sizeof(Q8));
 
-	int v=0;
-	double f=0;
+	if (validames(minMonth) && validames(maxMonth) && minMonth < maxMonth){
 
-	FaturacaoeVendasIntervalo(sgv->fat,minMonth, maxMonth, &v, &f);
+		int v=0;
+		double f=0;
 
-	q8->v=v;
-	q8->f=f;
+		FaturacaoeVendasIntervalo(sgv->fat,minMonth, maxMonth, &v, &f);
+
+		q8->v=v;
+		q8->f=f;
+	}
+	else{
+		q8->v=-1;
+		q8->f= 0;
+	}
 
 	return q8;
 }
@@ -216,69 +282,77 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 
 
 
+
 //Q9
 
 Q9 getProductBuyers (SGV sgv, char *productID, int branch){
+
 	Q9 q = malloc (sizeof(Q9));
 	q->sizeN = 0;
 	q->sizeP = 0;
 	q->n = NULL;
 	q->p = NULL;
-	int t;
-	int u;
-	int s;
-	int sn,qn,sp,qp;
+	if(validaproduto(productID) && validafilial(branch)){
 
-	for(int i=0;i<26;i++){
-		t = getSizeArrClient (sgv->fil, i);
-		
-		for(int j=0; j<t; j++){
-			u = getFilUsed(sgv->fil, i, j, branch-1);
-			if(u==1){
-				int found=0;
+		int t;
+		int u;
+		int s;
+		int sn,qn,sp,qp;
 
-			   for(int m = 0; m<12 && !found; m++){
-				   s = getSizeQprd(sgv->fil, i, j, branch-1, m);
-				
-				   for(int mid =0; mid < s && !found; mid++){
-					   if (strcmp(productID, getOneProd(sgv->fil, i, j, branch-1, m, mid)) == 0){
-					   	   qn = getQuantN (sgv->fil, i, j, branch-1, m, mid);
-					   	   qp = getQuantP (sgv->fil, i, j, branch-1, m, mid);
-					   	   sn = q->sizeN;
-					   	   sp = q->sizeP;
-					   	   if(qn>0 && qp>0){
-					   	   	q->n = realloc (q->n, (sn+1) * sizeof(char*));
-					   	   	q->n[sn] = strdup(getCLiente(sgv->fil, i, j));
-					   	   	q->sizeN++;
-					   	   	q->p = realloc (q->p, (sp+1) * sizeof(char*));
-					   	   	q->p[sp] = strdup(getCLiente(sgv->fil, i, j));
-					   	   	q->sizeP++;
-					   	   	found=1;
-					   	   }
-					   	   else if(qn>0){
-					   	   	q->n = realloc (q->n, (sn+1) * sizeof(char*));
-					   	   	q->n[sn] = strdup(getCLiente(sgv->fil, i, j));
-					   	   	q->sizeN++;
-					   	   	found=1;
-					   	   }
-					   	   else if (qp>0){
-					   	   	q->p = realloc (q->p, (sp+1) * sizeof(char*));
-					   	   	q->p[sp] = strdup(getCLiente(sgv->fil, i, j));
-					   	   	q->sizeP++;
-					   	   	found=1;
-					   	   }
-
-					   }
-				   }
-				}
-			}
+		for(int i=0;i<26;i++){
+			t = getSizeArrClient (sgv->fil, i);
 			
-		}
+			for(int j=0; j<t; j++){
+				u = getFilUsed(sgv->fil, i, j, branch-1);
+				if(u==1){
+					int found=0;
 
+				   for(int m = 0; m<12 && !found; m++){
+					   s = getSizeQprd(sgv->fil, i, j, branch-1, m);
+					
+					   for(int mid =0; mid < s && !found; mid++){
+						   if (strcmp(productID, getOneProd(sgv->fil, i, j, branch-1, m, mid)) == 0){
+						   	   qn = getQuantN (sgv->fil, i, j, branch-1, m, mid);
+						   	   qp = getQuantP (sgv->fil, i, j, branch-1, m, mid);
+						   	   sn = q->sizeN;
+						   	   sp = q->sizeP;
+						   	   if(qn>0 && qp>0){
+						   	   	q->n = realloc (q->n, (sn+1) * sizeof(char*));
+						   	   	q->n[sn] = strdup(getCLiente(sgv->fil, i, j));
+						   	   	q->sizeN++;
+						   	   	q->p = realloc (q->p, (sp+1) * sizeof(char*));
+						   	   	q->p[sp] = strdup(getCLiente(sgv->fil, i, j));
+						   	   	q->sizeP++;
+						   	   	found=1;
+						   	   }
+						   	   else if(qn>0){
+						   	   	q->n = realloc (q->n, (sn+1) * sizeof(char*));
+						   	   	q->n[sn] = strdup(getCLiente(sgv->fil, i, j));
+						   	   	q->sizeN++;
+						   	   	found=1;
+						   	   }
+						   	   else if (qp>0){
+						   	   	q->p = realloc (q->p, (sp+1) * sizeof(char*));
+						   	   	q->p[sp] = strdup(getCLiente(sgv->fil, i, j));
+						   	   	q->sizeP++;
+					   	   		found=1;
+					   	   		}
+
+					   		}
+				   		}
+					}
+				}
+			
+			}
+
+		}
+	}
+	else{
+		q->sizeN = -1;
+		q->sizeP = -1;
 	}
 	return q;
 }
-
 
 
 
@@ -319,36 +393,42 @@ void q10sort(QntNSpent *args, int len){
 
 
 Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month){
-	int tam2 =0,size, id;
-	Q12 q10 = initQ12();
-	int k = hashfat(clientID);
-	int tam = getSizeArrClient(sgv->fil,k);
-	int r = existe_fil(getArrByLetter(sgv->fil,k), clientID, tam);
 
-	if (r>=0 ){
-		for (int i = 0; i < 3; i++){
-			tam2 = getSizeQprd(sgv->fil,k,r,i,month-1);
-			if(tam2 != 0){
-				for (int c = 0; c < tam2; c++){
-					size = q10->tam;
-					id = existe_q12(q10->arr,getOneProd(sgv->fil,k,r,i,month-1,c),size );
-					if (id >= 0){
-						q10->arr[id].qnt += getQuantP(sgv->fil,k,r,i, month-1, c)+ getQuantN(sgv->fil,k,r,i, month-1, c);
-					}
-					else{
-						q10->arr = realloc(q10->arr, (size+1)*sizeof(QntNSpent));
-						q10->arr[size].pid = strdup(getOneProd(sgv->fil,k,r,i,month-1,c));
-						q10->arr[size].qnt = getQuantP(sgv->fil,k,r,i, month-1, c)+ getQuantN(sgv->fil,k,r,i, month-1, c);
-						q10->tam++;
+	Q12 q10 = initQ12();
+	if(validacliente(clientID) && validames(month)){
+
+		int tam2 =0,size, id;
+		int k = hashfat(clientID);
+		int tam = getSizeArrClient(sgv->fil,k);
+		int r = existe_fil(getArrByLetter(sgv->fil,k), clientID, tam);
+	
+		if (r>=0 ){
+			for (int i = 0; i < 3; i++){
+				tam2 = getSizeQprd(sgv->fil,k,r,i,month-1);
+				if(tam2 != 0){
+					for (int c = 0; c < tam2; c++){
+						size = q10->tam;
+						id = existe_q12(q10->arr,getOneProd(sgv->fil,k,r,i,month-1,c),size );
+						if (id >= 0){
+							q10->arr[id].qnt += getQuantP(sgv->fil,k,r,i, month-1, c)+ getQuantN(sgv->fil,k,r,i, month-1, c);
+						}
+						else{
+							q10->arr = realloc(q10->arr, (size+1)*sizeof(QntNSpent));
+							q10->arr[size].pid = strdup(getOneProd(sgv->fil,k,r,i,month-1,c));
+							q10->arr[size].qnt = getQuantP(sgv->fil,k,r,i, month-1, c)+ getQuantN(sgv->fil,k,r,i, month-1, c);
+							q10->tam++;
+						}
 					}
 				}
 			}
+			q10sort(q10->arr, q10->tam);
 		}
-		q10sort(q10->arr, q10->tam);
+	}
+	else{
+		q10->tam = -1;
 	}
 	return q10;
 }
-
 
 
 
@@ -483,8 +563,13 @@ Q11 getTopSelledProducts (SGV sgv, int limit){
 
 	for(int i= 0; i<3; i++){
 		q11sort(q->f[i].qts, q->f[i].size);
+		for (int j = limit; j < q->f[i].size; j++)
+    	{
+    		free(q->f[i].qts[j].pid);
+    	}
+		q->f[i].size = limit;
     }
-	
+   
 	return q;
 }
 
@@ -545,38 +630,44 @@ int existe_q12(QntNSpent *arr, char *procurado, int Tam){
 
 
 Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
-	int tam2 =0,size, id;
 	Q12 q12 = initQ12();
-	int k = hashfat(clientID);
-	int tam = getSizeArrClient(sgv->fil,k);
-	int r= existe_fil(getArrByLetter(sgv->fil,k), clientID, tam);
+	if (validacliente(clientID)){
+		
+		int tam2 =0,size, id;
+		int k = hashfat(clientID);
+		int tam = getSizeArrClient(sgv->fil,k);
+		int r= existe_fil(getArrByLetter(sgv->fil,k), clientID, tam);
 
-	if (r>=0 && limit > 0){
-		for (int i = 0; i < 3; i++){
-			for (int j = 0; j < 12; j++){
-				tam2 = getSizeQprd(sgv->fil,k,r,i,j);
-				if(tam2 != 0){
-					for (int c = 0; c < tam2; c++){
-						size = q12->tam;
-						id = existe_q12(q12->arr,getOneProd(sgv->fil,k,r,i,j,c),size );
-						if (id >= 0){
-							q12->arr[id].spent += getGastoP(sgv->fil,k,r,i, j, c)+ getGastoN(sgv->fil,k,r,i, j, c);
-						}
-						else{
-							q12->arr = realloc(q12->arr, (size+1)*sizeof(QntNSpent));
-							q12->arr[size].pid = strdup(getOneProd(sgv->fil,k,r,i,j,c));
-							q12->arr[size].spent = getGastoP(sgv->fil,k,r,i, j, c)+ getGastoN(sgv->fil,k,r,i, j, c);
-							q12->tam++;
+		if (r>=0 && limit > 0){
+			for (int i = 0; i < 3; i++){
+				for (int j = 0; j < 12; j++){
+					tam2 = getSizeQprd(sgv->fil,k,r,i,j);
+					if(tam2 != 0){
+						for (int c = 0; c < tam2; c++){
+							size = q12->tam;
+							id = existe_q12(q12->arr,getOneProd(sgv->fil,k,r,i,j,c),size );
+							if (id >= 0){
+								q12->arr[id].spent += getGastoP(sgv->fil,k,r,i, j, c)+ getGastoN(sgv->fil,k,r,i, j, c);
+							}
+							else{
+								q12->arr = realloc(q12->arr, (size+1)*sizeof(QntNSpent));
+								q12->arr[size].pid = strdup(getOneProd(sgv->fil,k,r,i,j,c));
+								q12->arr[size].spent = getGastoP(sgv->fil,k,r,i, j, c)+ getGastoN(sgv->fil,k,r,i, j, c);
+								q12->tam++;
+							}
 						}
 					}
 				}
 			}
+			q12sort(q12->arr, q12->tam);
+			//q12->tam = limit;
+	
+			//seria nice limpar todas as posiçoes daqui ate limite
+	
 		}
-		q12sort(q12->arr, q12->tam);
-		//q12->tam = limit;
-
-		//seria nice limpar todas as posiçoes daqui ate limite
-
+	}
+	else{
+		q12->tam=-1;
 	}
 	return q12;
 }

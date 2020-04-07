@@ -8,30 +8,38 @@
 
 
 void imprimeQ2(Q245 q, char *op){
-    for (int i = 0; i < q->tam; i++)
-    {
-        printf("%s\n",q->p[i]);
+    if (q->tam != -1){
+        for (int i = 0; i < q->tam; i++){
+            printf("%s\n",q->p[i]);
+        }
+        printf("O numero total de elementps começados pela letra %s é : %d\n", op, q->tam);
     }
-    printf("O numero total de elementps começados pela letra %s é : %d\n", op, q->tam);
+    else printf("O caraer lido não é válido\n");
 }
 
 void imprimeQ3(Q3 q, int mes, int op ){
-    int globN = q->vN1+q->vN2+q->vN3;
-    int globP = q->vP1+q->vP2+q->vP3;
-    double fN = q->fN1+q->fN2+q->fN3;
-    double fP = q->fP1+q->fP2+q->fP3;
-    printf("No mês %d\n\n", mes);
-    if ( op == 1){
-        printf("Vendas na filial 1:\n");
-        printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",q->vN1, q->fN1, q->vP1, q->fP1);
-        printf("Vendas na filial 2:\n");
-        printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",q->vN2, q->fN2, q->vP2, q->fP2);
-        printf("Vendas na filial 3:\n");
-        printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",q->vN3, q->fN3, q->vP3, q->fP3);
+    if (q->vN1 != -1){
+
+        int globN = q->vN1 + q->vN2 + q->vN3;
+        int globP = q->vP1 + q->vP2 + q->vP3;
+        double fN = q->fN1 + q->fN2 + q->fN3;
+        double fP = q->fP1 + q->fP2 + q->fP3;
+        printf("No mês %d\n\n", mes);
+        if ( op == 1){
+            printf("Vendas na filial 1:\n");
+            printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",q->vN1, q->fN1, q->vP1, q->fP1);
+            printf("Vendas na filial 2:\n");
+            printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",q->vN2, q->fN2, q->vP2, q->fP2);
+            printf("Vendas na filial 3:\n");
+            printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",q->vN3, q->fN3, q->vP3, q->fP3);
+        }
+        else{
+            printf("Vendas num modo global:\n");
+            printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",globN,fN,globP,fP);
+        }
     }
     else{
-        printf("Vendas num modo global:\n");
-        printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",globN,fN,globP,fP);
+        printf("O produto ou o mes inserido não sao válidos!\n");
     }
 
 }
@@ -59,35 +67,48 @@ void imprimeQ6(Q6 q){
     printf("O numero de clientes sem compras é: %d\nO numero de produtos que ninguem comprou é: %d\n",q->c,q->p);
 }
 
+
 void imprimeQ7(Q7 q){
-    printf("          MES :   1         2         3         4         5         6         7         8         9        10        11        12 \n\n\n\n");
-    for (int i = 0; i < 3; i++)
-    {
-        printf("FILIAL %d:", i+1);
-        for (int j = 0; j < 12; j++)
+    if (q->use != -1){
+        printf("          MES :   1         2         3         4         5         6         7         8         9        10        11        12 \n\n\n\n");
+        for (int i = 0; i < 3; i++)
         {
-            printf("      %4d", q->f[i].m[j]);
+            printf("FILIAL %d:", i+1);
+            for (int j = 0; j < 12; j++)
+            {
+                printf("      %4d", q->f[i].m[j]);
+            }
+            printf("\n\n\n\n\n\n");
         }
-        printf("\n\n\n\n\n\n");
+    }
+    else{
+        printf("O código de cliente que inseriu não é válido\n");
     }
 }
 
 
 void imprimeQ8(Q8 q, int us, int op){
-    printf("No intervalo de meses entre %d e %d:\nForam feitas %d vendas e faturou-se %f euros\n", us,op,q->v,q->f);
+    if(q->v != -1) printf("No intervalo de meses entre %d e %d:\nForam feitas %d vendas e faturou-se %f euros\n", us,op,q->v,q->f);
+    else printf("Os meses que inseriu não são válidos\n");
 }
 
 void imprimeQ9(Q9 q, int fil){
-    int i, j;
-    printf("Na filial %d:\n", fil);
-    printf("Em modo N:          Em modo P:\n");
-    for (i = 0 , j = 0; i < q->sizeN || j< q->sizeP; i++,j++)
-    {
-        printf("%s               %s\n",q->n[i]?q->n[i]:"    ", q->p[j]?q->p[i]:"    ");
-    }
+    if (q->sizeN != -1){
+    
+        int i, j;
+        printf("Na filial %d:\n", fil);
+        printf("Em modo N:          Em modo P:\n");
+        for (i = 0 , j = 0; i < q->sizeN || j< q->sizeP; i++,j++)
+        {
+            printf("%s               %s\n",q->n[i]?q->n[i]:"    ", q->p[j]?q->p[i]:"    ");
+        }
 
-    printf("\n\nTotal em N: %d\n", q->sizeN );
-    printf("Total em P: %d\n\n", q->sizeP );
+        printf("\n\nTotal em N: %d\n", q->sizeN );
+        printf("Total em P: %d\n\n", q->sizeP );
+    }
+    else{
+        printf("Ou a filial inserida ou o código de produto estão errados\n");
+    }   
 }
 
 void imprimeQ10(Q12 q, int mes){
@@ -98,25 +119,30 @@ void imprimeQ10(Q12 q, int mes){
             printf("%s  %d\n",q->arr[i].pid, q->arr[i].qnt );
         }
     }
-    else printf("O cliente não realizou compras nesse mes\n");
+    if (q->tam == -1) printf("O cliente ou més inserido não são válidos\n");
+
+    else printf("O cliente não realizou compras nesse mes \n");
 }
 
 
 void imprimeQ11(Q11 q){
     for (int i = 0; i < 3; i++)
     {
-        printf("Na filial %d:",i );
+        printf("\n\n\nNa filial %d:\n",i+1 );
         for (int j = 0; j < q->f[i].size; j++){
             printf("%s  QNT:%d   nºclientes:%d\n", q->f[i].qts[j].pid, q->f[i].qts[j].quant, q->f[i].qts[j].clientes);
         }
     }
 }
 void imprimeQ12(Q12 q, int lim){
-    printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", lim);
-    for (int i = 0; i < lim; ++i)
-    {
-        printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
+    if(q->tam != -1){
+        printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", lim);
+        for (int i = 0; i < lim; ++i)
+        {
+            printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
+        }
     }
+    else printf("O codigo do cliente introduzido não é válido\n");
 }
 
 
@@ -257,10 +283,8 @@ void interpertador(){
                     scanf("%d", &z);
                     printf("Insira um mês (1 a 12):\n");
                     scanf("%d", &x);
-                    if (z< x){
-                        imprimeQ8(getSalesAndProfif(sgv,z,x),z,x);
-                    }
-                    else printf("Intervalo não valido\n");
+                    imprimeQ8(getSalesAndProfif(sgv,z,x),z,x);
+
                 }
                 else printf("Leia os ficheiros primeiro!\n"); 
                 break;
@@ -272,10 +296,8 @@ void interpertador(){
                     scanf("%s", c);
                     printf("Insira uma filial (1 a 3):\n");
                     scanf("%d", &z);
-                    if (1<= z && z <=3){
-                        imprimeQ9(getProductBuyers(sgv, c, z),z);
-                    }
-                    else printf("Filial ou Produto não valido\n");
+                    imprimeQ9(getProductBuyers(sgv, c, z),z);
+                    
 
                 }
                 else printf("Leia os ficheiros primeiro!\n"); 
@@ -288,10 +310,7 @@ void interpertador(){
                     scanf("%s", c);
                     printf("Insira um mês (1 a 12):\n");
                     scanf("%d", &x);
-                    if (1<= x && x <=12){
-                        imprimeQ10(getClientFavouriteProducts(sgv, c, x),x);
-                    }
-                    else printf("Mes invalido\n");
+                    imprimeQ10(getClientFavouriteProducts(sgv, c, x),x);
                 }
                 else printf("Leia os ficheiros primeiro!\n"); 
                 break;
@@ -314,10 +333,7 @@ void interpertador(){
                     scanf("%s", c);
                     printf("Insira um limite :\n");
                     scanf("%d", &x);
-                    if (1<= x && x <=12){
-                        imprimeQ12(getClientTopProfitProducts(sgv, c ,x ),x);
-                    }
-                    else printf("Intervalo não valido\n");
+                    imprimeQ12(getClientTopProfitProducts(sgv, c ,x ),x);
                 }
                 else printf("Leia os ficheiros primeiro!\n"); 
                 break;
