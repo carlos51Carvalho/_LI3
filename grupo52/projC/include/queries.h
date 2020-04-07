@@ -50,6 +50,7 @@ typedef struct byfil{
 
 //tamanho 3
 typedef struct q7{
+	int use;
 	BYFil *f; 
 } *Q7;
 
@@ -78,7 +79,8 @@ typedef struct q9{
 	char** p;
 }*Q9;
 
-
+ 
+ /////////////////////////////////////////
 // Estrutura Querie 11
 typedef struct qt{
 	int clientes;
@@ -97,7 +99,7 @@ typedef struct q11{
 
 //////////////////////////////////////////
 
-// Estrutura Querie 12
+// Estrutura Querie 10 e 12
 typedef struct spentonP{
 	char *pid;
 	double spent;

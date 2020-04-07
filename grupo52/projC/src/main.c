@@ -49,12 +49,12 @@ void flush(){
 }
 
 int main(){
-	//interpertador();
+	interpertador();
 
 
 
 
-	
+	/*
 	char buf[10];
 	int op;
 	do{
@@ -124,7 +124,7 @@ int main(){
 	
 
 
-
+*/
 	//p = getProductsSalesAndProfit( sgv, "BR1925", 2, 1);
 	//p = getProductsNeverBought(sgv,1);
 	//p = getClientsOfAllBranches(sgv);
