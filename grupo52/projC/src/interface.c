@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #include "queries.h"
 
 
 
 
-void imprimeQ2(Q245 q, char *op){
+void imprimeQ2(Q245 q, char op){
     if (q->tam != -1){
         for (int i = 0; i < q->tam; i++){
             printf("%s\n",q->p[i]);
         }
-        printf("O numero total de elementps começados pela letra %s é : %d\n", op, q->tam);
+        printf("O numero total de elementps começados pela letra %c é : %d\n", op, q->tam);
     }
-    else printf("O caraer lido não é válido\n");
+    else printf("O caracter lido não é válido\n");
 }
 
 void imprimeQ3(Q3 q, int mes, int op ){
@@ -154,24 +155,216 @@ void imprimeQ13(Q13 q){
 }
 
 
+void prettyprintmenu(){
+	printf("\tEscolha um comando\n"
+               " 1 - Ler os ficheiros (Produtos, Clientes e Vendas)  \n"
+               " 2 - Obter a lista e o no total de produtos começados por uma letra maiuscula \n"
+               " 3 - Obter o numero total de vendas e o total faturado para determinado produto num mes \n"
+               " 4 - Lista ordenada dos códigos dos produtos que ninguém comprou \n"
+               " 5 - Lista ordenada de códigos de clientes que realizaram compras em todas as filiais\n"
+               " 6 - Obter o número de clientes que não realizaram compras e o numero de produtos que ningém comprou\n"
+               " 7 - Criar uma tabela com o numero total de produtos comprados mes a mes divididos por filial\n"
+               " 8 - Determinar o total de vendas registadas e o total faturado num intervalo de meses\n"
+               " 9 - Determinar os codigos dos clientes de uma filial que compraram um produto\n"
+               "10 - Determinar uma lista dos produtos mais comprados num determinado mes por um cliente\n"
+               "11 - Determinar os N produtos mais vendidos durante um ano\n"
+               "12 - Determinar os codigos dos N produtos que um cliente gastou mais dinheiro durante um ano\n"
+               "13 - Apresentar os resultados de leitura dos ficheiros da Opção 1\n\n"
+          );
+}
+
+int alldigits(char* buf){
+	int flag=1;
+	for(int i=0;i<strlen(buf)&&flag;i++){
+		flag=isdigit(buf[i]);
+	}
+	return flag;
+}
+
+int toint(char* buf){
+	if(!alldigits(buf)){
+		if ((buf[0]=='q' || buf[0]=='Q') && buf[1]=='\0')return 0;
+		else return -1;
+	}
+	else return atoi(buf);
+}
+
+void flush(){
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
+
+void getstr(char *text,char *s){
+	printf("%s", text);
+	scanf("%s", s);
+	getchar();//get enter
+}
+
+void getint(char *text,int* i){
+	printf("%s", text);
+	scanf("%d", i);
+	getchar();//get enter
+}
+
 void interpertador(){
-    char opcao;
     SGV sgv = NULL;
     int l = 0;
-    char *us;
+    char us;
     int z,x;
     char c[256];
     char p[256];
     char v[256];
-    char s[256];
-    /*
-    sgv = initSGV();
-    sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
-    //imprimeQ2(getProductsStartedByLetter(sgv,'A'),'A');
-    //imprimeQ3(getProductsSalesAndProfit(sgv,c,z),z,x)
-    imprimeQ7(getProductsBoughtByClient(sgv, "A1231"));
-    imprimeQ12(getClientTopProfitProducts(sgv, "A1231" ,6 ),6);
-*/
+
+    char buf[10];
+	int op;
+	do{
+		flush();
+		prettyprintmenu();
+
+		printf("A sua opção: ");
+		scanf("%10s",buf);
+		getchar();//gets the enter
+
+		op=toint(buf);
+		
+		switch (op){
+			case 0:
+                if(l ==1) distroySGV(sgv);
+				printf("Exiting...\n");
+				exit(0);
+				break;
+
+			case 1:
+				if(l == 0){
+                    sgv = initSGV();
+                    sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
+                    l =1;
+                }
+                else{
+                    distroySGV(sgv);
+                    sgv = initSGV();
+
+					getstr("Insira o file path para ler os Clientes: ",c);
+					getstr("Insira o file path para ler os Produtos: ",p);
+					getstr("Insira o file path para ler as Vendas: ",v);
+
+                    sgv = loadSGVFromFiles(sgv, c, p, v );
+                    l =1;
+                }
+				break;
+
+			case 2:
+				if(l==0)break;
+
+                printf("Insira uma letra maiuscula: ");
+                scanf("%c", &us);
+                getchar();
+
+                imprimeQ2(getProductsStartedByLetter(sgv,toupper(us)),us);
+				break;
+
+			case 3:
+				if(l==0)break;
+
+				getstr("Insira um código de produto: ",c);
+				getint("Insira um mês (1 a 12): ",&z);
+				getint("Deseja o resultado por filial (1) ou o resultado global (2)? ",&x);
+
+                imprimeQ3(getProductsSalesAndProfit(sgv,c,z),z,x);
+				break;
+
+			case 4:
+				if(l==0)break;
+
+				getint("Insira 0 para global, ou um numero entre 1 e 3 por filial: ",&z);
+
+                imprimeQ4(getProductsNeverBought(sgv,z), z);
+				break;
+
+			case 5:
+				if(l==0)break;
+
+                imprimeQ5(getClientsOfAllBranches(sgv));
+				break;
+
+			case 6:
+				if(l==0)break;
+
+                imprimeQ6(getClientsAndProductsNeverBoughtCount(sgv));
+				break;
+
+			case 7:
+				if(l==0)break;
+
+				getstr("Insira um código de cliente: ",c);
+
+                imprimeQ7(getProductsBoughtByClient(sgv, c));
+				break;
+
+			case 8:
+				if(l==0)break;
+
+				getint("Insira um mês (1 a 12) para limite inferior: ",&z);
+				getint("Insira um mês (1 a 12) para limite superior: ",&x);
+
+                imprimeQ8(getSalesAndProfif(sgv,z,x),z,x);
+				break;
+
+			case 9:
+				if(l==0)break;
+
+				getstr("Insira um código de produto ",c);
+                getint("Insira uma filial (1 a 3): ",&z);
+
+                imprimeQ9(getProductBuyers(sgv, c, z),z);
+				break;
+
+			case 10:
+				if(l==0)break;
+
+				getstr("Insira um código de cliente: ",c);
+                getint("Insira um mês (1 a 12): ",&x);
+	
+	            imprimeQ10(getClientFavouriteProducts(sgv, c, x),x);
+				break;
+
+			case 11:
+				if(l==0)break;
+                    
+                getint("Insira um limite : ",&z);
+                if (z >0){
+                    imprimeQ11(getTopSelledProducts (sgv,z));
+                }
+                else printf("Intervalo não valido\n");
+				break;
+
+			case 12:
+				if(l==0)break;
+
+				getstr("Insira um código de cliente: ",c);
+                getint("Insira um mês (1 a 12): ",&x);
+
+                imprimeQ12(getClientTopProfitProducts(sgv, c ,x ),x);
+				break;
+
+			case 13:
+				if(l==0)break;
+                
+                imprimeQ13(getCurrentFilesInfo(sgv));
+				break;
+
+			default:
+				printf("Erro na escolha de opção\n");
+				break;
+		}
+
+		if (l==0 && op>0) printf("Ficheiros não lidos. Por favor use a opção 1.\n"); 
+
+		printf("\n");
+		printf("press Enter to continue");
+		getchar();//pausa para observar o resultado
+	}while(op);
+
+/*
     do {
         printf("Escolha um comando!\n"
                " 1  - Ler os ficheiros (Produtos, Clientes e Vendas)  \n"
@@ -193,13 +386,13 @@ void interpertador(){
         fgets(s, 256, stdin);
         switch (toupper(s[0])) {
             case '1' : {
-                /*printf("Insira o file path para ler os Clientes:\n");
+                printf("Insira o file path para ler os Clientes:\n");
                 scanf("%s", c);
                 printf("Insira o file path para ler os Produtos:\n");
                 scanf("%s", p);
                 printf("Insira o file path para ler as Vendas:\n");
                 scanf("%s", v);
-                */
+                
                 if(l == 0){
                     sgv = initSGV();
                     sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
@@ -357,6 +550,7 @@ void interpertador(){
             }
         }
     } while (toupper(opcao) != 'Q');
+    */
 }
 
 
