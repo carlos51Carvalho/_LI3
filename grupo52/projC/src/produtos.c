@@ -41,9 +41,7 @@ THash* initTab_p(){
 	for ( i =0; i < HSIZE ; i++){
 		h->tbl[i].size = 0;
 		h->tbl[i].arr = malloc(sizeof(char*));
-		//printf("%d\n",h->tbl[i].size );
 	}
-	//printf("%d\n",i );
 	return h;
 }
 
@@ -61,7 +59,7 @@ void destroiTab_p(THash *h){
 		free((h->tbl[i]).arr);
 	}
 	free(h->tbl);
-	//free(h);                  //-> descobrir o porque de dar double free or corruption (out) -> dá este erro quando a funcao é usada pela THash prod (dunno why)
+	free(h);                
 }
 
 
@@ -81,7 +79,6 @@ void acrecenstaTab_p(THash *h, char *cont){
 	h->tbl[key].arr = realloc(h->tbl[key].arr, (tam +1)*sizeof(char*));
 	h->tbl[key].arr[tam] = strdup(cont);
 	h->tbl[key].size++;
-	//printf("%s\n",h->tbl[key].arr[tam].id);
 	return ;
 }
 
@@ -117,20 +114,14 @@ void quicksortp(char **args, unsigned int len)
     if (len <= 1)
         return;
 
-    // swap a randomly selected value to the last node
-    //swapc(args+((unsigned int)rand() % len), args+len-1);
-
-    // reset the pivot index to zero, then scan
     for (i=0;i<len-1;++i)
     {
         if (strcmp(args[i], args[len-1]) < 0)
             swapp(args+i, args+pvt++);
     }
 
-    // move the pivot value into its place
     swapp(args+pvt, args+len-1);
 
-    // and invoke on the subsequences. does NOT include the pivot-slot
     quicksortp(args, pvt++);
     quicksortp(args+pvt, len - pvt);
 }
@@ -165,9 +156,6 @@ int validaproduto(char *produto){
     */
 int ler_prod (THash *prod,char *filespath, int *p ){
 	FILE *ficheiro = NULL;
-	//char aux[80];
-	//strcpy(aux, filespath); 
-	//strcat(aux,"/Produtos.txt");
 	int pl =0;
 	char *chave=NULL;
 	char linha[128];
@@ -185,7 +173,6 @@ int ler_prod (THash *prod,char *filespath, int *p ){
 			i++;
 		}
 		
-		//prod[i] =strdup(chave);
 		chave = strtok(NULL, "\r\n");
 	}
 
@@ -226,10 +213,10 @@ char* getProduto(THash *p, int key, int i){
     * @return char**                             Retorno da copia
     */
 char** getArrayProd(THash *p, int key){
-	int tam = getArrayProdSize(p,key);
+	int i,tam = getArrayProdSize(p,key);
 	char **res = malloc(tam*sizeof(char*));
 
-	for (int i = 0; i < tam; i++){
+	for (i = 0; i < tam; i++){
 		res[i] = getProduto(p, key, i);
 	}
 

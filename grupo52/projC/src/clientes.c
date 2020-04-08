@@ -62,7 +62,7 @@ void destroiTab(THash *h){
 		free((h->tbl[i]).arr);
 	}
 	free(h->tbl);
-	//free(h);                  //-> descobrir o porque de dar double free or corruption (out) -> dá este erro quando a funcao é usada pela THash prod (dunno why)
+	free(h);                  
 }
 
 
@@ -118,20 +118,14 @@ void quicksortc(char **args, unsigned int len)
     if (len <= 1)
         return;
 
-    // swap a randomly selected value to the last node
-    //swapc(args+((unsigned int)rand() % len), args+len-1);
-
-    // reset the pivot index to zero, then scan
     for (i=0;i<len-1;++i)
     {
         if (strcmp(args[i], args[len-1]) < 0)
             swapc(args+i, args+pvt++);
     }
 
-    // move the pivot value into its place
     swapc(args+pvt, args+len-1);
 
-    // and invoke on the subsequences. does NOT include the pivot-slot
     quicksortc(args, pvt++);
     quicksortc(args+pvt, len - pvt);
 }
@@ -152,9 +146,6 @@ void quicksortc(char **args, unsigned int len)
     */
 int ler_clientes (THash *cliente , char *filespath, int *c){
 	FILE *ficheiro = NULL;
-	//char aux[80];
-	//strcpy(aux, filespath); 
-	//strcat(aux,"/Clientes.txt");
 	char *chave=NULL;
 	char linha[128];
 	int i,cl=0;
@@ -224,10 +215,10 @@ char* getCliente(THash *c, int key, int i){
     * @return char**                             Retorno da copia
     */
 char** getArrayCl(THash *c, int key){
-	int tam = getArrayClSize(c,key);
+	int i,tam = getArrayClSize(c,key);
 	char **res = malloc(tam*sizeof(char*));
 
-	for (int i = 0; i < tam; i++){
+	for ( i = 0; i < tam; i++){
 		res[i] = getCliente(c, key, i);
 	}
 

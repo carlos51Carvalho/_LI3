@@ -17,7 +17,8 @@
     */
 
 void destroiArrayString(char** a, int size){
-	for (int j = 0; j < size; j++){
+	int j;
+	for ( j = 0; j < size; j++){
 		free(a[j]);
 	}
 	free(a);
@@ -42,8 +43,8 @@ void destroiArrayString(char** a, int size){
 
 int existe(char **testado, char *nas_vendas, int Tam)
 {
-     int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
-     int sup = Tam-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
+     int inf = 0;    
+     int sup = Tam-1;
      int meio;
      int r=0;
      while (inf <= sup && r==0)
@@ -75,8 +76,8 @@ int existe(char **testado, char *nas_vendas, int Tam)
 
 int validapreco(char *preco){
 	double p = atof(preco);
-	if (p>0.0 && p<=999.99) return 1;
-	else return -1;
+	if (p>=0.0 && p<=999.99) return 1;
+	else return 0;
 }
 
 
@@ -92,8 +93,8 @@ int validapreco(char *preco){
 
 int valida3campo(char *campo){
 	int uni = atoi(campo);
-	if (uni>0 && uni<=200) return 1;
-	else return -1;
+	if (uni>=0 && uni<=200) return 1;
+	else return 0;
 }
 
    /**
@@ -124,7 +125,7 @@ int valida4campo(char *campo){
 int valida6mes(char *campo){
 	int mes = atoi(campo);
 	if (mes>0 && mes<13) return 1;
-	else return -1;
+	else return 0;
 }
 
    /**
@@ -140,12 +141,12 @@ int valida6mes(char *campo){
 int valida7filial(char *filial){
 	int fil = atoi(filial);
 	if (fil>0 && fil<4) return 1;
-	else return -1;
+	else return 0;
 }
 
 
 
-/**
+   /**
     * @brief Função que le de um ficheiro Vendas
     *
     * Recebendo uma Fat (estrutura Faturação),uma Filial (estrutura Filial) e duas THash(estruturas clientes e produtos) e um file path, lê linha a linha de um determinado ficheiro
@@ -164,12 +165,9 @@ int valida7filial(char *filial){
 
 int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespath, int *v){
 	FILE *ficheiro = NULL;
-	//char a[80];
-	//strcpy(a, filespath); 
-	//strcat(a,"/Vendas_1M.txt");
 	char* part = NULL;
 	char* aux = NULL;
-	int i=0,j, vl =0;
+	int i=0,j,result =0, vl =0;
 	char linha[1024];
 	char *args[15];
 
@@ -179,16 +177,15 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 
 	char ***prds=malloc(26*sizeof(char*));
 	char ***clts=malloc(26*sizeof(char*));
-	for (int i = 0; i < 26; ++i){
+	for (i = 0; i < 26; ++i){
 		prds[i]=getArrayProd(prod,i);
 		clts[i]=getArrayCl(cliente,i);
 	}
-
 	while(fgets(linha,sizeof(linha), ficheiro)){
 		vl++;
 		aux = strtok(linha, "\r\n");
 	
-		//ler para cenas
+		/*ler para as estruturas*/
 		for (part = strtok(aux, " "), j = 0; part != NULL ; part = strtok(NULL, " "),j++){
 			args[j] = strdup(part);
 		}
@@ -206,11 +203,9 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 			&& valida6mes(args[5]) 
 			&& valida7filial(args[6])){
 			
-			//acrescentaV(v,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
 			acrescentaFat(fat,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
 			acrescentaFil(fil,args[0],atof(args[1]),atoi(args[2]),args[3][0],args[4],atoi(args[5]),atoi(args[6]));
-			//acrecenstaUsado(prod, atoi(args[6]));
-			i++;
+			result++;
 		}
 		for(j = 0 ; j< 7 ; j++){
 			free(args[j]);
@@ -218,13 +213,13 @@ int ler_venda(Fat *fat, Filial *fil, THash *cliente, THash *prod, char *filespat
 	}
 	fclose(ficheiro);
 	free(part);
-	for (int i = 0; i < 26; ++i){
+	for (i = 0; i < 26; ++i){
 		destroiArrayString(prds[i],getArrayProdSize(prod,i));
 		destroiArrayString(clts[i],getArrayClSize(cliente,i));
 	}
 	*v = vl;
 	free(prds);
 	free(clts);
-	return i;
+	return result;
 }
 

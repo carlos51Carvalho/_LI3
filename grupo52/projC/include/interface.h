@@ -2,57 +2,48 @@
 #define _INTERFACE_
 
 
-//Estrutura Querie 3
+/*Estrutura Querie 3*/
 typedef struct q3 *Q3;
 
-////////////////////////////////////////////////
 
-//Estrutura Querie 245
+/*Estrutura Querie 245*/
 
 typedef struct q245 *Q245;
 
-///////////////////////////////////////////////
 
 
-// Estrutura Querie 6
+/*Estrutura Querie 6*/
 
 typedef struct q6 *Q6;
 
-/////////////////////////////////////////////
 
-//Estrutura 7
+/*Estrutura Querie 7*/
 
 typedef struct q7 *Q7;
 
 
-///////////////////////////////////////////
-
-//Estrutura Querie 8
+/*Estrutura Querie 8*/
 
 typedef struct q8 *Q8;
 
-
-///////////////////////////////////////////
  
 
-//Estrutura Querie 9
+/*Estrutura Querie 9*/
 
 typedef struct q9 *Q9;
 
-// Estrutura Querie 11
+/*Estrutura Querie 11*/
 
 typedef struct q11 *Q11;
 
-//////////////////////////////////////////
 
-// Estrutura Querie 12
+/*Estrutura Querie 12*/
 
 typedef struct q12 *Q12;
 
 
-/////////////////////////////////////////
 
-//Estrutura Querie 13
+/*Estrutura Querie 13*/
 
 typedef struct q13 *Q13;
 

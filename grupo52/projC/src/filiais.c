@@ -9,8 +9,8 @@ typedef struct qprd{
 	char *pid;
 	int qN;
 	int qP;
-	double gN;    // gasto em N
-	double gP;    //gasto em P
+	double gN;  
+	double gP;    
 } Qprd ;
 
 
@@ -35,7 +35,7 @@ typedef struct bucketf{
 	Cl *arr;
 } Bucketf ;
 
-//26 (26letras)
+
 typedef struct filial{
 	Bucketf *tbl;
 } Filial;
@@ -45,7 +45,9 @@ int getFilUsed(Filial *f, int k, int ip, int fil){
 }
 
 char* getCLiente(Filial *f, int k, int ip){
-	return f->tbl[k].arr[ip].cid;
+	char *c = malloc(sizeof(f->tbl[k].arr[ip].cid));
+	strcpy(c,f->tbl[k].arr[ip].cid);
+	return c;
 }
 int getSizeArrClient(Filial *f, int k){
 	return f->tbl[k].size;
@@ -125,16 +127,17 @@ void destroiFilial(Filial *f){
 
 
 void acrescenta_cl(Filial *f, char *p){
+	int i,j;
 	int k = hashfil(p);
 	int tam = f->tbl[k].size;
 	f->tbl[k].arr = realloc(f->tbl[k].arr, (tam+1)*sizeof(Cl));
 	f->tbl[k].arr[tam].cid = strdup(p);
 	f->tbl[k].arr[tam].fil = malloc(3*sizeof(Fili));
-	for (int i = 0; i < 3; ++i)
+	for (i = 0; i < 3; ++i)
 	{
 		f->tbl[k].arr[tam].fil[i].used =0;
 		f->tbl[k].arr[tam].fil[i].mes = malloc(12*sizeof(Mesf));
-		for (int j = 0; j < 12 ; j++)
+		for (j = 0; j < 12 ; j++)
 		{
 			f->tbl[k].arr[tam].fil[i].mes[j].size=0;
 			f->tbl[k].arr[tam].fil[i].mes[j].prs = NULL;
@@ -157,8 +160,8 @@ int acrescenta_cls (Filial *f, char **p, int tam ){
 
 int existe_fil(Cl *arr, char *procurado, int Tam)
 {
-     int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
-     int sup = Tam-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
+     int inf = 0;     
+     int sup = Tam-1; 
      int meio;
      int r=-1;
      while (inf <= sup && r==-1)
@@ -180,8 +183,8 @@ int existe_fil(Cl *arr, char *procurado, int Tam)
 
 int existe_prod(Qprd *arr, char *procurado, int Tam)
 {
-	int r=-1;
-     for (int i = 0; i < Tam && r == -1; i++){
+	int i,r=-1;
+     for (i = 0; i < Tam && r == -1; i++){
      	if (strcmp(arr[i].pid, procurado)==0){
      		r=i;
      	}
@@ -241,12 +244,12 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 }
 
 char** ClientsOfAllBranches (Filial *f, int *tam){
-	int count =0;
+	int i,j,count =0;
 	char **c = NULL;
-	for(int i=0; i<26; i++)
+	for(i=0; i<26; i++)
 	{
 		int t= f->tbl[i].size;
-		for(int j=0; j<t;j++)
+		for(j=0; j<t;j++)
 		{
 			if(getFilUsed(f,i,j,0)==1 && getFilUsed(f,i,j,1)==1 && getFilUsed(f,i,j,2)==1){
 				c = realloc (c,(count+1) *sizeof (char*));
@@ -260,10 +263,10 @@ char** ClientsOfAllBranches (Filial *f, int *tam){
 }
 
 int ClientesSemCompras (Filial *f){
-	int count =0;
-	for(int i=0;i<26;i++){
-		int t = f->tbl[i].size;
-		for(int j =0; j<t; j++){
+	int i,j,t,count =0;
+	for(i=0;i<26;i++){
+		t = f->tbl[i].size;
+		for(j =0; j<t; j++){
 			if(getFilUsed(f,i,j,0)==0 && getFilUsed(f,i,j,1)==0 && getFilUsed(f,i,j,2)==0) count++;
 		}
 	}
@@ -274,12 +277,12 @@ int ClientesSemCompras (Filial *f){
 
 
 int QuantidadesUmClientePorMes(Filial *f, char *clienteID ,int fil, int mes){
-	int k = hashfil(clienteID);
+	int i, k = hashfil(clienteID);
 	int r = existe_fil(getArrByLetter(f,k), clienteID, getSizeArrClient(f,k));
 	int result =0;
 
 	if (r >= 0){
-		for (int i = 0; i < getSizeQprd(f,k,r,fil,mes); i++)
+		for (i = 0; i < getSizeQprd(f,k,r,fil,mes); i++)
 		{
 			result += getQuantN(f,k,r,fil,mes,i) + getQuantP(f,k,r,fil,mes,i);
 		}
