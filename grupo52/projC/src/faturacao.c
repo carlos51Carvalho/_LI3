@@ -12,7 +12,7 @@ typedef struct mes{
 	int vP;
 } Mes ;
 
-// mes size = 12
+/* Mes size = 12 */
 typedef struct fil{
 	int used ;
 	Mes *mes;
@@ -24,7 +24,7 @@ typedef struct prd{
 	Fil *fil;
 } Prd;
 
-//void == Fil arr[3] 
+
 typedef struct bucketv{
 	int size;
 	Prd *arr;
@@ -236,16 +236,17 @@ void destroiFat(Fat *f){
     *
     */
 void acrescenta_prod(Fat *f, char *p){
+	int i,j;
 	int k = hashfat(p);
 	int tam = f->tbl[k].size;
 	f->tbl[k].arr = realloc(f->tbl[k].arr, (tam+1)*sizeof(Prd));
 	f->tbl[k].arr[tam].pid = strdup(p);
 	f->tbl[k].arr[tam].fil = malloc(3*sizeof(Fil));
-	for (int i = 0; i < 3; ++i)
+	for (i = 0; i < 3; ++i)
 	{
 		f->tbl[k].arr[tam].fil[i].used = 0;
 		f->tbl[k].arr[tam].fil[i].mes = malloc(12*sizeof(Mes));
-		for (int j = 0; j < 12; j++)
+		for (j = 0; j < 12; j++)
 		{
 			f->tbl[k].arr[tam].fil[i].mes[j].fN =0;
 			f->tbl[k].arr[tam].fil[i].mes[j].fP =0;
@@ -290,8 +291,8 @@ int acrescenta_prods (Fat *f, char **p, int tam ){
     */
 int existe_fat(Prd *arr, char *procurado, int Tam)
 {
-     int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
-     int sup = Tam-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
+     int inf = 0;     
+     int sup = Tam-1; 
      int meio;
      int r = -1;
      while (inf <= sup && r==-1)
@@ -356,11 +357,11 @@ void acrescentaFat(Fat *h, char*p, double pr, int q, char e, char *c, int m, int
     * @return char**                             array de strings com os produtos
     */  
 char** neverBoughtFil(Fat *f, int fil, int *tamp){
-	int count =0;
+	int i,j,count =0;
 	char **p = NULL;
 
-	for (int i = 0; i < 26 ; i++){
-		for (int j = 0; j < getSizeArrayP(f, i); j++){
+	for (i = 0; i < 26 ; i++){
+		for (j = 0; j < getSizeArrayP(f, i); j++){
 			if (getFilialUsed(f,i,j,fil) == 0)
 			{
 				p = realloc (p,(count+1) *sizeof (char*));
@@ -383,11 +384,11 @@ char** neverBoughtFil(Fat *f, int fil, int *tamp){
     * @return char**                             array de strings com os produtos
     */  
 char** neverBoughtAllFil(Fat *f, int *tamp){
-	int count =0;
+	int i,j,count =0;
 	char **p = NULL;
 
-	for (int i = 0; i < 26 ; i++){
-		for (int j = 0; j < getSizeArrayP(f, i); j++){
+	for (i = 0; i < 26 ; i++){
+		for (j = 0; j < getSizeArrayP(f, i); j++){
 			if (getFilialUsed(f,i,j,0) == 0 && getFilialUsed(f,i,j,1) == 0  && getFilialUsed(f,i,j,2) == 0)
 			{
 				p = realloc (p,(count+1) *sizeof (char*));
@@ -410,10 +411,10 @@ char** neverBoughtAllFil(Fat *f, int *tamp){
     * @return int                                Numero de produtos nunca comprados
     */  
 int ProdutosNaoComprados (Fat *f){
-	int count=0;
-	for(int i=0;i<26;i++){
-		int t=f->tbl[i].size;
-		for(int j=0;j<t;j++){
+	int i,j,t,count=0;
+	for(i=0;i<26;i++){
+		t = f->tbl[i].size;
+		for(j=0;j<t;j++){
 			if(getFilialUsed(f,i,j,0) == 0 && getFilialUsed(f,i,j,1) == 0 && getFilialUsed(f,i,j,2) == 0) count ++;
 		}
 	}
@@ -434,17 +435,17 @@ int ProdutosNaoComprados (Fat *f){
     *
     */ 
 void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *result2){
-	int count=0;
+	int i,j,fil,m,t,count=0;
 	double count2 = 0;
-	for(int i =0; i<26; i++){
-		int t = f->tbl[i].size;
+	for(i =0; i<26; i++){
+		t = f->tbl[i].size;
 		
-		for(int j= 0; j<t; j++){
+		for(j= 0; j<t; j++){
 			
-			for(int fil =0; fil<3; fil++){
+			for(fil =0; fil<3; fil++){
 				if (getFilialUsed(f,i,j,fil) == 1){
 					
-					for(int m =m1; m<m2; m++){ 
+					for( m =m1; m<m2; m++){ 
 						count2 += getFaturacaoP(f,i,j,m,fil) + getFaturacaoN(f,i,j,m,fil);
 						count += getVendasP(f,i,j,m,fil) + getVendasN(f,i,j,m,fil);
 					}

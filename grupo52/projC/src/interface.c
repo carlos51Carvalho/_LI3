@@ -9,8 +9,9 @@
 
 
 void imprimeQ2(Q245 q, char op){
+    int i;
     if (q->tam != -1){
-        for (int i = 0; i < q->tam; i++){
+        for ( i = 0; i < q->tam; i++){
             printf("%s\n",q->p[i]);
         }
         printf("O numero total de elementps começados pela letra %c é : %d\n", op, q->tam);
@@ -46,7 +47,8 @@ void imprimeQ3(Q3 q, int mes, int op ){
 }
 
 void imprimeQ4(Q245 q, int f){
-    for (int i = 0; i < q->tam; i++)
+    int i;
+    for ( i = 0; i < q->tam; i++)
     {
         printf("%s\n",q->p[i]);
     }
@@ -57,7 +59,8 @@ void imprimeQ4(Q245 q, int f){
 }
 
 void imprimeQ5(Q245 q){
-    for (int i = 0; i < q->tam; i++)
+    int i;
+    for (i = 0; i < q->tam; i++)
     {
         printf("%s\n",q->p[i]);
     }
@@ -70,12 +73,13 @@ void imprimeQ6(Q6 q){
 
 
 void imprimeQ7(Q7 q){
+    int i,j;
     if (q->use != -1){
         printf("          MES :   1         2         3         4         5         6         7         8         9        10        11        12 \n\n\n\n");
-        for (int i = 0; i < 3; i++)
+        for (i = 0; i < 3; i++)
         {
             printf("FILIAL %d:", i+1);
-            for (int j = 0; j < 12; j++)
+            for ( j = 0; j < 12; j++)
             {
                 printf("      %4d", q->f[i].m[j]);
             }
@@ -101,7 +105,7 @@ void imprimeQ9(Q9 q, int fil){
         printf("Em modo N:          Em modo P:\n");
         for (i = 0 , j = 0; i < q->sizeN || j< q->sizeP; i++,j++)
         {
-            printf("%s               %s\n",q->n[i]?q->n[i]:"    ", q->p[j]?q->p[i]:"    ");
+            printf("%s               %s\n",i < q->sizeN?q->n[i]:"    ", j <q->sizeP?q->p[i]:"    ");
         }
 
         printf("\n\nTotal em N: %d\n", q->sizeN );
@@ -114,8 +118,9 @@ void imprimeQ9(Q9 q, int fil){
 
 void imprimeQ10(Q12 q, int mes){
     if(q->tam > 0){
+        int i;
         printf("A lista de produtos que o cliente mais comprou e respetivas quantidades para o mês %d são:\n", mes);
-        for (int i = 0; i < q->tam; ++i)
+        for (i = 0; i < q->tam; ++i)
         {
             printf("%s  %d\n",q->arr[i].pid, q->arr[i].qnt );
         }
@@ -127,18 +132,20 @@ void imprimeQ10(Q12 q, int mes){
 
 
 void imprimeQ11(Q11 q){
-    for (int i = 0; i < 3; i++)
+    int i,j;
+    for ( i = 0; i < 3; i++)
     {
         printf("\n\n\nNa filial %d:\n",i+1 );
-        for (int j = 0; j < q->f[i].size; j++){
+        for ( j = 0; j < q->f[i].size; j++){
             printf("%s  QNT:%d   nºclientes:%d\n", q->f[i].qts[j].pid, q->f[i].qts[j].quant, q->f[i].qts[j].clientes);
         }
     }
 }
 void imprimeQ12(Q12 q, int lim){
     if(q->tam != -1){
+        int i;
         printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", lim);
-        for (int i = 0; i < lim; ++i)
+        for (i = 0; i < lim; ++i)
         {
             printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
         }
@@ -174,8 +181,8 @@ void prettyprintmenu(){
 }
 
 int alldigits(char* buf){
-	int flag=1;
-	for(int i=0;i<strlen(buf)&&flag;i++){
+	int i,flag=1;
+	for( i=0;i<strlen(buf)&&flag;i++){
 		flag=isdigit(buf[i]);
 	}
 	return flag;
@@ -196,13 +203,13 @@ void flush(){
 void getstr(char *text,char *s){
 	printf("%s", text);
 	scanf("%s", s);
-	getchar();//get enter
+	getchar();
 }
 
 void getint(char *text,int* i){
 	printf("%s", text);
 	scanf("%d", i);
-	getchar();//get enter
+	getchar();
 }
 
 void interpertador(){
@@ -222,7 +229,7 @@ void interpertador(){
 
 		printf("A sua opção: ");
 		scanf("%10s",buf);
-		getchar();//gets the enter
+		getchar();
 
 		op=toint(buf);
 		
@@ -361,7 +368,7 @@ void interpertador(){
 
 		printf("\n");
 		printf("press Enter to continue");
-		getchar();//pausa para observar o resultado
+		getchar();
 	}while(op);
 
 /*

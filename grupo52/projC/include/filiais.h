@@ -12,7 +12,6 @@ typedef struct cl Cl;
 
 typedef struct bucketf Bucketf ;
 
-//26 (26letras)
 typedef struct filial Filial;
 
 Filial* initFilial();
