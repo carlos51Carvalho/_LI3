@@ -1,4 +1,4 @@
-## source do makefile -> https://www.youtube.com/watch?v=Wt6KGlMkLz0
+## baseado no video de explicação de makefile -> https://www.youtube.com/watch?v=Wt6KGlMkLz0
 
 TARGET = projeto
 
@@ -21,6 +21,8 @@ $(BIN)/$(TARGET): $(OBJECT)
 ## Compile
 $(BIN)/%.o: $(SRC)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+program: $(BIN)/$(TARGET)
 
 
 clean:
