@@ -161,7 +161,15 @@ Q13 getCurrentFilesInfo(SGV sgv);
 char* getReadFile(char *filePath);
 
 
-
+void destroiQ245(Q245);
+void destroiQ3(Q3);
+void destroiQ6(Q6);
+void destroiQ7(Q7);
+void destroiQ8(Q8);
+void destroiQ9(Q9);
+void destroiQ12(Q12);
+void destroiQ11(Q11);
+void destroiQ13(Q13);
 
 
 

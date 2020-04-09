@@ -232,6 +232,16 @@ void getint(char *text,int* i){
 }
 
 void interpertador(){
+	Q245 q245=NULL;
+	Q3 q3=NULL;
+	Q6 q6=NULL;
+	Q7 q7=NULL;
+	Q8 q8=NULL;
+	Q9 q9=NULL;
+	Q12 q1012=NULL;
+	Q11 q11=NULL;
+	Q13 q13=NULL;
+
     SGV sgv = NULL;
     int l = 0;
     char us;
@@ -240,6 +250,7 @@ void interpertador(){
     char p[256];
     char v[256];
 
+    char enter;
     char buf[10];
 	int op;
 	do{
@@ -285,7 +296,10 @@ void interpertador(){
                 scanf("%c", &us);
                 getchar();
 
-                imprimeQ2(getProductsStartedByLetter(sgv,toupper(us)),us);
+                q245=getProductsStartedByLetter(sgv,toupper(us));
+                imprimeQ2(q245,us);
+                destroiQ245(q245);
+
 				break;
 
 			case 3:
@@ -294,28 +308,40 @@ void interpertador(){
 				getstr("Insira um código de produto: ",c);
 				getint("Insira um mês (1 a 12): ",&z);
 				getint("Deseja o resultado por filial (1) ou o resultado global (2)? ",&x);
+				
+				q3=getProductsSalesAndProfit(sgv,c,z);
+                imprimeQ3(q3,z,x);
+                destroiQ3(q3);
 
-                imprimeQ3(getProductsSalesAndProfit(sgv,c,z),z,x);
 				break;
 
 			case 4:
 				if(l==0)break;
 
 				getint("Insira 0 para global, ou um numero entre 1 e 3 por filial: ",&z);
+				
+				q245=getProductsNeverBought(sgv,z);
+                imprimeQ4(q245, z);
+                destroiQ245(q245);
 
-                imprimeQ4(getProductsNeverBought(sgv,z), z);
 				break;
 
 			case 5:
 				if(l==0)break;
 
-                imprimeQ5(getClientsOfAllBranches(sgv));
+				q245=getClientsOfAllBranches(sgv);
+                imprimeQ5(q245);
+                destroiQ245(q245);
+
 				break;
 
 			case 6:
 				if(l==0)break;
 
-                imprimeQ6(getClientsAndProductsNeverBoughtCount(sgv));
+				q6=getClientsAndProductsNeverBoughtCount(sgv);
+                imprimeQ6(q6);
+                destroiQ6(q6);
+
 				break;
 
 			case 7:
@@ -323,7 +349,10 @@ void interpertador(){
 
 				getstr("Insira um código de cliente: ",c);
 
-                imprimeQ7(getProductsBoughtByClient(sgv, c));
+				q7=getProductsBoughtByClient(sgv, c);
+                imprimeQ7(q7);
+                destroiQ7(q7);
+
 				break;
 
 			case 8:
@@ -332,16 +361,21 @@ void interpertador(){
 				getint("Insira um mês (1 a 12) para limite inferior: ",&z);
 				getint("Insira um mês (1 a 12) para limite superior: ",&x);
 
-                imprimeQ8(getSalesAndProfif(sgv,z,x),z,x);
+				q8=getSalesAndProfif(sgv,z,x);
+                imprimeQ8(q8,z,x);
+                destroiQ8(q8);
 				break;
 
 			case 9:
 				if(l==0)break;
 
-				getstr("Insira um código de produto ",c);
+				getstr("Insira um código de produto: ",c);
                 getint("Insira uma filial (1 a 3): ",&z);
 
-                imprimeQ9(getProductBuyers(sgv, c, z),z);
+                q9=getProductBuyers(sgv, c, z);
+                imprimeQ9(q9,z);
+                destroiQ9(q9);
+
 				break;
 
 			case 10:
@@ -349,8 +383,11 @@ void interpertador(){
 
 				getstr("Insira um código de cliente: ",c);
                 getint("Insira um mês (1 a 12): ",&x);
-	
-	            imprimeQ10(getClientFavouriteProducts(sgv, c, x),x);
+				
+				q1012=getClientFavouriteProducts(sgv, c, x);
+	            imprimeQ10(q1012,x);
+	            destroiQ12(q1012);
+
 				break;
 
 			case 11:
@@ -358,9 +395,12 @@ void interpertador(){
                     
                 getint("Insira um limite : ",&z);
                 if (z >0){
-                    imprimeQ11(getTopSelledProducts (sgv,z), z);
+                	q11=getTopSelledProducts(sgv,z);
+                    imprimeQ11(q11, z);
+                    destroiQ11(q11);
                 }
                 else printf("Intervalo não valido\n");
+
 				break;
 
 			case 12:
@@ -369,13 +409,19 @@ void interpertador(){
 				getstr("Insira um código de cliente: ",c);
                 getint("Insira um limite: ",&x);
 
-                imprimeQ12(getClientTopProfitProducts(sgv, c ,x ),x);
+                q1012=getClientTopProfitProducts(sgv,c,x);
+                imprimeQ12(q1012,x);
+                destroiQ12(q1012);
+
 				break;
 
 			case 13:
 				if(l==0)break;
                 
-                imprimeQ13(getCurrentFilesInfo(sgv));
+                q13=getCurrentFilesInfo(sgv);
+                imprimeQ13(q13);
+                destroiQ13(q13);
+
 				break;
 
 			default:
@@ -387,7 +433,10 @@ void interpertador(){
 
 		printf("\n");
 		printf("press Enter to continue");
-		getchar();
+		do{
+			enter=getchar();
+		}while(enter!='\n');
+		
 	}while(op);
 }
 

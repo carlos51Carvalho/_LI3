@@ -152,6 +152,11 @@ Q245 getProductsStartedByLetter(SGV sgv, char letter){
 	return q2;
 }
 
+void destroiQ245(Q245 q){
+	destroiArrayStrings(q->p, q->tam);
+	free(q);
+}
+
 /*	Q3    */
 
 Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
@@ -185,6 +190,10 @@ Q3 getProductsSalesAndProfit( SGV sgv, char *productID, int month){
 	return q3;
 }
 
+
+void destroiQ3(Q3 q){
+	free(q);
+}
 
 
 /*	Q4    */
@@ -234,6 +243,9 @@ Q6 getClientsAndProductsNeverBoughtCount(SGV sgv){
 }
 
 
+void destroiQ6(Q6 q){
+	free(q);
+}
 
 /*	Q7    */
 
@@ -258,9 +270,13 @@ Q7 getProductsBoughtByClient(SGV sgv, char *clientID){
 	return q7;
 } 
 
+void destroiQ7(Q7 q){
+	free(q->f);
+	free(q);
+}
+
+
 /*	Q8    */
-
-
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 	Q8 q8 = malloc(sizeof(struct q8));
 
@@ -283,17 +299,13 @@ Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 }
 
 
-
-
-
-
-
+void destroiQ8(Q8 q){
+	free(q);
+}
 
 
 
 /*	Q9    */
-
-
 Q9 getProductBuyers (SGV sgv, char *productID, int branch){
 
 	Q9 q = malloc (sizeof(struct q9));
@@ -366,14 +378,16 @@ Q9 getProductBuyers (SGV sgv, char *productID, int branch){
 }
 
 
+void destroiQ9(Q9 q){
+	destroiArrayStrings(q->n,q->sizeN);
+	destroiArrayStrings(q->p,q->sizeP);
+	free(q);
+}
 
 
 
 
 /*	Q10    */
-
-
-
 void swapq12(QntNSpent *args , int i1, int i2)
 {
     char *tmp = args[i1].pid;
@@ -400,8 +414,6 @@ void q10sort(QntNSpent *args, int len){
     q10sort(args, pvt++);
     q10sort(args+pvt, len - pvt);
 }
-
-
 
 
 Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month){
@@ -445,17 +457,19 @@ Q12 getClientFavouriteProducts(SGV sgv, char* clientID, int month){
 }
 
 
-
-
-
+void destroiQ12(Q12 q){
+	int i;
+	for (i = 0; i < q->tam; ++i){
+		free(q->arr[i].pid);
+	}
+	free(q->arr);
+	free(q);
+}
 
 
 
 
 /*	Q11    */
-
-
-
 void swapq11(Qt *args , int i1, int i2)
 {
     char *tmp = args[i1].pid;
@@ -495,8 +509,7 @@ Q11 initQ11(){
 	return q;
 }
 
-int existeProd(Qt *arr, char *procurado, int Tam)
-{
+int existeProd(Qt *arr, char *procurado, int Tam){
      int inf = 0;     
      int sup = Tam-1; 
      int meio;
@@ -579,21 +592,24 @@ Q11 getTopSelledProducts (SGV sgv, int limit){
         }
 	}
 
-	for( i= 0; i<3; i++){
+	for(i=0; i<3; i++){
 		q11sort(q->f[i].qts, q->f[i].size);
-
-		/* ->colocar na destroi
-		if (limit< q->f[i].size){
-			for (j = limit; j < q->f[i].size; j++)
-    		{
-    			free(q->f[i].qts[j].pid);
-    		}
-			q->f[i].size = limit;
-		}
-		*/
     }
    
 	return q;
+}
+
+
+void destroiQ11(Q11 q){
+	int i,j;
+	for (i= 0; i< 3; ++i){
+		for(j=0; j<q->f[i].size; j++){
+			free(q->f[i].qts[j].pid);
+		}
+		free(q->f[i].qts);
+	}
+	free(q->f);
+	free(q);
 }
 
 
@@ -601,14 +617,7 @@ Q11 getTopSelledProducts (SGV sgv, int limit){
 
 
 
-
-
-
-
-
-
 /*	Q12    */
-
 Q12 initQ12(){
 	Q12 q12 = malloc(sizeof(struct q12));
 	q12->tam = 0;
@@ -737,3 +746,9 @@ Q13 getCurrentFilesInfo(SGV sgv){
 	return q;
 }
 
+void destroiQ13(Q13 q){
+	free(q->p);
+	free(q->c);
+	free(q->v);
+	free(q);
+}
