@@ -280,12 +280,12 @@ void destroiQ7(Q7 q){
 Q8 getSalesAndProfif(SGV sgv, int minMonth, int maxMonth){
 	Q8 q8 = malloc(sizeof(struct q8));
 
-	if (validames(minMonth) && validames(maxMonth) && minMonth < maxMonth){
+	if (validames(minMonth) && validames(maxMonth) && minMonth <= maxMonth){
 
 		int v=0;
 		double f=0;
 
-		FaturacaoeVendasIntervalo(sgv->fat,minMonth, maxMonth, &v, &f);
+		FaturacaoeVendasIntervalo(sgv->fat,minMonth-1, maxMonth-1, &v, &f);
 
 		q8->v=v;
 		q8->f=f;
