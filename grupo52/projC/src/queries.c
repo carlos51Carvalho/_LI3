@@ -123,12 +123,9 @@ SGV loadSGVFromFiles(SGV sgv, char *clientsFilePath, char *productsFilePath, cha
 		destroiArrayStrings(cl,clsize);
 	}
 	sgv->vv = ler_venda( sgv->fat, sgv->fil, sgv->clientes, sgv->produtos, salesFilePath, &v);
-	sgv->p = malloc(sizeof(*productsFilePath));
-	strcpy(sgv->p,productsFilePath);
-	sgv->c = malloc(sizeof(*clientsFilePath));
-	strcpy(sgv->c, clientsFilePath);
-	sgv->v = malloc(sizeof(*salesFilePath));
-	strcpy(sgv->v, salesFilePath);
+	sgv->p = strdup(productsFilePath);
+	sgv->c = strdup(clientsFilePath);
+	sgv->v = strdup(salesFilePath);
 	sgv->pl = p;
 	sgv->cl = c;
 	sgv->vl = v;
@@ -580,11 +577,14 @@ Q11 getTopSelledProducts (SGV sgv, int limit){
 
 	for( i= 0; i<3; i++){
 		q11sort(q->f[i].qts, q->f[i].size);
-		for (j = limit; j < q->f[i].size; j++)
-    	{
-    		free(q->f[i].qts[j].pid);
-    	}
-		q->f[i].size = limit;
+
+		if (limit< q->f[i].size){
+			for (j = limit; j < q->f[i].size; j++)
+    		{
+    			free(q->f[i].qts[j].pid);
+    		}
+			q->f[i].size = limit;
+		}
     }
    
 	return q;
@@ -678,7 +678,12 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 				}
 			}
 			q12sort(q12->arr, q12->tam);
-	
+			if (limit< q12->tam){
+				for (j = limit; j < q12->tam; j++){
+    			free(q12->arr[j].pid);
+    			}
+				q12->tam = limit;
+			}
 		}
 	}
 	else{
@@ -686,6 +691,7 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 	}
 	return q12;
 }
+
 
 
 

@@ -11,7 +11,7 @@ SOURCE = $(wildcard $(SRC)/*.c)
 OBJECT = $(patsubst %,$(BIN)/%, $(notdir $(SOURCE:.c=.o)))
 
 CC= gcc
-CFLAGS= -Wall -g -I$(INC) 
+CFLAGS= -Wall -g -I$(INC) -ansi -D_GNU_SOURCE 
 
 
 ## Link

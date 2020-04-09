@@ -57,8 +57,8 @@ void imprimeQ7(Q7 q);
 void imprimeQ8(Q8 q, int us, int op);
 void imprimeQ9(Q9 q, int fil);
 void imprimeQ10(Q12 q, int mes);
-void imprimeQ11(Q11 q);
-void imprimeQ12(Q12 q, int lim);
+void imprimeQ11(Q11 q, int limit);
+void imprimeQ12(Q12 q, int limit);
 void imprimeQ13(Q13 q);
 
 void interpertador();

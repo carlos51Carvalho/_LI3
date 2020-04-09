@@ -125,30 +125,49 @@ void imprimeQ10(Q12 q, int mes){
             printf("%s  %d\n",q->arr[i].pid, q->arr[i].qnt );
         }
     }
-    if (q->tam == -1) printf("O cliente ou més inserido não são válidos\n");
+    else if (q->tam == -1) printf("O cliente ou més inserido não são válidos\n");
 
     else printf("O cliente não realizou compras nesse mes \n");
 }
 
 
-void imprimeQ11(Q11 q){
+void imprimeQ11(Q11 q, int limit){
     int i,j;
+
     for ( i = 0; i < 3; i++)
-    {
-        printf("\n\n\nNa filial %d:\n",i+1 );
-        for ( j = 0; j < q->f[i].size; j++){
-            printf("%s  QNT:%d   nºclientes:%d\n", q->f[i].qts[j].pid, q->f[i].qts[j].quant, q->f[i].qts[j].clientes);
+    { 
+        if (q->f[i].size > limit)   
+        {
+            printf("\n\n\nNa filial %d:\n",i+1 );
+            for ( j = 0; j < limit; j++){
+                printf("%s  QNT:%d   nºclientes:%d\n", q->f[i].qts[j].pid, q->f[i].qts[j].quant, q->f[i].qts[j].clientes);
+            }
+        }
+        else{
+            printf("\n\n\nNa filial %d:\n",i+1 );
+            for ( j = 0; j < q->f[i].size; j++){
+                printf("%s  QNT:%d   nºclientes:%d\n", q->f[i].qts[j].pid, q->f[i].qts[j].quant, q->f[i].qts[j].clientes);
+            }
         }
     }
 }
-void imprimeQ12(Q12 q, int lim){
+
+
+void imprimeQ12(Q12 q, int limit){
     if(q->tam != -1){
         int i;
-        printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", lim);
-        for (i = 0; i < lim; ++i)
-        {
-            printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
+        if(q->tam > limit){
+            printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", limit);
+            for (i = 0; i < q->tam; ++i){
+                printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
+            }
         }
+        else{
+            printf("O limite inserido (%d) supera o tamanho porém os produtos em que o cliente mais gastou dinheiro durante um ano foram: \n", q->tam);
+            for (i = 0; i < q->tam; ++i){
+                printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
+            }
+        } 
     }
     else printf("O codigo do cliente introduzido não é válido\n");
 }
@@ -339,7 +358,7 @@ void interpertador(){
                     
                 getint("Insira um limite : ",&z);
                 if (z >0){
-                    imprimeQ11(getTopSelledProducts (sgv,z));
+                    imprimeQ11(getTopSelledProducts (sgv,z), z);
                 }
                 else printf("Intervalo não valido\n");
 				break;
@@ -370,194 +389,6 @@ void interpertador(){
 		printf("press Enter to continue");
 		getchar();
 	}while(op);
-
-/*
-    do {
-        printf("Escolha um comando!\n"
-               " 1  - Ler os ficheiros (Produtos, Clientes e Vendas)  \n"
-               " 2  - Obter a lista e o no total de produtos começados por uma letra maiuscula \n"
-               " 3  - Obter o numero total de vendas e o total faturado para determinado produto num mes \n"
-               " 4  - Lista ordenada dos códigos dos produtos que ninguém comprou \n"
-               " 5  - Lista ordenada de códigos de clientes que realizaram compras em todas as filiais\n"
-               " 6  - Obter o número de clientes que não realizaram compras e o numero de produtos que ningém comprou\n"
-               " 7  - Criar uma tabela com o numero total de produtos comprados mes a mes divididos por filial\n"
-               " 8  - Determinar o total de vendas registadas e o total faturado num intervalo de meses\n"
-               " 9  - Determinar os codigos dos clientes de uma filial que compraram um produto\n"
-               " A - Determinar uma lista dos produtos mais comprados num determinado mes por um cliente\n"
-               " B - Determinar os N produtos mais vendidos durante um ano\n"
-               " C - Determinar os codigos dos N produtos que um cliente gastou mais dinheiro durante um ano\n"
-               " D - Apresentar os resultados de leitura dos ficheiros da Opção 1\n\n"
-               " COMANDO >");
-
-
-        fgets(s, 256, stdin);
-        switch (toupper(s[0])) {
-            case '1' : {
-                printf("Insira o file path para ler os Clientes:\n");
-                scanf("%s", c);
-                printf("Insira o file path para ler os Produtos:\n");
-                scanf("%s", p);
-                printf("Insira o file path para ler as Vendas:\n");
-                scanf("%s", v);
-                
-                if(l == 0){
-                    sgv = initSGV();
-                    sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
-                    l =1;
-                }
-                else{
-                    distroySGV(sgv);
-                    sgv = initSGV();
-                    printf("Insira o file path para ler os Clientes:\n");
-                    scanf("%s", c);
-                    printf("Insira o file path para ler os Produtos:\n");
-                    scanf("%s", p);
-                    printf("Insira o file path para ler as Vendas:\n");
-                    scanf("%s", v);
-                    sgv = loadSGVFromFiles(sgv, c, p, v );
-                    l =1;
-                }
-                break;
-            }
-
-            case '2': {
-                if(l ==1){
-                    printf("Insira uma letra maiuscula:\n");
-                    scanf("%c", us);
-                    imprimeQ2(getProductsStartedByLetter(sgv,toupper(us)),us);
-                }
-                else printf("Leia os ficheiros primeiro!\n");
-                break;
-            }
-
-            case '3': {
-                if(l ==1){
-                    printf("Insira um código de produto:\n");
-                    scanf("%s", c);
-                    printf("Insira um mês (1 a 12):\n");
-                    scanf("%d", &z);
-                    printf("Deseja o resultado por filial (1) ou o resultado global (2)\n");
-                    scanf("%d",&x );
-                    imprimeQ3(getProductsSalesAndProfit(sgv,c,z),z,x);
-                }
-                else printf("Leia os ficheiros primeiro!\n");
-               
-                break;
-            }
-
-            case '4': {
-                 if(l ==1){
-                    printf("Insira 0 para global, ou um numero entre 1 e 3 por filial\n");
-                    scanf("%d", &z);
-                    imprimeQ4(getProductsNeverBought(sgv,z), z);
-                }
-                else printf("Leia os ficheiros primeiro!\n");
-                break;
-            }
-            case '5': {
-                if(l ==1){
-                imprimeQ5(getClientsOfAllBranches(sgv));
-                }
-                else printf("Leia os ficheiros primeiro!\n");
-                break;
-            }
-            case '6': {
-                if(l ==1){
-                imprimeQ6(getClientsAndProductsNeverBoughtCount(sgv));
-                }
-                else printf("Leia os ficheiros primeiro!\n");
-                break;
-            }
-            case '7': {
-                if(l ==1){
-                    printf("Insira um código de cliente:\n");
-                    scanf("%s", c);
-                    imprimeQ7(getProductsBoughtByClient(sgv, c));
-                }
-                else printf("Leia os ficheiros primeiro!\n");
-                break;
-            }
-            case '8': {
-                if(l ==1){
-                    printf("Insira um mês (1 a 12):\n");
-                    scanf("%d", &z);
-                    printf("Insira um mês (1 a 12):\n");
-                    scanf("%d", &x);
-                    imprimeQ8(getSalesAndProfif(sgv,z,x),z,x);
-
-                }
-                else printf("Leia os ficheiros primeiro!\n"); 
-                break;
-            }
-
-            case '9': {
-                if(l ==1){
-                    printf("Insira um código de produto:\n");
-                    scanf("%s", c);
-                    printf("Insira uma filial (1 a 3):\n");
-                    scanf("%d", &z);
-                    imprimeQ9(getProductBuyers(sgv, c, z),z);
-                    
-
-                }
-                else printf("Leia os ficheiros primeiro!\n"); 
-                break;
-            }
-        
-            case 'A': {
-                if(l ==1){
-                    printf("Insira um código de cliente!\n");
-                    scanf("%s", c);
-                    printf("Insira um mês (1 a 12):\n");
-                    scanf("%d", &x);
-                    imprimeQ10(getClientFavouriteProducts(sgv, c, x),x);
-                }
-                else printf("Leia os ficheiros primeiro!\n"); 
-                break;
-            }
-            case 'B': {
-                if(l ==1){
-                    printf("Insira um limite :\n");
-                    scanf("%d", &z);
-                    if (z >0){
-                        imprimeQ11(getTopSelledProducts (sgv,z));
-                    }
-                    else printf("Intervalo não valido\n");
-                }
-                else printf("Leia os ficheiros primeiro!\n"); 
-                break;
-            }
-            case 'C': {
-                if(l ==1){
-                    printf("Insira um código de cliente\n");
-                    scanf("%s", c);
-                    printf("Insira um limite :\n");
-                    scanf("%d", &x);
-                    imprimeQ12(getClientTopProfitProducts(sgv, c ,x ),x);
-                }
-                else printf("Leia os ficheiros primeiro!\n"); 
-                break;
-            }
-            case 'D': {
-                if(l ==1){
-                    imprimeQ13(getCurrentFilesInfo(sgv));
-                }
-                else printf("Leia os ficheiros primeiro!\n"); 
-                break;
-            }
-
-            
-            case 'Q':
-                if(l ==1) distroySGV(sgv);
-                exit(0);
-
-            default: {
-                printf("Comando Invalido \n");
-                break;
-            }
-        }
-    } while (toupper(opcao) != 'Q');
-    */
 }
 
 

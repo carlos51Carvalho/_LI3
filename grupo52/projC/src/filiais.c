@@ -45,9 +45,7 @@ int getFilUsed(Filial *f, int k, int ip, int fil){
 }
 
 char* getCLiente(Filial *f, int k, int ip){
-	char *c = malloc(sizeof(f->tbl[k].arr[ip].cid));
-	strcpy(c,f->tbl[k].arr[ip].cid);
-	return c;
+	return strdup(f->tbl[k].arr[ip].cid);
 }
 int getSizeArrClient(Filial *f, int k){
 	return f->tbl[k].size;
