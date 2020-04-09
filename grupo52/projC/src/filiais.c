@@ -76,7 +76,7 @@ int getGastoN(Filial *f, int k, int id, int fil, int m, int pid){
 }
 
 char* getOneProd(Filial *f, int k, int id, int fil, int m, int p){
-	return f->tbl[k].arr[id].fil[fil].mes[m].prs[p].pid;
+	return strdup(f->tbl[k].arr[id].fil[fil].mes[m].prs[p].pid);
 }
 
 
@@ -251,7 +251,7 @@ char** ClientsOfAllBranches (Filial *f, int *tam){
 		{
 			if(getFilUsed(f,i,j,0)==1 && getFilUsed(f,i,j,1)==1 && getFilUsed(f,i,j,2)==1){
 				c = realloc (c,(count+1) *sizeof (char*));
-				c[count] = strdup(getCLiente(f,i,j));
+				c[count] = getCLiente(f,i,j);
 				count++;
 			}
 		}

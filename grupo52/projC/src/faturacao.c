@@ -168,7 +168,7 @@ int getFilialUsed(Fat *f, int key, int ip, int fil){
     * @return int                                Retorno do faturado em N
     */  
 char* getProdFat(Fat *f, int key, int ip){
-	return f->tbl[key].arr[ip].pid;
+	return strdup(f->tbl[key].arr[ip].pid);
 }
 
 
@@ -365,7 +365,7 @@ char** neverBoughtFil(Fat *f, int fil, int *tamp){
 			if (getFilialUsed(f,i,j,fil) == 0)
 			{
 				p = realloc (p,(count+1) *sizeof (char*));
-				p[count] = strdup(getProdFat(f,i,j));
+				p[count] = getProdFat(f,i,j);
 				count++;
 			}
 		}
@@ -392,7 +392,7 @@ char** neverBoughtAllFil(Fat *f, int *tamp){
 			if (getFilialUsed(f,i,j,0) == 0 && getFilialUsed(f,i,j,1) == 0  && getFilialUsed(f,i,j,2) == 0)
 			{
 				p = realloc (p,(count+1) *sizeof (char*));
-				p[count] = strdup(getProdFat(f,i,j));
+				p[count] = getProdFat(f,i,j);
 				count++;
 			}
 		}
@@ -457,8 +457,3 @@ void FaturacaoeVendasIntervalo (Fat *f, int m1, int m2, int *result, double *res
 	*result=count;
 	*result2=count2;
 }
-
-
-
-
-

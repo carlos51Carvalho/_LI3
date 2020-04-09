@@ -55,7 +55,7 @@ void imprimeQ4(Q245 q, int f){
     if(f <1 || f >3){
         printf("O numero total global de produtos que ninguem comprou é : %d\n",q->tam);
     }
-    else printf("O numero total de produtos que ninguem comprou na filial %c é : %d\n",f,q->tam);
+    else printf("O numero total de produtos que ninguem comprou na filial %d é : %d\n",f,q->tam);
 }
 
 void imprimeQ5(Q245 q){
@@ -158,12 +158,12 @@ void imprimeQ12(Q12 q, int limit){
         int i;
         if(q->tam > limit){
             printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", limit);
-            for (i = 0; i < q->tam; ++i){
+            for (i = 0; i < limit; ++i){
                 printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
             }
         }
         else{
-            printf("O limite inserido (%d) supera o tamanho porém os produtos em que o cliente mais gastou dinheiro durante um ano foram: \n", q->tam);
+            printf("O limite inserido (%d) supera o tamanho porém os produtos em que o cliente mais gastou dinheiro durante um ano foram: \n", limit);
             for (i = 0; i < q->tam; ++i){
                 printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
             }
@@ -254,8 +254,8 @@ void interpertador(){
 		
 		switch (op){
 			case 0:
-                if(l ==1) distroySGV(sgv);
 				printf("Exiting...\n");
+                if(l ==1) distroySGV(sgv);
 				exit(0);
 				break;
 
@@ -367,7 +367,7 @@ void interpertador(){
 				if(l==0)break;
 
 				getstr("Insira um código de cliente: ",c);
-                getint("Insira um mês (1 a 12): ",&x);
+                getint("Insira um limite: ",&x);
 
                 imprimeQ12(getClientTopProfitProducts(sgv, c ,x ),x);
 				break;
