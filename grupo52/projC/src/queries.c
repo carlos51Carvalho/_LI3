@@ -576,6 +576,7 @@ void umCliente (SGV sgv, Q11 q, int k, int id){
      				e = existeProd(q->f[i].qts, aux, q->f[i].size);
      				q->f[i].qts[e].clientes++;
      				q->f[i].qts[e].quant += getQuantN(sgv->fil, k, id, i, m, mid) + getQuantP(sgv->fil, k, id, i, m, mid);
+     				free(aux);
      			}
      		}
      	}
@@ -725,9 +726,10 @@ char* getReadFile(char *filePath){
 	char *ant = NULL;
 	char *file = strdup(filePath);
 	for (part = strtok(file, "/"); part != NULL ; part = strtok(NULL, "/")){
-
+		free(ant);
 		ant = strdup(part);
 	}
+	free(file);
 	free(part);
 	return ant;
 }
