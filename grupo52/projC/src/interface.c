@@ -131,6 +131,27 @@ void imprimeQ10(Q12 q, int mes){
 }
 
 
+
+void imprimeQ11(Q11 q, int limit){
+    int i,j;
+
+    if (q->f[0].size > limit && q->f[1].size > limit && q->f[2].size > limit){
+
+        printf("FILIAL 1                                FILIAL 2                                   FILIAL3\n");
+        printf("PRD      QNT     NºClientes             PRD      QNT     NºClientes                PRD      QNT     NºClientes\n\n");
+        for ( j = 0; j < limit; j++){
+                printf("%s  %5d    %2d                     %s  %5d    %2d                        %s  %5d    %2d\n", q->f[0].qts[j].pid, q->f[0].qts[j].quant, q->f[0].qts[j].clientes, q->f[1].qts[j].pid, q->f[1].qts[j].quant, q->f[1].qts[j].clientes, q->f[2].qts[j].pid, q->f[2].qts[j].quant, q->f[2].qts[j].clientes);
+         }
+    }
+    else{
+        printf("FILIAL 1                                FILIAL 2                                   FILIAL3\n");
+        printf("PRD      QNT     NºClientes             PRD      QNT     NºClientes                PRD      QNT     NºClientes\n\n");
+        for ( j = 0; j < q->f[0].size  || j < q->f[1].size || j < q->f[2].size; j++){
+             printf("%s  %5d    %2d                     %s  %5d    %2d                        %s  %5d    %2d\n", q->f[0].qts[j].pid, q->f[0].qts[j].quant, q->f[0].qts[j].clientes, q->f[1].qts[j].pid, q->f[1].qts[j].quant, q->f[1].qts[j].clientes, q->f[2].qts[j].pid, q->f[2].qts[j].quant, q->f[2].qts[j].clientes);
+        }
+    }
+}
+/*
 void imprimeQ11(Q11 q, int limit){
     int i,j;
 
@@ -151,7 +172,7 @@ void imprimeQ11(Q11 q, int limit){
         }
     }
 }
-
+*/
 
 void imprimeQ12(Q12 q, int limit){
     if(q->tam != -1){
