@@ -48,7 +48,10 @@ void distroySGV(SGV sgv){
 	destroiTab(sgv->clientes);
 	destroiFat(sgv->fat);
 	destroiFilial(sgv->fil);
-
+	free(sgv->p);
+	free(sgv->c);
+	free(sgv->v);
+	free(sgv);
 }
 
 void destroiArrayStrings(char** a, int size){
