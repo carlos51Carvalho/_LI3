@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #include "clientes.h"
 #include "faturacao.h"
@@ -9,12 +10,29 @@
 #include "vendas.h"
 
 
+int alldigit(char* buf){
+	int i,flag=1;
+	for( i=0;i<strlen(buf)&&flag;i++){
+		flag=isdigit(buf[i]);
+	}
+	return flag;
+}
 
-   /**
-    * Função que destroi (liberta) um array de strings
-    * @param char **a
-    * @param int size
-    */
+int isfloat(char* campo){
+	int i,flag=1,flagdot=0;
+	for(i=0;i<strlen(campo)&&flag&&flagdot<2;i++){
+		if(campo[i]=='.')flagdot++;
+		else flag=isdigit(campo[i]);
+	}
+	return flag;
+}
+
+
+/**
+ * Função que destroi (liberta) um array de strings
+ * @param char **a
+ * @param int size
+*/
 
 void destroiArrayString(char** a, int size){
 	int j;
@@ -75,9 +93,13 @@ int existe(char **testado, char *nas_vendas, int Tam)
     */
 
 int validapreco(char *preco){
-	double p = atof(preco);
-	if (p>=0.0 && p<=999.99) return 1;
-	else return 0;
+	double p;
+	if(isfloat(preco)){
+		p = atof(preco);
+		if (p>=0.0 && p<=999.99) return 1;
+	}
+	
+	return 0;
 }
 
 
@@ -92,9 +114,13 @@ int validapreco(char *preco){
     */
 
 int valida3campo(char *campo){
-	int uni = atoi(campo);
-	if (uni>=0 && uni<=200) return 1;
-	else return 0;
+	int uni=0;
+	if (alldigit(campo)){
+		uni = atoi(campo);
+		if (uni>=0 && uni<=200) return 1;
+	}
+	
+	return 0;
 }
 
    /**
@@ -123,9 +149,10 @@ int valida4campo(char *campo){
     */
 
 int valida6mes(char *campo){
-	int mes = atoi(campo);
+	int mes;
+	mes = atoi(campo);
 	if (mes>0 && mes<13) return 1;
-	else return 0;
+	return 0;
 }
 
    /**
@@ -139,9 +166,12 @@ int valida6mes(char *campo){
     */
 
 int valida7filial(char *filial){
-	int fil = atoi(filial);
+	int fil;
+	fil = atoi(filial);
 	if (fil>0 && fil<4) return 1;
-	else return 0;
+	
+	return 0;
+
 }
 
 
