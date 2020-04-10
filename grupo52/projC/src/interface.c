@@ -133,23 +133,21 @@ void imprimeQ10(Q12 q, int mes){
 
 
 void imprimeQ11(Q11 q, int limit){
-    int i,j;
+    int j;
 
-    if (q->f[0].size > limit && q->f[1].size > limit && q->f[2].size > limit){
+   	printf("FILIAL 1\t\t\t\t\tFILIAL 2\t\t\t\t\tFILIAL3\n");
+    printf("%5s\t%6s\t%10s\t\t%5s\t%6s\t%10s\t\t%5s\t%6s\t%10s\n","Prod.","Quant.","Nº Cliente","Prod.","Quant.","Nº Cliente","Prod.","Quant.","Nº Cliente");
+    for ( j = 0;j < limit && (j < q->f[0].size || j < q->f[1].size || j < q->f[2].size); j++){
+        if(j < q->f[0].size) printf("%5s\t%6d\t%10d",q->f[0].qts[j].pid, q->f[0].qts[j].quant, q->f[0].qts[j].clientes);
+        else printf("\t\t\t\t");
 
-        printf("FILIAL 1                                FILIAL 2                                   FILIAL3\n");
-        printf("PRD      QNT     NºClientes             PRD      QNT     NºClientes                PRD      QNT     NºClientes\n\n");
-        for ( j = 0; j < limit; j++){
-                printf("%s  %5d    %2d                     %s  %5d    %2d                        %s  %5d    %2d\n", q->f[0].qts[j].pid, q->f[0].qts[j].quant, q->f[0].qts[j].clientes, q->f[1].qts[j].pid, q->f[1].qts[j].quant, q->f[1].qts[j].clientes, q->f[2].qts[j].pid, q->f[2].qts[j].quant, q->f[2].qts[j].clientes);
-         }
+        if(j < q->f[1].size) printf("\t\t%5s\t%6d\t%10d",q->f[1].qts[j].pid, q->f[1].qts[j].quant, q->f[1].qts[j].clientes);
+        else printf("\t\t\t\t\t");
+        
+        if(j < q->f[2].size) printf("\t\t%5s\t%6d\t%10d\n",q->f[2].qts[j].pid, q->f[2].qts[j].quant, q->f[2].qts[j].clientes);
+        else printf("\n");
     }
-    else{
-        printf("FILIAL 1                                FILIAL 2                                   FILIAL3\n");
-        printf("PRD      QNT     NºClientes             PRD      QNT     NºClientes                PRD      QNT     NºClientes\n\n");
-        for ( j = 0; j < q->f[0].size  || j < q->f[1].size || j < q->f[2].size; j++){
-             printf("%s  %5d    %2d                     %s  %5d    %2d                        %s  %5d    %2d\n", q->f[0].qts[j].pid, q->f[0].qts[j].quant, q->f[0].qts[j].clientes, q->f[1].qts[j].pid, q->f[1].qts[j].quant, q->f[1].qts[j].clientes, q->f[2].qts[j].pid, q->f[2].qts[j].quant, q->f[2].qts[j].clientes);
-        }
-    }
+
 }
 /*
 void imprimeQ11(Q11 q, int limit){
