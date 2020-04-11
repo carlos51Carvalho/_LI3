@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -182,7 +183,6 @@ void imprimeQ11(Q11 q, int limit){
 /*
 void imprimeQ11(Q11 q, int limit){
     int i,j;
-
     for ( i = 0; i < 3; i++)
     { 
         if (q->f[i].size > limit)   
@@ -231,7 +231,7 @@ void imprimeQ13(Q13 q){
 
 
 void prettyprintmenu(){
-	printf("\tEscolha um comando\n"
+    printf("\tEscolha um comando\n"
                " 1 - Ler os ficheiros (Produtos, Clientes e Vendas)  \n"
                " 2 - Obter a lista e o no total de produtos começados por uma letra maiuscula \n"
                " 3 - Obter o numero total de vendas e o total faturado para determinado produto num mes \n"
@@ -249,44 +249,44 @@ void prettyprintmenu(){
 }
 
 int alldigits(char* buf){
-	int i,flag=1;
-	for( i=0;i<strlen(buf)&&flag;i++){
-		flag=isdigit(buf[i]);
-	}
-	return flag;
+    int i,flag=1;
+    for( i=0;i<strlen(buf)&&flag;i++){
+        flag=isdigit(buf[i]);
+    }
+    return flag;
 }
 
 int toint(char* buf){
-	if(!alldigits(buf)){
-		if ((buf[0]=='q' || buf[0]=='Q') && buf[1]=='\0')return 0;
-		else return -1;
-	}
-	else return atoi(buf);
+    if(!alldigits(buf)){
+        if ((buf[0]=='q' || buf[0]=='Q') && buf[1]=='\0')return 0;
+        else return -1;
+    }
+    else return atoi(buf);
 }
 
 
 void getstr(char *text,char *s){
-	printf("%s", text);
-	scanf("%s", s);
-	getchar();
+    printf("%s", text);
+    scanf("%s", s);
+    getchar();
 }
 
 void getint(char *text,int* i){
-	printf("%s", text);
-	scanf("%d", i);
-	getchar();
+    printf("%s", text);
+    scanf("%d", i);
+    getchar();
 }
 
 void interpertador(){
-	Q245 q245=NULL;
-	Q3 q3=NULL;
-	Q6 q6=NULL;
-	Q7 q7=NULL;
-	Q8 q8=NULL;
-	Q9 q9=NULL;
-	Q12 q1012=NULL;
-	Q11 q11=NULL;
-	Q13 q13=NULL;
+    Q245 q245=NULL;
+    Q3 q3=NULL;
+    Q6 q6=NULL;
+    Q7 q7=NULL;
+    Q8 q8=NULL;
+    Q9 q9=NULL;
+    Q12 q1012=NULL;
+    Q11 q11=NULL;
+    Q13 q13=NULL;
 
     SGV sgv = NULL;
     int l = 0;
@@ -298,26 +298,26 @@ void interpertador(){
 
     char enter;
     char buf[10];
-	int op;
-	do{
-		flush();
-		prettyprintmenu();
+    int op;
+    do{
+        flush();
+        prettyprintmenu();
 
-		printf("A sua opção: ");
-		scanf("%10s",buf);
-		getchar();
+        printf("A sua opção: ");
+        scanf("%10s",buf);
+        getchar();
 
-		op=toint(buf);
-		
-		switch (op){
-			case 0:
-				printf("Exiting...\n");
+        op=toint(buf);
+        
+        switch (op){
+            case 0:
+                printf("Exiting...\n");
                 if(l ==1) distroySGV(sgv);
-				exit(0);
-				break;
+                exit(0);
+                break;
 
-			case 1:
-				if(l == 0){
+            case 1:
+                if(l == 0){
                     sgv = initSGV();
                     sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
                     l =1;
@@ -326,17 +326,17 @@ void interpertador(){
                     distroySGV(sgv);
                     sgv = initSGV();
 
-					getstr("Insira o file path para ler os Clientes: ",c);
-					getstr("Insira o file path para ler os Produtos: ",p);
-					getstr("Insira o file path para ler as Vendas: ",v);
+                    getstr("Insira o file path para ler os Clientes: ",c);
+                    getstr("Insira o file path para ler os Produtos: ",p);
+                    getstr("Insira o file path para ler as Vendas: ",v);
 
                     sgv = loadSGVFromFiles(sgv, c, p, v );
                     l =1;
                 }
-				break;
+                break;
 
-			case 2:
-				if(l==0)break;
+            case 2:
+                if(l==0)break;
 
                 printf("Insira uma letra maiuscula: ");
                 scanf("%c", &us);
@@ -346,144 +346,142 @@ void interpertador(){
                 imprimeQ2(q245,us);
                 destroiQ245(q245);
 
-				break;
+                break;
 
-			case 3:
-				if(l==0)break;
+            case 3:
+                if(l==0)break;
 
-				getstr("Insira um código de produto: ",c);
-				getint("Insira um mês (1 a 12): ",&z);
-				getint("Deseja o resultado por filial (1) ou o resultado global (2)? ",&x);
-				
-				q3=getProductsSalesAndProfit(sgv,c,z);
+                getstr("Insira um código de produto: ",c);
+                getint("Insira um mês (1 a 12): ",&z);
+                getint("Deseja o resultado por filial (1) ou o resultado global (2)? ",&x);
+                
+                q3=getProductsSalesAndProfit(sgv,c,z);
                 imprimeQ3(q3,z,x);
                 destroiQ3(q3);
 
-				break;
+                break;
 
-			case 4:
-				if(l==0)break;
+            case 4:
+                if(l==0)break;
 
-				getint("Insira 0 para global, ou um numero entre 1 e 3 por filial: ",&z);
-				
-				q245=getProductsNeverBought(sgv,z);
+                getint("Insira 0 para global, ou um numero entre 1 e 3 por filial: ",&z);
+                
+                q245=getProductsNeverBought(sgv,z);
                 imprimeQ4(q245, z);
                 destroiQ245(q245);
 
-				break;
+                break;
 
-			case 5:
-				if(l==0)break;
+            case 5:
+                if(l==0)break;
 
-				q245=getClientsOfAllBranches(sgv);
+                q245=getClientsOfAllBranches(sgv);
                 imprimeQ5(q245);
                 destroiQ245(q245);
 
-				break;
+                break;
 
-			case 6:
-				if(l==0)break;
+            case 6:
+                if(l==0)break;
 
-				q6=getClientsAndProductsNeverBoughtCount(sgv);
+                q6=getClientsAndProductsNeverBoughtCount(sgv);
                 imprimeQ6(q6);
                 destroiQ6(q6);
 
-				break;
+                break;
 
-			case 7:
-				if(l==0)break;
+            case 7:
+                if(l==0)break;
 
-				getstr("Insira um código de cliente: ",c);
+                getstr("Insira um código de cliente: ",c);
 
-				q7=getProductsBoughtByClient(sgv, c);
+                q7=getProductsBoughtByClient(sgv, c);
                 imprimeQ7(q7);
                 destroiQ7(q7);
 
-				break;
+                break;
 
-			case 8:
-				if(l==0)break;
+            case 8:
+                if(l==0)break;
 
-				getint("Insira um mês (1 a 12) para limite inferior: ",&z);
-				getint("Insira um mês (1 a 12) para limite superior: ",&x);
+                getint("Insira um mês (1 a 12) para limite inferior: ",&z);
+                getint("Insira um mês (1 a 12) para limite superior: ",&x);
 
-				q8=getSalesAndProfif(sgv,z,x);
+                q8=getSalesAndProfif(sgv,z,x);
                 imprimeQ8(q8,z,x);
                 destroiQ8(q8);
-				break;
+                break;
 
-			case 9:
-				if(l==0)break;
+            case 9:
+                if(l==0)break;
 
-				getstr("Insira um código de produto: ",c);
+                getstr("Insira um código de produto: ",c);
                 getint("Insira uma filial (1 a 3): ",&z);
 
                 q9=getProductBuyers(sgv, c, z);
                 imprimeQ9(q9,z);
                 destroiQ9(q9);
 
-				break;
+                break;
 
-			case 10:
-				if(l==0)break;
+            case 10:
+                if(l==0)break;
 
-				getstr("Insira um código de cliente: ",c);
+                getstr("Insira um código de cliente: ",c);
                 getint("Insira um mês (1 a 12): ",&x);
-				
-				q1012=getClientFavouriteProducts(sgv, c, x);
-	            imprimeQ10(q1012,x);
-	            destroiQ12(q1012);
+                
+                q1012=getClientFavouriteProducts(sgv, c, x);
+                imprimeQ10(q1012,x);
+                destroiQ12(q1012);
 
-				break;
+                break;
 
-			case 11:
-				if(l==0)break;
+            case 11:
+                if(l==0)break;
                     
                 getint("Insira um limite : ",&z);
                 if (z >0){
-                	q11=getTopSelledProducts(sgv,z);
+                    q11=getTopSelledProducts(sgv,z);
                     imprimeQ11(q11, z);
                     destroiQ11(q11);
                 }
                 else printf("Intervalo não valido\n");
 
-				break;
+                break;
 
-			case 12:
-				if(l==0)break;
+            case 12:
+                if(l==0)break;
 
-				getstr("Insira um código de cliente: ",c);
+                getstr("Insira um código de cliente: ",c);
                 getint("Insira um limite: ",&x);
 
                 q1012=getClientTopProfitProducts(sgv,c,x);
                 imprimeQ12(q1012,x);
                 destroiQ12(q1012);
 
-				break;
+                break;
 
-			case 13:
-				if(l==0)break;
+            case 13:
+                if(l==0)break;
                 
                 q13=getCurrentFilesInfo(sgv);
                 imprimeQ13(q13);
                 destroiQ13(q13);
 
-				break;
+                break;
 
-			default:
-				printf("Erro na escolha de opção\n");
-				break;
-		}
+            default:
+                printf("Erro na escolha de opção\n");
+                break;
+        }
 
-		if (l==0 && op>0) printf("Ficheiros não lidos. Por favor use a opção 1.\n"); 
+        if (l==0 && op>0) printf("Ficheiros não lidos. Por favor use a opção 1.\n"); 
 
-		printf("\n");
-		printf("press Enter to continue");
-		do{
-			enter=getchar();
-		}while(enter!='\n');
-		
-	}while(op);
+        printf("\n");
+        printf("press Enter to continue");
+        do{
+            enter=getchar();
+        }while(enter!='\n');
+        
+    }while(op);
 }
-
-
