@@ -6,21 +6,69 @@
 
 #include "queries.h"
 
+#define LTAM 30
 
 void flush(){
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
+/*	return 1 para sair
+	return 2 para imprimir header
+	return 0 se nao entra no if
+*/
+int menudelistagem(int j, int limit){
+	int i=0;
+	char o;
+	int f;
+	if((j+1)%LTAM==0 && j+1<limit){
+        printf("\nA mostrar de %d a %d\n\n", (j+2-LTAM),(j+1));
+        printf("Pressione 'enter' para continuar ou 'q' + 'enter' para sair ");
+        f=1;
+        do{
+        	o=getchar();
+        	if(o=='q'||o=='\n')f=0;
+        }while(f);
+        
+        if(o=='q')i=1;
+        else i=2;
+    }
+    return i;
+}
+
+/*	imprime espaços para alinhar a pabela impressa
+*/
+void espacosparalistagem(int i){
+	int j;
+    if(i%LTAM!=0)for(j=0;j<LTAM-(i%LTAM);j++)printf("\n");
+    printf("\nA mostrar de %d a %d\n", i==0?0:i-(i%LTAM)+1,i);
+
+}
+
+void q2header(char c,int i){
+	flush();
+    printf("O numero total de elementos começados pela letra %c é %d.\n", c, i);
+
+}
 
 void imprimeQ2(Q245 q, char op){
     int i;
+    int sair=0;
+    int limit=99999999;
+    int rmenudelistagem;
+
     if (q->tam != -1){
-        for ( i = 0; i < q->tam; i++){
+    	q2header(op,q->tam);
+        for ( i = 0;!sair && i < q->tam; i++){
             printf("%s\n",q->p[i]);
+
+			rmenudelistagem=menudelistagem(i,limit);
+			if(rmenudelistagem==1) sair=1;
+			else if (rmenudelistagem==2) q2header(op,q->tam);
         }
-        printf("O numero total de elementps começados pela letra %c é : %d\n", op, q->tam);
-    }
-    else printf("O caracter lido não é válido\n");
+    	
+    	if(!sair) espacosparalistagem(i);
+    
+    }else printf("O caracter lido não é válido\n");
 }
 
 void imprimeQ3(Q3 q, int mes, int op ){
@@ -50,25 +98,47 @@ void imprimeQ3(Q3 q, int mes, int op ){
 
 }
 
+void q4header(int f,int t){
+	flush();
+    if(f <1 || f >3) printf("O número total global de produtos que ninguem comprou é : %d\n",t);
+    else printf("O número total de produtos que ninguem comprou na filial %d é : %d\n",f,t);
+}
+
 void imprimeQ4(Q245 q, int f){
-    int i;
-    for ( i = 0; i < q->tam; i++)
-    {
+    int i,limit=999999;
+    int sair=0,rmenudelistagem;
+
+    q4header(f,q->tam);
+    for ( i = 0;!sair && i < q->tam; i++){
         printf("%s\n",q->p[i]);
+
+		rmenudelistagem=menudelistagem(i,limit);
+		if(rmenudelistagem==1) sair=1;
+		else if (rmenudelistagem==2) q4header(f,q->tam);
     }
-    if(f <1 || f >3){
-        printf("O numero total global de produtos que ninguem comprou é : %d\n",q->tam);
-    }
-    else printf("O numero total de produtos que ninguem comprou na filial %d é : %d\n",f,q->tam);
+    	
+   	if(!sair) espacosparalistagem(i);
+
+}
+
+void q5header(int t){
+	flush();
+    printf("Existem %d clientes que fizeram compras nas 3 filiais \n",t);
 }
 
 void imprimeQ5(Q245 q){
     int i;
-    for (i = 0; i < q->tam; i++)
-    {
+    int rmenudelistagem,sair=0,limit=999999;
+    q5header(q->tam);
+    for (i = 0;!sair && i < q->tam; i++){
         printf("%s\n",q->p[i]);
+
+		rmenudelistagem=menudelistagem(i,limit);
+		if(rmenudelistagem==1) sair=1;
+		else if (rmenudelistagem==2) q5header(q->tam);
     }
-    printf("%d dos clientes fizeram compras nas 3 filiais \n",q->tam);
+
+   	if(!sair) espacosparalistagem(i);
 }
 
 void imprimeQ6(Q6 q){
@@ -135,20 +205,17 @@ void imprimeQ10(Q12 q, int mes){
 }
 
 
-void q11menu(){
+void q11header(){
 	flush();
     printf("Filial 1\t\t\t\t\tFilial 2\t\t\t\t\tFilial 3\n");
    	printf("%7s\t%10s\t%10s\t\t%7s\t%10s\t%10s\t\t%7s\t%10s\t%10s\n","Produto","Quantidade","Nº Cliente","Produto","Quantidade","Nº Cliente","Produto","Quantidade","Nº Cliente");
 }
 
 void imprimeQ11(Q11 q, int limit){
-    int i,j;
-    char o;
+    int j;
     int sair=0;
-    int f;
-    int ltam=25;
-
- 	q11menu();
+    int rmenudelistagem;
+ 	q11header();
 
    	for ( j = 0;!sair && j < limit && (j < q->f[0].size || j < q->f[1].size || j < q->f[2].size); j++){
         if(j < q->f[0].size) printf("%7s\t%10d\t%10d",q->f[0].qts[j].pid, q->f[0].qts[j].quant, q->f[0].qts[j].clientes);
@@ -160,65 +227,39 @@ void imprimeQ11(Q11 q, int limit){
         if(j < q->f[2].size) printf("\t\t%7s\t%10d\t%10d\n",q->f[2].qts[j].pid, q->f[2].qts[j].quant, q->f[2].qts[j].clientes);
         else printf("\n");
 
-        if((j+1)%ltam==0 && j+1<limit){
-        	printf("\nA mostrar de %d a %d\n\n", (j+2-ltam),(j+1));
-        	printf("Pressione 'enter' para continuar ou 'q' + 'enter' para sair ");
-        	f=1;
-        	do{
-        		o=getchar();
-        		if(o=='q'||o=='\n')f=0;
-        	}while(f);
-        	
-        	if(o=='q')sair=1;
-        	else q11menu();
-        }
+        rmenudelistagem=menudelistagem(j,limit);
+        if(rmenudelistagem==1) sair=1;
+        else if (rmenudelistagem==2) q11header();
 
     }
-    if(!sair){
-    	if(j%ltam!=0)for(i=0;i<ltam-(j%ltam);i++)printf("\n");
-    	printf("\nA mostrar de %d a %d\n", (j+1-ltam)<1?1:(j+1-ltam),j);
-	}
+
+    if(!sair) espacosparalistagem(j);
 
 }
-/*
-void imprimeQ11(Q11 q, int limit){
-    int i,j;
-    for ( i = 0; i < 3; i++)
-    { 
-        if (q->f[i].size > limit)   
-        {
-            printf("\n\n\nNa filial %d:\n",i+1 );
-            for ( j = 0; j < limit; j++){
-                printf("%s  QNT:%d   nºclientes:%d\n", q->f[i].qts[j].pid, q->f[i].qts[j].quant, q->f[i].qts[j].clientes);
-            }
-        }
-        else{
-            printf("\n\n\nNa filial %d:\n",i+1 );
-            for ( j = 0; j < q->f[i].size; j++){
-                printf("%s  QNT:%d   nºclientes:%d\n", q->f[i].qts[j].pid, q->f[i].qts[j].quant, q->f[i].qts[j].clientes);
-            }
-        }
-    }
+
+void q12header(int l,int t){
+	flush();
+	if(t>l) printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", l);
+    else printf("O limite inserido (%d) supera o número de produtos comprados (%d). Os produtos em que o cliente mais gastou dinheiro durante um ano foram: \n", l,t);
 }
-*/
 
 void imprimeQ12(Q12 q, int limit){
+	int i;
+	int rmenudelistagem,sair=0;
+
     if(q->tam != -1){
-        int i;
-        if(q->tam > limit){
-            printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", limit);
-            for (i = 0; i < limit; ++i){
-                printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
-            }
+    	q12header(limit,q->tam);
+        for (i = 0;!sair && i < q->tam && i<limit; ++i){
+            printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent);
+
+        	rmenudelistagem=menudelistagem(i,limit);
+        	if(rmenudelistagem==1) sair=1;
+        	else if (rmenudelistagem==2) q12header(limit,q->tam);
         }
-        else{
-            printf("O limite inserido (%d) supera o tamanho porém os produtos em que o cliente mais gastou dinheiro durante um ano foram: \n", limit);
-            for (i = 0; i < q->tam; ++i){
-                printf("%s  %f\n",q->arr[i].pid, q->arr[i].spent );
-            }
-        } 
-    }
-    else printf("O codigo do cliente introduzido não é válido\n");
+
+    	if(!sair) espacosparalistagem(i);
+    
+    }else printf("O codigo do cliente introduzido não é válido\n");
 }
 
 
@@ -454,11 +495,13 @@ void interpertador(){
 
                 getstr("Insira um código de cliente: ",c);
                 getint("Insira um limite: ",&x);
-
-                q1012=getClientTopProfitProducts(sgv,c,x);
-                imprimeQ12(q1012,x);
-                destroiQ12(q1012);
-
+                if(x>0){
+                	q1012=getClientTopProfitProducts(sgv,c,x);
+                	imprimeQ12(q1012,x);
+                	destroiQ12(q1012);
+                }
+                else printf("Intervalo não valido\n");
+                
                 break;
 
             case 13:
