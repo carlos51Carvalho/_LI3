@@ -43,6 +43,7 @@ SGV initSGV(){
 	return q;
 }
 
+
 void distroySGV(SGV sgv){
 	destroiTab_p(sgv->produtos);
 	destroiTab(sgv->clientes);
@@ -391,6 +392,15 @@ void destroiQ9(Q9 q){
 
 
 /*	Q10    */
+
+   /**
+    * @brief Função que troca duas estruturas QntSpent de posicao num array
+    *
+    * @param QntSpent *args                         Array de Estruturas
+    * @param int i1                                 Indice no array da primeira estrutura
+    * @param int i2                                 Indice no array da segunda estrutura
+    *
+    */
 void swapq12(QntNSpent *args , int i1, int i2)
 {
     char *tmp = args[i1].pid;
@@ -404,6 +414,14 @@ void swapq12(QntNSpent *args , int i1, int i2)
     args[i2].qnt = q;
 }
 
+   /**
+    * @brief Função que ordena um array de estruturas QntSpent
+    *
+    *
+    * @param QntSpent *args                         Array de Estruturas
+    * @param int len                                Comprimento do array
+    *
+    */
 void q10sort(QntNSpent *args, int len){
     int i, pvt=0;
     if (len <= 1)

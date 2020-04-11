@@ -266,6 +266,7 @@ void acrescenta_prod(Fat *f, char *p){
     * @param char **p                            Array de strings(produtos)
     * @param int Tam                             Size do array de strings
     *
+    * @return int i                              Numero de produtos acrescentados
     */
 int acrescenta_prods (Fat *f, char **p, int tam ){
 	int i;
@@ -311,7 +312,7 @@ int existe_fat(Prd *arr, char *procurado, int Tam)
 
 
    /**
-    * @brief Função que acrescenta a uma Fat informção que recebe como argumento ao respetivo produto. 
+    * @brief Função que acrescenta a uma Fat informação correspondente a um produto 
     *
     *
     * @param Fat *h                              Estrutua Fat

@@ -39,53 +39,174 @@ typedef struct bucketf{
 typedef struct filial{
 	Bucketf *tbl;
 } Filial;
+	/**
+     * @brief Função que verifica se uma filial é usada
+     *
+     * caso sim dá retorno 1, caso contrário 0
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @param int ip                           Indice do cliente no array
+     * @param int fil                          Indice da filial que pretende verificar
+     * @return int 
+     */
 
 int getFilUsed(Filial *f, int k, int ip, int fil){
 	return f->tbl[k].arr[ip].fil[fil].used;
 }
 
+	/**
+     * @brief Função que devolve um cliente
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @param int ip                           Indice do cliente no array
+     * @return char*
+     */
+
 char* getCLiente(Filial *f, int k, int ip){
 	return strdup(f->tbl[k].arr[ip].cid);
 }
+
+	/**
+     * @brief Função que devolve o tamanho do array num determinado indice da tabela
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @return int 
+     */
 int getSizeArrClient(Filial *f, int k){
 	return f->tbl[k].size;
 }
+
+	/**
+     * @brief Função que devolve um array de clientes começados por uma determinada letra.
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @return Cl* 
+     */
 
 Cl* getArrByLetter(Filial *f, int key){
 	return f->tbl[key].arr;
 }
 
+	/**
+     * @brief Função que devolve o tamanho do array de produtos num determinado mês
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @param int ip                           Indice do cliente no array
+     * @param int fil                          Indice da filial 
+     * @param int m                            Indice do mês 
+     * @return int 
+     */
 int getSizeQprd(Filial *f, int k, int id, int fil, int m){
 	return f->tbl[k].arr[id].fil[fil].mes[m].size;
 }
 
+	/**
+     * @brief Função que devolve q quantidade de compras em N para um determinado produto num mês
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @param int ip                           Indice do cliente no array
+     * @param int fil                          Indice da filial 
+     * @param int m                            Indice do mês 
+     * @param int pid                          Indice do produto.
+     * @return int 
+     */
 int getQuantN(Filial *f, int k, int id, int fil, int m, int pid){
 	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].qN;
 }
 
+	/**
+     * @brief Função que devolve a quantidade de compras em P para um determinado produto num mês
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @param int ip                           Indice do cliente no array
+     * @param int fil                          Indice da filial 
+     * @param int m                            Indice do mês 
+     * @param int pid                          Indice do produto
+     * @return int 
+     */
 int getQuantP(Filial *f, int k, int id, int fil, int m, int pid){
 	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].qP;
 }
 
+    /**
+     * @brief Função que devolve gasto total em P de um determinado produto
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @param int ip                           Indice do cliente no array
+     * @param int fil                          Indice da filial 
+     * @param int m                            Indice do mês 
+     * @param int pid                          Indice do produto
+     * @return int 
+     */
 int getGastoP(Filial *f, int k, int id, int fil, int m, int pid){
 	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].gP;
 }
 
+    /**
+     * @brief Função que devolve o gasto total em N de um determinado produto
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @param int ip                           Indice do cliente no array
+     * @param int fil                          Indice da filial 
+     * @param int m                            Indice do mês 
+     * @param int pid                          Indice do produto
+     * @return int 
+     */
 int getGastoN(Filial *f, int k, int id, int fil, int m, int pid){
 	return f->tbl[k].arr[id].fil[fil].mes[m].prs[pid].gN;
 }
 
+    /**
+     * @brief Função que devolve um produto
+     *
+     *
+     * @param Filial *f                        Estrutura filiais
+     * @param int k                            Indice do cliente na tabela
+     * @param int ip                           Indice do cliente no array
+     * @param int fil                          Indice da filial 
+     * @param int m                            Indice do mês 
+     * @param int p                            Indice do produto
+     * @return int 
+     */
 char* getOneProd(Filial *f, int k, int id, int fil, int m, int p){
 	return strdup(f->tbl[k].arr[id].fil[fil].mes[m].prs[p].pid);
 }
 
+   /**
+    * @brief Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A
+    *
+    * @param char *cont                          String genérica
+    *
+    * @return int                                O resultado inteiro dessa subtração
+    */
 
 int hashfil(char *cont){
 	int r = cont[0] - 'A';
 	return r;
 }
 
-
+   /**
+    * @brief Função que inicia uma estrutura Filial alocando espaço para todas as estruturas adjacentes
+    *
+    * @return Filial*                             Devolve a Filial inicializada
+    */
 
 Filial* initFilial(){
 	int i;
@@ -99,6 +220,11 @@ Filial* initFilial(){
 	return h ;
 }
 
+   /**
+    * @brief Funçao que destroi uma estrutura Filial libertando o espaço ocupado por esta
+    *
+    * @param Filial *f                              Filial previamente inicializada
+    */
 
 void destroiFilial(Filial *f){
 	int i,j,fi,m,p,sizeQprod;
@@ -123,6 +249,16 @@ void destroiFilial(Filial *f){
 	free(f);
 }
 
+   /**
+    * @brief Função que acrescenta a uma Filial um cliente
+    *
+    * Aplicando a função hash descobre a posicao correta desta na Filial e sucessivamente realocando espaço para o adicionar á mesma
+    *
+    *
+    * @param Filial *f                              Fat previamente inicializada
+    * @param char *p                                String genérica (cliente)
+    *
+    */
 
 void acrescenta_cl(Filial *f, char *p){
 	int i,j;
@@ -144,7 +280,16 @@ void acrescenta_cl(Filial *f, char *p){
 	f->tbl[k].size++;
 }
 
-
+   /**
+    * @brief Função que acrescenta a uma Filial vários clientes lidos de um array a strings
+    *
+    *
+    * @param Filial *f                              Filial previamente inicializada
+    * @param char **p                               Array de strings(clientes)
+    * @param int Tam                                Size do array de strings
+    *
+    * @return int i                                 Número de clientes acrescentados
+    */
 
 int acrescenta_cls (Filial *f, char **p, int tam ){
 	int i;
@@ -155,7 +300,17 @@ int acrescenta_cls (Filial *f, char **p, int tam ){
 	return i;
 }
 
-
+   /**
+    * @brief Função que retorna o indice de um determinado cliente da estrutura Filial caso ele exista, -1 caso não
+    *
+    *
+    * @param Cl *arr                             Array de Cl ( estrutura complementar de Filial)
+    * @param char *procurado                     Cliente procurado
+    * @param int Tam                             Size do array de Cl
+    *
+    *
+    * @return int r                              Indice do cliente se encontrado 
+    */
 int existe_fil(Cl *arr, char *procurado, int Tam)
 {
      int inf = 0;     
@@ -178,7 +333,17 @@ int existe_fil(Cl *arr, char *procurado, int Tam)
 }
 
 
-
+   /**
+    * @brief Função que retorna o indice de um determinado produto de um cliente caso ele exista, -1 caso não
+    *
+    *
+    * @param Qprd *arr                            Array de Qprd ( estrutura complementar de Filial)
+    * @param char *procurado                      Produto procurado
+    * @param int Tam                              Size do array de Qprod
+    *
+    *
+    * @return int r                               Indice do produto se encontrado 
+    */
 int existe_prod(Qprd *arr, char *procurado, int Tam)
 {
 	int i,r=-1;
@@ -190,7 +355,22 @@ int existe_prod(Qprd *arr, char *procurado, int Tam)
      return r; 
 }
 
-
+   /**
+    * @brief Função que acrescenta um produto a um cliente na Filial
+    *
+    *
+    * @param Filial *h                            Estrutua Filial
+    * @param char *p                              Produto 
+    * @param int it                               Indice do cliente na tabela
+    * @param int a                                Indice do cliente no array
+    * @param int f                                Filial
+    * @param int m                                Mes
+    * @param char e                               Modo de compra
+    * @param int qnt                              Quantidade
+    * @param int preco                            Preço
+    *
+    *
+    */
 
 void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, int qnt, int preco){
 	int size = h->tbl[it].arr[a].fil[f].mes[m].size;
@@ -214,6 +394,21 @@ void acrescentaPtoFil(Filial *h, char *p, int it, int a, int f, int m, char e, i
 	h->tbl[it].arr[a].fil[f].mes[m].size++;
 }
 
+   /**
+    * @brief Função que acrescenta um produto a um cliente na Filial
+    *
+    *
+    * @param Filial *h                            Estrutua Filial
+    * @param char *p                              Produto 
+    * @param double pr                            Preço
+    * @param int q                                Quantidade
+    * @param char e                               Modo de compra
+    * @param char *c                              Cliente
+    * @param int m                                Mes
+    * @param int f                                Filial
+    *
+    *
+    */
 
 
 void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, int f){
@@ -241,6 +436,16 @@ void acrescentaFil(Filial *h, char*p, double pr, int q, char e, char *c, int m, 
 	}
 }
 
+   /**
+    * @brief Função que retorna um array de strings com os clientes que compraram em todas as filiais
+    *
+    *
+    * @param Filial *f                           Estrutura Filial
+    * @param int *tam                            Um size que a função vai alterar
+    *
+    * @return char**                             array de strings com os clientes
+    */  
+
 char** ClientsOfAllBranches (Filial *f, int *tam){
 	int i,j,count =0;
 	char **c = NULL;
@@ -260,6 +465,15 @@ char** ClientsOfAllBranches (Filial *f, int *tam){
 	return c;
 }
 
+   /**
+    * @brief Função que retorna um array de strings com os clientes que nunca fizeram compras
+    *
+    *
+    * @param Filial *f                            Estrutura Filial
+    *
+    * @return char**                              array de strings com os clientes
+    */  
+
 int ClientesSemCompras (Filial *f){
 	int i,j,t,count =0;
 	for(i=0;i<26;i++){
@@ -272,7 +486,17 @@ int ClientesSemCompras (Filial *f){
 }
 
 
-
+   /**
+    * @brief Função que retorna a quantidade total de produtos comprados num mês
+    *
+    *
+    * @param Filial *f                            Estrutura Filial
+    * @param char *clienteID                      Cliente
+    * @param int fil                              Filial
+    * @param int mes                              Mês
+    *
+    * @return int                                 Quantidade total
+    */  
 
 int QuantidadesUmClientePorMes(Filial *f, char *clienteID ,int fil, int mes){
 	int i, k = hashfil(clienteID);
