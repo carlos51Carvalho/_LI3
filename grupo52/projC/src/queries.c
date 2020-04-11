@@ -700,13 +700,6 @@ Q12 getClientTopProfitProducts(SGV sgv, char *clientID , int limit){
 				}
 			}
 			q12sort(q12->arr, q12->tam);
-			/* -> colocar na destroi
-			if (limit< q12->tam){
-				for (j = limit; j < q12->tam; j++){
-    				free(q12->arr[j].pid);
-    			}
-				q12->tam = limit;
-			}*/
 		}
 	}
 	else{

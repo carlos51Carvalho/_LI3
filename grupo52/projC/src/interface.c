@@ -6,6 +6,9 @@
 #include "queries.h"
 
 
+void flush(){
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
 
 
 void imprimeQ2(Q245 q, char op){
@@ -131,22 +134,49 @@ void imprimeQ10(Q12 q, int mes){
 }
 
 
+void q11menu(){
+	flush();
+    printf("Filial 1\t\t\t\t\tFilial 2\t\t\t\t\tFilial 3\n");
+   	printf("%7s\t%10s\t%10s\t\t%7s\t%10s\t%10s\t\t%7s\t%10s\t%10s\n","Produto","Quantidade","Nº Cliente","Produto","Quantidade","Nº Cliente","Produto","Quantidade","Nº Cliente");
+}
 
 void imprimeQ11(Q11 q, int limit){
-    int j;
+    int i,j;
+    char o;
+    int sair=0;
+    int f;
+    int ltam=25;
 
-   	printf("FILIAL 1\t\t\t\t\tFILIAL 2\t\t\t\t\tFILIAL3\n");
-    printf("%5s\t%6s\t%10s\t\t%5s\t%6s\t%10s\t\t%5s\t%6s\t%10s\n","Prod.","Quant.","Nº Cliente","Prod.","Quant.","Nº Cliente","Prod.","Quant.","Nº Cliente");
-    for ( j = 0;j < limit && (j < q->f[0].size || j < q->f[1].size || j < q->f[2].size); j++){
-        if(j < q->f[0].size) printf("%5s\t%6d\t%10d",q->f[0].qts[j].pid, q->f[0].qts[j].quant, q->f[0].qts[j].clientes);
+ 	q11menu();
+
+   	for ( j = 0;!sair && j < limit && (j < q->f[0].size || j < q->f[1].size || j < q->f[2].size); j++){
+        if(j < q->f[0].size) printf("%7s\t%10d\t%10d",q->f[0].qts[j].pid, q->f[0].qts[j].quant, q->f[0].qts[j].clientes);
         else printf("\t\t\t\t");
 
-        if(j < q->f[1].size) printf("\t\t%5s\t%6d\t%10d",q->f[1].qts[j].pid, q->f[1].qts[j].quant, q->f[1].qts[j].clientes);
+        if(j < q->f[1].size) printf("\t\t%7s\t%10d\t%10d",q->f[1].qts[j].pid, q->f[1].qts[j].quant, q->f[1].qts[j].clientes);
         else printf("\t\t\t\t\t");
         
-        if(j < q->f[2].size) printf("\t\t%5s\t%6d\t%10d\n",q->f[2].qts[j].pid, q->f[2].qts[j].quant, q->f[2].qts[j].clientes);
+        if(j < q->f[2].size) printf("\t\t%7s\t%10d\t%10d\n",q->f[2].qts[j].pid, q->f[2].qts[j].quant, q->f[2].qts[j].clientes);
         else printf("\n");
+
+        if((j+1)%ltam==0 && j+1<limit){
+        	printf("\nA mostrar de %d a %d\n\n", (j+2-ltam),(j+1));
+        	printf("Pressione 'enter' para continuar ou 'q' + 'enter' para sair ");
+        	f=1;
+        	do{
+        		o=getchar();
+        		if(o=='q'||o=='\n')f=0;
+        	}while(f);
+        	
+        	if(o=='q')sair=1;
+        	else q11menu();
+        }
+
     }
+    if(!sair){
+    	if(j%ltam!=0)for(i=0;i<ltam-(j%ltam);i++)printf("\n");
+    	printf("\nA mostrar de %d a %d\n", (j+1-ltam)<1?1:(j+1-ltam),j);
+	}
 
 }
 /*
@@ -234,9 +264,6 @@ int toint(char* buf){
 	else return atoi(buf);
 }
 
-void flush(){
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-}
 
 void getstr(char *text,char *s){
 	printf("%s", text);
