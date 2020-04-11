@@ -27,14 +27,8 @@ program: $(BIN)/$(TARGET)
 
 
 
-
 clean:
 	rm $(OBJECT) $(BIN)/$(TARGET)
-
-
-cleanD:
-	rm -r docs/html
-	rm -r docs/latex
 
 
 help:
