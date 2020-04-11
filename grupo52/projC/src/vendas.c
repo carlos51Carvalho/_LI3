@@ -1,3 +1,9 @@
+/**
+ * @file vendas.c
+ * @brief Modulo que contém as funcções para leitura e validação de vendas e incorporação destas nas estruturas filiais e faturação.
+ *
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

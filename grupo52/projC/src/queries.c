@@ -1,3 +1,9 @@
+
+/**
+ * @file queries.c
+ * @brief Modulo que contém as funcções de resposta as queries.
+ *
+ */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

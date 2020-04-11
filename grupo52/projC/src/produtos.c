@@ -1,3 +1,9 @@
+/**
+ * @file produtos.c
+ * @brief Modulo que contém as funções para leitura e validação de produtos.
+ *
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

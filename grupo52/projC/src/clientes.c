@@ -1,3 +1,10 @@
+/**
+ * @file clientes.c
+ * @brief Modulo que contém as funcções para leitura e validação de clientes.
+ *
+ */
+
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

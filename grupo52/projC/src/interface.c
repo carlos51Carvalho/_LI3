@@ -1,4 +1,10 @@
 
+/**
+ * @file interface.c
+ * @brief Modulo que contém as funcções para apresentação das respostas as queries.
+ *
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -79,7 +85,7 @@ void imprimeQ6(Q6 q){
 void imprimeQ7(Q7 q){
     int i,j;
     if (q->use != -1){
-        printf("          MES :   1         2         3         4         5         6         7         8         9        10        11        12 \n\n\n\n");
+        printf("\n\n     MES :        1         2         3         4         5         6         7         8         9        10        11        12 \n\n\n\n");
         for (i = 0; i < 3; i++)
         {
             printf("FILIAL %d:", i+1);

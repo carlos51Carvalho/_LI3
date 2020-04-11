@@ -1,3 +1,11 @@
+/**
+ * @file filiais.c
+ * @brief Modulo que contém as funcções para a gestão das filiais.
+ *
+ */
+
+
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

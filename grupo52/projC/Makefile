@@ -25,8 +25,19 @@ $(BIN)/%.o: $(SRC)/%.c
 program: $(BIN)/$(TARGET)
 
 
+
+.PHONY: docs
+docs: 
+	doxygen Doxyfile 
+
+
 clean:
 	rm $(OBJECT) $(BIN)/$(TARGET)
+
+
+cleanD:
+	rm -r docs/html
+	rm -r docs/latex
 
 
 help:
