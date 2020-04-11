@@ -74,7 +74,7 @@ void imprimeQ2(Q245 q, char op){
     	
     	if(!sair) espacosparalistagem(i);
     
-    }else printf("O caracter lido não é válido\n");
+    }else printf("\n\n\nO caracter lido não é válido\n");
 }
 
 void imprimeQ3(Q3 q, int mes, int op ){
@@ -84,7 +84,7 @@ void imprimeQ3(Q3 q, int mes, int op ){
         int globP = q->vP1 + q->vP2 + q->vP3;
         double fN = q->fN1 + q->fN2 + q->fN3;
         double fP = q->fP1 + q->fP2 + q->fP3;
-        printf("No mês %d\n\n", mes);
+        printf("\n\n\nNo mês %d\n\n", mes);
         if ( op == 1){
             printf("Vendas na filial 1:\n");
             printf("Em modo N: %d\nFaturação em N: %f\nEm modo P: %d\nFaturação em P: %f \n\n",q->vN1, q->fN1, q->vP1, q->fP1);
@@ -99,7 +99,7 @@ void imprimeQ3(Q3 q, int mes, int op ){
         }
     }
     else{
-        printf("O produto ou o mes inserido não sao válidos!\n");
+        printf("\n\n\nO produto ou o mes inserido não sao válidos!\n");
     }
 
 }
@@ -148,60 +148,60 @@ void imprimeQ5(Q245 q){
 }
 
 void imprimeQ6(Q6 q){
-    printf("O numero de clientes sem compras é: %d\nO numero de produtos que ninguem comprou é: %d\n",q->c,q->p);
+    printf("\n\n\nO numero de clientes sem compras é: %d\nO numero de produtos que ninguem comprou é: %d\n",q->c,q->p);
 }
 
 
 void imprimeQ7(Q7 q){
     int i,j;
     if (q->use != -1){
-        printf("\n\n     MES :        1         2         3         4         5         6         7         8         9        10        11        12 \n\n\n\n");
-        for (i = 0; i < 3; i++)
-        {
+    	printf("\n\n\n\nNumero total de produtos comprados por mês\n\n");
+    	printf("     MES:");
+    	for (i = 1; i <= 12; i++) printf("%5d",i);
+    	printf("\n\n");
+        
+        for (i = 0; i < 3; i++){
+
             printf("FILIAL %d:", i+1);
-            for ( j = 0; j < 12; j++)
-            {
-                printf("      %4d", q->f[i].m[j]);
-            }
-            printf("\n\n\n\n\n\n");
+            for ( j = 0; j < 11; j++) printf("%5d", q->f[i].m[j]);
+			printf("%5d\n", q->f[i].m[j]);
+            
         }
+        printf("\n\n");
     }
     else{
-        printf("O código de cliente que inseriu não é válido\n");
+        printf("\n\n\nO código de cliente que inseriu não é válido\n");
     }
 }
 
 
 void imprimeQ8(Q8 q, int us, int op){
-    if(q->v != -1) printf("No intervalo de meses entre %d e %d:\nForam feitas %d vendas e faturou-se %f euros\n", us,op,q->v,q->f);
-    else printf("Os meses que inseriu não são válidos\n");
+    if(q->v != -1) printf("\n\n\nNo intervalo de meses entre %d e %d:\nForam feitas %d vendas e faturou-se %f euros\n", us,op,q->v,q->f);
+    else printf("\n\n\nOs meses que inseriu não são válidos\n");
 }
 
 void imprimeQ9(Q9 q, int fil){
     if (q->sizeN != -1){
     
         int i, j;
-        printf("Na filial %d:\n", fil);
-        printf("Em modo N:          Em modo P:\n");
-        for (i = 0 , j = 0; i < q->sizeN || j< q->sizeP; i++,j++)
-        {
-            printf("%s               %s\n",i < q->sizeN?q->n[i]:"    ", j <q->sizeP?q->p[i]:"    ");
+        printf("\n\n\nNa filial %d:\n\n", fil);
+        printf("Em modo N\t\tEm modo P\n");
+        for (i = 0 , j = 0; i < q->sizeN || j< q->sizeP; i++,j++){
+            printf("%9s\t\t%9s\n",i < q->sizeN?q->n[i]:"    ", j <q->sizeP?q->p[i]:"    ");
         }
 
-        printf("\n\nTotal em N: %d\n", q->sizeN );
-        printf("Total em P: %d\n\n", q->sizeP );
+        printf("\nTotal de %d\t\tTotal de %d\n\n", q->sizeN,q->sizeP);
     }
     else{
-        printf("Ou a filial inserida ou o código de produto estão errados\n");
+        printf("\n\n\nOu a filial inserida ou o código de produto estão errados\n");
     }   
 }
 
 void imprimeQ10(Q12 q, int mes){
     if(q->tam > 0){
         int i;
-        printf("A lista de produtos que o cliente mais comprou e respetivas quantidades para o mês %d são:\n", mes);
-        for (i = 0; i < q->tam; ++i)
-        {
+        printf("\n\n\nA lista de produtos que o cliente mais comprou e respetivas quantidades para o mês %d são:\n", mes);
+        for (i = 0; i < q->tam; ++i){
             printf("%s  %d\n",q->arr[i].pid, q->arr[i].qnt );
         }
     }
@@ -245,7 +245,10 @@ void imprimeQ11(Q11 q, int limit){
 
 void q12header(int l,int t){
 	flush();
-	if(t>l) printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", l);
+	if(t>=l){
+		if(l==1) printf("O produto em que o cliente mais gastou dinheiro durante um ano foi:\n");
+		else printf("Os %d produtos em que o cliente mais gastou dinheiro durante um ano foram:\n", l);
+	}
     else printf("O limite inserido (%d) supera o número de produtos comprados (%d). Os produtos em que o cliente mais gastou dinheiro durante um ano foram: \n", l,t);
 }
 
@@ -270,10 +273,11 @@ void imprimeQ12(Q12 q, int limit){
 
 
 void imprimeQ13(Q13 q){
-    printf("%s\n",q->p );
+	printf("\n\n\n");
     printf("Os produtos lidos: %d\nOs produtos validos: %d\nNome do ficheiro lido : %s\n\n",q->pl, q->pv, q->p);
     printf("Os clientes lidos: %d\nOs clientes validos: %d\nNome do ficheiro lido : %s\n\n",q->cl, q->cv, q->c);
     printf("As vendas lidas: %d\nAs vendas validas: %d\nNome do ficheiro lido : %s\n\n",q->vl, q->vv, q->v);
+    printf("\n\n");
 }
 
 
@@ -355,15 +359,19 @@ void interpertador(){
         getchar();
 
         op=toint(buf);
+        flush();
+		if(op!=0 && op!=1)printf("A sua opção: %d\n",op);
         
         switch (op){
             case 0:
                 printf("Exiting...\n");
                 if(l ==1) distroySGV(sgv);
+                flush();
                 exit(0);
                 break;
 
             case 1:
+            	printf("A sua opção: %d",op);
                 if(l == 0){
                     sgv = initSGV();
                     sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
@@ -371,6 +379,7 @@ void interpertador(){
                 }
                 else{
                     distroySGV(sgv);
+            		printf("\n\n");
                     sgv = initSGV();
 
                     getstr("Insira o file path para ler os Clientes: ",c);
@@ -378,8 +387,25 @@ void interpertador(){
                     getstr("Insira o file path para ler as Vendas: ",v);
 
                     sgv = loadSGVFromFiles(sgv, c, p, v );
-                    l =1;
                 }
+
+            	printf("\n\n");
+				q13=getCurrentFilesInfo(sgv);
+                if(q13->pv>=0 && q13->cv>=0 && q13->vv>=0){
+                	printf("Ficheiros lidos com sucesso\n");
+                	l=1;
+                }
+                else{
+                	printf("Erro na leitura dos ficheiros:\n");
+                	l=0;
+                	if(q13->pv<0)printf("\t->%s\n",q13->p);
+                	if(q13->cv<0)printf("\t->%s\n",q13->c);
+                	if(q13->vv<0)printf("\t->%s\n",q13->v);
+                	printf("\nPor favor tente de novo.\n");
+                }
+                destroiQ13(q13);
+
+                printf("\n\n");
                 break;
 
             case 2:
@@ -524,7 +550,7 @@ void interpertador(){
                 break;
         }
 
-        if (l==0 && op>0) printf("Ficheiros não lidos. Por favor use a opção 1.\n"); 
+        if (l==0 && op>1) printf("\n\nFicheiros não lidos. Por favor use a opção 1.\n"); 
 
         printf("\n");
         printf("press Enter to continue");

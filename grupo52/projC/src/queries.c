@@ -1,7 +1,7 @@
 
 /**
  * @file queries.c
- * @brief Modulo que contém as funcções de resposta as queries.
+ * @brief Modulo que contém as funções de resposta às queries.
  *
  */
 #include <stdio.h>
