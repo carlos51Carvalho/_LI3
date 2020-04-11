@@ -1,0 +1,617 @@
+\hypertarget{filiais_8c}{}\section{filiais.\+c File Reference}
+\label{filiais_8c}\index{filiais.\+c@{filiais.\+c}}
+
+
+Modulo que contém as funcções para a gestão das filiais.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}filiais.\+h\char`\"{}}\newline
+Include dependency graph for filiais.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{filiais_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structqprd}{qprd}
+\item 
+struct \hyperlink{structmesf}{mesf}
+\item 
+struct \hyperlink{structfili}{fili}
+\item 
+struct \hyperlink{structcl}{cl}
+\item 
+struct \hyperlink{structbucketf}{bucketf}
+\item 
+struct \hyperlink{structfilial}{filial}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{filiais_8c_adf857ba1e38a54d1305eba5c62d8213b}\label{filiais_8c_adf857ba1e38a54d1305eba5c62d8213b}} 
+typedef struct \hyperlink{structqprd}{qprd} {\bfseries Qprd}
+\item 
+\mbox{\Hypertarget{filiais_8c_af99564d83469f3d24b6fa99ced9c94f5}\label{filiais_8c_af99564d83469f3d24b6fa99ced9c94f5}} 
+typedef struct \hyperlink{structmesf}{mesf} {\bfseries Mesf}
+\item 
+\mbox{\Hypertarget{filiais_8c_a4c6f8aff83c03b31765e15e33dcdace3}\label{filiais_8c_a4c6f8aff83c03b31765e15e33dcdace3}} 
+typedef struct \hyperlink{structfili}{fili} {\bfseries Fili}
+\item 
+\mbox{\Hypertarget{filiais_8c_a5d55d8b4b787dd35a72e4ff5fc189b70}\label{filiais_8c_a5d55d8b4b787dd35a72e4ff5fc189b70}} 
+typedef struct \hyperlink{structcl}{cl} {\bfseries Cl}
+\item 
+\mbox{\Hypertarget{filiais_8c_a688d98bbf4eb00e0ed7dd38f5b5ace00}\label{filiais_8c_a688d98bbf4eb00e0ed7dd38f5b5ace00}} 
+typedef struct \hyperlink{structbucketf}{bucketf} {\bfseries Bucketf}
+\item 
+\mbox{\Hypertarget{filiais_8c_a93c8ad434fb99daf8769d6c0808c80d0}\label{filiais_8c_a93c8ad434fb99daf8769d6c0808c80d0}} 
+typedef struct \hyperlink{structfilial}{filial} {\bfseries Filial}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{filiais_8c_a48076566c412a2d179d2143381d4cd56}{get\+Fil\+Used} (\hyperlink{structfilial}{Filial} $\ast$f, int k, int ip, int \hyperlink{structfil}{fil})
+\begin{DoxyCompactList}\small\item\em Função que verifica se uma filial é usada. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{filiais_8c_a2ae1ae9a1c4c47c395e7fa84137f6d02}{get\+C\+Liente} (\hyperlink{structfilial}{Filial} $\ast$f, int k, int ip)
+\begin{DoxyCompactList}\small\item\em Função que devolve um cliente. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a312e754d04669008f7e6337f1d4d0ad2}{get\+Size\+Arr\+Client} (\hyperlink{structfilial}{Filial} $\ast$f, int k)
+\begin{DoxyCompactList}\small\item\em Função que devolve o tamanho do array num determinado indice da tabela. \end{DoxyCompactList}\item 
+\hyperlink{structcl}{Cl} $\ast$ \hyperlink{filiais_8c_abe257a0cf5a8f5b9ca16d917b1fc4462}{get\+Arr\+By\+Letter} (\hyperlink{structfilial}{Filial} $\ast$f, int key)
+\begin{DoxyCompactList}\small\item\em Função que devolve um array de clientes começados por uma determinada letra. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_aad712e4c0c4b04cdd8a1fde9a6d76960}{get\+Size\+Qprd} (\hyperlink{structfilial}{Filial} $\ast$f, int k, int id, int \hyperlink{structfil}{fil}, int m)
+\begin{DoxyCompactList}\small\item\em Função que devolve o tamanho do array de produtos num determinado mês. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a5afbe4f63968b3973e03805a80e26538}{get\+QuantN} (\hyperlink{structfilial}{Filial} $\ast$f, int k, int id, int \hyperlink{structfil}{fil}, int m, int pid)
+\begin{DoxyCompactList}\small\item\em Função que devolve q quantidade de compras em N para um determinado produto num mês. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_ae2595ef550326e0f6fa7fa588280b8bc}{get\+QuantP} (\hyperlink{structfilial}{Filial} $\ast$f, int k, int id, int \hyperlink{structfil}{fil}, int m, int pid)
+\begin{DoxyCompactList}\small\item\em Função que devolve a quantidade de compras em P para um determinado produto num mês. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a6041be59c26942021a4d770847ff57b1}{get\+GastoP} (\hyperlink{structfilial}{Filial} $\ast$f, int k, int id, int \hyperlink{structfil}{fil}, int m, int pid)
+\begin{DoxyCompactList}\small\item\em Função que devolve gasto total em P de um determinado produto. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_ac0951f8550239d484198d66a91d4d669}{get\+GastoN} (\hyperlink{structfilial}{Filial} $\ast$f, int k, int id, int \hyperlink{structfil}{fil}, int m, int pid)
+\begin{DoxyCompactList}\small\item\em Função que devolve o gasto total em N de um determinado produto. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{filiais_8c_a040f730a447e54dababcf1465c416612}{get\+One\+Prod} (\hyperlink{structfilial}{Filial} $\ast$f, int k, int id, int \hyperlink{structfil}{fil}, int m, int p)
+\begin{DoxyCompactList}\small\item\em Função que devolve um produto. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a8395dbae061751c7cf2ff01a8848cb4d}{hashfil} (char $\ast$cont)
+\begin{DoxyCompactList}\small\item\em Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A. \end{DoxyCompactList}\item 
+\hyperlink{structfilial}{Filial} $\ast$ \hyperlink{filiais_8c_a5727000000ceab10ee0e17bcad54b96e}{init\+Filial} ()
+\begin{DoxyCompactList}\small\item\em Função que inicia uma estrutura Filial alocando espaço para todas as estruturas adjacentes. \end{DoxyCompactList}\item 
+void \hyperlink{filiais_8c_a05ef376e7b641cb197501af272c65ed8}{destroi\+Filial} (\hyperlink{structfilial}{Filial} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Funçao que destroi uma estrutura Filial libertando o espaço ocupado por esta. \end{DoxyCompactList}\item 
+void \hyperlink{filiais_8c_a3e289644b4dfeedcbaced74babd68d94}{acrescenta\+\_\+cl} (\hyperlink{structfilial}{Filial} $\ast$f, char $\ast$p)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta a uma Filial um cliente. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a3ead5857287f11974aed18a3cc84fe8d}{acrescenta\+\_\+cls} (\hyperlink{structfilial}{Filial} $\ast$f, char $\ast$$\ast$p, int tam)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta a uma Filial vários clientes lidos de um array a strings. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a2d285c6f23a822150012d74bf0f4daa1}{existe\+\_\+fil} (\hyperlink{structcl}{Cl} $\ast$arr, char $\ast$procurado, int Tam)
+\begin{DoxyCompactList}\small\item\em Função que retorna o indice de um determinado cliente da estrutura Filial caso ele exista, -\/1 caso não. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a7ed66b6cb4bb6dfb5ed5614e8051c11b}{existe\+\_\+prod} (\hyperlink{structqprd}{Qprd} $\ast$arr, char $\ast$procurado, int Tam)
+\begin{DoxyCompactList}\small\item\em Função que retorna o indice de um determinado produto de um cliente caso ele exista, -\/1 caso não. \end{DoxyCompactList}\item 
+void \hyperlink{filiais_8c_a62b9915663f5cd3a9cb514dba8e36cdd}{acrescenta\+Pto\+Fil} (\hyperlink{structfilial}{Filial} $\ast$h, char $\ast$p, int it, int a, int f, int m, char e, int qnt, int preco)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta um produto a um cliente na Filial. \end{DoxyCompactList}\item 
+void \hyperlink{filiais_8c_afaa3aea9b4bfce86672dffc562720c02}{acrescenta\+Fil} (\hyperlink{structfilial}{Filial} $\ast$h, char $\ast$p, double pr, int q, char e, char $\ast$c, int m, int f)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta um produto a um cliente na Filial. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \hyperlink{filiais_8c_a114a40a9fda2a951bdca3da1d135e9a3}{Clients\+Of\+All\+Branches} (\hyperlink{structfilial}{Filial} $\ast$f, int $\ast$tam)
+\begin{DoxyCompactList}\small\item\em Função que retorna um array de strings com os clientes que compraram em todas as filiais. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a2f6bb55313708fcdd16e793e116f849b}{Clientes\+Sem\+Compras} (\hyperlink{structfilial}{Filial} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Função que retorna um array de strings com os clientes que nunca fizeram compras. \end{DoxyCompactList}\item 
+int \hyperlink{filiais_8c_a35dcf3b835d306278e0d6a21e54b9b5f}{Quantidades\+Um\+Cliente\+Por\+Mes} (\hyperlink{structfilial}{Filial} $\ast$f, char $\ast$cliente\+ID, int \hyperlink{structfil}{fil}, int \hyperlink{structmes}{mes})
+\begin{DoxyCompactList}\small\item\em Função que retorna a quantidade total de produtos comprados num mês. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Modulo que contém as funcções para a gestão das filiais. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{filiais_8c_a3e289644b4dfeedcbaced74babd68d94}\label{filiais_8c_a3e289644b4dfeedcbaced74babd68d94}} 
+\index{filiais.\+c@{filiais.\+c}!acrescenta\+\_\+cl@{acrescenta\+\_\+cl}}
+\index{acrescenta\+\_\+cl@{acrescenta\+\_\+cl}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{acrescenta\+\_\+cl()}{acrescenta\_cl()}}
+{\footnotesize\ttfamily void acrescenta\+\_\+cl (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{char $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta a uma Filial um cliente. 
+
+Aplicando a função hash descobre a posicao correta desta na Filial e sucessivamente realocando espaço para o adicionar á mesma
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Fat previamente inicializada \\
+\hline
+{\em char} & $\ast$p String genérica (cliente) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filiais_8c_a3ead5857287f11974aed18a3cc84fe8d}\label{filiais_8c_a3ead5857287f11974aed18a3cc84fe8d}} 
+\index{filiais.\+c@{filiais.\+c}!acrescenta\+\_\+cls@{acrescenta\+\_\+cls}}
+\index{acrescenta\+\_\+cls@{acrescenta\+\_\+cls}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{acrescenta\+\_\+cls()}{acrescenta\_cls()}}
+{\footnotesize\ttfamily int acrescenta\+\_\+cls (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{char $\ast$$\ast$}]{p,  }\item[{int}]{tam }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta a uma Filial vários clientes lidos de um array a strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Filial previamente inicializada \\
+\hline
+{\em char} & $\ast$$\ast$p Array de strings(clientes) \\
+\hline
+{\em int} & Tam Size do array de strings\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int i Número de clientes acrescentados 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_afaa3aea9b4bfce86672dffc562720c02}\label{filiais_8c_afaa3aea9b4bfce86672dffc562720c02}} 
+\index{filiais.\+c@{filiais.\+c}!acrescenta\+Fil@{acrescenta\+Fil}}
+\index{acrescenta\+Fil@{acrescenta\+Fil}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{acrescenta\+Fil()}{acrescentaFil()}}
+{\footnotesize\ttfamily void acrescenta\+Fil (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{h,  }\item[{char $\ast$}]{p,  }\item[{double}]{pr,  }\item[{int}]{q,  }\item[{char}]{e,  }\item[{char $\ast$}]{c,  }\item[{int}]{m,  }\item[{int}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta um produto a um cliente na Filial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$h Estrutua Filial \\
+\hline
+{\em char} & $\ast$p Produto \\
+\hline
+{\em double} & pr Preço \\
+\hline
+{\em int} & q Quantidade \\
+\hline
+{\em char} & e Modo de compra \\
+\hline
+{\em char} & $\ast$c Cliente \\
+\hline
+{\em int} & m Mes \\
+\hline
+{\em int} & f Filial \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filiais_8c_a62b9915663f5cd3a9cb514dba8e36cdd}\label{filiais_8c_a62b9915663f5cd3a9cb514dba8e36cdd}} 
+\index{filiais.\+c@{filiais.\+c}!acrescenta\+Pto\+Fil@{acrescenta\+Pto\+Fil}}
+\index{acrescenta\+Pto\+Fil@{acrescenta\+Pto\+Fil}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{acrescenta\+Pto\+Fil()}{acrescentaPtoFil()}}
+{\footnotesize\ttfamily void acrescenta\+Pto\+Fil (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{h,  }\item[{char $\ast$}]{p,  }\item[{int}]{it,  }\item[{int}]{a,  }\item[{int}]{f,  }\item[{int}]{m,  }\item[{char}]{e,  }\item[{int}]{qnt,  }\item[{int}]{preco }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta um produto a um cliente na Filial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$h Estrutua Filial \\
+\hline
+{\em char} & $\ast$p Produto \\
+\hline
+{\em int} & it Indice do cliente na tabela \\
+\hline
+{\em int} & a Indice do cliente no array \\
+\hline
+{\em int} & f Filial \\
+\hline
+{\em int} & m Mes \\
+\hline
+{\em char} & e Modo de compra \\
+\hline
+{\em int} & qnt Quantidade \\
+\hline
+{\em int} & preco Preço \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filiais_8c_a2f6bb55313708fcdd16e793e116f849b}\label{filiais_8c_a2f6bb55313708fcdd16e793e116f849b}} 
+\index{filiais.\+c@{filiais.\+c}!Clientes\+Sem\+Compras@{Clientes\+Sem\+Compras}}
+\index{Clientes\+Sem\+Compras@{Clientes\+Sem\+Compras}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{Clientes\+Sem\+Compras()}{ClientesSemCompras()}}
+{\footnotesize\ttfamily int Clientes\+Sem\+Compras (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que retorna um array de strings com os clientes que nunca fizeram compras. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura Filial\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ array de strings com os clientes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a114a40a9fda2a951bdca3da1d135e9a3}\label{filiais_8c_a114a40a9fda2a951bdca3da1d135e9a3}} 
+\index{filiais.\+c@{filiais.\+c}!Clients\+Of\+All\+Branches@{Clients\+Of\+All\+Branches}}
+\index{Clients\+Of\+All\+Branches@{Clients\+Of\+All\+Branches}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{Clients\+Of\+All\+Branches()}{ClientsOfAllBranches()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ Clients\+Of\+All\+Branches (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int $\ast$}]{tam }\end{DoxyParamCaption})}
+
+
+
+Função que retorna um array de strings com os clientes que compraram em todas as filiais. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura Filial \\
+\hline
+{\em int} & $\ast$tam Um size que a função vai alterar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ array de strings com os clientes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a05ef376e7b641cb197501af272c65ed8}\label{filiais_8c_a05ef376e7b641cb197501af272c65ed8}} 
+\index{filiais.\+c@{filiais.\+c}!destroi\+Filial@{destroi\+Filial}}
+\index{destroi\+Filial@{destroi\+Filial}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{destroi\+Filial()}{destroiFilial()}}
+{\footnotesize\ttfamily void destroi\+Filial (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Funçao que destroi uma estrutura Filial libertando o espaço ocupado por esta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Filial previamente inicializada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filiais_8c_a2d285c6f23a822150012d74bf0f4daa1}\label{filiais_8c_a2d285c6f23a822150012d74bf0f4daa1}} 
+\index{filiais.\+c@{filiais.\+c}!existe\+\_\+fil@{existe\+\_\+fil}}
+\index{existe\+\_\+fil@{existe\+\_\+fil}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{existe\+\_\+fil()}{existe\_fil()}}
+{\footnotesize\ttfamily int existe\+\_\+fil (\begin{DoxyParamCaption}\item[{\hyperlink{structcl}{Cl} $\ast$}]{arr,  }\item[{char $\ast$}]{procurado,  }\item[{int}]{Tam }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o indice de um determinado cliente da estrutura Filial caso ele exista, -\/1 caso não. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Cl} & $\ast$arr Array de Cl ( estrutura complementar de Filial) \\
+\hline
+{\em char} & $\ast$procurado Cliente procurado \\
+\hline
+{\em int} & Tam Size do array de Cl\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int r Indice do cliente se encontrado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a7ed66b6cb4bb6dfb5ed5614e8051c11b}\label{filiais_8c_a7ed66b6cb4bb6dfb5ed5614e8051c11b}} 
+\index{filiais.\+c@{filiais.\+c}!existe\+\_\+prod@{existe\+\_\+prod}}
+\index{existe\+\_\+prod@{existe\+\_\+prod}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{existe\+\_\+prod()}{existe\_prod()}}
+{\footnotesize\ttfamily int existe\+\_\+prod (\begin{DoxyParamCaption}\item[{\hyperlink{structqprd}{Qprd} $\ast$}]{arr,  }\item[{char $\ast$}]{procurado,  }\item[{int}]{Tam }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o indice de um determinado produto de um cliente caso ele exista, -\/1 caso não. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Qprd} & $\ast$arr Array de Qprd ( estrutura complementar de Filial) \\
+\hline
+{\em char} & $\ast$procurado Produto procurado \\
+\hline
+{\em int} & Tam Size do array de Qprod\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int r Indice do produto se encontrado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_abe257a0cf5a8f5b9ca16d917b1fc4462}\label{filiais_8c_abe257a0cf5a8f5b9ca16d917b1fc4462}} 
+\index{filiais.\+c@{filiais.\+c}!get\+Arr\+By\+Letter@{get\+Arr\+By\+Letter}}
+\index{get\+Arr\+By\+Letter@{get\+Arr\+By\+Letter}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+Arr\+By\+Letter()}{getArrByLetter()}}
+{\footnotesize\ttfamily \hyperlink{structcl}{Cl}$\ast$ get\+Arr\+By\+Letter (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Função que devolve um array de clientes começados por uma determinada letra. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cl$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a2ae1ae9a1c4c47c395e7fa84137f6d02}\label{filiais_8c_a2ae1ae9a1c4c47c395e7fa84137f6d02}} 
+\index{filiais.\+c@{filiais.\+c}!get\+C\+Liente@{get\+C\+Liente}}
+\index{get\+C\+Liente@{get\+C\+Liente}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+C\+Liente()}{getCLiente()}}
+{\footnotesize\ttfamily char$\ast$ get\+C\+Liente (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k,  }\item[{int}]{ip }\end{DoxyParamCaption})}
+
+
+
+Função que devolve um cliente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+{\em int} & ip Indice do cliente no array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a48076566c412a2d179d2143381d4cd56}\label{filiais_8c_a48076566c412a2d179d2143381d4cd56}} 
+\index{filiais.\+c@{filiais.\+c}!get\+Fil\+Used@{get\+Fil\+Used}}
+\index{get\+Fil\+Used@{get\+Fil\+Used}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+Fil\+Used()}{getFilUsed()}}
+{\footnotesize\ttfamily int get\+Fil\+Used (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k,  }\item[{int}]{ip,  }\item[{int}]{fil }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se uma filial é usada. 
+
+caso sim dá retorno 1, caso contrário 0
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+{\em int} & ip Indice do cliente no array \\
+\hline
+{\em int} & fil Indice da filial que pretende verificar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_ac0951f8550239d484198d66a91d4d669}\label{filiais_8c_ac0951f8550239d484198d66a91d4d669}} 
+\index{filiais.\+c@{filiais.\+c}!get\+GastoN@{get\+GastoN}}
+\index{get\+GastoN@{get\+GastoN}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+Gasto\+N()}{getGastoN()}}
+{\footnotesize\ttfamily int get\+GastoN (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k,  }\item[{int}]{id,  }\item[{int}]{fil,  }\item[{int}]{m,  }\item[{int}]{pid }\end{DoxyParamCaption})}
+
+
+
+Função que devolve o gasto total em N de um determinado produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+{\em int} & ip Indice do cliente no array \\
+\hline
+{\em int} & fil Indice da filial \\
+\hline
+{\em int} & m Indice do mês \\
+\hline
+{\em int} & pid Indice do produto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a6041be59c26942021a4d770847ff57b1}\label{filiais_8c_a6041be59c26942021a4d770847ff57b1}} 
+\index{filiais.\+c@{filiais.\+c}!get\+GastoP@{get\+GastoP}}
+\index{get\+GastoP@{get\+GastoP}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+Gasto\+P()}{getGastoP()}}
+{\footnotesize\ttfamily int get\+GastoP (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k,  }\item[{int}]{id,  }\item[{int}]{fil,  }\item[{int}]{m,  }\item[{int}]{pid }\end{DoxyParamCaption})}
+
+
+
+Função que devolve gasto total em P de um determinado produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+{\em int} & ip Indice do cliente no array \\
+\hline
+{\em int} & fil Indice da filial \\
+\hline
+{\em int} & m Indice do mês \\
+\hline
+{\em int} & pid Indice do produto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a040f730a447e54dababcf1465c416612}\label{filiais_8c_a040f730a447e54dababcf1465c416612}} 
+\index{filiais.\+c@{filiais.\+c}!get\+One\+Prod@{get\+One\+Prod}}
+\index{get\+One\+Prod@{get\+One\+Prod}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+One\+Prod()}{getOneProd()}}
+{\footnotesize\ttfamily char$\ast$ get\+One\+Prod (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k,  }\item[{int}]{id,  }\item[{int}]{fil,  }\item[{int}]{m,  }\item[{int}]{p }\end{DoxyParamCaption})}
+
+
+
+Função que devolve um produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+{\em int} & ip Indice do cliente no array \\
+\hline
+{\em int} & fil Indice da filial \\
+\hline
+{\em int} & m Indice do mês \\
+\hline
+{\em int} & p Indice do produto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a5afbe4f63968b3973e03805a80e26538}\label{filiais_8c_a5afbe4f63968b3973e03805a80e26538}} 
+\index{filiais.\+c@{filiais.\+c}!get\+QuantN@{get\+QuantN}}
+\index{get\+QuantN@{get\+QuantN}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+Quant\+N()}{getQuantN()}}
+{\footnotesize\ttfamily int get\+QuantN (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k,  }\item[{int}]{id,  }\item[{int}]{fil,  }\item[{int}]{m,  }\item[{int}]{pid }\end{DoxyParamCaption})}
+
+
+
+Função que devolve q quantidade de compras em N para um determinado produto num mês. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+{\em int} & ip Indice do cliente no array \\
+\hline
+{\em int} & fil Indice da filial \\
+\hline
+{\em int} & m Indice do mês \\
+\hline
+{\em int} & pid Indice do produto. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_ae2595ef550326e0f6fa7fa588280b8bc}\label{filiais_8c_ae2595ef550326e0f6fa7fa588280b8bc}} 
+\index{filiais.\+c@{filiais.\+c}!get\+QuantP@{get\+QuantP}}
+\index{get\+QuantP@{get\+QuantP}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+Quant\+P()}{getQuantP()}}
+{\footnotesize\ttfamily int get\+QuantP (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k,  }\item[{int}]{id,  }\item[{int}]{fil,  }\item[{int}]{m,  }\item[{int}]{pid }\end{DoxyParamCaption})}
+
+
+
+Função que devolve a quantidade de compras em P para um determinado produto num mês. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+{\em int} & ip Indice do cliente no array \\
+\hline
+{\em int} & fil Indice da filial \\
+\hline
+{\em int} & m Indice do mês \\
+\hline
+{\em int} & pid Indice do produto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a312e754d04669008f7e6337f1d4d0ad2}\label{filiais_8c_a312e754d04669008f7e6337f1d4d0ad2}} 
+\index{filiais.\+c@{filiais.\+c}!get\+Size\+Arr\+Client@{get\+Size\+Arr\+Client}}
+\index{get\+Size\+Arr\+Client@{get\+Size\+Arr\+Client}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+Size\+Arr\+Client()}{getSizeArrClient()}}
+{\footnotesize\ttfamily int get\+Size\+Arr\+Client (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Função que devolve o tamanho do array num determinado indice da tabela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_aad712e4c0c4b04cdd8a1fde9a6d76960}\label{filiais_8c_aad712e4c0c4b04cdd8a1fde9a6d76960}} 
+\index{filiais.\+c@{filiais.\+c}!get\+Size\+Qprd@{get\+Size\+Qprd}}
+\index{get\+Size\+Qprd@{get\+Size\+Qprd}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{get\+Size\+Qprd()}{getSizeQprd()}}
+{\footnotesize\ttfamily int get\+Size\+Qprd (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{int}]{k,  }\item[{int}]{id,  }\item[{int}]{fil,  }\item[{int}]{m }\end{DoxyParamCaption})}
+
+
+
+Função que devolve o tamanho do array de produtos num determinado mês. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura filiais \\
+\hline
+{\em int} & k Indice do cliente na tabela \\
+\hline
+{\em int} & ip Indice do cliente no array \\
+\hline
+{\em int} & fil Indice da filial \\
+\hline
+{\em int} & m Indice do mês \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a8395dbae061751c7cf2ff01a8848cb4d}\label{filiais_8c_a8395dbae061751c7cf2ff01a8848cb4d}} 
+\index{filiais.\+c@{filiais.\+c}!hashfil@{hashfil}}
+\index{hashfil@{hashfil}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{hashfil()}{hashfil()}}
+{\footnotesize\ttfamily int hashfil (\begin{DoxyParamCaption}\item[{char $\ast$}]{cont }\end{DoxyParamCaption})}
+
+
+
+Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$cont String genérica\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O resultado inteiro dessa subtração 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a5727000000ceab10ee0e17bcad54b96e}\label{filiais_8c_a5727000000ceab10ee0e17bcad54b96e}} 
+\index{filiais.\+c@{filiais.\+c}!init\+Filial@{init\+Filial}}
+\index{init\+Filial@{init\+Filial}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{init\+Filial()}{initFilial()}}
+{\footnotesize\ttfamily \hyperlink{structfilial}{Filial}$\ast$ init\+Filial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função que inicia uma estrutura Filial alocando espaço para todas as estruturas adjacentes. 
+
+\begin{DoxyReturn}{Returns}
+Filial$\ast$ Devolve a Filial inicializada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filiais_8c_a35dcf3b835d306278e0d6a21e54b9b5f}\label{filiais_8c_a35dcf3b835d306278e0d6a21e54b9b5f}} 
+\index{filiais.\+c@{filiais.\+c}!Quantidades\+Um\+Cliente\+Por\+Mes@{Quantidades\+Um\+Cliente\+Por\+Mes}}
+\index{Quantidades\+Um\+Cliente\+Por\+Mes@{Quantidades\+Um\+Cliente\+Por\+Mes}!filiais.\+c@{filiais.\+c}}
+\subsubsection{\texorpdfstring{Quantidades\+Um\+Cliente\+Por\+Mes()}{QuantidadesUmClientePorMes()}}
+{\footnotesize\ttfamily int Quantidades\+Um\+Cliente\+Por\+Mes (\begin{DoxyParamCaption}\item[{\hyperlink{structfilial}{Filial} $\ast$}]{f,  }\item[{char $\ast$}]{cliente\+ID,  }\item[{int}]{fil,  }\item[{int}]{mes }\end{DoxyParamCaption})}
+
+
+
+Função que retorna a quantidade total de produtos comprados num mês. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filial} & $\ast$f Estrutura Filial \\
+\hline
+{\em char} & $\ast$cliente\+ID Cliente \\
+\hline
+{\em int} & fil Filial \\
+\hline
+{\em int} & mes Mês\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Quantidade total 
+\end{DoxyReturn}

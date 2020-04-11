@@ -1,0 +1,238 @@
+\hypertarget{queries_8c}{}\section{queries.\+c File Reference}
+\label{queries_8c}\index{queries.\+c@{queries.\+c}}
+
+
+Modulo que contém as funcções de resposta as queries.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}clientes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}produtos.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}faturacao.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}filiais.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vendas.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}queries.\+h\char`\"{}}\newline
+Include dependency graph for queries.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queries_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsgv}{sgv}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{queries_8c_a353ab4b59e69f777538389a7d3d90a74}\label{queries_8c_a353ab4b59e69f777538389a7d3d90a74}} 
+typedef struct \hyperlink{structsgv}{sgv} $\ast$ {\bfseries S\+GV}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{queries_8c_a14c3840c38c574667ca887b40c5250bb}\label{queries_8c_a14c3840c38c574667ca887b40c5250bb}} 
+\hyperlink{structsgv}{S\+GV} {\bfseries init\+S\+GV} ()
+\item 
+\mbox{\Hypertarget{queries_8c_aea434f0f0491f9325976a85e46447a5c}\label{queries_8c_aea434f0f0491f9325976a85e46447a5c}} 
+void {\bfseries distroy\+S\+GV} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv})
+\item 
+\mbox{\Hypertarget{queries_8c_a4da6b42210fa75c7b69ed3991b4ed669}\label{queries_8c_a4da6b42210fa75c7b69ed3991b4ed669}} 
+void {\bfseries destroi\+Array\+Strings} (char $\ast$$\ast$a, int size)
+\item 
+int \hyperlink{queries_8c_af837160764e31ee7884fd175306e88ba}{validames} (int m)
+\begin{DoxyCompactList}\small\item\em Função que verifica se um mes é valido testando se o int dado está entre 0 e 12. \end{DoxyCompactList}\item 
+int \hyperlink{queries_8c_a43f0d44bfa5f2e6f5ed4086a53bea448}{validafilial} (int f)
+\begin{DoxyCompactList}\small\item\em Função que verifica se uma filial é valida testando se o int dado está entre 1 e 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{queries_8c_a9699793c6090e44f1908416d02a7aa2a}\label{queries_8c_a9699793c6090e44f1908416d02a7aa2a}} 
+int {\bfseries letravalida} (char l)
+\item 
+\mbox{\Hypertarget{queries_8c_a0e5d092c192d7f1643bf2a93e564e4a5}\label{queries_8c_a0e5d092c192d7f1643bf2a93e564e4a5}} 
+\hyperlink{structsgv}{S\+GV} {\bfseries load\+S\+G\+V\+From\+Files} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, char $\ast$clients\+File\+Path, char $\ast$products\+File\+Path, char $\ast$sales\+File\+Path)
+\item 
+\mbox{\Hypertarget{queries_8c_add4049af28831b953f9046a771964e92}\label{queries_8c_add4049af28831b953f9046a771964e92}} 
+Q245 {\bfseries get\+Products\+Started\+By\+Letter} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, char letter)
+\item 
+\mbox{\Hypertarget{queries_8c_a467a12d16e3ae3b0b5be3d01ebd1a085}\label{queries_8c_a467a12d16e3ae3b0b5be3d01ebd1a085}} 
+void {\bfseries destroi\+Q245} (Q245 q)
+\item 
+\mbox{\Hypertarget{queries_8c_ace24a94642a885c9468602cd0d9f9db4}\label{queries_8c_ace24a94642a885c9468602cd0d9f9db4}} 
+Q3 {\bfseries get\+Products\+Sales\+And\+Profit} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, char $\ast$product\+ID, int month)
+\item 
+\mbox{\Hypertarget{queries_8c_a1e3c207ad0a048b23e3487622148935f}\label{queries_8c_a1e3c207ad0a048b23e3487622148935f}} 
+void {\bfseries destroi\+Q3} (Q3 q)
+\item 
+\mbox{\Hypertarget{queries_8c_aeacadbc70071c706bfbf8769dc799cc0}\label{queries_8c_aeacadbc70071c706bfbf8769dc799cc0}} 
+Q245 {\bfseries get\+Products\+Never\+Bought} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, int branch\+ID)
+\item 
+\mbox{\Hypertarget{queries_8c_adc2fedfb59b20693db3b55df0fcb7472}\label{queries_8c_adc2fedfb59b20693db3b55df0fcb7472}} 
+Q245 {\bfseries get\+Clients\+Of\+All\+Branches} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv})
+\item 
+\mbox{\Hypertarget{queries_8c_a2a4624f046ebc2609ce4fa1697c832da}\label{queries_8c_a2a4624f046ebc2609ce4fa1697c832da}} 
+Q6 {\bfseries get\+Clients\+And\+Products\+Never\+Bought\+Count} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv})
+\item 
+\mbox{\Hypertarget{queries_8c_ab6a4cba5785b2803cb1d80e0d0c8fdc7}\label{queries_8c_ab6a4cba5785b2803cb1d80e0d0c8fdc7}} 
+void {\bfseries destroi\+Q6} (Q6 q)
+\item 
+\mbox{\Hypertarget{queries_8c_a44987d4ab3920bd87edcf2b26dacabb4}\label{queries_8c_a44987d4ab3920bd87edcf2b26dacabb4}} 
+Q7 {\bfseries get\+Products\+Bought\+By\+Client} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, char $\ast$client\+ID)
+\item 
+\mbox{\Hypertarget{queries_8c_a9a1b1562ba4f92a40566b6ba8cb32c31}\label{queries_8c_a9a1b1562ba4f92a40566b6ba8cb32c31}} 
+void {\bfseries destroi\+Q7} (Q7 q)
+\item 
+\mbox{\Hypertarget{queries_8c_ab2beb2db827fb78a405ccb58405f9fb7}\label{queries_8c_ab2beb2db827fb78a405ccb58405f9fb7}} 
+Q8 {\bfseries get\+Sales\+And\+Profif} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, int min\+Month, int max\+Month)
+\item 
+\mbox{\Hypertarget{queries_8c_aa8d0a586a0ea7c137ccd32c0ed8ee7fa}\label{queries_8c_aa8d0a586a0ea7c137ccd32c0ed8ee7fa}} 
+void {\bfseries destroi\+Q8} (Q8 q)
+\item 
+\mbox{\Hypertarget{queries_8c_a64de436cdf84b48f05143ab00ab4988f}\label{queries_8c_a64de436cdf84b48f05143ab00ab4988f}} 
+Q9 {\bfseries get\+Product\+Buyers} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, char $\ast$product\+ID, int branch)
+\item 
+\mbox{\Hypertarget{queries_8c_a0ed9e1eb48f33025118e482fad051647}\label{queries_8c_a0ed9e1eb48f33025118e482fad051647}} 
+void {\bfseries destroi\+Q9} (Q9 q)
+\item 
+void \hyperlink{queries_8c_a5e077712c251785d4e50e9a96e460f22}{swapq12} (Qnt\+N\+Spent $\ast$args, int i1, int i2)
+\begin{DoxyCompactList}\small\item\em Função que troca duas estruturas Qnt\+Spent de posicao num array. \end{DoxyCompactList}\item 
+void \hyperlink{queries_8c_a54d6022abb41c2c5fd93742ac2e24168}{q10sort} (Qnt\+N\+Spent $\ast$args, int len)
+\begin{DoxyCompactList}\small\item\em Função que ordena um array de estruturas Qnt\+Spent. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{queries_8c_aab4db29061bfb157fd70e93276f27cba}\label{queries_8c_aab4db29061bfb157fd70e93276f27cba}} 
+Q12 {\bfseries get\+Client\+Favourite\+Products} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, char $\ast$client\+ID, int month)
+\item 
+\mbox{\Hypertarget{queries_8c_a2b39aa0e8c1e3d00663eed8895c16e38}\label{queries_8c_a2b39aa0e8c1e3d00663eed8895c16e38}} 
+void {\bfseries destroi\+Q12} (Q12 q)
+\item 
+\mbox{\Hypertarget{queries_8c_a974316c75d13c9b140f030b415f1d999}\label{queries_8c_a974316c75d13c9b140f030b415f1d999}} 
+void {\bfseries swapq11} (Qt $\ast$args, int i1, int i2)
+\item 
+\mbox{\Hypertarget{queries_8c_a3f8fcf52b20f593e4671818081913762}\label{queries_8c_a3f8fcf52b20f593e4671818081913762}} 
+void {\bfseries q11sort} (Qt $\ast$args, int len)
+\item 
+\mbox{\Hypertarget{queries_8c_a12540147c145027bbf9d1841db93bc60}\label{queries_8c_a12540147c145027bbf9d1841db93bc60}} 
+Q11 {\bfseries init\+Q11} ()
+\item 
+\mbox{\Hypertarget{queries_8c_a9c6f8721ddae42220a860c98b94b7e09}\label{queries_8c_a9c6f8721ddae42220a860c98b94b7e09}} 
+int {\bfseries existe\+Prod} (Qt $\ast$arr, char $\ast$procurado, int Tam)
+\item 
+\mbox{\Hypertarget{queries_8c_adf10a4dfa4f15639efa26fba7d22d409}\label{queries_8c_adf10a4dfa4f15639efa26fba7d22d409}} 
+Q11 {\bfseries to\+Array} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv})
+\item 
+\mbox{\Hypertarget{queries_8c_af17ac312fe5912a174935b9b9f10d624}\label{queries_8c_af17ac312fe5912a174935b9b9f10d624}} 
+void {\bfseries um\+Cliente} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, Q11 q, int k, int id)
+\item 
+\mbox{\Hypertarget{queries_8c_a0b8274230dfe854c8410d4f728a10206}\label{queries_8c_a0b8274230dfe854c8410d4f728a10206}} 
+Q11 {\bfseries get\+Top\+Selled\+Products} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, int limit)
+\item 
+\mbox{\Hypertarget{queries_8c_a22823cdbbfd351c9aacb39937a2d9748}\label{queries_8c_a22823cdbbfd351c9aacb39937a2d9748}} 
+void {\bfseries destroi\+Q11} (Q11 q)
+\item 
+\mbox{\Hypertarget{queries_8c_a9baba84818d94899ef0b11640c800f04}\label{queries_8c_a9baba84818d94899ef0b11640c800f04}} 
+Q12 {\bfseries init\+Q12} ()
+\item 
+\mbox{\Hypertarget{queries_8c_ad57bbed4fd58195d60359e9bf219457d}\label{queries_8c_ad57bbed4fd58195d60359e9bf219457d}} 
+void {\bfseries q12sort} (Qnt\+N\+Spent $\ast$args, int len)
+\item 
+\mbox{\Hypertarget{queries_8c_af277ed9df5b7cbfe2e83dd9a4b258f47}\label{queries_8c_af277ed9df5b7cbfe2e83dd9a4b258f47}} 
+int {\bfseries existe\+\_\+q12} (Qnt\+N\+Spent $\ast$arr, char $\ast$procurado, int Tam)
+\item 
+\mbox{\Hypertarget{queries_8c_ade07fddcdb86a6494fb7fd0e13182f97}\label{queries_8c_ade07fddcdb86a6494fb7fd0e13182f97}} 
+Q12 {\bfseries get\+Client\+Top\+Profit\+Products} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv}, char $\ast$client\+ID, int limit)
+\item 
+\mbox{\Hypertarget{queries_8c_ab3aed9406f5817f7a483ac0e083b6f1a}\label{queries_8c_ab3aed9406f5817f7a483ac0e083b6f1a}} 
+char $\ast$ {\bfseries get\+Read\+File} (char $\ast$file\+Path)
+\item 
+\mbox{\Hypertarget{queries_8c_a5e8b275d70dd3b53c77c8bec2d476b3a}\label{queries_8c_a5e8b275d70dd3b53c77c8bec2d476b3a}} 
+Q13 {\bfseries get\+Current\+Files\+Info} (\hyperlink{structsgv}{S\+GV} \hyperlink{structsgv}{sgv})
+\item 
+\mbox{\Hypertarget{queries_8c_aae2361dd6a47e31f23241b5530129de6}\label{queries_8c_aae2361dd6a47e31f23241b5530129de6}} 
+void {\bfseries destroi\+Q13} (Q13 q)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Modulo que contém as funcções de resposta as queries. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{queries_8c_a54d6022abb41c2c5fd93742ac2e24168}\label{queries_8c_a54d6022abb41c2c5fd93742ac2e24168}} 
+\index{queries.\+c@{queries.\+c}!q10sort@{q10sort}}
+\index{q10sort@{q10sort}!queries.\+c@{queries.\+c}}
+\subsubsection{\texorpdfstring{q10sort()}{q10sort()}}
+{\footnotesize\ttfamily void q10sort (\begin{DoxyParamCaption}\item[{Qnt\+N\+Spent $\ast$}]{args,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+
+
+Função que ordena um array de estruturas Qnt\+Spent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Qnt\+Spent} & $\ast$args Array de Estruturas \\
+\hline
+{\em int} & len Comprimento do array \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{queries_8c_a5e077712c251785d4e50e9a96e460f22}\label{queries_8c_a5e077712c251785d4e50e9a96e460f22}} 
+\index{queries.\+c@{queries.\+c}!swapq12@{swapq12}}
+\index{swapq12@{swapq12}!queries.\+c@{queries.\+c}}
+\subsubsection{\texorpdfstring{swapq12()}{swapq12()}}
+{\footnotesize\ttfamily void swapq12 (\begin{DoxyParamCaption}\item[{Qnt\+N\+Spent $\ast$}]{args,  }\item[{int}]{i1,  }\item[{int}]{i2 }\end{DoxyParamCaption})}
+
+
+
+Função que troca duas estruturas Qnt\+Spent de posicao num array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Qnt\+Spent} & $\ast$args Array de Estruturas \\
+\hline
+{\em int} & i1 Indice no array da primeira estrutura \\
+\hline
+{\em int} & i2 Indice no array da segunda estrutura \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{queries_8c_a43f0d44bfa5f2e6f5ed4086a53bea448}\label{queries_8c_a43f0d44bfa5f2e6f5ed4086a53bea448}} 
+\index{queries.\+c@{queries.\+c}!validafilial@{validafilial}}
+\index{validafilial@{validafilial}!queries.\+c@{queries.\+c}}
+\subsubsection{\texorpdfstring{validafilial()}{validafilial()}}
+{\footnotesize\ttfamily int validafilial (\begin{DoxyParamCaption}\item[{int}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se uma filial é valida testando se o int dado está entre 1 e 3. 
+
+caso sim dá retorno 1, caso contrário -\/1
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & f Filial a testar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{queries_8c_af837160764e31ee7884fd175306e88ba}\label{queries_8c_af837160764e31ee7884fd175306e88ba}} 
+\index{queries.\+c@{queries.\+c}!validames@{validames}}
+\index{validames@{validames}!queries.\+c@{queries.\+c}}
+\subsubsection{\texorpdfstring{validames()}{validames()}}
+{\footnotesize\ttfamily int validames (\begin{DoxyParamCaption}\item[{int}]{m }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se um mes é valido testando se o int dado está entre 0 e 12. 
+
+caso sim dá retorno 1, caso contrário -\/1
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & m Mes a testar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}

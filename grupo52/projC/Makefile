@@ -5,7 +5,8 @@ TARGET = projeto
 SRC= src
 INC= include
 LIB= libs
-BIN=bin
+BIN= bin
+DOC= docs
 
 SOURCE = $(wildcard $(SRC)/*.c)
 OBJECT = $(patsubst %,$(BIN)/%, $(notdir $(SOURCE:.c=.o)))
@@ -25,10 +26,6 @@ $(BIN)/%.o: $(SRC)/%.c
 program: $(BIN)/$(TARGET)
 
 
-
-.PHONY: docs
-docs: 
-	doxygen Doxyfile 
 
 
 clean:

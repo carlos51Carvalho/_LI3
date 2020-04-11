@@ -1,0 +1,271 @@
+\hypertarget{produtos_8c}{}\section{produtos.\+c File Reference}
+\label{produtos_8c}\index{produtos.\+c@{produtos.\+c}}
+
+
+Modulo que contém as funções para leitura e validação de produtos.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}produtos.\+h\char`\"{}}\newline
+Include dependency graph for produtos.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{produtos_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbucket}{bucket}
+\item 
+struct \hyperlink{structthash}{thash}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{produtos_8c_ab73320ba1511b228e2d4df6fa47e8f1d}\label{produtos_8c_ab73320ba1511b228e2d4df6fa47e8f1d}} 
+typedef struct \hyperlink{structbucket}{bucket} {\bfseries Bucket}
+\item 
+\mbox{\Hypertarget{produtos_8c_a21f0028bc00faa3267e3e3cc9ff2e271}\label{produtos_8c_a21f0028bc00faa3267e3e3cc9ff2e271}} 
+typedef struct \hyperlink{structthash}{thash} {\bfseries T\+Hash}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{produtos_8c_ad66fd4fdcccce5459a6beabc861284d4}{hash\+\_\+p} (char $\ast$cont)
+\begin{DoxyCompactList}\small\item\em Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A. \end{DoxyCompactList}\item 
+\hyperlink{structthash}{T\+Hash} $\ast$ \hyperlink{produtos_8c_a421e774c98a70e1066cb43de34c81ccd}{init\+Tab\+\_\+p} ()
+\begin{DoxyCompactList}\small\item\em Função que inicia uma estrutura Thash alocando espaço para todas as estruturas adjacentes. \end{DoxyCompactList}\item 
+void \hyperlink{produtos_8c_a2455e1079c9d01e322fafeaa0cd985b0}{destroi\+Tab\+\_\+p} (\hyperlink{structthash}{T\+Hash} $\ast$h)
+\begin{DoxyCompactList}\small\item\em Funçao que destroi uma estrutura Thash libertando o espaço ocupado por esta. \end{DoxyCompactList}\item 
+void \hyperlink{produtos_8c_aff4e3384df1ecfdc932b0aab191e4783}{acrecensta\+Tab\+\_\+p} (\hyperlink{structthash}{T\+Hash} $\ast$h, char $\ast$cont)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta a uma Thash uma derminada string. \end{DoxyCompactList}\item 
+void \hyperlink{produtos_8c_a05403823bd725ddc03baac6546a4f850}{swapp} (char $\ast$$\ast$arg1, char $\ast$$\ast$arg2)
+\begin{DoxyCompactList}\small\item\em Função que troca duas strings de posicao. \end{DoxyCompactList}\item 
+void \hyperlink{produtos_8c_a9d3a14dce1eae0512b438727b2b4e3ad}{quicksortp} (char $\ast$$\ast$args, unsigned int len)
+\begin{DoxyCompactList}\small\item\em Função que ordena um array de strings. \end{DoxyCompactList}\item 
+int \hyperlink{produtos_8c_aa361bd16a6960af3679506b2ab28d73f}{validaproduto} (char $\ast$produto)
+\begin{DoxyCompactList}\small\item\em Função que recebe uma string de um produto e verifica se este é valido. \end{DoxyCompactList}\item 
+int \hyperlink{produtos_8c_a188efbf6f79d9ac8f387745d3f1acdce}{ler\+\_\+prod} (\hyperlink{structthash}{T\+Hash} $\ast$prod, char $\ast$filespath, int $\ast$p)
+\begin{DoxyCompactList}\small\item\em Função que le de um ficheiro para uma Thash. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{produtos_8c_ad4f27d1e9912da24cab63fb11aba8329}{get\+Produto} (\hyperlink{structthash}{T\+Hash} $\ast$p, int key, int i)
+\begin{DoxyCompactList}\small\item\em Função que cria um clone de uma string produto. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \hyperlink{produtos_8c_ad6e70ec8c69427882e8722e7cdbc5ffe}{get\+Array\+Prod} (\hyperlink{structthash}{T\+Hash} $\ast$p, int key)
+\begin{DoxyCompactList}\small\item\em Função que cria um clone de um array de strings produto. \end{DoxyCompactList}\item 
+int \hyperlink{produtos_8c_a08d1a3a77240188a65823a1173b2f361}{get\+Array\+Prod\+Size} (\hyperlink{structthash}{T\+Hash} $\ast$p, int key)
+\begin{DoxyCompactList}\small\item\em Função que retorna o size um determinado array na tabela. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Modulo que contém as funções para leitura e validação de produtos. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{produtos_8c_aff4e3384df1ecfdc932b0aab191e4783}\label{produtos_8c_aff4e3384df1ecfdc932b0aab191e4783}} 
+\index{produtos.\+c@{produtos.\+c}!acrecensta\+Tab\+\_\+p@{acrecensta\+Tab\+\_\+p}}
+\index{acrecensta\+Tab\+\_\+p@{acrecensta\+Tab\+\_\+p}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{acrecensta\+Tab\+\_\+p()}{acrecenstaTab\_p()}}
+{\footnotesize\ttfamily void acrecensta\+Tab\+\_\+p (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{h,  }\item[{char $\ast$}]{cont }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta a uma Thash uma derminada string. 
+
+Aplicando a função hash descobre a posicao correta desta na T\+Hash e sucessivamente realocando espaço para a adicionar á mesma
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$h T\+Hash previamente inicializada \\
+\hline
+{\em char} & $\ast$cont String genérica \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{produtos_8c_a2455e1079c9d01e322fafeaa0cd985b0}\label{produtos_8c_a2455e1079c9d01e322fafeaa0cd985b0}} 
+\index{produtos.\+c@{produtos.\+c}!destroi\+Tab\+\_\+p@{destroi\+Tab\+\_\+p}}
+\index{destroi\+Tab\+\_\+p@{destroi\+Tab\+\_\+p}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{destroi\+Tab\+\_\+p()}{destroiTab\_p()}}
+{\footnotesize\ttfamily void destroi\+Tab\+\_\+p (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Funçao que destroi uma estrutura Thash libertando o espaço ocupado por esta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$h T\+Hash previamente inicializada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{produtos_8c_ad6e70ec8c69427882e8722e7cdbc5ffe}\label{produtos_8c_ad6e70ec8c69427882e8722e7cdbc5ffe}} 
+\index{produtos.\+c@{produtos.\+c}!get\+Array\+Prod@{get\+Array\+Prod}}
+\index{get\+Array\+Prod@{get\+Array\+Prod}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{get\+Array\+Prod()}{getArrayProd()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ get\+Array\+Prod (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{p,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Função que cria um clone de um array de strings produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$c Tabela de onde é retirado o produto \\
+\hline
+{\em int} & key indice na tabela\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ Retorno da copia 
+\end{DoxyReturn}
+\mbox{\Hypertarget{produtos_8c_a08d1a3a77240188a65823a1173b2f361}\label{produtos_8c_a08d1a3a77240188a65823a1173b2f361}} 
+\index{produtos.\+c@{produtos.\+c}!get\+Array\+Prod\+Size@{get\+Array\+Prod\+Size}}
+\index{get\+Array\+Prod\+Size@{get\+Array\+Prod\+Size}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{get\+Array\+Prod\+Size()}{getArrayProdSize()}}
+{\footnotesize\ttfamily int get\+Array\+Prod\+Size (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{p,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o size um determinado array na tabela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$c Tabela de onde é retirado o produto \\
+\hline
+{\em int} & key indice na tabela\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{produtos_8c_ad4f27d1e9912da24cab63fb11aba8329}\label{produtos_8c_ad4f27d1e9912da24cab63fb11aba8329}} 
+\index{produtos.\+c@{produtos.\+c}!get\+Produto@{get\+Produto}}
+\index{get\+Produto@{get\+Produto}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{get\+Produto()}{getProduto()}}
+{\footnotesize\ttfamily char$\ast$ get\+Produto (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{p,  }\item[{int}]{key,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Função que cria um clone de uma string produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$c Tabela de onde é retirado o produto \\
+\hline
+{\em int} & key indice na tabela \\
+\hline
+{\em int} & i indice no array\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ Retorno da copia 
+\end{DoxyReturn}
+\mbox{\Hypertarget{produtos_8c_ad66fd4fdcccce5459a6beabc861284d4}\label{produtos_8c_ad66fd4fdcccce5459a6beabc861284d4}} 
+\index{produtos.\+c@{produtos.\+c}!hash\+\_\+p@{hash\+\_\+p}}
+\index{hash\+\_\+p@{hash\+\_\+p}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{hash\+\_\+p()}{hash\_p()}}
+{\footnotesize\ttfamily int hash\+\_\+p (\begin{DoxyParamCaption}\item[{char $\ast$}]{cont }\end{DoxyParamCaption})}
+
+
+
+Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$cont String genérica\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O resultado inteiro dessa subtração 
+\end{DoxyReturn}
+\mbox{\Hypertarget{produtos_8c_a421e774c98a70e1066cb43de34c81ccd}\label{produtos_8c_a421e774c98a70e1066cb43de34c81ccd}} 
+\index{produtos.\+c@{produtos.\+c}!init\+Tab\+\_\+p@{init\+Tab\+\_\+p}}
+\index{init\+Tab\+\_\+p@{init\+Tab\+\_\+p}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{init\+Tab\+\_\+p()}{initTab\_p()}}
+{\footnotesize\ttfamily \hyperlink{structthash}{T\+Hash}$\ast$ init\+Tab\+\_\+p (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função que inicia uma estrutura Thash alocando espaço para todas as estruturas adjacentes. 
+
+\begin{DoxyReturn}{Returns}
+T\+Hash$\ast$ Devolve a T\+Hash inicializada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{produtos_8c_a188efbf6f79d9ac8f387745d3f1acdce}\label{produtos_8c_a188efbf6f79d9ac8f387745d3f1acdce}} 
+\index{produtos.\+c@{produtos.\+c}!ler\+\_\+prod@{ler\+\_\+prod}}
+\index{ler\+\_\+prod@{ler\+\_\+prod}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{ler\+\_\+prod()}{ler\_prod()}}
+{\footnotesize\ttfamily int ler\+\_\+prod (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{prod,  }\item[{char $\ast$}]{filespath,  }\item[{int $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Função que le de um ficheiro para uma Thash. 
+
+Recebendo uma Thash e um file path, lê de um ficheiro linha a linha e vai colocando cada linha na thash na sua posição correspondente na mesma
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$prod T\+Hash onde vai ser colocada a informação \\
+\hline
+{\em char} & $\ast$filespath String com o file path \\
+\hline
+{\em int} & $\ast$p Inteiro onde é guardado o numero de produtos lidos\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O numero de produtos válidos 
+\end{DoxyReturn}
+\mbox{\Hypertarget{produtos_8c_a9d3a14dce1eae0512b438727b2b4e3ad}\label{produtos_8c_a9d3a14dce1eae0512b438727b2b4e3ad}} 
+\index{produtos.\+c@{produtos.\+c}!quicksortp@{quicksortp}}
+\index{quicksortp@{quicksortp}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{quicksortp()}{quicksortp()}}
+{\footnotesize\ttfamily void quicksortp (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{args,  }\item[{unsigned int}]{len }\end{DoxyParamCaption})}
+
+
+
+Função que ordena um array de strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unsigned} & int len int tam generico \\
+\hline
+{\em char} & $\ast$$\ast$args String genérica \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{produtos_8c_a05403823bd725ddc03baac6546a4f850}\label{produtos_8c_a05403823bd725ddc03baac6546a4f850}} 
+\index{produtos.\+c@{produtos.\+c}!swapp@{swapp}}
+\index{swapp@{swapp}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{swapp()}{swapp()}}
+{\footnotesize\ttfamily void swapp (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{arg1,  }\item[{char $\ast$$\ast$}]{arg2 }\end{DoxyParamCaption})}
+
+
+
+Função que troca duas strings de posicao. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$$\ast$arg1 String genérica \\
+\hline
+{\em char} & $\ast$$\ast$arg2 String genérica \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{produtos_8c_aa361bd16a6960af3679506b2ab28d73f}\label{produtos_8c_aa361bd16a6960af3679506b2ab28d73f}} 
+\index{produtos.\+c@{produtos.\+c}!validaproduto@{validaproduto}}
+\index{validaproduto@{validaproduto}!produtos.\+c@{produtos.\+c}}
+\subsubsection{\texorpdfstring{validaproduto()}{validaproduto()}}
+{\footnotesize\ttfamily int validaproduto (\begin{DoxyParamCaption}\item[{char $\ast$}]{produto }\end{DoxyParamCaption})}
+
+
+
+Função que recebe uma string de um produto e verifica se este é valido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$produto String (produto)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}

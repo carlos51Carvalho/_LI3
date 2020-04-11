@@ -1,0 +1,223 @@
+\hypertarget{vendas_8c}{}\section{vendas.\+c File Reference}
+\label{vendas_8c}\index{vendas.\+c@{vendas.\+c}}
+
+
+Modulo que contém as funcções para leitura e validação de vendas e incorporação destas nas estruturas filiais e faturação.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}clientes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}faturacao.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}filiais.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}produtos.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vendas.\+h\char`\"{}}\newline
+Include dependency graph for vendas.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vendas_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{vendas_8c_a51f66e1e24f722303640d1da8824c0e8}\label{vendas_8c_a51f66e1e24f722303640d1da8824c0e8}} 
+int {\bfseries alldigit} (char $\ast$buf)
+\item 
+\mbox{\Hypertarget{vendas_8c_ab7e033bbd635e77371051ef24749e89b}\label{vendas_8c_ab7e033bbd635e77371051ef24749e89b}} 
+int {\bfseries isfloat} (char $\ast$campo)
+\item 
+void \hyperlink{vendas_8c_a71c6b46d6c27c5d05443e4f4680240db}{destroi\+Array\+String} (char $\ast$$\ast$a, int size)
+\item 
+int \hyperlink{vendas_8c_a17e5ea168e2a616942e52667f8285984}{existe} (char $\ast$$\ast$testado, char $\ast$nas\+\_\+vendas, int Tam)
+\begin{DoxyCompactList}\small\item\em Função de procura binária, que procura num array de strings uma string. \end{DoxyCompactList}\item 
+int \hyperlink{vendas_8c_aec6ea11d2c2ce802a6a0209b8743aaf7}{validapreco} (char $\ast$preco)
+\begin{DoxyCompactList}\small\item\em Função que verifica se um preçe é valido testando se esse preço se encontra entre dois valores. \end{DoxyCompactList}\item 
+int \hyperlink{vendas_8c_a38f966df1d4e99b7246228216620e155}{valida3campo} (char $\ast$campo)
+\begin{DoxyCompactList}\small\item\em Função que verifica se uma quantidade é valida testando se esse valor se encontra entre dois valores. \end{DoxyCompactList}\item 
+int \hyperlink{vendas_8c_a17cd0a6871ad958086895d8dc257ea6b}{valida4campo} (char $\ast$campo)
+\begin{DoxyCompactList}\small\item\em Função que verifica se um tipo de compra é valido testando se o char dado é válido. \end{DoxyCompactList}\item 
+int \hyperlink{vendas_8c_a27545cd0e98a95674365948cad34ec83}{valida6mes} (char $\ast$campo)
+\begin{DoxyCompactList}\small\item\em Função que verifica se um mes é valido testando se o int dado está entre 0 e 12. \end{DoxyCompactList}\item 
+int \hyperlink{vendas_8c_a565a8e4b425bac6d01b4ec4ec46d84e7}{valida7filial} (char $\ast$\hyperlink{structfilial}{filial})
+\begin{DoxyCompactList}\small\item\em Função que verifica se uma filial é valida testando se o int dado está entre 1 e 3. \end{DoxyCompactList}\item 
+int \hyperlink{vendas_8c_a9d66eb71dbdb558536023b991bc29bb6}{ler\+\_\+venda} (\hyperlink{structfat}{Fat} $\ast$\hyperlink{structfat}{fat}, \hyperlink{structfilial}{Filial} $\ast$\hyperlink{structfil}{fil}, \hyperlink{structthash}{T\+Hash} $\ast$cliente, \hyperlink{structthash}{T\+Hash} $\ast$prod, char $\ast$filespath, int $\ast$v)
+\begin{DoxyCompactList}\small\item\em Função que le de um ficheiro Vendas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Modulo que contém as funcções para leitura e validação de vendas e incorporação destas nas estruturas filiais e faturação. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vendas_8c_a71c6b46d6c27c5d05443e4f4680240db}\label{vendas_8c_a71c6b46d6c27c5d05443e4f4680240db}} 
+\index{vendas.\+c@{vendas.\+c}!destroi\+Array\+String@{destroi\+Array\+String}}
+\index{destroi\+Array\+String@{destroi\+Array\+String}!vendas.\+c@{vendas.\+c}}
+\subsubsection{\texorpdfstring{destroi\+Array\+String()}{destroiArrayString()}}
+{\footnotesize\ttfamily void destroi\+Array\+String (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{a,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+Função que destroi (liberta) um array de strings 
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$$\ast$a \\
+\hline
+{\em int} & size \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{vendas_8c_a17e5ea168e2a616942e52667f8285984}\label{vendas_8c_a17e5ea168e2a616942e52667f8285984}} 
+\index{vendas.\+c@{vendas.\+c}!existe@{existe}}
+\index{existe@{existe}!vendas.\+c@{vendas.\+c}}
+\subsubsection{\texorpdfstring{existe()}{existe()}}
+{\footnotesize\ttfamily int existe (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{testado,  }\item[{char $\ast$}]{nas\+\_\+vendas,  }\item[{int}]{Tam }\end{DoxyParamCaption})}
+
+
+
+Função de procura binária, que procura num array de strings uma string. 
+
+Quando a encontra retorna 1 , caso não encontre retorna 0
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$$\ast$testado Array genérico \\
+\hline
+{\em char} & $\ast$nas\+\_\+vendas Uma string genérica \\
+\hline
+{\em int} & Tam Um int size\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int r O indice se encontrado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vendas_8c_a9d66eb71dbdb558536023b991bc29bb6}\label{vendas_8c_a9d66eb71dbdb558536023b991bc29bb6}} 
+\index{vendas.\+c@{vendas.\+c}!ler\+\_\+venda@{ler\+\_\+venda}}
+\index{ler\+\_\+venda@{ler\+\_\+venda}!vendas.\+c@{vendas.\+c}}
+\subsubsection{\texorpdfstring{ler\+\_\+venda()}{ler\_venda()}}
+{\footnotesize\ttfamily int ler\+\_\+venda (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{fat,  }\item[{\hyperlink{structfilial}{Filial} $\ast$}]{fil,  }\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{cliente,  }\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{prod,  }\item[{char $\ast$}]{filespath,  }\item[{int $\ast$}]{v }\end{DoxyParamCaption})}
+
+
+
+Função que le de um ficheiro Vendas. 
+
+Recebendo uma Fat (estrutura Faturação),uma Filial (estrutura Filial) e duas T\+Hash(estruturas clientes e produtos) e um file path, lê linha a linha de um determinado ficheiro fazendo enquanto este válido a divisão por espaços  e ~\newline
+, vai repassando as partes retiradas dessa linha para uma string part, que vai sendo guardada em auxiliares-\/ Postriormente os campos retirados da linha são validados e são alocados pelas funcçoes acrescenta\+Fat e acrescenta\+Fil as respetivas estruturas que estas recebem como argumento;
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Fat para onde vai ser extraida informação do ficheiro \\
+\hline
+{\em Filial} & $\ast$fil Estrutura Filial para onde vai ser extraida informação do ficheiro \\
+\hline
+{\em T\+Hash} & $\ast$cliente Estrutura T\+Hash para onde vai ser extraida informação do ficheiro \\
+\hline
+{\em char} & $\ast$filespath File path do ficheiro a ler \\
+\hline
+{\em int} & $\ast$v $\ast$int onde se vai guardar o total de vendas lidas\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int int numero de vendas válidas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vendas_8c_a38f966df1d4e99b7246228216620e155}\label{vendas_8c_a38f966df1d4e99b7246228216620e155}} 
+\index{vendas.\+c@{vendas.\+c}!valida3campo@{valida3campo}}
+\index{valida3campo@{valida3campo}!vendas.\+c@{vendas.\+c}}
+\subsubsection{\texorpdfstring{valida3campo()}{valida3campo()}}
+{\footnotesize\ttfamily int valida3campo (\begin{DoxyParamCaption}\item[{char $\ast$}]{campo }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se uma quantidade é valida testando se esse valor se encontra entre dois valores. 
+
+caso sim dá retorno 1, caso contrário -\/1
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$campo Quantidade testetada\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vendas_8c_a17cd0a6871ad958086895d8dc257ea6b}\label{vendas_8c_a17cd0a6871ad958086895d8dc257ea6b}} 
+\index{vendas.\+c@{vendas.\+c}!valida4campo@{valida4campo}}
+\index{valida4campo@{valida4campo}!vendas.\+c@{vendas.\+c}}
+\subsubsection{\texorpdfstring{valida4campo()}{valida4campo()}}
+{\footnotesize\ttfamily int valida4campo (\begin{DoxyParamCaption}\item[{char $\ast$}]{campo }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se um tipo de compra é valido testando se o char dado é válido. 
+
+caso sim dá retorno 1, caso contrário -\/1
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$campo Modo a testar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vendas_8c_a27545cd0e98a95674365948cad34ec83}\label{vendas_8c_a27545cd0e98a95674365948cad34ec83}} 
+\index{vendas.\+c@{vendas.\+c}!valida6mes@{valida6mes}}
+\index{valida6mes@{valida6mes}!vendas.\+c@{vendas.\+c}}
+\subsubsection{\texorpdfstring{valida6mes()}{valida6mes()}}
+{\footnotesize\ttfamily int valida6mes (\begin{DoxyParamCaption}\item[{char $\ast$}]{campo }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se um mes é valido testando se o int dado está entre 0 e 12. 
+
+caso sim dá retorno 1, caso contrário -\/1
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$campo Mes a testar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vendas_8c_a565a8e4b425bac6d01b4ec4ec46d84e7}\label{vendas_8c_a565a8e4b425bac6d01b4ec4ec46d84e7}} 
+\index{vendas.\+c@{vendas.\+c}!valida7filial@{valida7filial}}
+\index{valida7filial@{valida7filial}!vendas.\+c@{vendas.\+c}}
+\subsubsection{\texorpdfstring{valida7filial()}{valida7filial()}}
+{\footnotesize\ttfamily int valida7filial (\begin{DoxyParamCaption}\item[{char $\ast$}]{filial }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se uma filial é valida testando se o int dado está entre 1 e 3. 
+
+caso sim dá retorno 1, caso contrário -\/1
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$filial Filial a testar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vendas_8c_aec6ea11d2c2ce802a6a0209b8743aaf7}\label{vendas_8c_aec6ea11d2c2ce802a6a0209b8743aaf7}} 
+\index{vendas.\+c@{vendas.\+c}!validapreco@{validapreco}}
+\index{validapreco@{validapreco}!vendas.\+c@{vendas.\+c}}
+\subsubsection{\texorpdfstring{validapreco()}{validapreco()}}
+{\footnotesize\ttfamily int validapreco (\begin{DoxyParamCaption}\item[{char $\ast$}]{preco }\end{DoxyParamCaption})}
+
+
+
+Função que verifica se um preçe é valido testando se esse preço se encontra entre dois valores. 
+
+caso sim dá retorno 1, caso contrário -\/1
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$preco Preco testetado\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}

@@ -1,0 +1,271 @@
+\hypertarget{clientes_8c}{}\section{clientes.\+c File Reference}
+\label{clientes_8c}\index{clientes.\+c@{clientes.\+c}}
+
+
+Modulo que contém as funcções para leitura e validação de clientes.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}clientes.\+h\char`\"{}}\newline
+Include dependency graph for clientes.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{clientes_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbucket}{bucket}
+\item 
+struct \hyperlink{structthash}{thash}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{clientes_8c_ab73320ba1511b228e2d4df6fa47e8f1d}\label{clientes_8c_ab73320ba1511b228e2d4df6fa47e8f1d}} 
+typedef struct \hyperlink{structbucket}{bucket} {\bfseries Bucket}
+\item 
+\mbox{\Hypertarget{clientes_8c_a21f0028bc00faa3267e3e3cc9ff2e271}\label{clientes_8c_a21f0028bc00faa3267e3e3cc9ff2e271}} 
+typedef struct \hyperlink{structthash}{thash} {\bfseries T\+Hash}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{clientes_8c_af88c9cf612c7bfaca1afd182d302306a}{hash} (char $\ast$cont)
+\begin{DoxyCompactList}\small\item\em Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A. \end{DoxyCompactList}\item 
+\hyperlink{structthash}{T\+Hash} $\ast$ \hyperlink{clientes_8c_abdf1fc124ed891a05dba7d1fce51dfcc}{init\+Tab} ()
+\begin{DoxyCompactList}\small\item\em Função que inicia uma estrutura Thash alocando espaço para todas as estruturas adjacentes. \end{DoxyCompactList}\item 
+void \hyperlink{clientes_8c_a02a7235067818588fbfbe3121e42b34d}{destroi\+Tab} (\hyperlink{structthash}{T\+Hash} $\ast$h)
+\begin{DoxyCompactList}\small\item\em Funçao que destroi uma estrutura Thash libertando o espaço ocupado por esta. \end{DoxyCompactList}\item 
+void \hyperlink{clientes_8c_a88acb4c6adff7ed545eaa56c3c8d9d5b}{acrecensta\+Tab} (\hyperlink{structthash}{T\+Hash} $\ast$h, char $\ast$cont)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta a uma Thash uma derminada string. \end{DoxyCompactList}\item 
+void \hyperlink{clientes_8c_a0e8f326da95dbd031e75a42e98b2a45d}{swapc} (char $\ast$$\ast$arg1, char $\ast$$\ast$arg2)
+\begin{DoxyCompactList}\small\item\em Função que troca duas strings de posicao. \end{DoxyCompactList}\item 
+void \hyperlink{clientes_8c_ae91c7810753de46884a5784decc2e710}{quicksortc} (char $\ast$$\ast$args, unsigned int len)
+\begin{DoxyCompactList}\small\item\em Função que ordena um array de strings. \end{DoxyCompactList}\item 
+int \hyperlink{clientes_8c_aea63038230f76b0df401d2740dace813}{ler\+\_\+clientes} (\hyperlink{structthash}{T\+Hash} $\ast$cliente, char $\ast$filespath, int $\ast$c)
+\begin{DoxyCompactList}\small\item\em Função que le de um ficheiro para uma Thash. \end{DoxyCompactList}\item 
+int \hyperlink{clientes_8c_a50ddba9ef7134b08d60d7e478e73d475}{validacliente} (char $\ast$cliente)
+\begin{DoxyCompactList}\small\item\em Função que recebe uma string de um cliente e verifica se este é valido. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{clientes_8c_abbac116a2a21355d9e177a2fc9a909d3}{get\+Cliente} (\hyperlink{structthash}{T\+Hash} $\ast$c, int key, int i)
+\begin{DoxyCompactList}\small\item\em Função que cria um clone de uma string cliente. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \hyperlink{clientes_8c_a638742b0dbf906ab1adddae05a59a0d7}{get\+Array\+Cl} (\hyperlink{structthash}{T\+Hash} $\ast$c, int key)
+\begin{DoxyCompactList}\small\item\em Função que cria um clone de um array de strings cliente. \end{DoxyCompactList}\item 
+int \hyperlink{clientes_8c_a65b82751aa341222148fbe9a6e6603cd}{get\+Array\+Cl\+Size} (\hyperlink{structthash}{T\+Hash} $\ast$c, int key)
+\begin{DoxyCompactList}\small\item\em Função que retorna o size um determinado array na tabela. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Modulo que contém as funcções para leitura e validação de clientes. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{clientes_8c_a88acb4c6adff7ed545eaa56c3c8d9d5b}\label{clientes_8c_a88acb4c6adff7ed545eaa56c3c8d9d5b}} 
+\index{clientes.\+c@{clientes.\+c}!acrecensta\+Tab@{acrecensta\+Tab}}
+\index{acrecensta\+Tab@{acrecensta\+Tab}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{acrecensta\+Tab()}{acrecenstaTab()}}
+{\footnotesize\ttfamily void acrecensta\+Tab (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{h,  }\item[{char $\ast$}]{cont }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta a uma Thash uma derminada string. 
+
+Aplicando a função hash descobre a posicao correta desta na T\+Hash e sucessivamente realocando espaço para a adicionar á mesma
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$h T\+Hash previamente inicializada \\
+\hline
+{\em char} & $\ast$cont String genérica \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{clientes_8c_a02a7235067818588fbfbe3121e42b34d}\label{clientes_8c_a02a7235067818588fbfbe3121e42b34d}} 
+\index{clientes.\+c@{clientes.\+c}!destroi\+Tab@{destroi\+Tab}}
+\index{destroi\+Tab@{destroi\+Tab}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{destroi\+Tab()}{destroiTab()}}
+{\footnotesize\ttfamily void destroi\+Tab (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Funçao que destroi uma estrutura Thash libertando o espaço ocupado por esta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$h T\+Hash previamente inicializada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{clientes_8c_a638742b0dbf906ab1adddae05a59a0d7}\label{clientes_8c_a638742b0dbf906ab1adddae05a59a0d7}} 
+\index{clientes.\+c@{clientes.\+c}!get\+Array\+Cl@{get\+Array\+Cl}}
+\index{get\+Array\+Cl@{get\+Array\+Cl}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{get\+Array\+Cl()}{getArrayCl()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ get\+Array\+Cl (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{c,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Função que cria um clone de um array de strings cliente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$c Tabela de onde é retirado o cliente \\
+\hline
+{\em int} & key indice na tabela\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ Retorno da copia 
+\end{DoxyReturn}
+\mbox{\Hypertarget{clientes_8c_a65b82751aa341222148fbe9a6e6603cd}\label{clientes_8c_a65b82751aa341222148fbe9a6e6603cd}} 
+\index{clientes.\+c@{clientes.\+c}!get\+Array\+Cl\+Size@{get\+Array\+Cl\+Size}}
+\index{get\+Array\+Cl\+Size@{get\+Array\+Cl\+Size}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{get\+Array\+Cl\+Size()}{getArrayClSize()}}
+{\footnotesize\ttfamily int get\+Array\+Cl\+Size (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{c,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o size um determinado array na tabela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$c Tabela de onde é retirado o cliente \\
+\hline
+{\em int} & key indice na tabela\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{clientes_8c_abbac116a2a21355d9e177a2fc9a909d3}\label{clientes_8c_abbac116a2a21355d9e177a2fc9a909d3}} 
+\index{clientes.\+c@{clientes.\+c}!get\+Cliente@{get\+Cliente}}
+\index{get\+Cliente@{get\+Cliente}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{get\+Cliente()}{getCliente()}}
+{\footnotesize\ttfamily char$\ast$ get\+Cliente (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{c,  }\item[{int}]{key,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Função que cria um clone de uma string cliente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$c Tabela de onde é retirado o cliente \\
+\hline
+{\em int} & key indice na tabela \\
+\hline
+{\em int} & i indice no array\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ Retorno da copia 
+\end{DoxyReturn}
+\mbox{\Hypertarget{clientes_8c_af88c9cf612c7bfaca1afd182d302306a}\label{clientes_8c_af88c9cf612c7bfaca1afd182d302306a}} 
+\index{clientes.\+c@{clientes.\+c}!hash@{hash}}
+\index{hash@{hash}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily int hash (\begin{DoxyParamCaption}\item[{char $\ast$}]{cont }\end{DoxyParamCaption})}
+
+
+
+Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$cont String genérica\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O resultado inteiro dessa subtração 
+\end{DoxyReturn}
+\mbox{\Hypertarget{clientes_8c_abdf1fc124ed891a05dba7d1fce51dfcc}\label{clientes_8c_abdf1fc124ed891a05dba7d1fce51dfcc}} 
+\index{clientes.\+c@{clientes.\+c}!init\+Tab@{init\+Tab}}
+\index{init\+Tab@{init\+Tab}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{init\+Tab()}{initTab()}}
+{\footnotesize\ttfamily \hyperlink{structthash}{T\+Hash}$\ast$ init\+Tab (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função que inicia uma estrutura Thash alocando espaço para todas as estruturas adjacentes. 
+
+\begin{DoxyReturn}{Returns}
+T\+Hash$\ast$ Devolve a T\+Hash inicializada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{clientes_8c_aea63038230f76b0df401d2740dace813}\label{clientes_8c_aea63038230f76b0df401d2740dace813}} 
+\index{clientes.\+c@{clientes.\+c}!ler\+\_\+clientes@{ler\+\_\+clientes}}
+\index{ler\+\_\+clientes@{ler\+\_\+clientes}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{ler\+\_\+clientes()}{ler\_clientes()}}
+{\footnotesize\ttfamily int ler\+\_\+clientes (\begin{DoxyParamCaption}\item[{\hyperlink{structthash}{T\+Hash} $\ast$}]{cliente,  }\item[{char $\ast$}]{filespath,  }\item[{int $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+
+Função que le de um ficheiro para uma Thash. 
+
+Recebendo uma Thash e um file path, lê de um ficheiro linha a linha e vai colocando cada linha na thash na sua posição correspondente na mesma
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+Hash} & $\ast$cliente T\+Hash onde vai ser colocada a informação \\
+\hline
+{\em char} & $\ast$filespath String com o file path \\
+\hline
+{\em int} & $\ast$c Inteiro onde é guardado o numero de clientes lidos\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O numero de clientes válidos 
+\end{DoxyReturn}
+\mbox{\Hypertarget{clientes_8c_ae91c7810753de46884a5784decc2e710}\label{clientes_8c_ae91c7810753de46884a5784decc2e710}} 
+\index{clientes.\+c@{clientes.\+c}!quicksortc@{quicksortc}}
+\index{quicksortc@{quicksortc}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{quicksortc()}{quicksortc()}}
+{\footnotesize\ttfamily void quicksortc (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{args,  }\item[{unsigned int}]{len }\end{DoxyParamCaption})}
+
+
+
+Função que ordena um array de strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unsigned} & int len int tam generico \\
+\hline
+{\em char} & $\ast$$\ast$args String genérica \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{clientes_8c_a0e8f326da95dbd031e75a42e98b2a45d}\label{clientes_8c_a0e8f326da95dbd031e75a42e98b2a45d}} 
+\index{clientes.\+c@{clientes.\+c}!swapc@{swapc}}
+\index{swapc@{swapc}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{swapc()}{swapc()}}
+{\footnotesize\ttfamily void swapc (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{arg1,  }\item[{char $\ast$$\ast$}]{arg2 }\end{DoxyParamCaption})}
+
+
+
+Função que troca duas strings de posicao. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$$\ast$arg1 String genérica \\
+\hline
+{\em char} & $\ast$$\ast$arg2 String genérica \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{clientes_8c_a50ddba9ef7134b08d60d7e478e73d475}\label{clientes_8c_a50ddba9ef7134b08d60d7e478e73d475}} 
+\index{clientes.\+c@{clientes.\+c}!validacliente@{validacliente}}
+\index{validacliente@{validacliente}!clientes.\+c@{clientes.\+c}}
+\subsubsection{\texorpdfstring{validacliente()}{validacliente()}}
+{\footnotesize\ttfamily int validacliente (\begin{DoxyParamCaption}\item[{char $\ast$}]{cliente }\end{DoxyParamCaption})}
+
+
+
+Função que recebe uma string de um cliente e verifica se este é valido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$cliente String (um cliente)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}

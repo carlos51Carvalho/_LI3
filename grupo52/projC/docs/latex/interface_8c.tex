@@ -1,0 +1,112 @@
+\hypertarget{interface_8c}{}\section{interface.\+c File Reference}
+\label{interface_8c}\index{interface.\+c@{interface.\+c}}
+
+
+Modulo que contém as funcções para apresentação das respostas as queries.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}queries.\+h\char`\"{}}\newline
+Include dependency graph for interface.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_8c_acfe3a96b0125c2f51f936a9029ec6d18}\label{interface_8c_acfe3a96b0125c2f51f936a9029ec6d18}} 
+\#define {\bfseries L\+T\+AM}~30
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_8c_adac116554b543b7c4228c018a85882f5}\label{interface_8c_adac116554b543b7c4228c018a85882f5}} 
+void {\bfseries flush} ()
+\item 
+\mbox{\Hypertarget{interface_8c_a9e0170c5855c33f6721b8028b2e7947c}\label{interface_8c_a9e0170c5855c33f6721b8028b2e7947c}} 
+int {\bfseries menudelistagem} (int j, int limit)
+\item 
+\mbox{\Hypertarget{interface_8c_aa031c499b7b3ef4f30cf24a5ff3934fe}\label{interface_8c_aa031c499b7b3ef4f30cf24a5ff3934fe}} 
+void {\bfseries espacosparalistagem} (int i)
+\item 
+\mbox{\Hypertarget{interface_8c_aa2e2e035a2e067dd36ac276efc4fc8c7}\label{interface_8c_aa2e2e035a2e067dd36ac276efc4fc8c7}} 
+void {\bfseries q2header} (char c, int i)
+\item 
+\mbox{\Hypertarget{interface_8c_a29b42d641636ea79c69c0ef737ad2a52}\label{interface_8c_a29b42d641636ea79c69c0ef737ad2a52}} 
+void {\bfseries imprime\+Q2} (Q245 q, char op)
+\item 
+\mbox{\Hypertarget{interface_8c_a055b72ee6b865e6252eb88c936d3d773}\label{interface_8c_a055b72ee6b865e6252eb88c936d3d773}} 
+void {\bfseries imprime\+Q3} (Q3 q, int \hyperlink{structmes}{mes}, int op)
+\item 
+\mbox{\Hypertarget{interface_8c_afbd904e15ece07140a1c980ef5eb832d}\label{interface_8c_afbd904e15ece07140a1c980ef5eb832d}} 
+void {\bfseries q4header} (int f, int t)
+\item 
+\mbox{\Hypertarget{interface_8c_ab843072d51bc5c669ebf5e66b6d6c0a8}\label{interface_8c_ab843072d51bc5c669ebf5e66b6d6c0a8}} 
+void {\bfseries imprime\+Q4} (Q245 q, int f)
+\item 
+\mbox{\Hypertarget{interface_8c_aec150235316abc233dd61a407bd302f5}\label{interface_8c_aec150235316abc233dd61a407bd302f5}} 
+void {\bfseries q5header} (int t)
+\item 
+\mbox{\Hypertarget{interface_8c_a68bc092b53b60eed08cba9aa1e9386aa}\label{interface_8c_a68bc092b53b60eed08cba9aa1e9386aa}} 
+void {\bfseries imprime\+Q5} (Q245 q)
+\item 
+\mbox{\Hypertarget{interface_8c_a34d4d5f87348ebc4fcd083ae524c9e40}\label{interface_8c_a34d4d5f87348ebc4fcd083ae524c9e40}} 
+void {\bfseries imprime\+Q6} (Q6 q)
+\item 
+\mbox{\Hypertarget{interface_8c_a5a9badde6914191e0b9aa78a56bb281a}\label{interface_8c_a5a9badde6914191e0b9aa78a56bb281a}} 
+void {\bfseries imprime\+Q7} (Q7 q)
+\item 
+\mbox{\Hypertarget{interface_8c_a0586df2ab2c24b95e88cb6e69f2cbc67}\label{interface_8c_a0586df2ab2c24b95e88cb6e69f2cbc67}} 
+void {\bfseries imprime\+Q8} (Q8 q, int us, int op)
+\item 
+\mbox{\Hypertarget{interface_8c_aa6f894316d703f1127b1609ad96438b3}\label{interface_8c_aa6f894316d703f1127b1609ad96438b3}} 
+void {\bfseries imprime\+Q9} (Q9 q, int \hyperlink{structfil}{fil})
+\item 
+\mbox{\Hypertarget{interface_8c_a8fc2725d7a23c82aa41d1632a369ad88}\label{interface_8c_a8fc2725d7a23c82aa41d1632a369ad88}} 
+void {\bfseries imprime\+Q10} (Q12 q, int \hyperlink{structmes}{mes})
+\item 
+\mbox{\Hypertarget{interface_8c_a8774fa8b0f93a07211d336b50e19212d}\label{interface_8c_a8774fa8b0f93a07211d336b50e19212d}} 
+void {\bfseries q11header} ()
+\item 
+\mbox{\Hypertarget{interface_8c_a416ff139c64f12959d2b47ee42a88ffe}\label{interface_8c_a416ff139c64f12959d2b47ee42a88ffe}} 
+void {\bfseries imprime\+Q11} (Q11 q, int limit)
+\item 
+\mbox{\Hypertarget{interface_8c_a70e0725ea97a3572af73efa729ca8d89}\label{interface_8c_a70e0725ea97a3572af73efa729ca8d89}} 
+void {\bfseries q12header} (int l, int t)
+\item 
+\mbox{\Hypertarget{interface_8c_ad10b16b7c692438e098a54e1874e54f0}\label{interface_8c_ad10b16b7c692438e098a54e1874e54f0}} 
+void {\bfseries imprime\+Q12} (Q12 q, int limit)
+\item 
+\mbox{\Hypertarget{interface_8c_a4fb56cfc26efc42ca333df2ce9c0bc51}\label{interface_8c_a4fb56cfc26efc42ca333df2ce9c0bc51}} 
+void {\bfseries imprime\+Q13} (Q13 q)
+\item 
+\mbox{\Hypertarget{interface_8c_aa21d4f60857a96693ccd5cfe2be8ddc1}\label{interface_8c_aa21d4f60857a96693ccd5cfe2be8ddc1}} 
+void {\bfseries prettyprintmenu} ()
+\item 
+\mbox{\Hypertarget{interface_8c_a75d4023a2b14e7412fbf171d030e1f9c}\label{interface_8c_a75d4023a2b14e7412fbf171d030e1f9c}} 
+int {\bfseries alldigits} (char $\ast$buf)
+\item 
+\mbox{\Hypertarget{interface_8c_a73ea7caddf8e661e9c85aebea9395d65}\label{interface_8c_a73ea7caddf8e661e9c85aebea9395d65}} 
+int {\bfseries toint} (char $\ast$buf)
+\item 
+\mbox{\Hypertarget{interface_8c_a2182cfbcdb89e298c527ece9a5cff02f}\label{interface_8c_a2182cfbcdb89e298c527ece9a5cff02f}} 
+void {\bfseries getstr} (char $\ast$text, char $\ast$s)
+\item 
+\mbox{\Hypertarget{interface_8c_a0785f1da9f5834c1f867a206ba7cbe8c}\label{interface_8c_a0785f1da9f5834c1f867a206ba7cbe8c}} 
+void {\bfseries getint} (char $\ast$text, int $\ast$i)
+\item 
+\mbox{\Hypertarget{interface_8c_abdca1ef79a0ab12b7ed8575696e5c74d}\label{interface_8c_abdca1ef79a0ab12b7ed8575696e5c74d}} 
+void {\bfseries interpertador} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Modulo que contém as funcções para apresentação das respostas as queries. 
+

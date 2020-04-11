@@ -1,0 +1,512 @@
+\hypertarget{faturacao_8c}{}\section{faturacao.\+c File Reference}
+\label{faturacao_8c}\index{faturacao.\+c@{faturacao.\+c}}
+
+
+Modulo que contém as funcções para processamento, validação de faturas.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}faturacao.\+h\char`\"{}}\newline
+Include dependency graph for faturacao.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{faturacao_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmes}{mes}
+\item 
+struct \hyperlink{structfil}{fil}
+\item 
+struct \hyperlink{structprd}{prd}
+\item 
+struct \hyperlink{structbucketv}{bucketv}
+\item 
+struct \hyperlink{structfat}{fat}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{faturacao_8c_ae69e537c5a1f6bd8bb80388ab93eaae8}\label{faturacao_8c_ae69e537c5a1f6bd8bb80388ab93eaae8}} 
+typedef struct \hyperlink{structmes}{mes} {\bfseries Mes}
+\item 
+\mbox{\Hypertarget{faturacao_8c_ada38d1bc139c1d857a5829cf851da95d}\label{faturacao_8c_ada38d1bc139c1d857a5829cf851da95d}} 
+typedef struct \hyperlink{structfil}{fil} {\bfseries Fil}
+\item 
+\mbox{\Hypertarget{faturacao_8c_abf8c3bb83510c329a4aef4eaafdde82c}\label{faturacao_8c_abf8c3bb83510c329a4aef4eaafdde82c}} 
+typedef struct \hyperlink{structprd}{prd} {\bfseries Prd}
+\item 
+\mbox{\Hypertarget{faturacao_8c_a284dfffe5d015e87c0660e4f6cb349dc}\label{faturacao_8c_a284dfffe5d015e87c0660e4f6cb349dc}} 
+typedef struct \hyperlink{structbucketv}{bucketv} {\bfseries Bucketv}
+\item 
+\mbox{\Hypertarget{faturacao_8c_ae353ee22d66ae2b54a25837375ee309d}\label{faturacao_8c_ae353ee22d66ae2b54a25837375ee309d}} 
+typedef struct \hyperlink{structfat}{fat} {\bfseries Fat}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{faturacao_8c_a173be3e70710c853405fe2e25ccf705a}{get\+Posicao\+Prod} (\hyperlink{structfat}{Fat} $\ast$\hyperlink{structfat}{fat}, char $\ast$product\+ID)
+\begin{DoxyCompactList}\small\item\em Função que retorna o indice de um determinado produto da estrutura Fat. \end{DoxyCompactList}\item 
+int \hyperlink{faturacao_8c_a004bfe584c9ee11a23c4e9f2630c091d}{get\+VendasN} (\hyperlink{structfat}{Fat} $\ast$\hyperlink{structfat}{fat}, int h, int pos, int m, int f)
+\begin{DoxyCompactList}\small\item\em Função que retorna o numero de vendas em N de um terminado produto. \end{DoxyCompactList}\item 
+int \hyperlink{faturacao_8c_ae9d0f03ab84c674b04f275a5084881c5}{get\+VendasP} (\hyperlink{structfat}{Fat} $\ast$\hyperlink{structfat}{fat}, int h, int pos, int m, int f)
+\begin{DoxyCompactList}\small\item\em Função que retorna o numero de vendas em P de um terminado produto. \end{DoxyCompactList}\item 
+double \hyperlink{faturacao_8c_a03449fad5aa8a7784ec140aa2d93604e}{get\+FaturacaoN} (\hyperlink{structfat}{Fat} $\ast$\hyperlink{structfat}{fat}, int h, int pos, int m, int f)
+\begin{DoxyCompactList}\small\item\em Função que retorna a faturacao em N de um terminado produto. \end{DoxyCompactList}\item 
+double \hyperlink{faturacao_8c_a4fe60cef21109a343cccf89de0195069}{get\+FaturacaoP} (\hyperlink{structfat}{Fat} $\ast$\hyperlink{structfat}{fat}, int h, int pos, int m, int f)
+\begin{DoxyCompactList}\small\item\em Função que retorna a faturacao em P de um terminado produto. \end{DoxyCompactList}\item 
+int \hyperlink{faturacao_8c_ac7b0f5071f35616572de14a725feb231}{get\+Size\+ArrayP} (\hyperlink{structfat}{Fat} $\ast$f, int key)
+\begin{DoxyCompactList}\small\item\em Função que retorna o tamanho de um array num determinado indice da tabela. \end{DoxyCompactList}\item 
+int \hyperlink{faturacao_8c_aaca35aa4a6d19ff7cd542a79d2f9676e}{get\+Filial\+Used} (\hyperlink{structfat}{Fat} $\ast$f, int key, int ip, int \hyperlink{structfil}{fil})
+\begin{DoxyCompactList}\small\item\em Função que retorna se a filiaĺ foi \char`\"{}usada\char`\"{} ou não. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{faturacao_8c_ac4aecaf6413f812ff21c38d65928a33e}{get\+Prod\+Fat} (\hyperlink{structfat}{Fat} $\ast$f, int key, int ip)
+\begin{DoxyCompactList}\small\item\em Função que retorna a string correspodente ao produto nos indices dados. \end{DoxyCompactList}\item 
+int \hyperlink{faturacao_8c_ae7f12f7076e6f1faba71007c48f03247}{hashfat} (char $\ast$cont)
+\begin{DoxyCompactList}\small\item\em Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A. \end{DoxyCompactList}\item 
+\hyperlink{structfat}{Fat} $\ast$ \hyperlink{faturacao_8c_ab9344ac52d509ff06cc1691365698508}{init\+Fat} ()
+\begin{DoxyCompactList}\small\item\em Função que inicia uma estrutura Fat alocando espaço para todas as estruturas adjacentes. \end{DoxyCompactList}\item 
+void \hyperlink{faturacao_8c_a04f1dcf92ec47d41d6e4b1e0529fdd89}{destroi\+Fat} (\hyperlink{structfat}{Fat} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Funçao que destroi uma estrutura Fat libertando o espaço ocupado por esta. \end{DoxyCompactList}\item 
+void \hyperlink{faturacao_8c_a25accba27b71cf17ffb8ec42415526a9}{acrescenta\+\_\+prod} (\hyperlink{structfat}{Fat} $\ast$f, char $\ast$p)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta a uma Fat um produto. \end{DoxyCompactList}\item 
+int \hyperlink{faturacao_8c_a0701ba6eeb7ce5a38b60552840603da3}{acrescenta\+\_\+prods} (\hyperlink{structfat}{Fat} $\ast$f, char $\ast$$\ast$p, int tam)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta a uma Fat vários produtos lidos de um array a strings. \end{DoxyCompactList}\item 
+int \hyperlink{faturacao_8c_af4f597c733bfc2b1f31bdbcdf3932edb}{existe\+\_\+fat} (\hyperlink{structprd}{Prd} $\ast$arr, char $\ast$procurado, int Tam)
+\begin{DoxyCompactList}\small\item\em Função que retorna o indice de um determinado produto da estrutura Fat caso ele exista -\/1 caso não. \end{DoxyCompactList}\item 
+void \hyperlink{faturacao_8c_a5177262f2a6cf18a1f177fa11f0b8f4a}{acrescenta\+Fat} (\hyperlink{structfat}{Fat} $\ast$h, char $\ast$p, double pr, int q, char e, char $\ast$c, int m, int f)
+\begin{DoxyCompactList}\small\item\em Função que acrescenta a uma Fat informação correspondente a um produto. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \hyperlink{faturacao_8c_a1d6a7e597f26d5653f40d0a99d68d587}{never\+Bought\+Fil} (\hyperlink{structfat}{Fat} $\ast$f, int \hyperlink{structfil}{fil}, int $\ast$tamp)
+\begin{DoxyCompactList}\small\item\em Função que retorna um array de strings com os produtos que nunca foram comprados numa filial em especifico. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \hyperlink{faturacao_8c_a43d4ec277fadf56db60e03d14c294d92}{never\+Bought\+All\+Fil} (\hyperlink{structfat}{Fat} $\ast$f, int $\ast$tamp)
+\begin{DoxyCompactList}\small\item\em Função que retorna um array de strings com os produtos que nunca foram comprados em nenhuma filial. \end{DoxyCompactList}\item 
+int \hyperlink{faturacao_8c_af3b481b76c1fddff1bb6023ba36a094c}{Produtos\+Nao\+Comprados} (\hyperlink{structfat}{Fat} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Função que retorna o numero do produtos que nunca foram comprados. \end{DoxyCompactList}\item 
+void \hyperlink{faturacao_8c_a985af7e60585c1c09340505c0bcd3185}{Faturacaoe\+Vendas\+Intervalo} (\hyperlink{structfat}{Fat} $\ast$f, int m1, int m2, int $\ast$result, double $\ast$result2)
+\begin{DoxyCompactList}\small\item\em Função que retorna a faturacao(numero de vendas e faturado) num intervalo de meses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Modulo que contém as funcções para processamento, validação de faturas. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{faturacao_8c_a25accba27b71cf17ffb8ec42415526a9}\label{faturacao_8c_a25accba27b71cf17ffb8ec42415526a9}} 
+\index{faturacao.\+c@{faturacao.\+c}!acrescenta\+\_\+prod@{acrescenta\+\_\+prod}}
+\index{acrescenta\+\_\+prod@{acrescenta\+\_\+prod}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{acrescenta\+\_\+prod()}{acrescenta\_prod()}}
+{\footnotesize\ttfamily void acrescenta\+\_\+prod (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f,  }\item[{char $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta a uma Fat um produto. 
+
+Aplicando a função hash descobre a posicao correta desta na Fat e sucessivamente realocando espaço para o adicionar á mesma
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$f Fat previamente inicializada \\
+\hline
+{\em char} & $\ast$cont String genérica (produto) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{faturacao_8c_a0701ba6eeb7ce5a38b60552840603da3}\label{faturacao_8c_a0701ba6eeb7ce5a38b60552840603da3}} 
+\index{faturacao.\+c@{faturacao.\+c}!acrescenta\+\_\+prods@{acrescenta\+\_\+prods}}
+\index{acrescenta\+\_\+prods@{acrescenta\+\_\+prods}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{acrescenta\+\_\+prods()}{acrescenta\_prods()}}
+{\footnotesize\ttfamily int acrescenta\+\_\+prods (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f,  }\item[{char $\ast$$\ast$}]{p,  }\item[{int}]{tam }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta a uma Fat vários produtos lidos de um array a strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$f Fat previamente inicializada \\
+\hline
+{\em char} & $\ast$$\ast$p Array de strings(produtos) \\
+\hline
+{\em int} & Tam Size do array de strings\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int i Numero de produtos acrescentados 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_a5177262f2a6cf18a1f177fa11f0b8f4a}\label{faturacao_8c_a5177262f2a6cf18a1f177fa11f0b8f4a}} 
+\index{faturacao.\+c@{faturacao.\+c}!acrescenta\+Fat@{acrescenta\+Fat}}
+\index{acrescenta\+Fat@{acrescenta\+Fat}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{acrescenta\+Fat()}{acrescentaFat()}}
+{\footnotesize\ttfamily void acrescenta\+Fat (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{h,  }\item[{char $\ast$}]{p,  }\item[{double}]{pr,  }\item[{int}]{q,  }\item[{char}]{e,  }\item[{char $\ast$}]{c,  }\item[{int}]{m,  }\item[{int}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que acrescenta a uma Fat informação correspondente a um produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$h Estrutua Fat \\
+\hline
+{\em char} & $\ast$p Produto \\
+\hline
+{\em double} & pr Preco \\
+\hline
+{\em int} & q Quantidade \\
+\hline
+{\em char} & e Modo de compra \\
+\hline
+{\em char} & $\ast$c Cliente \\
+\hline
+{\em int} & m Mes \\
+\hline
+{\em int} & f Filial \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{faturacao_8c_a04f1dcf92ec47d41d6e4b1e0529fdd89}\label{faturacao_8c_a04f1dcf92ec47d41d6e4b1e0529fdd89}} 
+\index{faturacao.\+c@{faturacao.\+c}!destroi\+Fat@{destroi\+Fat}}
+\index{destroi\+Fat@{destroi\+Fat}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{destroi\+Fat()}{destroiFat()}}
+{\footnotesize\ttfamily void destroi\+Fat (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Funçao que destroi uma estrutura Fat libertando o espaço ocupado por esta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$f Fat previamente inicializada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{faturacao_8c_af4f597c733bfc2b1f31bdbcdf3932edb}\label{faturacao_8c_af4f597c733bfc2b1f31bdbcdf3932edb}} 
+\index{faturacao.\+c@{faturacao.\+c}!existe\+\_\+fat@{existe\+\_\+fat}}
+\index{existe\+\_\+fat@{existe\+\_\+fat}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{existe\+\_\+fat()}{existe\_fat()}}
+{\footnotesize\ttfamily int existe\+\_\+fat (\begin{DoxyParamCaption}\item[{\hyperlink{structprd}{Prd} $\ast$}]{arr,  }\item[{char $\ast$}]{procurado,  }\item[{int}]{Tam }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o indice de um determinado produto da estrutura Fat caso ele exista -\/1 caso não. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Prd} & $\ast$arr Array de Prd ( estrutura complementar de Fat) \\
+\hline
+{\em char} & $\ast$procurado Produto procurado \\
+\hline
+{\em int} & Tam Size do array de Prd\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int r Indice do produto se encontrado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_a985af7e60585c1c09340505c0bcd3185}\label{faturacao_8c_a985af7e60585c1c09340505c0bcd3185}} 
+\index{faturacao.\+c@{faturacao.\+c}!Faturacaoe\+Vendas\+Intervalo@{Faturacaoe\+Vendas\+Intervalo}}
+\index{Faturacaoe\+Vendas\+Intervalo@{Faturacaoe\+Vendas\+Intervalo}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{Faturacaoe\+Vendas\+Intervalo()}{FaturacaoeVendasIntervalo()}}
+{\footnotesize\ttfamily void Faturacaoe\+Vendas\+Intervalo (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f,  }\item[{int}]{m1,  }\item[{int}]{m2,  }\item[{int $\ast$}]{result,  }\item[{double $\ast$}]{result2 }\end{DoxyParamCaption})}
+
+
+
+Função que retorna a faturacao(numero de vendas e faturado) num intervalo de meses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & m1 Primeiro mes \\
+\hline
+{\em int} & m2 Segundo mes \\
+\hline
+{\em int} & $\ast$result Resultado a ser preenchido com o numero de vendas \\
+\hline
+{\em double} & $\ast$result2 Resultado a ser preenchido com o total faturado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{faturacao_8c_a03449fad5aa8a7784ec140aa2d93604e}\label{faturacao_8c_a03449fad5aa8a7784ec140aa2d93604e}} 
+\index{faturacao.\+c@{faturacao.\+c}!get\+FaturacaoN@{get\+FaturacaoN}}
+\index{get\+FaturacaoN@{get\+FaturacaoN}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{get\+Faturacao\+N()}{getFaturacaoN()}}
+{\footnotesize\ttfamily double get\+FaturacaoN (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{fat,  }\item[{int}]{h,  }\item[{int}]{pos,  }\item[{int}]{m,  }\item[{int}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que retorna a faturacao em N de um terminado produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & h O indice do produto na tabela \\
+\hline
+{\em int} & pos O indice do produto dentro do seu respetivo array \\
+\hline
+{\em int} & m O indice do mes \\
+\hline
+{\em int} & f O indice da filial\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do faturado em N 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_a4fe60cef21109a343cccf89de0195069}\label{faturacao_8c_a4fe60cef21109a343cccf89de0195069}} 
+\index{faturacao.\+c@{faturacao.\+c}!get\+FaturacaoP@{get\+FaturacaoP}}
+\index{get\+FaturacaoP@{get\+FaturacaoP}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{get\+Faturacao\+P()}{getFaturacaoP()}}
+{\footnotesize\ttfamily double get\+FaturacaoP (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{fat,  }\item[{int}]{h,  }\item[{int}]{pos,  }\item[{int}]{m,  }\item[{int}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que retorna a faturacao em P de um terminado produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & h O indice do produto na tabela \\
+\hline
+{\em int} & pos O indice do produto dentro do seu respetivo array \\
+\hline
+{\em int} & m O indice do mes \\
+\hline
+{\em int} & f O indice da filial\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do faturado em P 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_aaca35aa4a6d19ff7cd542a79d2f9676e}\label{faturacao_8c_aaca35aa4a6d19ff7cd542a79d2f9676e}} 
+\index{faturacao.\+c@{faturacao.\+c}!get\+Filial\+Used@{get\+Filial\+Used}}
+\index{get\+Filial\+Used@{get\+Filial\+Used}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{get\+Filial\+Used()}{getFilialUsed()}}
+{\footnotesize\ttfamily int get\+Filial\+Used (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f,  }\item[{int}]{key,  }\item[{int}]{ip,  }\item[{int}]{fil }\end{DoxyParamCaption})}
+
+
+
+Função que retorna se a filiaĺ foi \char`\"{}usada\char`\"{} ou não. 
+
+Esta encontra-\/se usada se tiverem sido realizadas compras desse produto nessa filial
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & key O indice do array na tabela \\
+\hline
+{\em int} & ip O indice do produto dentro do seu respetivo array \\
+\hline
+{\em int} & fil O indice da filial\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do faturado em N 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_a173be3e70710c853405fe2e25ccf705a}\label{faturacao_8c_a173be3e70710c853405fe2e25ccf705a}} 
+\index{faturacao.\+c@{faturacao.\+c}!get\+Posicao\+Prod@{get\+Posicao\+Prod}}
+\index{get\+Posicao\+Prod@{get\+Posicao\+Prod}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{get\+Posicao\+Prod()}{getPosicaoProd()}}
+{\footnotesize\ttfamily int get\+Posicao\+Prod (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{fat,  }\item[{char $\ast$}]{product\+ID }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o indice de um determinado produto da estrutura Fat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Tabela de onde é retirado o cliente \\
+\hline
+{\em $\ast$product\+ID} & O produto a ser procurado\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do indice deste na Fat 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_ac4aecaf6413f812ff21c38d65928a33e}\label{faturacao_8c_ac4aecaf6413f812ff21c38d65928a33e}} 
+\index{faturacao.\+c@{faturacao.\+c}!get\+Prod\+Fat@{get\+Prod\+Fat}}
+\index{get\+Prod\+Fat@{get\+Prod\+Fat}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{get\+Prod\+Fat()}{getProdFat()}}
+{\footnotesize\ttfamily char$\ast$ get\+Prod\+Fat (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f,  }\item[{int}]{key,  }\item[{int}]{ip }\end{DoxyParamCaption})}
+
+
+
+Função que retorna a string correspodente ao produto nos indices dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & key O indice do produto na tabela \\
+\hline
+{\em int} & ip O indice do produto dentro do seu respetivo array\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do faturado em N 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_ac7b0f5071f35616572de14a725feb231}\label{faturacao_8c_ac7b0f5071f35616572de14a725feb231}} 
+\index{faturacao.\+c@{faturacao.\+c}!get\+Size\+ArrayP@{get\+Size\+ArrayP}}
+\index{get\+Size\+ArrayP@{get\+Size\+ArrayP}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{get\+Size\+Array\+P()}{getSizeArrayP()}}
+{\footnotesize\ttfamily int get\+Size\+ArrayP (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o tamanho de um array num determinado indice da tabela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & key O indice do arr na tabela\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do size do array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_a004bfe584c9ee11a23c4e9f2630c091d}\label{faturacao_8c_a004bfe584c9ee11a23c4e9f2630c091d}} 
+\index{faturacao.\+c@{faturacao.\+c}!get\+VendasN@{get\+VendasN}}
+\index{get\+VendasN@{get\+VendasN}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{get\+Vendas\+N()}{getVendasN()}}
+{\footnotesize\ttfamily int get\+VendasN (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{fat,  }\item[{int}]{h,  }\item[{int}]{pos,  }\item[{int}]{m,  }\item[{int}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o numero de vendas em N de um terminado produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & h O indice do produto na tabela \\
+\hline
+{\em int} & pos O indice do produto dentro do seu respetivo array \\
+\hline
+{\em int} & m O indice do mes \\
+\hline
+{\em int} & f O indice da filial\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do numero de vendas em N 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_ae9d0f03ab84c674b04f275a5084881c5}\label{faturacao_8c_ae9d0f03ab84c674b04f275a5084881c5}} 
+\index{faturacao.\+c@{faturacao.\+c}!get\+VendasP@{get\+VendasP}}
+\index{get\+VendasP@{get\+VendasP}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{get\+Vendas\+P()}{getVendasP()}}
+{\footnotesize\ttfamily int get\+VendasP (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{fat,  }\item[{int}]{h,  }\item[{int}]{pos,  }\item[{int}]{m,  }\item[{int}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o numero de vendas em P de um terminado produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & h O indice do produto na tabela \\
+\hline
+{\em int} & pos O indice do produto dentro do seu respetivo array \\
+\hline
+{\em int} & m O indice do mes \\
+\hline
+{\em int} & f O indice da filial\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorno do numero de vendas em P 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_ae7f12f7076e6f1faba71007c48f03247}\label{faturacao_8c_ae7f12f7076e6f1faba71007c48f03247}} 
+\index{faturacao.\+c@{faturacao.\+c}!hashfat@{hashfat}}
+\index{hashfat@{hashfat}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{hashfat()}{hashfat()}}
+{\footnotesize\ttfamily int hashfat (\begin{DoxyParamCaption}\item[{char $\ast$}]{cont }\end{DoxyParamCaption})}
+
+
+
+Função que recebe uma string e subtrai ao primeiro elemnto da string a letra A. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & $\ast$cont String genérica\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O resultado inteiro dessa subtração 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_ab9344ac52d509ff06cc1691365698508}\label{faturacao_8c_ab9344ac52d509ff06cc1691365698508}} 
+\index{faturacao.\+c@{faturacao.\+c}!init\+Fat@{init\+Fat}}
+\index{init\+Fat@{init\+Fat}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{init\+Fat()}{initFat()}}
+{\footnotesize\ttfamily \hyperlink{structfat}{Fat}$\ast$ init\+Fat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função que inicia uma estrutura Fat alocando espaço para todas as estruturas adjacentes. 
+
+\begin{DoxyReturn}{Returns}
+Fat$\ast$ Devolve a Fat inicializada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_a43d4ec277fadf56db60e03d14c294d92}\label{faturacao_8c_a43d4ec277fadf56db60e03d14c294d92}} 
+\index{faturacao.\+c@{faturacao.\+c}!never\+Bought\+All\+Fil@{never\+Bought\+All\+Fil}}
+\index{never\+Bought\+All\+Fil@{never\+Bought\+All\+Fil}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{never\+Bought\+All\+Fil()}{neverBoughtAllFil()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ never\+Bought\+All\+Fil (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f,  }\item[{int $\ast$}]{tamp }\end{DoxyParamCaption})}
+
+
+
+Função que retorna um array de strings com os produtos que nunca foram comprados em nenhuma filial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & tamp um size que a função vai alterar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ array de strings com os produtos 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_a1d6a7e597f26d5653f40d0a99d68d587}\label{faturacao_8c_a1d6a7e597f26d5653f40d0a99d68d587}} 
+\index{faturacao.\+c@{faturacao.\+c}!never\+Bought\+Fil@{never\+Bought\+Fil}}
+\index{never\+Bought\+Fil@{never\+Bought\+Fil}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{never\+Bought\+Fil()}{neverBoughtFil()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ never\+Bought\+Fil (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f,  }\item[{int}]{fil,  }\item[{int $\ast$}]{tamp }\end{DoxyParamCaption})}
+
+
+
+Função que retorna um array de strings com os produtos que nunca foram comprados numa filial em especifico. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao \\
+\hline
+{\em int} & fil Filial \\
+\hline
+{\em int} & tamp um size que a função vai alterar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ array de strings com os produtos 
+\end{DoxyReturn}
+\mbox{\Hypertarget{faturacao_8c_af3b481b76c1fddff1bb6023ba36a094c}\label{faturacao_8c_af3b481b76c1fddff1bb6023ba36a094c}} 
+\index{faturacao.\+c@{faturacao.\+c}!Produtos\+Nao\+Comprados@{Produtos\+Nao\+Comprados}}
+\index{Produtos\+Nao\+Comprados@{Produtos\+Nao\+Comprados}!faturacao.\+c@{faturacao.\+c}}
+\subsubsection{\texorpdfstring{Produtos\+Nao\+Comprados()}{ProdutosNaoComprados()}}
+{\footnotesize\ttfamily int Produtos\+Nao\+Comprados (\begin{DoxyParamCaption}\item[{\hyperlink{structfat}{Fat} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Função que retorna o numero do produtos que nunca foram comprados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Fat} & $\ast$fat Estrutura Faturaçao\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Numero de produtos nunca comprados 
+\end{DoxyReturn}
