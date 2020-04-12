@@ -282,20 +282,22 @@ void imprimeQ13(Q13 q){
 
 
 void prettyprintmenu(){
-    printf("\tEscolha um comando\n"
-               " 1 - Ler os ficheiros (Produtos, Clientes e Vendas)  \n"
-               " 2 - Obter a lista e o no total de produtos começados por uma letra maiuscula \n"
-               " 3 - Obter o numero total de vendas e o total faturado para determinado produto num mes \n"
-               " 4 - Lista ordenada dos códigos dos produtos que ninguém comprou \n"
-               " 5 - Lista ordenada de códigos de clientes que realizaram compras em todas as filiais\n"
-               " 6 - Obter o número de clientes que não realizaram compras e o numero de produtos que ningém comprou\n"
-               " 7 - Criar uma tabela com o numero total de produtos comprados mes a mes divididos por filial\n"
-               " 8 - Determinar o total de vendas registadas e o total faturado num intervalo de meses\n"
-               " 9 - Determinar os codigos dos clientes de uma filial que compraram um produto\n"
-               "10 - Determinar uma lista dos produtos mais comprados num determinado mes por um cliente\n"
-               "11 - Determinar os N produtos mais vendidos durante um ano\n"
-               "12 - Determinar os codigos dos N produtos que um cliente gastou mais dinheiro durante um ano\n"
-               "13 - Apresentar os resultados de leitura dos ficheiros da Opção 1\n\n"
+        printf(" _____________________________________________________________________________________________________________ \n"
+               "|       Escolha um comando                                                                                    |\n"
+               "| 1 - Ler os ficheiros (Produtos, Clientes e Vendas)                                                          |\n"
+               "| 2 - Obter a lista e o no total de produtos começados por uma letra maiuscula                                |\n"
+               "| 3 - Obter o numero total de vendas e o total faturado para determinado produto num mes                      |\n"
+               "| 4 - Lista ordenada dos códigos dos produtos que ninguém comprou                                             |\n"
+               "| 5 - Lista ordenada de códigos de clientes que realizaram compras em todas as filiais                        |\n"
+               "| 6 - Obter o número de clientes que não realizaram compras e o numero de produtos que ningém comprou         |\n"
+               "| 7 - Criar uma tabela com o numero total de produtos comprados mes a mes divididos por filial                |\n"
+               "| 8 - Determinar o total de vendas registadas e o total faturado num intervalo de meses                       |\n"
+               "| 9 - Determinar os codigos dos clientes de uma filial que compraram um produto                               |\n"
+               "|10 - Determinar uma lista dos produtos mais comprados num determinado mes por um cliente                     |\n"
+               "|11 - Determinar os N produtos mais vendidos durante um ano                                                   |\n"
+               "|12 - Determinar os codigos dos N produtos que um cliente gastou mais dinheiro durante um ano                 |\n"
+               "|13 - Apresentar os resultados de leitura dos ficheiros da Opção 1                                            |\n"
+               "|_____________________________________________________________________________________________________________|\n\n"
           );
 }
 
@@ -373,8 +375,11 @@ void interpertador(){
             case 1:
             	printf("A sua opção: %d",op);
                 if(l == 0){
+                    getstr("Insira o file path para ler os Clientes: ",c);
+                    getstr("Insira o file path para ler os Produtos: ",p);
+                    getstr("Insira o file path para ler as Vendas: ",v);
                     sgv = initSGV();
-                    sgv = loadSGVFromFiles(sgv, "Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt" );
+                    sgv = loadSGVFromFiles(sgv, c, p, v );
                     l =1;
                 }
                 else{
