@@ -15,7 +15,7 @@
 #define LTAM 30
 
 void flush(){
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 /*	return 1 para sair
@@ -349,11 +349,17 @@ void interpertador(){
     char p[256];
     char v[256];
 
+    int firsttime=1;
+
     char enter;
     char buf[10];
     int op;
     do{
         flush();
+        if(firsttime){
+            firsttime=0;
+            printf("%s\n\n\n", "Welcome to 𝓢𝓖𝓥");            
+        }
         prettyprintmenu();
 
         printf("A sua opção: ");
@@ -362,37 +368,25 @@ void interpertador(){
 
         op=toint(buf);
         flush();
-		if(op!=0 && op!=1)printf("A sua opção: %d\n",op);
+		if(op>0)printf("A sua opção: %d\n",op);
         
         switch (op){
             case 0:
-                printf("Exiting...\n");
+                printf("Exiting...\n\n");
                 if(l ==1) distroySGV(sgv);
                 flush();
                 exit(0);
                 break;
 
             case 1:
-            	printf("A sua opção: %d",op);
-                if(l == 0){
-                    getstr("Insira o file path para ler os Clientes: ",c);
-                    getstr("Insira o file path para ler os Produtos: ",p);
-                    getstr("Insira o file path para ler as Vendas: ",v);
-                    sgv = initSGV();
-                    sgv = loadSGVFromFiles(sgv, c, p, v );
-                    l =1;
-                }
-                else{
-                    distroySGV(sgv);
-            		printf("\n\n");
-                    sgv = initSGV();
-
-                    getstr("Insira o file path para ler os Clientes: ",c);
-                    getstr("Insira o file path para ler os Produtos: ",p);
-                    getstr("Insira o file path para ler as Vendas: ",v);
-
-                    sgv = loadSGVFromFiles(sgv, c, p, v );
-                }
+                if(l==1)distroySGV(sgv);
+                printf("\n");
+                getstr("Insira o file path para ler os Clientes: ",c);
+                getstr("Insira o file path para ler os Produtos: ",p);
+                getstr("Insira o file path para ler as Vendas: ",v);
+                sgv = initSGV();
+                sgv = loadSGVFromFiles(sgv, c, p, v );
+                l=1;
 
             	printf("\n\n");
 				q13=getCurrentFilesInfo(sgv);
@@ -407,6 +401,7 @@ void interpertador(){
                 	if(q13->cv<0)printf("\t->%s\n",q13->c);
                 	if(q13->vv<0)printf("\t->%s\n",q13->v);
                 	printf("\nPor favor tente de novo.\n");
+                    distroySGV(sgv);
                 }
                 destroiQ13(q13);
 
@@ -555,7 +550,7 @@ void interpertador(){
                 break;
         }
 
-        if (l==0 && op>1) printf("\n\nFicheiros não lidos. Por favor use a opção 1.\n"); 
+        if (l==0 && op>1) printf("\n\nFicheiros não lidos. Por favor use a opção 1.\n\n\n"); 
 
         printf("\n");
         printf("press Enter to continue");
