@@ -42,6 +42,11 @@ public class Produtos {
         return sb.toString();
     }
 
+    public void  addProduto(String p){
+        this.produtos.get(hashP(p)).add(p);
+    }
+
+
     public int ler_produtos(String filepath) throws Exception
     {
         int i = 0;
@@ -55,7 +60,7 @@ public class Produtos {
 
             if (validaProduto(st)) {
                 //System.out.println(hashCL(st));
-                produtos.get(hashP(st)).add(st);
+                addProduto(st);
                 i++;
             }
         }

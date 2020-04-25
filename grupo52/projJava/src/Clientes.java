@@ -34,7 +34,16 @@ public class Clientes {
         return cl.charAt(0) >= 'A' && cl.charAt(0) <= 'Z' && validaNum(cl);
     }
 
+    public void  addCliente(String p){
+        this.clientes.get(hashCL(p)).add(p);
+    }
 
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Clientes{");
+        sb.append("clientes=").append(clientes);
+        sb.append('}');
+        return sb.toString();
+    }
 
     public int ler_clientes(String filepath) throws Exception
     {
@@ -49,7 +58,7 @@ public class Clientes {
 
             if (validaCliente(st)) {
                 //System.out.println(hashCL(st));
-                clientes.get(hashCL(st)).add(st);
+                addCliente(st);
                 i++;
             }
         }
