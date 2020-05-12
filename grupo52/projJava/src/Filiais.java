@@ -62,12 +62,12 @@ public class Filiais {
             this.filiais.get(hashProd(cl[0])).get(ip).getObj().get(f).setUsed(1);
             //System.out.println(this.faturacoes.get(hashProd(p[0])).get(ip).getPrd());
             if (cl[3].equals("N")) {
-                this.filiais.get(hashProd(cl[0])).get(ip).getObj().get(f).getFilF().get(m).get(p).addfN(pr * q);
-                this.filiais.get(hashProd(cl[0])).get(ip).getObj().get(f).getFilF().get(m).get(p).incvN();
+                this.filiais.get(hashProd(cl[0])).get(ip).getObj().get(f).getFilF().get(m).get(p).addgN(pr * q);
+                this.filiais.get(hashProd(cl[0])).get(ip).getObj().get(f).getFilF().get(m).get(p).addqN(q);
 
             } else if (p[3].equals("P")){
-                this.faturacoes.get(hashProd(p[0])).get(ip).getObj().get(f).getFilF().get(m).addfP(pr * q);
-                this.faturacoes.get(hashProd(p[0])).get(ip).getObj().get(f).getFilF().get(m).incvP();
+                this.filiais.get(hashProd(cl[0])).get(ip).getObj().get(f).getFilF().get(m).get(p).addgP(pr * q);
+                this.filiais.get(hashProd(cl[0])).get(ip).getObj().get(f).getFilF().get(m).get(p).addqP(q);
             }
 
         }
