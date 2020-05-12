@@ -1,11 +1,11 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class FilFat {
+public class Fil {
     private int used;
     private Map<Integer, MesFat> filial;
 
-    public FilFat(){
+    public Fil(){
         this.used = 0;
         this.filial = new HashMap<>();
         for (int i = 1; i<13 ; i++)
