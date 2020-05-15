@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class Faturacao {
+public class Faturacao implements InterfaceFaturacao{
     private Map<Integer, List<ProdFat>> faturacoes;
 
 
