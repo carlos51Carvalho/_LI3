@@ -27,7 +27,7 @@ public class Vendas {
     }
 
 
-    public static int ler_vendas(Faturacao fat,Filiais fil,InterfaceClientes c, InterfaceProdutos p,String filepath) throws Exception
+    public static int ler_vendas(InterfaceFaturacao fat,InterfaceFiliais fil,InterfaceClientes c, InterfaceProdutos p,String filepath) throws Exception
     {
     int i = 0;
 
