@@ -8,5 +8,6 @@ public interface InterfaceProdutos {
     Collection<String> prodStartedByLetter(char l);
     int ler_produtos(String filepath) throws Exception;
     int size();
+    boolean existe(String s);
 
 }
