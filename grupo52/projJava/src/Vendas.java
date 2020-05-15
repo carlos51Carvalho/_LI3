@@ -6,6 +6,17 @@ import java.util.Set;
 
 public class Vendas {
 
+    private static String nome;
+    private static int errados;
+    private static int tprod;
+    private static int dprod;
+    private static int pnc;
+    private static int tcl;
+    private static int tclc;
+    private static int tclsc;
+    private static int tvendaszero;
+    private static int fattotal;
+
     public static int hashp(String p) {
         return p.charAt(0) - 'A';
     }
