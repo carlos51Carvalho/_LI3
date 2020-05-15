@@ -69,10 +69,7 @@ public class Produtos implements InterfaceProdutos {
     }
 
     public TreeSet<String> getP(int i) {
-        TreeSet<String> aux = new TreeSet<>();
-        for(String s : produtos.get(i))
-            aux.add(s);
-        return aux;
+        return new TreeSet<>(produtos.get(i));
     }
 
     public Set<String> get(int kp) {
@@ -82,13 +79,10 @@ public class Produtos implements InterfaceProdutos {
 
     public Collection<String> prodStartedByLetter(char l) {
         int let = l - 'A';
-        ArrayList<String> res = new ArrayList<>();
-        for (String p : produtos.get(let))
-            res.add(p);
-        return res;
+        return new ArrayList<>(produtos.get(let));
     }
 
-    public void rmProd(String p){
+    public void rmProduto(String p){
         this.produtos.get(hashP(p)).remove(p);
     }
 }

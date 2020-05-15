@@ -30,8 +30,11 @@ public class Main
         int vend = v.ler_vendas(faturacao,filiais,clientes,produtos, "Dados_Iniciais/Vendas_1M.txt");
         System.out.println("\n\n"+ vend+ "\n");
 
-        for (Object s: produtos.prodStartedByLetter('Z'))
+        /*for (Object s: produtos.prodStartedByLetter('Z'))
             System.out.println(s +"\n");
+        */
+        for (Object s: clientes.clStartedByLetter('F'))
+            System.out.println(s+"\n");
 
 
     }

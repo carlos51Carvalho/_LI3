@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Clientes {
     private Map<Integer, Set<String>> clientes;
@@ -45,6 +46,10 @@ public class Clientes {
         return sb.toString();
     }
 
+    public void rmCliente(String cl){
+        this.clientes.get(hashCL(cl)).remove(cl);
+    }
+
     public int ler_clientes(String filepath) throws Exception
     {
         int i = 0;
@@ -67,13 +72,16 @@ public class Clientes {
     }
 
     public TreeSet<String> getC(int i) {
-        TreeSet<String> aux = new TreeSet<>();
-        for(String s : clientes.get(i))
-            aux.add(s);
-        return aux;
+        return new TreeSet<>(clientes.get(i));
     }
 
     public Set<String> get(int kc) {
         return clientes.get(kc);
     }
+
+    public Collection<String> clStartedByLetter(char l){
+        return new ArrayList<>(clientes.get(l-65));
+
+    }
+
 }
