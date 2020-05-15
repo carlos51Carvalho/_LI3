@@ -1,10 +1,10 @@
+
 /**
  * Write a description of class Produtos3 here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-/*
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
@@ -115,5 +115,11 @@ public class Produtos3 implements InterfaceProdutos
         return i;
     }
     
+    public int size(){
+        int res=0;
+        for(Set<Produto> c:this.produtos.values()){
+            res+=c.size();
+        }
+        return res;
+    }
 }
-*/
