@@ -72,7 +72,7 @@ public class Produtos implements InterfaceProdutos {
         return new TreeSet<>(produtos.get(i));
     }
 
-    public Set<String> get(int kp) {
+    private Set<String> get(int kp) {
         return produtos.get(kp);
     }
 
@@ -92,5 +92,8 @@ public class Produtos implements InterfaceProdutos {
             res += produtos.get(i).size();
         }
         return res;
+    }
+    public boolean existe(String s, int le) {
+        return produtos.get(le).contains(s);
     }
 }

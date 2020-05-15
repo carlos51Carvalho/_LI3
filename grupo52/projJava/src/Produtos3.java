@@ -114,7 +114,12 @@ public class Produtos3 implements InterfaceProdutos
         }
         return i;
     }
-    
+
+    @Override
+    public TreeSet<String> getP(int i) {
+        return null;
+    }
+// ver istoooooo as que dzem override
     public int size(){
         int res=0;
         for(Set<Produto> c:this.produtos.values()){
@@ -122,8 +127,13 @@ public class Produtos3 implements InterfaceProdutos
         }
         return res;
     }
-    
-    
+
+    @Override
+    public boolean existe(String s, int le) {
+        return false;
+    }
+
+
     public boolean existe(String s){
         int i = Produto.hashString(s);
         Iterator<Produto> it;

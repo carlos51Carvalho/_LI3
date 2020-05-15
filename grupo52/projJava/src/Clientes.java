@@ -75,7 +75,7 @@ public class Clientes {
         return new TreeSet<>(clientes.get(i));
     }
 
-    public Set<String> get(int kc) {
+    private Set<String> get(int kc) {
         return clientes.get(kc);
     }
 
@@ -84,4 +84,7 @@ public class Clientes {
 
     }
 
+    public boolean existe(String s, int le) {
+        return clientes.get(le).contains(s);
+    }
 }

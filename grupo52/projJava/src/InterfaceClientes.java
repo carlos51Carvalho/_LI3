@@ -1,4 +1,5 @@
 import java.util.Collection;
+import java.util.TreeSet;
 
 public interface InterfaceClientes {
 
@@ -7,5 +8,8 @@ public interface InterfaceClientes {
     Collection<String> clStartedByLetter(char l);
     int ler_clientes(String filepath) throws Exception;
     int size();
-    boolean existe(String s);
+    boolean existe(String s, int le);
+    TreeSet<String> getC(int i);
+
 }
+

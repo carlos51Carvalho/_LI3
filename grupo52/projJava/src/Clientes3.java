@@ -114,4 +114,22 @@ public class Clientes3 implements InterfaceClientes
         }
         return i;
     }
+
+
+
+
+    /// ver esta merda sao metodos definidos em interface
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    public boolean existe(String s, int le){
+          return clientes.get(le).contains(s);
+    }
+
+    @Override
+    public TreeSet<String> getC(int i) {
+        return null;
+    }
 }
