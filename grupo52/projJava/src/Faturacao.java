@@ -54,6 +54,7 @@ public class Faturacao {
 
         int ip = pBinaria(p[0],faturacoes.get(hashProd(p[0])));
         if (ip >= 0) {
+            this.faturacoes.get(hashProd(p[0])).get(ip).setUsed(true);
             double pr = Double.parseDouble(p[1]);
             int q = Integer.parseInt(p[2]);
             int m = Integer.parseInt(p[5]);
@@ -73,6 +74,24 @@ public class Faturacao {
         }
 
     }
+
+    public int numeroProdUsados(){
+        int count = 0;
+        for (int i = 0; i<26; i++){
+            count = (int) faturacoes.get(i).stream().filter(ProdFat::getUsed).count();
+        }
+        return count;
+    }
+
+    public int numeroProdNuncaUsados(){
+        int count = 0;
+        for (int i = 0; i<26; i++){
+            count += faturacoes.get(i).size();
+        }
+        return count-numeroProdUsados();
+    }
+
+
 
 
 }

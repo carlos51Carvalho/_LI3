@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 //import java.util.Scanner;
-
+/*
 public class in_out
 {
     public static void main() throws Exception
@@ -20,7 +20,7 @@ public class in_out
         //System.out.println("Produtos: "+prods.size());
         Clientes cl = new Clientes();
         Produtos pr = new Produtos();
-        Clientes2 cl2 = new Clientes2();
+        //Clientes2 cl2 = new Clientes2();
         
         Clientes3 cl3 = new Clientes3();
         Produtos3 pr3 = new Produtos3();
@@ -79,5 +79,3 @@ public class in_out
             }
         }
         */
-    }
-}

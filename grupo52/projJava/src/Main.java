@@ -36,6 +36,9 @@ public class Main
         for (Object s: clientes.clStartedByLetter('F'))
             System.out.println(s+"\n");
 
+        System.out.println(produtos.numeroProdValidos());
+        System.out.println(faturacao.numeroProdUsados());
+        System.out.println(faturacao.numeroProdNuncaUsados());
 
     }
 }
