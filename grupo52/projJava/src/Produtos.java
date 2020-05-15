@@ -86,7 +86,7 @@ public class Produtos implements InterfaceProdutos {
         this.produtos.get(hashP(p)).remove(p);
     }
 
-    public int numeroProdValidos() {
+    public int size() {
         int res =0;
         for (int i = 0; i < 26; i++) {
             res += produtos.get(i).size();

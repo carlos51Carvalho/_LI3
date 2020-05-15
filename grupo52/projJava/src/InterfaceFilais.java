@@ -8,5 +8,7 @@ public interface InterfaceFilais {
     List<ClFil> getArr(int i);
     void addCl(String cl);
     void addCls(TreeSet<String> clientes);
+    int numeroComparadores();
+    int naocompram();
 
 }

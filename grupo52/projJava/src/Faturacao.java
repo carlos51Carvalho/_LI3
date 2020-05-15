@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class Faturacao {
+public class Faturacao implements InterfaceFaturacao{
     private Map<Integer, List<ProdFat>> faturacoes;
 
 
@@ -78,7 +78,7 @@ public class Faturacao {
     public int numeroProdUsados(){
         int count = 0;
         for (int i = 0; i<26; i++){
-            count = (int) faturacoes.get(i).stream().filter(ProdFat::getUsed).count();
+            count += (int) faturacoes.get(i).stream().filter(ProdFat::getUsed).count();
         }
         return count;
     }

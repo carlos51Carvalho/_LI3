@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Filiais {
+public class Filiais implements InterfaceFilais{
     private Map<Integer, List<ClFil>> filiais;
 
 
@@ -61,6 +61,7 @@ public class Filiais {
 
         int ip = pBinaria(cl[4], filiais.get(hashProd(cl[4])));
         if (ip >= 0) {
+            this.filiais.get(hashProd(cl[4])).get(ip).setUsed(true);
             String p = cl[0];
             double pr = Double.parseDouble(cl[1]);
             int q = Integer.parseInt(cl[2]);
@@ -94,6 +95,22 @@ public class Filiais {
             }
 
         }
+    }
+
+        public int numeroComparadores(){
+        int count = 0;
+        for (int i = 0; i<26; i++){
+            count += (int) filiais.get(i).stream().filter(ClFil::getUsed).count();
+        }
+        return count;
+    }
+
+    public int naocompram(){
+        int count = 0;
+        for (int i = 0; i<26; i++){
+            count += filiais.get(i).size();
+        }
+        return count-numeroComparadores();
     }
 
 
