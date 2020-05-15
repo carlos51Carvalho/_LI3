@@ -12,6 +12,9 @@ public class Cliente
     public static boolean validaCliente(String c){
         return true;
     }
+    public static int hashString(String c){
+        return c.charAt(0) - 'A';
+    }
     
     public Cliente(String c){
         this.cliente=c;

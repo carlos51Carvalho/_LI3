@@ -9,8 +9,11 @@ public class Produto
 {
     private String produto;
     
-    public static boolean validaCliente(String c){
+    public static boolean validaProduto(String c){
         return true;
+    }
+    public static int hashString(String c){
+        return c.charAt(0) - 'A';
     }
     
     public Produto(String c){

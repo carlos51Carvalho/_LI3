@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
-public class Clientes3
+public class Clientes3 implements InterfaceClientes
 {
     // instance variables - replace the example below with your own
     private Map<Integer,Set<Cliente>> clientes;
@@ -68,10 +71,47 @@ public class Clientes3
             this.clientes.put(i,new TreeSet<Cliente>(new ComparatorCliente()));
         }
         this.clientes.get(i).add(c);
+    }public void addCliente(String cc){ //com String (respeitar interface)
+        Cliente c= new Cliente(cc);
+        int i=c.hashCliente();
+        if(!this.clientes.containsKey(i)){
+            this.clientes.put(i,new TreeSet<Cliente>(new ComparatorCliente()));
+        }
+        this.clientes.get(i).add(c);
+    }
+    
+    public void rmCliente(String c){
+        int i=Cliente.hashString(c);
+        if(this.clientes.containsKey(i)){
+            this.clientes.get(i).remove(c);
+        }
     }
     
     public Clientes3 clone(){
         return new Clientes3(this);
     }
     
+    public Set<String> clStartedByLetter(char l){
+        Set<String> res = new TreeSet<>();
+        if(this.clientes.containsKey(l-'A')){
+            for(Cliente s:this.clientes.get(l-'A')){
+                res.add(s.getCliente());
+            }   
+        }
+        return res;
+    }
+    
+    public int ler_clientes(String filepath) throws Exception{
+        String st;
+        int i=0;
+        File file= new File(filepath);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        while ((st = br.readLine()) != null) {
+            if(Cliente.validaCliente(st)){
+                this.addCliente(new Cliente(st));
+                i++;
+            }
+        }
+        return i;
+    }
 }
