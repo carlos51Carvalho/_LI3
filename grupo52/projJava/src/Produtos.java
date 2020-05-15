@@ -69,7 +69,10 @@ public class Produtos {
     }
 
     public TreeSet<String> getP(int i) {
-        return (TreeSet<String>) produtos.get(i);
+        TreeSet<String> aux = new TreeSet<>();
+        for(String s : produtos.get(i))
+            aux.add(s);
+        return aux;
     }
 
     public Set<String> get(int kp) {

@@ -2,7 +2,7 @@
 import java.util.*;
 
 public class Faturacao {
-    private Map<Integer, List<IDFat>> faturacoes;
+    private Map<Integer, List<ProdFat>> faturacoes;
 
 
     public Faturacao() {
@@ -16,7 +16,7 @@ public class Faturacao {
     }
 
     public void addProd(String p) {
-        IDFat prd = new IDFat(p);
+        ProdFat prd = new ProdFat(p);
         faturacoes.get(hashProd(p)).add(prd);
     }
 
@@ -25,23 +25,23 @@ public class Faturacao {
             addProd(p);
     }
 
-    public List<IDFat> getArr(int i){
-        return (List<IDFat>) faturacoes.get(i);
+    public List<ProdFat> getArr(int i){
+        return faturacoes.get(i);
     }
 
 
 
-    public static int pBinaria(String p, List<IDFat> f){
+    public static int pBinaria(String p, List<ProdFat> f){
         int r = -1;
         int meio;
         int inicio = 0;
         int fim = f.size()-1;
         while (inicio <= fim && r==-1) {
                  meio = (inicio + fim)/2;
-                 if (p.compareTo(f.get(meio).getID()) == 0) {
+                 if (p.compareTo(f.get(meio).getProd()) == 0) {
                      r = meio;
                  }
-                 if (p.compareTo(f.get(meio).getID()) < 0)
+                 if (p.compareTo(f.get(meio).getProd()) < 0)
                      fim = meio - 1;
                  else
                      inicio = meio + 1;
@@ -59,15 +59,15 @@ public class Faturacao {
             int m = Integer.parseInt(p[5]);
             int f = Integer.parseInt(p[6]);
 
-            this.faturacoes.get(hashProd(p[0])).get(ip).getObj().get(f).setUsed(1);
+            this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).setUsed(1);
             //System.out.println(this.faturacoes.get(hashProd(p[0])).get(ip).getPrd());
             if (p[3].equals("N")) {
-                this.faturacoes.get(hashProd(p[0])).get(ip).getObj().get(f).getFilF().get(m).addfN(pr * q);
-                this.faturacoes.get(hashProd(p[0])).get(ip).getObj().get(f).getFilF().get(m).incvN();
+                this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).getFilF().get(m).addfN(pr * q);
+                this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).getFilF().get(m).incvN();
 
             } else if (p[3].equals("P")){
-                this.faturacoes.get(hashProd(p[0])).get(ip).getObj().get(f).getFilF().get(m).addfP(pr * q);
-                this.faturacoes.get(hashProd(p[0])).get(ip).getObj().get(f).getFilF().get(m).incvP();
+                this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).getFilF().get(m).addfP(pr * q);
+                this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).getFilF().get(m).incvP();
             }
 
         }

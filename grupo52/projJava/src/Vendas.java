@@ -28,7 +28,7 @@ public class Vendas {
     }
 
 
-    public static int ler_vendas(Faturacao fat,Clientes c, Produtos p,String filepath) throws Exception
+    public static int ler_vendas(Faturacao fat,Filiais fil,Clientes c, Produtos p,String filepath) throws Exception
     {
     int i = 0;
 
@@ -42,6 +42,7 @@ public class Vendas {
             if (validate(st,c,p)) {
                 //System.out.println(hashCL(st));
                 fat.acrescentaFat(st);
+                fil.acrescentaFil(st);
                 i++;
             }
         }

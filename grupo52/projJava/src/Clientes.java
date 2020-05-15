@@ -66,6 +66,13 @@ public class Clientes {
     return i;
     }
 
+    public TreeSet<String> getC(int i) {
+        TreeSet<String> aux = new TreeSet<>();
+        for(String s : clientes.get(i))
+            aux.add(s);
+        return aux;
+    }
+
     public Set<String> get(int kc) {
         return clientes.get(kc);
     }
