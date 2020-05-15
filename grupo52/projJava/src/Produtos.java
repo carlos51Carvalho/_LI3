@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.*;
 
-public class Produtos {
+public class Produtos implements InterfaceProdutos {
     private Map<Integer, Set<String>> produtos;
 
     public Produtos() {
@@ -77,5 +77,18 @@ public class Produtos {
 
     public Set<String> get(int kp) {
         return produtos.get(kp);
+    }
+
+
+    public Collection<String> prodStartedByLetter(char l) {
+        int let = l - 'A';
+        ArrayList<String> res = new ArrayList<>();
+        for (String p : produtos.get(let))
+            res.add(p);
+        return res;
+    }
+
+    public void rmProd(String p){
+        this.produtos.get(hashP(p)).remove(p);
     }
 }

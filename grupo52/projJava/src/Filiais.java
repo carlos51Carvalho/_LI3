@@ -53,6 +53,10 @@ public class Filiais {
         return this.filiais.get(hashProd(cl)).get(ip).getFil().get(f).getFilF().get(m).getPrs().containsKey(p);
     }
 
+
+
+
+
     public void acrescentaFil(String[] cl) {
 
         int ip = pBinaria(cl[4], filiais.get(hashProd(cl[4])));
