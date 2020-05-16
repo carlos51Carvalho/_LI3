@@ -35,7 +35,7 @@ public class Produtos3 implements InterfaceProdutos
         for(Map.Entry<Integer,Set<Produto>> e:es){
             this.produtos.put(e.getKey(),new TreeSet<Produto>());
             for(Produto s:e.getValue()){
-                this.produtos.get(e.getKey()).add(s);
+                this.produtos.get(e.getKey()).add(s.clone());
             }
         }
     }
@@ -46,7 +46,7 @@ public class Produtos3 implements InterfaceProdutos
         for(Map.Entry<Integer,Set<Produto>> e:es){
             aux.put(e.getKey(),new TreeSet<Produto>());
             for(Produto s:e.getValue()){
-                aux.get(e.getKey()).add(s);
+                aux.get(e.getKey()).add(s.clone());
             }
         }
         return aux;
@@ -114,12 +114,7 @@ public class Produtos3 implements InterfaceProdutos
         }
         return i;
     }
-
-    @Override
-    public TreeSet<String> getP(int i) {
-        return null;
-    }
-// ver istoooooo as que dzem override
+    
     public int size(){
         int res=0;
         for(Set<Produto> c:this.produtos.values()){
@@ -127,9 +122,8 @@ public class Produtos3 implements InterfaceProdutos
         }
         return res;
     }
-
-
-
+    
+    
     public boolean existe(String s){
         int i = Produto.hashString(s);
         Iterator<Produto> it;

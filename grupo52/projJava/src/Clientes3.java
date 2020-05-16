@@ -35,7 +35,7 @@ public class Clientes3 implements InterfaceClientes
         for(Map.Entry<Integer,Set<Cliente>> e:es){
             this.clientes.put(e.getKey(),new TreeSet<Cliente>());
             for(Cliente s:e.getValue()){
-                this.clientes.get(e.getKey()).add(s);
+                this.clientes.get(e.getKey()).add(s.clone());
             }
         }
     }
@@ -46,7 +46,7 @@ public class Clientes3 implements InterfaceClientes
         for(Map.Entry<Integer,Set<Cliente>> e:es){
             aux.put(e.getKey(),new TreeSet<Cliente>());
             for(Cliente s:e.getValue()){
-                aux.get(e.getKey()).add(s);
+                aux.get(e.getKey()).add(s.clone());
             }
         }
         return aux;
@@ -114,22 +114,30 @@ public class Clientes3 implements InterfaceClientes
         }
         return i;
     }
-
-
-
-
-    /// ver esta merda sao metodos definidos em interface
-    @Override
-    public int size() {
-        return 0;
+    
+    public int size(){
+        int res=0;
+        for(Set<Cliente> c:this.clientes.values()){
+            res+=c.size();
+        }
+        return res;
     }
 
     public boolean existe(String s){
-          return true;
-    }
-
-    @Override
-    public TreeSet<String> getC(int i) {
-        return null;
+        int i = Cliente.hashString(s);
+        Iterator<Cliente> it;
+        boolean res=false,menor=true;
+        if(this.clientes.containsKey(i)){
+            it=this.clientes.get(i).iterator();
+            while(it.hasNext() && !res && menor){
+                Cliente p = it.next();
+                if(p.getCliente().compareTo(s)==0)res=true;
+                else{
+                    if(p.getCliente().compareTo(s)>0)menor=false;
+                }
+            }
+            
+        }
+        return res;
     }
 }
