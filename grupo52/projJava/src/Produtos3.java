@@ -94,9 +94,21 @@ public class Produtos3 implements InterfaceProdutos
         return res;
     }
     public void rmProduto(String c){
-        int i=Produto.hashString(c);
+        Iterator<Produto> it;
+        int i=Cliente.hashString(c);
+        boolean menor=true;
         if(this.produtos.containsKey(i)){
-            this.produtos.get(i).remove(c);
+            it=this.produtos.get(i).iterator();
+            while(it.hasNext() && menor){
+                Produto p = it.next();
+                if(p.getProduto().compareTo(c)==0){
+                    menor=false;
+                    this.produtos.get(i).remove(p);
+                }
+                else{
+                    if(p.getProduto().compareTo(c)>0)menor=false;
+                }
+            }
         }
     }
     

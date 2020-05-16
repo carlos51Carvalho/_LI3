@@ -81,10 +81,22 @@ public class Clientes3 implements InterfaceClientes
         this.clientes.get(i).add(c);
     }
     
-    public void rmCliente(String c){
-        int i=Cliente.hashString(c);
+    public void rmCliente(String s){
+        Iterator<Cliente> it;
+        int i=Cliente.hashString(s);
+        boolean menor=true;
         if(this.clientes.containsKey(i)){
-            this.clientes.get(i).remove(c);
+            it=this.clientes.get(i).iterator();
+            while(it.hasNext() && menor){
+                Cliente p = it.next();
+                if(p.getCliente().compareTo(s)==0){
+                    menor=false;
+                    this.clientes.get(i).remove(p);
+                }
+                else{
+                    if(p.getCliente().compareTo(s)>0)menor=false;
+                }
+            }
         }
     }
     
@@ -141,11 +153,5 @@ public class Clientes3 implements InterfaceClientes
         }
         return res;
     }
-/*
-    @Override
-    public TreeSet<String> getC(int i) {
-        return null;
-    }
 
- */
 }
