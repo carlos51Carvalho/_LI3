@@ -26,14 +26,12 @@ public class Vendas {
 
 
     public static boolean validate(String[] s, Clientes clientes, Produtos produtos){
-        int kp = hashp(s[0]);
-        int kc = hashc(s[4]);
         return s.length == 7
-                && produtos.get(kp).contains(s[0])
+                && produtos.existe(s[0])
                 && Double.parseDouble(s[1]) >= 0.0
                 && Integer.parseInt(s[2]) >=0
                 && (s[3].length()==1) && (s[3].equals("P") || s[3].equals("N"))
-                && clientes.get(kc).contains(s[4])
+                && clientes.existe(s[4])
                 && Integer.parseInt(s[5]) >= 0 && Integer.parseInt(s[5]) <= 12
                 && Integer.parseInt(s[6]) >= 0 && Integer.parseInt(s[6]) <= 3;
     }
@@ -66,8 +64,8 @@ public class Vendas {
                 int pk = hashp(st[0]);
                 int ck = hashc(st[0]);
                 if(Double.parseDouble(st[1]) == 0.0) zero++;
-                if(pt.get(hashp(st[0])).contains(st[0])) pt.rmProduto(st[0]);
-                if(ct.get(hashc(st[4])).contains(st[4])) ct.rmCliente(st[4]);
+                if(pt.existe(st[0])) pt.rmProduto(st[0]);
+                if(ct.existe(st[4])) ct.rmCliente(st[4]);
 
                 ft += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
 

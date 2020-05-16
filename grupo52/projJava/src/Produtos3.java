@@ -114,11 +114,35 @@ public class Produtos3 implements InterfaceProdutos
         }
         return i;
     }
-    
+
+    @Override
+    public TreeSet<String> getP(int i) {
+        return null;
+    }
+// ver istoooooo as que dzem override
     public int size(){
         int res=0;
         for(Set<Produto> c:this.produtos.values()){
             res+=c.size();
+        }
+        return res;
+    }
+
+
+
+    public boolean existe(String s){
+        int i = Produto.hashString(s);
+        Iterator<Produto> it;
+        boolean res=false,menor=true;
+        if(this.produtos.containsKey(i)){
+            it=this.produtos.get(i).iterator();
+            while(it.hasNext() && !res && menor){
+                Produto p = it.next();
+                if(p.getProduto().compareTo(s)==0)res=true;
+                else{
+                    if(p.getProduto().compareTo(s)>0)menor=false;
+                }
+            }
         }
         return res;
     }

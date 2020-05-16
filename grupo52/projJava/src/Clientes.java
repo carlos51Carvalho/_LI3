@@ -102,7 +102,7 @@ public class Clientes {
         return new TreeSet<>(clientes.get(i));
     }
 
-    public Set<String> get(int kc) {
+    private Set<String> get(int kc) {
         return clientes.get(kc);
     }
 
@@ -111,12 +111,18 @@ public class Clientes {
 
     }
 
+
     public int size() {
         int res =0;
         for (int i = 0; i < 26; i++) {
             res += clientes.get(i).size();
         }
         return res;
+    }
+
+
+    public boolean existe(String s) {
+        return clientes.get(hashCL(s)).contains(s);
     }
 
 }

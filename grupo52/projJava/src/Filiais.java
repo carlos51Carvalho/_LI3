@@ -69,6 +69,7 @@ public class Filiais implements InterfaceFilais{
             int f = Integer.parseInt(cl[6]);
 
             this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).setUsed(1);
+            this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).incnVendas();
             //System.out.println(this.faturacoes.get(hashProd(p[0])).get(ip).getPrd());
 
             if (existeProd(cl[4], ip, f, m, p)) {
