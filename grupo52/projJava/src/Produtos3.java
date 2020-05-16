@@ -5,13 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -22,7 +16,7 @@ public class Produtos3 implements InterfaceProdutos
     private Map<Integer,Set<Produto>> produtos;
     
     public Produtos3(){
-        this.produtos= new TreeMap<Integer,Set<Produto>>();
+        this.produtos= new HashMap<Integer,Set<Produto>>();
     }
     
     public Produtos3(Produtos3 c){
@@ -40,7 +34,7 @@ public class Produtos3 implements InterfaceProdutos
         }
     }
     public Map<Integer,Set<Produto>> getProdutos(){
-        Map<Integer,Set<Produto>> aux = new TreeMap<Integer,Set<Produto>>();
+        Map<Integer,Set<Produto>> aux = new HashMap<Integer,Set<Produto>>();
         
         Set<Map.Entry<Integer,Set<Produto>>> es = this.produtos.entrySet();
         for(Map.Entry<Integer,Set<Produto>> e:es){
@@ -53,8 +47,8 @@ public class Produtos3 implements InterfaceProdutos
     }
     
    
-    public Set<String> getSetDeProdutos(){
-        Set<String> res = new TreeSet<String>();
+    public TreeSet<String> getSetDeProdutos(){
+        TreeSet<String> res = new TreeSet<String>();
         for(Set<Produto> c:this.produtos.values()){
             for(Produto s:c){
                 res.add(s.getProduto());

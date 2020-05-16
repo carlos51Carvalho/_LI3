@@ -1,17 +1,6 @@
 
-/**
- * Write a description of class Clientes3 here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
+
+import java.util.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -22,7 +11,7 @@ public class Clientes3 implements InterfaceClientes
     private Map<Integer,Set<Cliente>> clientes;
     
     public Clientes3(){
-        this.clientes= new TreeMap<Integer,Set<Cliente>>();
+        this.clientes= new HashMap<>();
     }
     
     public Clientes3(Clientes3 c){
@@ -30,22 +19,22 @@ public class Clientes3 implements InterfaceClientes
     }
 
     public void setClientes(Map<Integer,Set<Cliente>> c){
-        this.clientes = new TreeMap<Integer,Set<Cliente>>();
+        this.clientes = new TreeMap<>();
         
         Set<Map.Entry<Integer,Set<Cliente>>> es = c.entrySet();
         for(Map.Entry<Integer,Set<Cliente>> e:es){
-            this.clientes.put(e.getKey(),new TreeSet<Cliente>(new ComparatorCliente()));
+            this.clientes.put(e.getKey(),new TreeSet<>(new ComparatorCliente()));
             for(Cliente s:e.getValue()){
                 this.clientes.get(e.getKey()).add(s.clone());
             }
         }
     }
     public Map<Integer,Set<Cliente>> getClientes(){
-        Map<Integer,Set<Cliente>> aux = new TreeMap<Integer,Set<Cliente>>();
+        Map<Integer,Set<Cliente>> aux = new TreeMap<>();
         
         Set<Map.Entry<Integer,Set<Cliente>>> es = this.clientes.entrySet();
         for(Map.Entry<Integer,Set<Cliente>> e:es){
-            aux.put(e.getKey(),new TreeSet<Cliente>(new ComparatorCliente()));
+            aux.put(e.getKey(),new TreeSet<>(new ComparatorCliente()));
             for(Cliente s:e.getValue()){
                 aux.get(e.getKey()).add(s.clone());
             }
@@ -54,8 +43,8 @@ public class Clientes3 implements InterfaceClientes
     }
     
    
-    public Set<String> getSetDeClientes(){
-        Set<String> res = new TreeSet<String>();
+    public TreeSet<String> getSetDeClientes(){
+        TreeSet<String> res = new TreeSet<>();
         for(Set<Cliente> c:this.clientes.values()){
             for(Cliente s:c){
                 res.add(s.getCliente());
@@ -69,14 +58,16 @@ public class Clientes3 implements InterfaceClientes
     public void addCliente(Cliente c){
         int i=c.hashCliente();
         if(!this.clientes.containsKey(i)){
-            this.clientes.put(i,new TreeSet<Cliente>(new ComparatorCliente()));
+            this.clientes.put(i,new TreeSet<>(new ComparatorCliente()));
         }
         this.clientes.get(i).add(c);
-    }public void addCliente(String cc){ //com String (respeitar interface)
+    }
+
+    public void addCliente(String cc){ //com String (respeitar interface)
         Cliente c= new Cliente(cc);
         int i=c.hashCliente();
         if(!this.clientes.containsKey(i)){
-            this.clientes.put(i,new TreeSet<Cliente>(new ComparatorCliente()));
+            this.clientes.put(i,new TreeSet<>(new ComparatorCliente()));
         }
         this.clientes.get(i).add(c);
     }
@@ -140,6 +131,7 @@ public class Clientes3 implements InterfaceClientes
         int i = Cliente.hashString(s);
         Iterator<Cliente> it;
         boolean res=false,menor=true;
+
         if(this.clientes.containsKey(i)){
             it=this.clientes.get(i).iterator();
             while(it.hasNext() && !res && menor){

@@ -11,7 +11,7 @@ public interface InterfaceProdutos {
     int size();
     boolean existe(String s);
     int ler_produtos(String filepath) throws Exception;
-    Set<String> getSetDeProdutos();
+    TreeSet<String> getSetDeProdutos();
     Produtos3 clone();
     //TreeSet<String> getP(int i);
 

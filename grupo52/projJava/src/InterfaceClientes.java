@@ -10,7 +10,7 @@ public interface InterfaceClientes {
     int ler_clientes(String filepath) throws Exception;
     int size();
     boolean existe(String s);
-    Set<String> getSetDeClientes();
+    TreeSet<String> getSetDeClientes();
     Clientes3 clone();
     //TreeSet<String> getC(int i);
 

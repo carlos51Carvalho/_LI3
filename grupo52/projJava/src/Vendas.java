@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Vendas {
 
@@ -25,29 +26,28 @@ public class Vendas {
     }
 
 
-    public static boolean validate(String[] s, InterfaceClientes clientes, InterfaceProdutos produtos){
+    public static boolean validate(String[] s, TreeSet<String> clientes, TreeSet<String> produtos){
         return s.length == 7
-                && produtos.existe(s[0])
+                && produtos.contains(s[0])
                 && Double.parseDouble(s[1]) >= 0.0
                 && Integer.parseInt(s[2]) >=0
                 && (s[3].length()==1) && (s[3].equals("P") || s[3].equals("N"))
-                && clientes.existe(s[4])
+                && clientes.contains(s[4])
                 && Integer.parseInt(s[5]) >= 0 && Integer.parseInt(s[5]) <= 12
                 && Integer.parseInt(s[6]) >= 0 && Integer.parseInt(s[6]) <= 3;
     }
 
 
-    public static int ler_vendas(Faturacao fat,Filiais fil,InterfaceClientes c, InterfaceProdutos p,String filepath) throws Exception
+    public static int ler_vendas(Faturacao fat,Filiais fil,TreeSet<String> c, TreeSet<String> p,String filepath) throws Exception
     {
     int i = 0;
     int t = 0;
     int zero = 0;
     double ft = 0;
-    InterfaceProdutos pt = p.clone();
-    InterfaceClientes ct = c.clone();
-
-
-
+    //TreeSet<String> pv = (TreeSet<String>) p.getSetDeProdutos();
+    TreeSet<String> pt = new TreeSet<>(p);
+    //TreeSet<String> cv = (TreeSet<String>) c.getSetDeClientes();
+    TreeSet<String> ct = new TreeSet<>(c);
 
         File file = new File(filepath);
 
@@ -65,8 +65,8 @@ public class Vendas {
                 int pk = hashp(st[0]);
                 int ck = hashc(st[0]);
                 if(Double.parseDouble(st[1]) == 0.0) zero++;
-                if(pt.existe(st[0])) pt.rmProduto(st[0]);
-                if(ct.existe(st[4])) ct.rmCliente(st[4]);
+                if(pt.contains(st[0])) pt.remove(st[0]);
+                if(ct.contains(st[4])) ct.remove(st[4]);
 
                 ft += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
 
@@ -85,7 +85,7 @@ public class Vendas {
         fattotal = ft;
 
 
-        /*System.out.println("\n" + errados);
+        System.out.println("\n" + errados);
         System.out.println(tprod);
         System.out.println(dprod);
         System.out.println(pnc);
@@ -93,7 +93,7 @@ public class Vendas {
         System.out.println(tclc);
         System.out.println(tclsc);
         System.out.println(tvendaszero);
-       */ System.out.println(fattotal + "\n");
+        System.out.println(fattotal + "\n");
     System.out.println("Vendas lidas Lidos \n");
     return i;
     }

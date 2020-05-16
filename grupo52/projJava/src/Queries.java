@@ -4,9 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Queries {
+    //private List<String> q1;
 
     //queries interativas
-
+/*
+    public Queries(){
+        List
+    }*/
     public static List<String> querie1(Faturacao fat){
         int total =0;
         List<String> res = new ArrayList<>();
