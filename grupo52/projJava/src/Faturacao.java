@@ -20,7 +20,7 @@ public class Faturacao implements InterfaceFaturacao{
         faturacoes.get(hashProd(p)).add(prd);
     }
 
-    public void addProds(TreeSet<String> produtos) {
+    public void addProds(Set<String> produtos) {
         for (String p : produtos)
             addProd(p);
     }

@@ -28,12 +28,13 @@ public class Clientes3 implements InterfaceClientes
     public Clientes3(Clientes3 c){
         this.setClientes(c.getClientes());
     }
+
     public void setClientes(Map<Integer,Set<Cliente>> c){
         this.clientes = new TreeMap<Integer,Set<Cliente>>();
         
         Set<Map.Entry<Integer,Set<Cliente>>> es = c.entrySet();
         for(Map.Entry<Integer,Set<Cliente>> e:es){
-            this.clientes.put(e.getKey(),new TreeSet<Cliente>());
+            this.clientes.put(e.getKey(),new TreeSet<Cliente>(new ComparatorCliente()));
             for(Cliente s:e.getValue()){
                 this.clientes.get(e.getKey()).add(s.clone());
             }
@@ -44,7 +45,7 @@ public class Clientes3 implements InterfaceClientes
         
         Set<Map.Entry<Integer,Set<Cliente>>> es = this.clientes.entrySet();
         for(Map.Entry<Integer,Set<Cliente>> e:es){
-            aux.put(e.getKey(),new TreeSet<Cliente>());
+            aux.put(e.getKey(),new TreeSet<Cliente>(new ComparatorCliente()));
             for(Cliente s:e.getValue()){
                 aux.get(e.getKey()).add(s.clone());
             }
@@ -140,4 +141,11 @@ public class Clientes3 implements InterfaceClientes
         }
         return res;
     }
+/*
+    @Override
+    public TreeSet<String> getC(int i) {
+        return null;
+    }
+
+ */
 }

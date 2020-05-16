@@ -1,27 +1,28 @@
+import java.util.TreeSet;
+
 public class Main
 {
 
     public static void main (String[] args) throws Exception {
         int f = 0;
         int fi = 0;
-        Clientes clientes = new Clientes();
-        Produtos produtos = new Produtos();
+        InterfaceClientes clientes = new Clientes3();
+        InterfaceProdutos produtos = new Produtos3();
         Faturacao faturacao = new Faturacao();
         Filiais filiais = new Filiais();
         Queries q = new Queries();
         Vendas v = new Vendas();
         int c = clientes.ler_clientes("Dados_Iniciais/Clientes.txt");
         int p = produtos.ler_produtos("Dados_Iniciais/Produtos.txt");
-        for (int i = 0; i < 26; i++)
-            faturacao.addProds(produtos.getP(i));
+
+        faturacao.addProds(produtos.getSetDeProdutos());
 
         System.out.println("\n\n" + c);
         System.out.println("\n\n" + p);
         for (int j = 0; j < 26; j++)
             f = f + faturacao.getArr(j).size();
 
-        for (int j = 0; j < 26; j++)
-            filiais.addCls(clientes.getC(j));
+        filiais.addCls(clientes.getSetDeClientes());
 
         for(int j =0 ; j<26;j++)
             fi += filiais.getArr(j).size();

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Filiais implements InterfaceFilais{
+public class Filiais implements InterfaceFiliais{
     private Map<Integer, List<ClFil>> filiais;
 
 
@@ -19,7 +19,7 @@ public class Filiais implements InterfaceFilais{
         filiais.get(hashProd(cl)).add(cls);
     }
 
-    public void addCls(TreeSet<String> clientes) {
+    public void addCls(Set<String> clientes) {
         for (String cl : clientes)
             addCl(cl);
     }

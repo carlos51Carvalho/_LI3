@@ -1,4 +1,5 @@
 import java.util.Collection;
+import java.util.Set;
 import java.util.TreeSet;
 
 
@@ -10,6 +11,8 @@ public interface InterfaceProdutos {
     int size();
     boolean existe(String s);
     int ler_produtos(String filepath) throws Exception;
-    TreeSet<String> getP(int i);
+    Set<String> getSetDeProdutos();
+    Produtos3 clone();
+    //TreeSet<String> getP(int i);
 
 }

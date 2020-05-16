@@ -25,7 +25,7 @@ public class Vendas {
     }
 
 
-    public static boolean validate(String[] s, Clientes clientes, Produtos produtos){
+    public static boolean validate(String[] s, InterfaceClientes clientes, InterfaceProdutos produtos){
         return s.length == 7
                 && produtos.existe(s[0])
                 && Double.parseDouble(s[1]) >= 0.0
@@ -37,14 +37,15 @@ public class Vendas {
     }
 
 
-    public static int ler_vendas(Faturacao fat,Filiais fil,Clientes c, Produtos p,String filepath) throws Exception
+    public static int ler_vendas(Faturacao fat,Filiais fil,InterfaceClientes c, InterfaceProdutos p,String filepath) throws Exception
     {
     int i = 0;
     int t = 0;
     int zero = 0;
     double ft = 0;
-    Produtos pt = new Produtos(p);
-    Clientes ct = new Clientes(c);
+    InterfaceProdutos pt = p.clone();
+    InterfaceClientes ct = c.clone();
+
 
 
 
