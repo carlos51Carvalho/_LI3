@@ -33,8 +33,8 @@ public class Main
         /*for (Object s: produtos.prodStartedByLetter('Z'))
             System.out.println(s +"\n");
         */
-        for (Object s: clientes.clStartedByLetter('F'))
-            System.out.println(s+"\n");
+       // for (Object s: clientes.clStartedByLetter('F'))
+          //  System.out.println(s+"\n");
 
         System.out.println(produtos.size());
         System.out.println(faturacao.numeroProdUsados());

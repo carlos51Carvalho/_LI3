@@ -12,6 +12,9 @@ public class Clientes {
         for (int i = 0; i < 26; i++)
             this.clientes.put(i, new TreeSet<>());
     }
+    public Clientes(Clientes c){
+        setClientes(c.getClientes());
+    }
 
     public int hashCL(String cl) {
         return cl.charAt(0) - 'A';
@@ -28,6 +31,30 @@ public class Clientes {
             }
         }
         return r;
+    }
+
+    public Clientes clone(){
+        return new Clientes(this);
+    }
+
+    public Map<Integer, Set<String>> getClientes(){
+        Map<Integer, Set<String>> novo = new HashMap();
+        for(int i = 0; i<26; i++){
+            novo.put(i, cloneSet(this.clientes.get(i)));
+        }
+        return novo;
+    }
+
+    public void setClientes(Map<Integer, Set<String>> clientes) {
+        this.clientes = new HashMap<>();
+        for(int i=0; i<26; i++) {
+            this.clientes.put(i,cloneSet(clientes.get(i)));
+        }
+    }
+
+    public Set<String> cloneSet(Set<String> t){
+        Set<String> novo = new TreeSet<>(t);
+        return novo;
     }
 
 
@@ -82,6 +109,14 @@ public class Clientes {
     public Collection<String> clStartedByLetter(char l){
         return new ArrayList<>(clientes.get(l-65));
 
+    }
+
+    public int size() {
+        int res =0;
+        for (int i = 0; i < 26; i++) {
+            res += clientes.get(i).size();
+        }
+        return res;
     }
 
 }

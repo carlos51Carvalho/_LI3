@@ -15,7 +15,7 @@ public class Vendas {
     private static int tclc;
     private static int tclsc;
     private static int tvendaszero;
-    private static int fattotal;
+    private static double fattotal;
 
     public static int hashp(String p) {
         return p.charAt(0) - 'A';
@@ -42,6 +42,13 @@ public class Vendas {
     public static int ler_vendas(Faturacao fat,Filiais fil,Clientes c, Produtos p,String filepath) throws Exception
     {
     int i = 0;
+    int t = 0;
+    int zero = 0;
+    double ft = 0;
+    Produtos pt = new Produtos(p);
+    Clientes ct = new Clientes(c);
+
+
 
         File file = new File(filepath);
 
@@ -50,13 +57,44 @@ public class Vendas {
         String line;
         while ((line = br.readLine()) != null) {
             String[] st = line.split(" ");
+            t++;
             if (validate(st,c,p)) {
                 //System.out.println(hashCL(st));
                 fat.acrescentaFat(st);
                 fil.acrescentaFil(st);
                 i++;
+                int pk = hashp(st[0]);
+                int ck = hashc(st[0]);
+                if(Double.parseDouble(st[1]) == 0.0) zero++;
+                if(pt.get(hashp(st[0])).contains(st[0])) pt.rmProduto(st[0]);
+                if(ct.get(hashc(st[4])).contains(st[4])) ct.rmCliente(st[4]);
+
+                ft += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
+
+
+
             }
         }
+        errados = t-i;
+        tprod = p.size();
+        pnc = pt.size();
+        dprod = tprod - pnc;
+        tcl = c.size();
+        tclsc = ct.size();
+        tclc = tcl - tclsc;
+        tvendaszero = zero;
+        fattotal = ft;
+
+
+        /*System.out.println("\n" + errados);
+        System.out.println(tprod);
+        System.out.println(dprod);
+        System.out.println(pnc);
+        System.out.println(tcl);
+        System.out.println(tclc);
+        System.out.println(tclsc);
+        System.out.println(tvendaszero);
+       */ System.out.println(fattotal + "\n");
     System.out.println("Vendas lidas Lidos \n");
     return i;
     }

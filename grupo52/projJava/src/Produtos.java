@@ -11,6 +11,35 @@ public class Produtos implements InterfaceProdutos {
         for (int i = 0; i < 26; i++)
             this.produtos.put(i, new TreeSet<>());
     }
+    public Produtos(Produtos p){
+        setProdutos(p.getProdutos());
+    }
+
+    public Map<Integer, Set<String>> getProdutos(){
+        Map<Integer, Set<String>> novo = new HashMap();
+        for(int i=0 ; i<26; i++){
+            novo.put(i, cloneSet(this.produtos.get(i)));
+        }
+        return novo;
+    }
+
+    public void setProdutos(Map<Integer, Set<String>> produtos) {
+        this.produtos = new HashMap<>();
+        for(int i =0; i<26; i++){
+            this.produtos.put(i,cloneSet(produtos.get(i)));
+        }
+    }
+
+    public Set<String> cloneSet(Set<String> t) {
+        Set<String> novo = new TreeSet<>(t);
+        return novo;
+    }
+
+    public Produtos clone(){
+        return new Produtos(this);
+    }
+
+
 
     public int hashP(String p) {
         return p.charAt(0) - 'A';
@@ -89,7 +118,7 @@ public class Produtos implements InterfaceProdutos {
     public int size() {
         int res =0;
         for (int i = 0; i < 26; i++) {
-            res += produtos.get(i).size();
+            if(produtos.get(i)!=null) res += produtos.get(i).size();
         }
         return res;
     }
