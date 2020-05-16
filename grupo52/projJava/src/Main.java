@@ -8,6 +8,7 @@ public class Main
         Produtos produtos = new Produtos();
         Faturacao faturacao = new Faturacao();
         Filiais filiais = new Filiais();
+        Queries q = new Queries();
         Vendas v = new Vendas();
         int c = clientes.ler_clientes("Dados_Iniciais/Clientes.txt");
         int p = produtos.ler_produtos("Dados_Iniciais/Produtos.txt");
@@ -41,6 +42,8 @@ public class Main
         System.out.println(faturacao.numeroProdNuncaUsados());
         System.out.println(filiais.naocompram());
         System.out.println(filiais.numeroComparadores());
+
+        System.out.println(q.querie2(filiais, 1));
 
     }
 }

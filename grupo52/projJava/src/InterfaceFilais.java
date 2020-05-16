@@ -9,5 +9,6 @@ public interface InterfaceFilais {
     void addCls(TreeSet<String> clientes);
     int numeroComparadores();
     int naocompram();
+    //static int pBinaria(String p, List<ClFil> f);
 
 }
