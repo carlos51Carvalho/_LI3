@@ -53,4 +53,10 @@ public class ClFil {
         return this.fil;
     }
 
+    public boolean getMesUsed( int f, int m){
+        return fil.get(f).getFilF().get(m).isUsed();
+    }
+
+
 }
+

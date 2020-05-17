@@ -39,22 +39,26 @@ public class Queries {
         int c1 =0;
         int c2 =0;
         int c3 =0;
+        int ct =0; // sem olhar a filiais
         //Map<Integer, Integer > res = new HashMap<>();
         if (mesvalido(mes)) {
             for (int i = 0; i < 26; i++) {
                 for (ClFil c : fil.getArr(i)){
-                    for (int j = 1; j < 4; j++) {
-                        if (i ==1){
-                            v1++;
-                            c1++;
-                        }
-                        else if (i ==2){
-                            v2++;
-                            c2++;
-                        }
-                        else{
-                            v3++;
-                            c3++;
+                    if (c.getMesUsed(1,mes) || c.getMesUsed(2,mes) || c.getMesUsed(3,mes)){
+                        ct++;
+                        for (int j = 1; j < 4; j++) {
+                            if (i ==1) {
+                                c1++;
+                                v1 += c.getFil().get(j).getFilF().get(mes).getnVendas();
+                            }
+                            else if (i ==2){
+                                c2++;
+                                v2+= c.getFil().get(j).getFilF().get(mes).getnVendas();
+                            }
+                            else if (i ==3 && c.getUsed()){
+                                c3++;
+                                v3 += c.getFil().get(j).getFilF().get(mes).getnVendas();
+                            }
                         }
                     }
                 }
@@ -62,22 +66,40 @@ public class Queries {
 
         }
         total = v1+v2+v3;
-        return total;
+        return c1;
     }
 
     public static  int hashCL(String cl) {
         return cl.charAt(0) - 'A';
     }
 
-    public static void querie3(Filiais fil, String cliente){
-        List<Integer> res = new ArrayList<>();
+    public static Map<Integer,Map<Integer,double[]>> querie3(Filiais fil, String cliente){
+        int vendas =0;
+        int dprod =0;
+        int gasto =0;
+        Map<Integer,Map<Integer,double[]>> res = new HashMap<>();
+        for (int i = 1; i < 4; i++) {
+            res.put(i,new HashMap<Integer, double[]>());
+        }
         int kc = hashCL(cliente);
         int ip = Filiais.pBinaria(cliente, fil.getArr(kc));
-        for (int j = 1; j < 4; j++) {
-            for (int i =1; i<13; i++){
 
+        for (int i = 1; i < 4; i++) {
+            for (int j =1; j<13; j++){
+                vendas = fil.getNVendasMes(kc,ip,i,j);
+                dprod = fil.getArr(kc).get(ip).getFil().get(i).getFilF().get(j).getPrs().size();
+                Map<String,PrdFil> prs = fil.getArr(kc).get(ip).getFil().get(i).getFilF().get(j).getPrs();
+
+                //gasto = prs.forEach(gasto+= g);
+                System.out.println(i);
+                //System.out.printf(vendas);
+                System.out.printf(" " + dprod);
+
+                double [] a ={vendas, dprod};
+                res.get(i).put(j,a);
             }
         }
+        return res;
     }
 
 

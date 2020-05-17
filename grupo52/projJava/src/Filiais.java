@@ -70,6 +70,7 @@ public class Filiais implements InterfaceFiliais{
 
             this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).setUsed(1);
             this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).incnVendas();
+            this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).setUsed(true);
             //System.out.println(this.faturacoes.get(hashProd(p[0])).get(ip).getPrd());
 
             if (existeProd(cl[4], ip, f, m, p)) {
@@ -112,6 +113,14 @@ public class Filiais implements InterfaceFiliais{
             count += filiais.get(i).size();
         }
         return count-numeroComparadores();
+    }
+
+    public boolean getMesUsed(int key, int ip, int f, int m){
+        return filiais.get(key).get(ip).getFil().get(f).getFilF().get(m).isUsed();
+    }
+
+    public int getNVendasMes(int key, int ip, int f, int m){
+        return filiais.get(key).get(ip).getFil().get(f).getFilF().get(m).getnVendas();
     }
 
 

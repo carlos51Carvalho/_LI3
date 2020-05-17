@@ -46,6 +46,11 @@ public class Main
 */
         //System.out.println(q.querie1(faturacao));
         System.out.println(q.querie2(filiais, 1));
+        System.out.println(q.querie2(filiais, 2));
+
+        //q.querie3(filiais, "A1231");
+
+        //System.out.println(q.querie3(filiais, "A1231"));
 
     }
 }
