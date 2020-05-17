@@ -11,6 +11,37 @@ public class Queries {
     public Queries(){
         List
     }*/
+
+    // estaticas 1.2
+
+    public int[] numeroCompPMes(Filiais fil){
+        int[] res = new int[12];
+         for (int i = 0; i < 26; i++) {
+             for (ClFil c : fil.getArr(i)) {
+                 for (int j = 1; j < 4; j++) {
+                     for (int m = 1; m < 13; m++) {
+                         res[m - 1] += c.getNVendasMes(j, m);
+                     }
+                 }
+             }
+         }
+         return res;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //interativas
+
+
     public static List<String> querie1(Faturacao fat){
         int total =0;
         List<String> res = new ArrayList<>();
@@ -73,6 +104,8 @@ public class Queries {
         return cl.charAt(0) - 'A';
     }
 
+
+
     public static Map<Integer,Map<Integer,double[]>> querie3(Filiais fil, String cliente){
         int vendas =0;
         int dprod =0;
@@ -101,6 +134,15 @@ public class Queries {
         }
         return res;
     }
+
+
+
+
+
+
+
+    //querie 5
+
 
 
 }

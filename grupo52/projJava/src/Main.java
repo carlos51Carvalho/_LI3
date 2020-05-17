@@ -45,8 +45,13 @@ public class Main
         System.out.println(filiais.numeroComparadores());
 */
         //System.out.println(q.querie1(faturacao));
-        System.out.println(q.querie2(filiais, 1));
-        System.out.println(q.querie2(filiais, 2));
+        //System.out.println(q.querie2(filiais, 1));
+        //System.out.println(q.querie2(filiais, 2));
+
+        int[] r = q.numeroCompPMes(filiais);
+        for (int i=0; i<12 ; i++){
+            System.out.println(r[i]);
+        }
 
         //q.querie3(filiais, "A1231");
 

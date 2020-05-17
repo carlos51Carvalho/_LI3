@@ -119,6 +119,7 @@ public class Filiais implements InterfaceFiliais{
         return filiais.get(key).get(ip).getFil().get(f).getFilF().get(m).isUsed();
     }
 
+
     public int getNVendasMes(int key, int ip, int f, int m){
         return filiais.get(key).get(ip).getFil().get(f).getFilF().get(m).getnVendas();
     }

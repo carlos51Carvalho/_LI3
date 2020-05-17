@@ -57,6 +57,10 @@ public class ClFil {
         return fil.get(f).getFilF().get(m).isUsed();
     }
 
+    public int getNVendasMes( int f, int m){
+        return fil.get(f).getFilF().get(m).getnVendas();
+    }
+
 
 }
 
