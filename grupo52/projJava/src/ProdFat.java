@@ -55,4 +55,20 @@ public class ProdFat {
     }
 
 
+    public double getFatN(int f, int m){
+        return fil.get(f).getFilF().get(m).getfN();
+    }
+
+    public double getFatP(int f, int m){
+        return fil.get(f).getFilF().get(m).getfP();
+    }
+    public double getVenP(int f, int m){
+        return fil.get(f).getFilF().get(m).getvP();
+    }
+    public double getVenN(int f, int m){
+        return fil.get(f).getFilF().get(m).getvN();
+    }
+
+
+
 }

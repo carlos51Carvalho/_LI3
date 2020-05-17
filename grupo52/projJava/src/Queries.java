@@ -27,11 +27,27 @@ public class Queries {
          }
          return res;
     }
+/*
+    public Map<Integer, int[]> fatTotalMes(Faturacao fat){
+        int[] mes = new int[12];
+
+        Map<Integer, int[]> res = new HashMap<>();
+        for (int k =1 ; k<4; k++ ){
+            res.put(k,mes);
+        }
+        for (int i = 0; i < 26; i++) {
+             for (ProdFat p : fat.getArr(i)) {
+                 for (int j = 1; j < 4; j++) {
+                     for (int m = 1; m < 13; m++) {
+                         mes[m-1] += (p.getFatN(j,m) + p.getFatP(j,m));
+                     }
+            }
+        }
+    }
 
 
 
-
-
+*/
 
 
 
