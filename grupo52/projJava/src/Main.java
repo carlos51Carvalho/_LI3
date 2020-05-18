@@ -65,6 +65,10 @@ public class Main
         for(Map.Entry<String, Integer> e : q5.entrySet())
             System.out.println(e.getKey() + e.getValue());
 
+        Map<Integer, int[]> q2= q.querie2( filiais,1);
+        for(Map.Entry<Integer, int[]> e : q2.entrySet())
+            System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +"]");
+
     }
 }
 

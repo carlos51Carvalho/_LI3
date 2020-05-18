@@ -106,42 +106,49 @@ public class Queries {
 
 // querie 2
 
-    public static int querie2(Filiais fil, int mes){
-        int total =0;
-        int v1=0;
-        int v2 =0;
-        int v3 =0;
-        int c1 =0;
-        int c2 =0;
-        int c3 =0;
-        int ct =0; // sem olhar a filiais
-        //Map<Integer, Integer > res = new HashMap<>();
-        if (mesvalido(mes)) {
-            for (int i = 0; i < 26; i++) {
-                for (ClFil c : fil.getArr(i)){
-                    if (c.getMesUsed(1,mes) || c.getMesUsed(2,mes) || c.getMesUsed(3,mes)){
-                        ct++;
-                        for (int j = 1; j < 4; j++) {
-                            if (i ==1) {
-                                c1++;
-                                v1 += c.getFil().get(j).getFilF().get(mes).getnVendas();
-                            }
-                            else if (i ==2){
-                                c2++;
-                                v2+= c.getFil().get(j).getFilF().get(mes).getnVendas();
-                            }
-                            else if (i ==3 && c.getUsed()){
-                                c3++;
-                                v3 += c.getFil().get(j).getFilF().get(mes).getnVendas();
-                            }
-                        }
-                    }
-                }
-            }
+    public static Map<Integer,int[]> querie2(Filiais fil, int mes){
+//        int total =0;
+//        int v1=0;
+//        int v2 =0;
+//        int v3 =0;
+//        int c1 =0;
+//        int c2 =0;
+//        int c3 =0;
+//        int ct =0; // sem olhar a filiais
 
+        Map<Integer,int[]> res = new TreeMap<>();
+        if (mesvalido(mes)) {
+            res=fil.getVendasTotaisFiliaisPorMes(mes,res);
         }
-        total = v1+v2+v3;
-        return v1;
+
+        //Map<Integer, Integer > res = new HashMap<>();
+
+//            for (int i = 0; i < 26; i++) {
+//                for (ClFil c : fil.getArr(i)){
+//                    if (c.getMesUsed(1,mes) || c.getMesUsed(2,mes) || c.getMesUsed(3,mes)){
+//                        ct++;
+//                        for (int j = 1; j < 4; j++) {
+//                            if (i ==1) {
+//                                c1++;
+//                                v1 += c.getFil().get(j).getFilF().get(mes).getnVendas();
+//                            }
+//                            else if (i ==2){
+//                                c2++;
+//                                v2+= c.getFil().get(j).getFilF().get(mes).getnVendas();
+//                            }
+//                            else if (i ==3 && c.getUsed()){
+//                                c3++;
+//                                v3 += c.getFil().get(j).getFilF().get(mes).getnVendas();
+//                            }
+//                        }
+//                    }
+//                }
+
+//            }
+//
+//        }
+//        total = v1+v2+v3;
+        return res;
     }
 
 

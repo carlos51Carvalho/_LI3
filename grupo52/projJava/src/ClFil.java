@@ -72,6 +72,30 @@ public class ClFil {
         return fil.get(f).getFilF().get(m).getnVendas();
     }
 
+    public Map<Integer, int[]> getVendasTotaisFiliaisPorMes(int mes,Map<Integer, int[]> res){
+        int aux;
+        boolean alterado=false;
+        int [] res0 = new int[2];
+        if (!res.containsKey(0))res.put(0,new int[2]);
 
+        for (Map.Entry<Integer,FilFil> f: this.fil.entrySet() ){
+            aux=0;
+            if (!res.containsKey(f.getKey()))res.put(f.getKey(),new int[2]);
+
+            aux = f.getValue().getVendasPorMes(mes);
+
+            if(aux!=0){
+                if (!alterado){
+                    alterado=true;
+                    res.get(0)[0]++;
+                }
+                res.get(f.getKey())[0]++;
+                res.get(f.getKey())[1]+=aux;
+                res.get(0)[1]+=aux;
+            }
+
+        }
+        return res;
+    }
 }
 

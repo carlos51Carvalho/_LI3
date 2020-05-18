@@ -40,4 +40,8 @@ public class FilFil {
         }
         return res;
     }
+
+    public int getVendasPorMes(int mes){
+        return this.filial.get(mes).getnVendas();
+    }
 }

@@ -134,5 +134,13 @@ public class Filiais implements InterfaceFiliais{
         return res;
     }
 
+    public Map<Integer, int[]> getVendasTotaisFiliaisPorMes(int mes,Map<Integer, int[]> res){
+        for (int i =0; i<26; i++){
+            for (ClFil c: filiais.get(i)){
+                res = c.getVendasTotaisFiliaisPorMes(mes,res);
+            }
+        }
+        return res;
+    }
 
 }
