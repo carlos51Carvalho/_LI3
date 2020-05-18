@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ClFil {
     private String cl;
@@ -54,7 +55,17 @@ public class ClFil {
     }
 
     public boolean getMesUsed( int f, int m){
-        return fil.get(f).getFilF().get(m).isUsed();
+        return fil.get(f).getMesUsed(m);
+    }
+
+    public Map<Integer, int[]> getUsedFilialMes(Map<Integer, int[]> res){
+        for (Map.Entry<Integer,FilFil> f: this.fil.entrySet() ){
+
+            if (!res.containsKey(f.getKey())) res.put(f.getKey(),new int[13]);
+
+            res.put(f.getKey(),f.getValue().getUsedByMes(res.get(f.getKey())));
+        }
+        return res;
     }
 
     public int getNVendasMes( int f, int m){

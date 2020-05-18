@@ -28,4 +28,16 @@ public class FilFil {
     public Map<Integer,MesFil> getFilF(){
         return this.filial;
     }
+
+    public boolean getMesUsed(int mes){
+        return this.getFilF().get(mes).isUsed();
+    }
+
+    public int[] getUsedByMes(int[] res){
+        for (int i =1; i<13 ; i++){
+            if (getMesUsed(i))
+            res[i]++;
+        }
+        return res;
+    }
 }

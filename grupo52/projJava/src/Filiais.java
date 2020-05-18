@@ -116,12 +116,22 @@ public class Filiais implements InterfaceFiliais{
     }
 
     public boolean getMesUsed(int key, int ip, int f, int m){
-        return filiais.get(key).get(ip).getFil().get(f).getFilF().get(m).isUsed();
+        return filiais.get(key).get(ip).getMesUsed(f,m);
     }
 
 
     public int getNVendasMes(int key, int ip, int f, int m){
         return filiais.get(key).get(ip).getFil().get(f).getFilF().get(m).getnVendas();
+    }
+
+
+    public Map<Integer, int[]> getUsedFilialMes(Map<Integer, int[]> res){
+        for (int i =0; i<26; i++){
+            for (ClFil c: filiais.get(i)){
+                res = c.getUsedFilialMes(res);
+            }
+        }
+        return res;
     }
 
 

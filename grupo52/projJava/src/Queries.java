@@ -11,19 +11,24 @@ public class Queries {
 
     // estaticas 1.2
 
-    public int[] numeroCompPMes(Filiais fil){
-        int[] res = new int[12];
-         for (int i = 0; i < 26; i++) {
-             for (ClFil c : fil.getArr(i)) {
-                 for (int j = 1; j < 4; j++) {
-                     for (int m = 1; m < 13; m++) {
-                         res[m - 1] += c.getNVendasMes(j, m);
-                     }
-                 }
-             }
-         }
-         return res;
-    }
+    // estatistica 1.2.1
+
+//    public int[] numeroCompPMes(Filiais fil){
+//        int[] res = new int[12];
+//         for (int i = 0; i < 26; i++) {
+//             for (ClFil c : fil.getArr(i)) {
+//                 for (int j = 1; j < 4; j++) {
+//                     for (int m = 1; m < 13; m++) {
+//                         res[m - 1] += c.getNVendasMes(j, m);
+//                     }
+//                 }
+//             }
+//         }
+//         return res;
+//    }
+
+
+    // estatistica 1.2.2
 /*
     public Map<Integer, int[]> fatTotalMes(Faturacao fat){
         int[] mes = new int[12];
@@ -46,13 +51,38 @@ public class Queries {
 
 */
 
+    // estatistica 1.2.3
+/*
+    public static Map<Integer, int[]> numeroClientesByFil(Filiais fil) {
+        Map<Integer, int[]> res1 = new TreeMap<>();
+//        int[] res = new int[3];
+//        for (int i = 1; i < 13; i++) {
+//            res1.put(i, res);
+//        }
+
+        for (int i = 0; i < 26; i++) {
+            for (ClFil c : fil.getArr(i)) {
+                for (FilFil f : c.getFil().values()) {
+                    if (f.getUsed() == 1) {
+                        for (MesFil m : f.getFilF().values()) {
+                            int[] res = new int[3];
+                            if (m.isUsed()) {
+                                res[]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return res1;
+    }
+
+
+*/
 
 
 
-
-
-
-    //interativas
+    //====================================== interativas ===========================================================
 
 
     public static List<String> querie1(Faturacao fat){
@@ -74,6 +104,7 @@ public class Queries {
         return mes >= 1 && mes <= 12;
     }
 
+// querie 2
 
     public static int querie2(Filiais fil, int mes){
         int total =0;
@@ -110,14 +141,15 @@ public class Queries {
 
         }
         total = v1+v2+v3;
-        return c1;
+        return v1;
     }
+
 
     public static  int hashCL(String cl) {
         return cl.charAt(0) - 'A';
     }
 
-
+// querie 3
 
     public static Map<Integer,Map<Integer,double[]>> querie3(Filiais fil, String cliente){
         int vendas =0;
@@ -149,6 +181,19 @@ public class Queries {
     }
 
 
+// querie 4
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -174,15 +219,16 @@ public class Queries {
 
     }
 
-    public static Map<String,Integer> querie5(String c, Filiais f){
+    public static Map<String,Integer> querie5(String c, Filiais f) {
         int cl = hashCL(c);
-        int r = pBinaria(c,f.getArr(cl));
-        Map<String,Integer> q5 = new TreeMap<>();
-        if(f.getArr(cl).get(r).getUsed() == false) return q5;
-        for(FilFil fi : f.getArr(cl).get(r).getFil().values())
-            if(fi.getUsed() == 1) {
-                for (MesFil m : fi.getFilF().values())
-                    if (m.isUsed() == true) {
+        int r = pBinaria(c, f.getArr(cl));
+        Map<String, Integer> q5 = new TreeMap<>();
+        if (!f.getArr(cl).get(r).getUsed()) return q5;
+
+        for (FilFil fi : f.getArr(cl).get(r).getFil().values()) {
+            if (fi.getUsed() == 1) {
+                for (MesFil m : fi.getFilF().values()) {
+                    if (m.isUsed()) {
                         for (PrdFil p : m.getPrs().values()) {
                             if (q5.containsKey((p.getPrd()))) {
                                 int q = q5.get(p.getPrd());
@@ -194,7 +240,13 @@ public class Queries {
                             }
                         }
                     }
+                }
             }
+        }
+        for(Map.Entry<String, Integer> e : q5.entrySet())
+            System.out.println(e.getKey() + e.getValue());
+
+
         return q5;
 
     }

@@ -40,7 +40,7 @@ public class ProdFat {
         return this;
     }
 /*
-    public Map<Integer, FilFat> getPrd(){
+    public Map<Integer, FilFaor eu vou int> getPrd(){
         Map<Integer, FilFat> p = new HashMap<>();
         Set <Map.Entry<Integer, FilFat>> aux = prod.entrySet();
         for ( Map.Entry<Integer,FilFat> aux2: aux )
