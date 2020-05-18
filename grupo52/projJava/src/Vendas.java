@@ -130,9 +130,11 @@ public class Vendas {
         for (int k = 0; k<12; k++){
             System.out.println(res[k]);
         }
+        // querie 1.2.2
         for (Double dp : res2.values()){
             System.out.println(dp);
         }
+        // querie 1.2.3
         for (Map.Entry<Integer,int[]> r : res3.entrySet()) {
             System.out.println(r.getKey());
             for (int h= 1; h<13; h++)
