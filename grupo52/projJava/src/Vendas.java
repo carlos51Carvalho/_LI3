@@ -53,10 +53,8 @@ public class Vendas {
     int zero = 0;
     double ft = 0;
     int key ;
-    int fatf;
-    //TreeSet<String> pv = (TreeSet<String>) p.getSetDeProdutos();
+
     TreeSet<String> pt = new TreeSet<>(p);
-    //TreeSet<String> cv = (TreeSet<String>) c.getSetDeClientes();
     TreeSet<String> ct = new TreeSet<>(c);
 
         File file = new File(filepath);
@@ -79,9 +77,6 @@ public class Vendas {
                 if(ct.contains(st[4])) ct.remove(st[4]);
 
 
-
-
-
                 // querie 1.2.1
                 res[Integer.parseInt(st[5])-1]++;
 
@@ -95,14 +90,12 @@ public class Vendas {
 
 
 
-
-
                 ft += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
-
-
-
             }
         }
+        String[] parsepath = filepath.split("/");
+        nome = parsepath[parsepath.length-1];
+
         errados = t-i;
         tprod = p.size();
         pnc = pt.size();
@@ -121,8 +114,8 @@ public class Vendas {
         }
         // querie 1.2.3
         numeroClientesByFil(fil);
-
-
+/*
+        System.out.println(nome);
         System.out.println("\n" + errados);
         System.out.println(tprod);
         System.out.println(dprod);
@@ -145,6 +138,9 @@ public class Vendas {
             for (int h= 1; h<13; h++)
                 System.out.println(r.getValue()[h]);
         }
+
+ */
+
     System.out.println("Vendas lidas Lidos \n");
     return i;
     }
