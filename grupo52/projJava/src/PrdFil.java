@@ -1,17 +1,23 @@
 import java.util.Objects;
 
 public class PrdFil {
+    private String prd;
     private int qN;
     private int qP;
     private double gN;
     private double gP;
 
-    public PrdFil(int qN, int qP, double gN, double gP) {
+    public PrdFil(String prd, int qN, int qP, double gN, double gP) {
+        this.prd = prd;
         this.qN = qN;
         this.qP = qP;
         this.gN = gN;
         this.gP = gP;
     }
+
+    public String getPrd(){return this.prd;}
+
+    public void setPrd(String prd){ this.prd = prd;}
 
     public int getqN() {
         return qN;
@@ -67,7 +73,8 @@ public class PrdFil {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PrdFil prdFil = (PrdFil) o;
-        return qN == prdFil.qN &&
+        return prd == prdFil.prd &&
+                qN == prdFil.qN &&
                 qP == prdFil.qP &&
                 Double.compare(prdFil.gN, gN) == 0 &&
                 Double.compare(prdFil.gP, gP) == 0;

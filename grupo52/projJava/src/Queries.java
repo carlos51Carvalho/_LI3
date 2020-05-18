@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Queries {
     //private List<String> q1;
@@ -158,7 +155,48 @@ public class Queries {
 
 
     //querie 5
+    public static int pBinaria(String p, List<ClFil> f){
+        int r = -1;
+        int meio;
+        int inicio = 0;
+        int fim = f.size()-1;
+        while (inicio <= fim && r==-1) {
+            meio = (inicio + fim)/2;
+            if (p.compareTo(f.get(meio).getCl()) == 0) {
+                r = meio;
+            }
+            if (p.compareTo(f.get(meio).getCl()) < 0)
+                fim = meio - 1;
+            else
+                inicio = meio + 1;
+        }
+        return r;
 
+    }
 
+    public static Map<String,Integer> querie5(String c, Filiais f){
+        int cl = hashCL(c);
+        int r = pBinaria(c,f.getArr(cl));
+        Map<String,Integer> q5 = new TreeMap<>();
+        if(f.getArr(cl).get(r).getUsed() == false) return q5;
+        for(FilFil fi : f.getArr(cl).get(r).getFil().values())
+            if(fi.getUsed() == 1) {
+                for (MesFil m : fi.getFilF().values())
+                    if (m.isUsed() == true) {
+                        for (PrdFil p : m.getPrs().values()) {
+                            if (q5.containsKey((p.getPrd()))) {
+                                int q = q5.get(p.getPrd());
+                                q += p.getqN() + p.getqP();
+                                q5.put(p.getPrd(), q);
+
+                            } else {
+                                q5.put(p.getPrd(), p.getqN() * p.getqP());
+                            }
+                        }
+                    }
+            }
+        return q5;
+
+    }
 
 }

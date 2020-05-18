@@ -87,11 +87,11 @@ public class Filiais implements InterfaceFiliais{
             else{
                 double g = q*pr;
                 if(cl[3].equals("N")){
-                    PrdFil pf = new PrdFil(q,0,g,0 );
+                    PrdFil pf = new PrdFil(p,q,0,g,0 );
                     this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).getPrs().put(p,pf);
                 }
                 else if(cl[3].equals("P")){
-                    PrdFil pf = new PrdFil(0,q,0,g);
+                    PrdFil pf = new PrdFil(p,0,q,0,g);
                     this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).getPrs().put(p,pf);
                 }
             }
