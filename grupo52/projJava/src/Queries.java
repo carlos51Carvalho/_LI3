@@ -206,7 +206,7 @@ public class Queries {
     public static Map<String,Integer> querie5(String c, Filiais f)  {
 
         //Comparator<Map.Entry<String,Integer>> cp = new ComparatorQ5();
-        Map<String, Integer> q5 = new TreeMap<String, Integer>(new ComparatorQ5());
+        Map<String, Integer> q5 = new TreeMap<String, Integer>();
 
         int kc = hashCL(c);
         int ip = f.pBinaria(c, kc);
