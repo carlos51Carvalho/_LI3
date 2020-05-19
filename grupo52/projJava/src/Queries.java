@@ -247,6 +247,8 @@ public class Queries {
     }
 
 
+
+    //querie 7
     public static Map<Integer, Map<String,Double>> querie7(Filiais f){
 
         Map<Integer, Map<String, Double>> res = null;
@@ -254,5 +256,11 @@ public class Queries {
 
         return res;
     }
+
+
+
+    // querie 8
+
+
 
 }
