@@ -1,4 +1,5 @@
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class PrdFil {
     private String prd;
@@ -66,6 +67,13 @@ public class PrdFil {
     public void addgN(double gn){
         this.gN+=gN;
     }
+
+    public Map<String,Double> tomap(){
+        Map<String,Double> m = new HashMap<>();
+        m.put(this.prd, this.gN + this.gP);
+        return m;
+    }
+
 
 
     @Override

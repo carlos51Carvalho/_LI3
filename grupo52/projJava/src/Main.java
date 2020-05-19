@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.Map;
 import java.util.TreeSet;
 
 public class Main
@@ -56,6 +58,10 @@ public class Main
         //q.querie3(filiais, "A1231");
 
         //System.out.println(q.querie3(filiais, "A1231"));
+
+        Map<String,Double> q5 = q.querie5("A1231", filiais);
+        for(Map.Entry<String,Double> e: q5.entrySet())
+            System.out.println(e.getKey() + e.getValue());
 
     }
 }
