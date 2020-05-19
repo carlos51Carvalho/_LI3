@@ -30,7 +30,25 @@ public class Filiais implements InterfaceFiliais{
 
 
 
-    public static int pBinaria(String p, List<ClFil> f){
+//    public static int pBinaria(String p, List<ClFil> f){
+//        int r = -1;
+//        int meio;
+//        int inicio = 0;
+//        int fim = f.size()-1;
+//        while (inicio <= fim && r==-1) {
+//            meio = (inicio + fim)/2;
+//            if (p.compareTo(f.get(meio).getCl()) == 0) {
+//                r = meio;
+//            }
+//            if (p.compareTo(f.get(meio).getCl()) < 0)
+//                fim = meio - 1;
+//            else
+//                inicio = meio + 1;
+//        }
+//        return r;
+//    }
+    public int pBinaria(String p, int k){
+        List<ClFil> f = filiais.get(k);
         int r = -1;
         int meio;
         int inicio = 0;
@@ -46,20 +64,16 @@ public class Filiais implements InterfaceFiliais{
                 inicio = meio + 1;
         }
         return r;
-
     }
 
     public boolean existeProd(String cl, int ip, int f, int m, String p){
-        return this.filiais.get(hashProd(cl)).get(ip).getFil().get(f).getFilF().get(m).getPrs().containsKey(p);
+        return this.filiais.get(hashProd(cl)).get(ip).existeProd(f,m,p);
     }
-
-
-
 
 
     public void acrescentaFil(String[] cl) {
 
-        int ip = pBinaria(cl[4], filiais.get(hashProd(cl[4])));
+        int ip = pBinaria(cl[4], hashProd(cl[4]));
         if (ip >= 0) {
             this.filiais.get(hashProd(cl[4])).get(ip).setUsed(true);
             String p = cl[0];
@@ -68,32 +82,20 @@ public class Filiais implements InterfaceFiliais{
             int m = Integer.parseInt(cl[5]);
             int f = Integer.parseInt(cl[6]);
 
-            this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).setUsed(1);
-            this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).incnVendas();
-            this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).setUsed(true);
-            //System.out.println(this.faturacoes.get(hashProd(p[0])).get(ip).getPrd());
+            this.filiais.get(hashProd(cl[4])).get(ip).setFilialUsada(f,1);
+            this.filiais.get(hashProd(cl[4])).get(ip).incnVendasMes(f,m);
+            this.filiais.get(hashProd(cl[4])).get(ip).setUsedFilMes(f,m,true);
 
-            if (existeProd(cl[4], ip, f, m, p)) {
-                if (cl[3].equals("N")) {
-                    this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).getPrs().get(p).addgN(pr * q);
-                    this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).getPrs().get(p).addqN(q);
+            if (!existeProd(cl[4], ip, f, m, p)) this.filiais.get(hashProd(cl[4])).get(ip).addPrs(f,m,p);
 
-                } else if (cl[3].equals("P")) {
-                    this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).getPrs().get(p).addgP(pr * q);
-                    this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).getPrs().get(p).addqP(q);
-                }
+            //System.out.println(cl[3] + cl[3].equals("N"));
+            if (cl[3].equals("N")) {
+                this.filiais.get(hashProd(cl[4])).get(ip).addgN(f,m,p,pr * q);
+                this.filiais.get(hashProd(cl[4])).get(ip).addqN(f,m,p,q);
 
-            }
-            else{
-                double g = q*pr;
-                if(cl[3].equals("N")){
-                    PrdFil pf = new PrdFil(p,q,0,g,0 );
-                    this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).getPrs().put(p,pf);
-                }
-                else if(cl[3].equals("P")){
-                    PrdFil pf = new PrdFil(p,0,q,0,g);
-                    this.filiais.get(hashProd(cl[4])).get(ip).getFil().get(f).getFilF().get(m).getPrs().put(p,pf);
-                }
+            }else{
+                this.filiais.get(hashProd(cl[4])).get(ip).addgP(f,m,p,pr * q);
+                this.filiais.get(hashProd(cl[4])).get(ip).addqP(f,m,p,q);
             }
 
         }
@@ -143,4 +145,8 @@ public class Filiais implements InterfaceFiliais{
         return res;
     }
 
+
+    public Map<Integer,double[]> getQuerie3(int kc, int ip){
+        return filiais.get(kc).get(ip).getQuerie3();
+    }
 }

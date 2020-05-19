@@ -36,6 +36,28 @@ public class MesFil {
         this.used = used;
     }
 
+    public boolean existeProd(String p){
+        return this.prs.containsKey(p);
+    }
+
+    public void addgN(String p, double t){
+        this.prs.get(p).addgN(t);
+    }
+    public void addqN(String p, int t){
+        this.prs.get(p).addqN(t);
+    }
+    public void addgP(String p, double t){
+        this.prs.get(p).addgP(t);
+    }
+    public void addqP(String p, int t){
+        this.prs.get(p).addqP(t);
+    }
+
+    public void addPrs(String p){
+        this.prs.put(p, new PrdFil(p));
+    }
+
+
     public void incnVendas(){
         int n = this.nVendas;
         setnVendas(n+1);
@@ -49,6 +71,15 @@ public class MesFil {
         this.prs = prs;
     }
 
+    public int getSizePrs(){
+        return this.prs.size();
+    }
 
-
+    public double getTotalPago(){
+        double res=0;
+        for(PrdFil p:this.prs.values()){
+            res+=p.getTotalPago();
+        }
+        return res;
+    }
 }

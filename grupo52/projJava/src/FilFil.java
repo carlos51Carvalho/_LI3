@@ -25,6 +25,37 @@ public class FilFil {
         this.used += 1;
     }
 
+    public boolean existeProd(int m, String p){
+        return this.filial.get(m).existeProd(p);
+    }
+
+    public void incnVendasMes(int m){
+        this.filial.get(m).incnVendas();
+    }
+
+    public void setUsedMes(int m,boolean b){
+        this.filial.get(m).setUsed(b);
+    }
+
+    public void addgN(int m, String p, double t){
+        this.filial.get(m).addgN(p,t);
+    }
+    public void addqN(int m, String p, int t){
+        this.filial.get(m).addqN(p,t);
+    }
+    public void addgP(int m, String p, double t){
+        this.filial.get(m).addgP(p,t);
+    }
+    public void addqP(int m, String p, int t){
+        this.filial.get(m).addqP(p,t);
+    }
+
+    public void addPrs(int m, String p){
+        this.filial.get(m).addPrs(p);
+    }
+
+
+
     public Map<Integer,MesFil> getFilF(){
         return this.filial;
     }
@@ -43,5 +74,15 @@ public class FilFil {
 
     public int getVendasPorMes(int mes){
         return this.filial.get(mes).getnVendas();
+    }
+
+    public void getQuerie3(Map<Integer,double[]> res){
+        for(Map.Entry<Integer,MesFil> m: this.filial.entrySet()){
+            if (!res.containsKey(m.getKey()))res.put(m.getKey(),new double[3]);
+
+            res.get(m.getKey())[0]+=(double) m.getValue().getnVendas();
+            res.get(m.getKey())[1]+=(double) m.getValue().getSizePrs();
+            res.get(m.getKey())[2]+= m.getValue().getTotalPago();
+        }
     }
 }

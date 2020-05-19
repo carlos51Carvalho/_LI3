@@ -7,6 +7,14 @@ public class PrdFil {
     private double gN;
     private double gP;
 
+    public PrdFil(String prd) {
+        this.prd = prd;
+        this.qN = 0;
+        this.qP = 0;
+        this.gN = 0;
+        this.gP = 0;
+    }
+
     public PrdFil(String prd, int qN, int qP, double gN, double gP) {
         this.prd = prd;
         this.qN = qN;
@@ -51,22 +59,24 @@ public class PrdFil {
         this.gP = gP;
     }
 
-    public void addqN(int qn){
-        this.qN += qN;
+    public void addqN(int qN){ this.qN += qN;
     }
 
-    public void addqP(int qp){
+    public void addqP(int qP){
         this.qP += qP;
     }
 
-    public void addgP(double gp){
+    public void addgP(double gP){
         this.gP+=gP;
     }
 
-    public void addgN(double gn){
+    public void addgN(double gN){
         this.gN+=gN;
     }
 
+    public double getTotalPago(){
+        return this.gP + this.gN;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,6 +1,24 @@
 import java.util.*;
 
 public class Queries {
+    public static boolean validaNum(String p) {
+        boolean r = true;
+        for (int i = 2; i < 6 && r; i++) {
+            if (i == 2) {
+                if (p.charAt(i) < '1' && p.charAt(i) > '9') r = false;
+                else {
+                    if (p.charAt(i) < '0' && p.charAt(i) > '9') r = false;
+                }
+            }
+        }
+        return r;
+    }
+
+    public static boolean validaCliente(String c){
+        return c.charAt(0) >= 'A' && c.charAt(0) <= 'Z' && validaNum(c);
+    }
+
+
     //private List<String> q1;
 
     //queries interativas
@@ -158,32 +176,18 @@ public class Queries {
 
 // querie 3
 
-    public static Map<Integer,Map<Integer,double[]>> querie3(Filiais fil, String cliente){
-        int vendas =0;
-        int dprod =0;
-        int gasto =0;
-        Map<Integer,Map<Integer,double[]>> res = new HashMap<>();
-        for (int i = 1; i < 4; i++) {
-            res.put(i,new HashMap<Integer, double[]>());
-        }
+    public static Map<Integer,double[]> querie3(Filiais fil, String cliente){
+        Map<Integer,double[]> res = null;
+
         int kc = hashCL(cliente);
-        int ip = Filiais.pBinaria(cliente, fil.getArr(kc));
+        int ip = fil.pBinaria(cliente, kc);
 
-        for (int i = 1; i < 4; i++) {
-            for (int j =1; j<13; j++){
-                vendas = fil.getNVendasMes(kc,ip,i,j);
-                dprod = fil.getArr(kc).get(ip).getFil().get(i).getFilF().get(j).getPrs().size();
-                Map<String,PrdFil> prs = fil.getArr(kc).get(ip).getFil().get(i).getFilF().get(j).getPrs();
-
-                //gasto = prs.forEach(gasto+= g);
-                System.out.println(i);
-                //System.out.printf(vendas);
-                System.out.printf(" " + dprod);
-
-                double [] a ={vendas, dprod};
-                res.get(i).put(j,a);
+        if(validaCliente(cliente)){
+            if(ip!=-1){
+                res = fil.getQuerie3(kc,ip);
             }
         }
+
         return res;
     }
 
@@ -193,42 +197,10 @@ public class Queries {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     //querie 5
-    public static int pBinaria(String p, List<ClFil> f){
-        int r = -1;
-        int meio;
-        int inicio = 0;
-        int fim = f.size()-1;
-        while (inicio <= fim && r==-1) {
-            meio = (inicio + fim)/2;
-            if (p.compareTo(f.get(meio).getCl()) == 0) {
-                r = meio;
-            }
-            if (p.compareTo(f.get(meio).getCl()) < 0)
-                fim = meio - 1;
-            else
-                inicio = meio + 1;
-        }
-        return r;
-
-    }
-
     public static Map<String,Integer> querie5(String c, Filiais f) {
         int cl = hashCL(c);
-        int r = pBinaria(c, f.getArr(cl));
+        int r = f.pBinaria(c, cl);
         Map<String, Integer> q5 = new TreeMap<>();
         if (!f.getArr(cl).get(r).getUsed()) return q5;
 

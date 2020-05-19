@@ -69,6 +69,12 @@ public class Main
         for(Map.Entry<Integer, int[]> e : q2.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +"]");
 
+
+        Map<Integer, double[]> q3= q.querie3( filiais,"A1231");
+        for(Map.Entry<Integer, double[]> e : q3.entrySet())
+            System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
+
+        //System.out.println(filiais.getArr(0).get(1).getFil().get(1).getFilF().get(8).getPrs().get("CJ1467").getqN());
     }
 }
 

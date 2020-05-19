@@ -39,6 +39,40 @@ public class ClFil {
         this.used = used;
     }
 
+    public void setFilialUsada(int f,int v){
+        this.fil.get(f).setUsed(v);
+    }
+
+    public boolean existeProd(int f, int m,String p){
+        return this.fil.get(f).existeProd(m,p);
+    }
+
+
+    public void addgN(int f,int m, String p, double t){
+        this.fil.get(f).addgN(m,p,t);
+    }
+    public void addqN(int f,int m, String p, int t){
+        this.fil.get(f).addqN(m,p,t);
+    }
+    public void addgP(int f,int m, String p, double t){
+        this.fil.get(f).addgP(m,p,t);
+    }
+    public void addqP(int f,int m, String p, int t){
+        this.fil.get(f).addqP(m,p,t);
+    }
+
+    public void addPrs(int f, int m, String p){
+        this.fil.get(f).addPrs(m,p);
+    }
+
+
+    public void incnVendasMes(int f, int m){
+        this.fil.get(f).incnVendasMes(m);
+    }
+
+    public void setUsedFilMes(int f,int m,boolean b){
+        this.fil.get(f).setUsedMes(m,b);
+    }
     /*
     public Map<Integer, FilFat> getPrd(){
         Map<Integer, FilFat> p = new HashMap<>();
@@ -94,6 +128,14 @@ public class ClFil {
                 res.get(0)[1]+=aux;
             }
 
+        }
+        return res;
+    }
+
+    public Map<Integer,double[]> getQuerie3(){
+        Map<Integer,double[]> res = new TreeMap<>();
+        for (FilFil f: this.fil.values() ){
+            f.getQuerie3(res);
         }
         return res;
     }
