@@ -20,7 +20,7 @@ public class Vendas {
     private static double fattotal;
 
     private static  int[] res = new int[12];
-    private static Map<Integer,Double > res2 = new TreeMap<>();
+    private static Map<Integer,Double[] > res2 = new TreeMap<>();
     private static Map<Integer, int[]> res3 = new TreeMap<>();
 
 
@@ -83,10 +83,9 @@ public class Vendas {
                 //querie 1.2.2
                 key = Integer.parseInt(st[6]);
                 if (!res2.containsKey(key)){
-                    res2.put(key,Double.parseDouble(st[1]) * Integer.parseInt(st[2]));
-                }else{
-                    res2.put(key,res2.get(key)+Double.parseDouble(st[1]) * Integer.parseInt(st[2]));
+                    res2.put(key,new Double[12]);
                 }
+                res2.get(key) [Integer.parseInt(st[5]) -1] += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
 
 
 

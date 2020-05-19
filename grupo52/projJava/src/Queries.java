@@ -294,7 +294,7 @@ public class Queries {
                                 Double>>> res = new TreeMap<>();
         for (int i=1;i<13;i++)res.put(i,new TreeMap<>());
 
-        //fat.getFatPorMesEFil(res);
+        fat.getFatPorMesEFil(res);
 
         return res;
 
