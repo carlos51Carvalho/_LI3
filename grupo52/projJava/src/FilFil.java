@@ -85,4 +85,10 @@ public class FilFil {
             res.get(m.getKey())[2]+= m.getValue().getTotalPago();
         }
     }
+
+    public void getQuerie5(Map<String, Integer> res){
+        for(MesFil m: this.filial.values()){
+            if (m.isUsed()) m.getQuerie5(res);
+        }
+    }
 }

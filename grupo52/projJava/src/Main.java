@@ -48,8 +48,6 @@ public class Main
         System.out.println(filiais.numeroComparadores());
 */
         //System.out.println(q.querie1(faturacao));
-        //System.out.println(q.querie2(filiais, 1));
-        System.out.println(q.querie2(filiais, 2));
 
 
 //        int[] r = q.numeroCompPMes(filiais);
@@ -63,8 +61,9 @@ public class Main
 
         Map<String, Integer> q5 = q.querie5("A1231", filiais);
         for(Map.Entry<String, Integer> e : q5.entrySet())
-            System.out.println(e.getKey() + e.getValue());
+            System.out.println(e.getKey() + " -> " + e.getValue());
 
+        /*
         Map<Integer, int[]> q2= q.querie2( filiais,1);
         for(Map.Entry<Integer, int[]> e : q2.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +"]");
@@ -73,8 +72,7 @@ public class Main
         Map<Integer, double[]> q3= q.querie3( filiais,"A1231");
         for(Map.Entry<Integer, double[]> e : q3.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
-
-        //System.out.println(filiais.getArr(0).get(1).getFil().get(1).getFilF().get(8).getPrs().get("CJ1467").getqN());
+        */
     }
 }
 

@@ -198,35 +198,61 @@ public class Queries {
 
 
     //querie 5
-    public static Map<String,Integer> querie5(String c, Filiais f) {
-        int cl = hashCL(c);
-        int r = f.pBinaria(c, cl);
+    public static Map<String,Integer> querie5(String c, Filiais f)  {
+//        int cl = hashCL(c);
+//        int r = f.pBinaria(c, cl);
+
+
+        ComparatorQ5 comp = new ComparatorQ5();
         Map<String, Integer> q5 = new TreeMap<>();
-        if (!f.getArr(cl).get(r).getUsed()) return q5;
 
-        for (FilFil fi : f.getArr(cl).get(r).getFil().values()) {
-            if (fi.getUsed() == 1) {
-                for (MesFil m : fi.getFilF().values()) {
-                    if (m.isUsed()) {
-                        for (PrdFil p : m.getPrs().values()) {
-                            if (q5.containsKey((p.getPrd()))) {
-                                int q = q5.get(p.getPrd());
-                                q += p.getqN() + p.getqP();
-                                q5.put(p.getPrd(), q);
+//        // Creating a TreeMap with a Custom comparator (Descending order)
+//        SortedMap<String, Integer> q5 = new TreeMap<>(new Comparator<String>() {
+//            @Override
+//            public int compare(String s1, String s2) {
+//                return s2.compareTo(s1);
+//            }
+//        });
 
-                            } else {
-                                q5.put(p.getPrd(), p.getqN() * p.getqP());
-                            }
-                        }
-                    }
-                }
+
+        int kc = hashCL(c);
+        int ip = f.pBinaria(c, kc);
+
+        if(validaCliente(c)){
+            if(ip!=-1){
+                //Lista de produtos e quantidades
+                f.getQuerie5(kc,ip,q5);
             }
         }
-        for(Map.Entry<String, Integer> e : q5.entrySet())
-            System.out.println(e.getKey() + e.getValue());
 
 
+        //ordenar!
         return q5;
+
+//
+//        for (FilFil fi : f.getArr(cl).get(r).getFil().values()) {
+//            if (fi.getUsed() == 1) {
+//                for (MesFil m : fi.getFilF().values()) {
+//                    if (m.isUsed()) {
+//                        for (PrdFil p : m.getPrs().values()) {
+//                            if (q5.containsKey((p.getPrd()))) {
+//                                int q = q5.get(p.getPrd());
+//                                q += p.getqN() + p.getqP();
+//                                q5.put(p.getPrd(), q);
+//
+//                            } else {
+//                                q5.put(p.getPrd(), p.getqN() * p.getqP());
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        for(Map.Entry<String, Integer> e : q5.entrySet())
+//            System.out.println(e.getKey() + e.getValue());
+//
+//
+//        return q5;
 
     }
 

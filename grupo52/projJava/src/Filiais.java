@@ -149,4 +149,8 @@ public class Filiais implements InterfaceFiliais{
     public Map<Integer,double[]> getQuerie3(int kc, int ip){
         return filiais.get(kc).get(ip).getQuerie3();
     }
+
+    public void getQuerie5(int kc, int ip,Map<String, Integer> q5){
+        filiais.get(kc).get(ip).getQuerie5(q5);
+    }
 }

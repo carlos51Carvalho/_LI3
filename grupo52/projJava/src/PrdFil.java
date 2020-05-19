@@ -78,6 +78,10 @@ public class PrdFil {
         return this.gP + this.gN;
     }
 
+    public int getTotalComprado(){
+        return this.qP + this.qN;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -82,4 +82,11 @@ public class MesFil {
         }
         return res;
     }
+
+    public void getQuerie5(Map<String, Integer> res){
+        for(PrdFil p: this.prs.values()){
+            if (!res.containsKey(p.getPrd())) res.put(p.getPrd(),p.getTotalComprado());
+            else res.put(p.getPrd(),res.get(p.getPrd()) + p.getTotalComprado());
+        }
+    }
 }
