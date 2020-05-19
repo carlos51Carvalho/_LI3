@@ -154,4 +154,15 @@ public class Filiais implements InterfaceFiliais{
     public void getQuerie5(int kc, int ip,Map<String, Integer> q5){
         filiais.get(kc).get(ip).getQuerie5(q5);
     }
+
+
+    public Map<String,int[]> getQuerie6(Map<String, int[]> res) {
+        res = new TreeMap<>();
+        for (int i = 0; i < 26; i++) {
+            for (ClFil c : filiais.get(i)) {
+                res = c.getQuerie6(res);
+            }
+        }
+        return res;
+    }
 }

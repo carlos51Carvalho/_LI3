@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Queries {
 
+
     public static boolean validaNum(String p) {
         boolean r = true;
         for (int i = 2; i < 6 && r; i++) {
@@ -204,8 +205,8 @@ public class Queries {
     //querie 5
     public static Map<String,Integer> querie5(String c, Filiais f)  {
 
-        //ComparatorQ5 comp = new ComparatorQ5();
-        Map<String, Integer> q5 = new TreeMap<String, Integer>();
+        //Comparator<Map.Entry<String,Integer>> cp = new ComparatorQ5();
+        Map<String, Integer> q5 = new TreeMap<String, Integer>(new ComparatorQ5());
 
         int kc = hashCL(c);
         int ip = f.pBinaria(c, kc);
@@ -220,6 +221,23 @@ public class Queries {
 
 
         return q5;
+    }
+
+
+
+
+    //querie 6
+
+    //int[0] nquantidade vendida;
+    //int[1] n clientes;
+    public static Map<String, int[]> querie6(int limite, Filiais fil){
+
+        Map<String,int[]> res = null;
+
+        if(limite >0){
+            //Lista de produtos, com a quantidade e numero de clientes que o compraram
+            //res = fil.getQuerie6();
+        }
     }
 
 }
