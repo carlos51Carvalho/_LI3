@@ -47,7 +47,7 @@ public class Main
         System.out.println(filiais.naocompram());
         System.out.println(filiais.numeroComparadores());
 */
-        System.out.println(q.querie1(faturacao));
+        //System.out.println(q.querie1(faturacao));
 
 
 //        int[] r = q.numeroCompPMes(filiais);
@@ -59,11 +59,11 @@ public class Main
 
         //System.out.println(q.querie3(filiais, "A1231"));
 
+        /*
         Map<String, Integer> q5 = q.querie5("A1231", filiais);
         for(Map.Entry<String, Integer> e : q5.entrySet())
             System.out.println(e.getKey() + " -> " + e.getValue());
 
-        /*
         Map<Integer, int[]> q2= q.querie2( filiais,1);
         for(Map.Entry<Integer, int[]> e : q2.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +"]");
@@ -73,6 +73,19 @@ public class Main
         for(Map.Entry<Integer, double[]> e : q3.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
         */
+
+        Map<String, int[]> q6= q.querie6( 5,filiais);
+        for(Map.Entry<String, int[]> e : q6.entrySet())
+            System.out.println(e.getKey() + "[ " + e.getValue()[0] + " , "+e.getValue()[1] + " ]");
+
+        Map<Integer, Map<String, Double>> q7= q.querie7( filiais);
+        for(Map.Entry<Integer, Map<String, Double>> e : q7.entrySet()) {
+            System.out.println(e.getKey());
+            for (Map.Entry<String, Double> gh : e.getValue().entrySet()) {
+                System.out.println(gh.getKey() + " -> [ " + gh.getValue() + " ]");
+            }
+        }
+
     }
 }
 

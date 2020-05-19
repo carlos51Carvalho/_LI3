@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -145,12 +146,45 @@ public class ClFil {
             if (f.getUsed() == 1) f.getQuerie5(q5);
         }
     }
-    public Map<Integer,int[]> getQuerie6(Map<Integer,int[]> res){
-        Map<Integer,int[]> res = new TreeMap<>();
-        for (FilFil f: this.fil.values() ){
+    public void getQuerie6(Map<String,int[]> res){
+        for (FilFil f: this.fil.values() )
             f.getQuerie6(res);
-        }
-        return res;
     }
+
+
+
+
+
+    public void getQuerie7(Map<Integer, Map<String, Double>> res, String c ) {
+        double med;
+        String d = null;
+        double aux = 0.0;
+        for (Map.Entry<Integer, FilFil> f : this.fil.entrySet()) {
+            if (f.getValue().getUsed() == 1) {
+                med = f.getValue().getQuerie7();
+
+                if (!res.containsKey(f.getKey())) {
+                    res.put(f.getKey(), new TreeMap<>());
+                    //res.get(f.getKey()).put(c,med);
+                }
+                if (res.get(f.getKey()).size() < 3) {
+                    res.get(f.getKey()).put(c, med);
+                } else {
+                    aux = med;
+                    for (Map.Entry<String, Double> cs : res.get(f.getKey()).entrySet()) {
+                        if (aux > cs.getValue()) {
+                            d = cs.getKey();
+                            aux = cs.getValue();
+                        }
+                    }
+                    if (aux != med) {
+                        res.get(f.getKey()).remove(d);
+                        res.get(f.getKey()).put(c, med);
+                    }
+                }
+            }
+        }
+    }
+
 
 }

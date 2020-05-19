@@ -90,4 +90,14 @@ public class MesFil {
             else res.put(p.getPrd(),res.get(p.getPrd()) + p.getTotalComprado());
         }
     }
+
+    public void getQuerie6(Map<String,int[]> res){
+
+        for(PrdFil p: this.prs.values()){
+            if (!res.containsKey(p.getPrd())) res.put(p.getPrd(),new int[2]);
+
+            res.get(p.getPrd())[0] += p.getqN() + p.getqP();
+            res.get(p.getPrd())[1]++;
+        }
+    }
 }

@@ -236,8 +236,23 @@ public class Queries {
 
         if(limite >0){
             //Lista de produtos, com a quantidade e numero de clientes que o compraram
-            //res = fil.getQuerie6();
+            res = fil.getQuerie6();
         }
+
+        //Falta ordenar, e dar apenas o limite
+
+        //?????????
+
+        return res;
+    }
+
+
+    public static Map<Integer, Map<String,Double>> querie7(Filiais f){
+
+        Map<Integer, Map<String, Double>> res = null;
+        res = f.getQuerie7();
+
+        return res;
     }
 
 }

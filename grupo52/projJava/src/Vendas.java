@@ -134,7 +134,6 @@ public class Vendas {
         for (Double dp : res2.values()){
             System.out.println(dp);
         }
- */
         // querie 1.2.3
         for (Map.Entry<Integer,int[]> r : res3.entrySet()) {
             System.out.println(r.getKey());
@@ -142,6 +141,7 @@ public class Vendas {
                 System.out.println(r.getValue()[h]);
         }
 
+ */
 
     System.out.println("Vendas lidas Lidos \n");
     return i;

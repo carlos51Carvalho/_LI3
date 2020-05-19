@@ -156,11 +156,24 @@ public class Filiais implements InterfaceFiliais{
     }
 
 
-    public Map<String,int[]> getQuerie6(Map<String, int[]> res) {
-        res = new TreeMap<>();
+    public Map<String,int[]> getQuerie6() {
+        Map<String,int[]> res = new TreeMap<>();
         for (int i = 0; i < 26; i++) {
             for (ClFil c : filiais.get(i)) {
-                res = c.getQuerie6(res);
+                c.getQuerie6(res);
+            }
+        }
+        return res;
+    }
+
+    public Map<Integer, Map<String, Double>> getQuerie7() {
+        Map<Integer, Map<String, Double>> res = new TreeMap<>();
+
+        for (int i = 0; i < 26; i++) {
+            for (ClFil c : filiais.get(i)) {
+                c.getQuerie7(res, c.getCl());
+                //Avaliar se é maior e inserir
+
             }
         }
         return res;

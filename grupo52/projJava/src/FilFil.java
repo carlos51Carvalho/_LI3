@@ -90,4 +90,17 @@ public class FilFil {
             if (m.isUsed()) m.getQuerie5(res);
         }
     }
+
+    public void getQuerie6(Map<String, int[]> res){
+        for (MesFil m : this.filial.values())
+            if (m.isUsed()) m.getQuerie6(res);
+    }
+    public double getQuerie7(){
+        double pay = 0.0;
+        for (MesFil m : this.filial.values()) {
+            if (m.isUsed()) pay += m.getTotalPago();
+        }
+        return pay;
+    }
+
 }

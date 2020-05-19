@@ -1,52 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/ClFil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Cliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Clientes3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/ComparatorCliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/ComparatorProduto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/ComparatorQ5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Faturacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/FilFat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/FilFil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Filiais.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/InterfaceClientes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/InterfaceFaturacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/InterfaceFiliais.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/InterfaceProdutos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/MesFat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/MesFil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/PrdFil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/ProdFat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Produto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Produtos3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Queries.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Vendas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projJava.iml" beforeDir="false" />
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="novos ficheiros">
+      <change afterPath="$PROJECT_DIR$/src/ComparatoValuesMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clientes3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clientes3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ComparatorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ComparatorCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ComparatorProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ComparatorProduto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ComparatorQ5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ComparatorQ5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Faturacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Faturacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FilFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilFat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FilFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InterfaceClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InterfaceClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InterfaceFaturacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InterfaceFaturacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InterfaceFiliais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InterfaceFiliais.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InterfaceProdutos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InterfaceProdutos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Filiais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Filiais.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MesFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MesFat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MesFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MesFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrdFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrdFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProdFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProdFat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Produtos3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Produtos3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vendas.java" afterDir="false" />
     </list>
@@ -78,6 +58,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="projJava" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -88,11 +82,56 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589903964138</updated>
-      <workItem from="1589903971644" duration="713000" />
+      <workItem from="1589903971644" duration="8293000" />
     </task>
+    <task id="LOCAL-00001" summary="novos ficheiros">
+      <created>1589904704223</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589904704223</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="novos ficheiros" />
+    <option name="LAST_COMMIT_MESSAGE" value="novos ficheiros" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1589909431318">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/69.27.1851.1053@69.27.1851.1053" timestamp="1589909431318" />
+    <state width="1805" height="106" key="GridCell.Tab.0.bottom" timestamp="1589911774648">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state width="1805" height="106" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774648" />
+    <state width="1805" height="106" key="GridCell.Tab.0.center" timestamp="1589911774646">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state width="1805" height="106" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774646" />
+    <state width="1805" height="106" key="GridCell.Tab.0.left" timestamp="1589911774644">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state width="1805" height="106" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774644" />
+    <state width="1805" height="106" key="GridCell.Tab.0.right" timestamp="1589911774647">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state width="1805" height="106" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774647" />
   </component>
 </project>
