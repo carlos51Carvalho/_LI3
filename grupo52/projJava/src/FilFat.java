@@ -43,4 +43,9 @@ public class FilFat {
     public void incVP(int m){
         this.filial.get(m).incvP();
     }
+
+
+    public double getFatPorMes(int i){
+        return this.filial.get(i).totalFatMes();
+    }
 }

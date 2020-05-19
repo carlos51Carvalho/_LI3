@@ -98,7 +98,13 @@ public class Faturacao implements InterfaceFaturacao{
     }
 
 
-
+    public void getFatPorMesEFil(Map<Integer,Map<Integer,Map<String,Double>>> res){
+        for (int i = 0; i<26; i++){
+            for (ProdFat f : this.faturacoes.get(i)){
+                f.getFatPorMesEFil(res);
+            }
+        }
+    }
 
 
 

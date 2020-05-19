@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class ProdFat {
     private String prod;
@@ -88,5 +89,15 @@ public class ProdFat {
     }
 
 
+    public void getFatPorMesEFil(Map<Integer,Map<Integer,Map<String,Double>>> res){
+        //this.prod;
+        for(Map.Entry<Integer, FilFat> f : this.fil.entrySet()){
+            for (int i=1;i<13;i++){
+                if(!res.get(1).containsKey(f.getKey())) res.get(i).put(f.getKey(),new TreeMap<>());
+                res.get(i).get(f.getKey()).put(this.prod,f.getValue().getFatPorMes(i));
 
+
+            }
+        }
+    }
 }

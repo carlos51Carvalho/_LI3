@@ -285,6 +285,19 @@ public class Queries {
     }
 
 
+    // querie 10
 
+    public static  Map<Integer,Map<Integer,Map<String,Double>>> querie10(Faturacao fat){
+        Map<Integer,                    //mes
+                Map<Integer,            //fil
+                        Map<String,     //Produto
+                                Double>>> res = new TreeMap<>();
+        for (int i=1;i<13;i++)res.put(i,new TreeMap<>());
+
+        //fat.getFatPorMesEFil(res);
+
+        return res;
+
+    }
 
 }

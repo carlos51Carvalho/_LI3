@@ -29,24 +29,6 @@ public class Filiais implements InterfaceFiliais{
     }
 
 
-
-//    public static int pBinaria(String p, List<ClFil> f){
-//        int r = -1;
-//        int meio;
-//        int inicio = 0;
-//        int fim = f.size()-1;
-//        while (inicio <= fim && r==-1) {
-//            meio = (inicio + fim)/2;
-//            if (p.compareTo(f.get(meio).getCl()) == 0) {
-//                r = meio;
-//            }
-//            if (p.compareTo(f.get(meio).getCl()) < 0)
-//                fim = meio - 1;
-//            else
-//                inicio = meio + 1;
-//        }
-//        return r;
-//    }
     public int pBinaria(String p, int k){
         List<ClFil> f = filiais.get(k);
         int r = -1;
