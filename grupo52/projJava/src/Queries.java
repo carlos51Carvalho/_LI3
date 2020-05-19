@@ -260,6 +260,17 @@ public class Queries {
 
 
     // querie 8
+    public static Map<String, Integer> querie8(Filiais f, int limite){
+        Map<String, Integer> res = null;
+
+        if(limite >0) {
+            res = f.getQuerie8();
+        }
+
+        //Ordenar e limitar
+
+        return res;
+    }
 
 
 

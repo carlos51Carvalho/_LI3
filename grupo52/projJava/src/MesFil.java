@@ -100,4 +100,8 @@ public class MesFil {
             res.get(p.getPrd())[1]++;
         }
     }
+
+    public void getSetProds(Set<String> aux){
+        aux.addAll(this.prs.keySet());
+    }
 }

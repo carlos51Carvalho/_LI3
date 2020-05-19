@@ -72,7 +72,7 @@ public class Main
         Map<Integer, double[]> q3= q.querie3( filiais,"A1231");
         for(Map.Entry<Integer, double[]> e : q3.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
-        */
+
 
         Map<String, int[]> q6= q.querie6( 5,filiais);
         for(Map.Entry<String, int[]> e : q6.entrySet())
@@ -85,6 +85,11 @@ public class Main
                 System.out.println(gh.getKey() + " -> [ " + gh.getValue() + " ]");
             }
         }
+        */
+
+        Map<String, Integer> q8= q.querie8( filiais,5);
+        for(Map.Entry<String, Integer> e : q8.entrySet())
+            System.out.println(e.getKey() + " -> [" + e.getValue() + "]");
 
     }
 }

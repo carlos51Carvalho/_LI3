@@ -1,7 +1,4 @@
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class ClFil {
     private String cl;
@@ -186,5 +183,13 @@ public class ClFil {
         }
     }
 
+    public int getQuerie8(){
+        Set<String> aux = new HashSet<>();
+        for (FilFil f: this.fil.values() ) {
+            if (f.getUsed() == 1) f.getSetProds(aux);
+        }
+
+        return aux.size();
+    }
 
 }

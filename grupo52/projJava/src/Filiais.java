@@ -178,4 +178,15 @@ public class Filiais implements InterfaceFiliais{
         }
         return res;
     }
+
+    public Map<String, Integer> getQuerie8(){
+        Map<String, Integer> res = new TreeMap<>();
+
+        for (int i = 0; i < 26; i++) {
+            for (ClFil c : filiais.get(i)) {
+                res.put(c.getCl(),c.getQuerie8());
+            }
+        }
+        return res;
+    }
 }

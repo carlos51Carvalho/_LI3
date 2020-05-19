@@ -20,15 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="novos ficheiros">
-      <change afterPath="$PROJECT_DIR$/src/ComparatoValuesMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/ClFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/ClFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/FilFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/FilFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Filiais.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Filiais.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/MesFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/MesFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Queries.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClFil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FilFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilFil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Filiais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Filiais.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MesFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MesFil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vendas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +87,8 @@
       <option name="presentableId" value="Default" />
       <updated>1589903964138</updated>
       <workItem from="1589903971644" duration="8293000" />
+      <workItem from="1589912632253" duration="457000" />
+      <workItem from="1589913578182" duration="2001000" />
     </task>
     <task id="LOCAL-00001" summary="novos ficheiros">
       <created>1589904704223</created>
@@ -107,6 +113,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="novos ficheiros" />

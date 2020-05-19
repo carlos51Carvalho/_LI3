@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class FilFil {
     private int used;
@@ -103,4 +104,9 @@ public class FilFil {
         return pay;
     }
 
+    public void getSetProds(Set<String> aux){
+        for (MesFil m : this.filial.values()) {
+            if (m.isUsed()) m.getSetProds(aux);
+        }
+    }
 }
