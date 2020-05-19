@@ -49,6 +49,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1c8InxjtTDWSqDXwBSBLISMLWEs" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -101,19 +102,20 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="novos ficheiros" />
@@ -140,5 +142,17 @@
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1805" height="106" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774647" />
+    <state x="727" y="269" width="522" height="566" key="VCS.ChangeListViewerDialog" timestamp="1589915942821">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="727" y="269" width="522" height="566" key="VCS.ChangeListViewerDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1589915942821" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1589915862510">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1589915862510" />
+    <state x="761" y="472" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589915948664">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="761" y="472" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1589915948664" />
   </component>
 </project>

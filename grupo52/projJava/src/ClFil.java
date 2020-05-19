@@ -138,6 +138,13 @@ public class ClFil {
         return res;
     }
 
+    public Map<Integer,double[]> getQuerie4(String prod, Map<Integer,double[]> res){
+        for (FilFil f: this.fil.values() ){
+            f.getQuerie4(prod,res);
+        }
+        return res;
+    }
+
     public void getQuerie5(Map<String, Integer> q5){
         for (FilFil f: this.fil.values() ) {
             if (f.getUsed() == 1) f.getQuerie5(q5);

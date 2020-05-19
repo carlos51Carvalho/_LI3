@@ -83,6 +83,17 @@ public class MesFil {
         }
         return res;
     }
+    public double getPago1Prod(String prod){
+        double r = this.prs.get(prod).getgN() + this.prs.get(prod).getgP();
+        return r;
+    }
+
+    public double getProdQnt(String prod){
+        double r = this.prs.get(prod).getqN() + this.prs.get(prod).getqP();
+        return r;
+
+    }
+
 
     public void getQuerie5(Map<String, Integer> res){
         for(PrdFil p: this.prs.values()){

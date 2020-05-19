@@ -86,6 +86,21 @@ public class FilFil {
         }
     }
 
+    public void getQuerie4(String prod, Map<Integer,double[]> res) {
+        boolean v = true;
+        for (Map.Entry<Integer, MesFil> m : this.filial.entrySet()) {
+            if (!res.containsKey(m.getKey())) res.put(m.getKey(), new double[3]);
+            if (existeProd(m.getKey(),prod)) {
+                res.get(m.getKey())[0] += (double) m.getValue().getProdQnt(prod);
+                res.get(m.getKey())[2] += (double) m.getValue().getPago1Prod(prod);
+                if (v == true) {
+                    res.get(m.getKey())[1]++;
+                    v = false;
+                }
+            }
+        }
+    }
+
     public void getQuerie5(Map<String, Integer> res){
         for(MesFil m: this.filial.values()){
             if (m.isUsed()) m.getQuerie5(res);

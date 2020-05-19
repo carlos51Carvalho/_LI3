@@ -20,6 +20,10 @@ public class Queries {
         return c.charAt(0) >= 'A' && c.charAt(0) <= 'Z' && validaNum(c);
     }
 
+    public static boolean validaProduto(String c) {
+        return c.charAt(0) >= 'A' && c.charAt(0) <= 'Z' && c.charAt(1) >= 'A' && c.charAt(1) <= 'Z' && validaNum(c);
+    }
+
     public static boolean mesvalido(int mes){
         return mes >= 1 && mes <= 12;
     }
@@ -189,17 +193,14 @@ public class Queries {
 
     // querie 4
 
+    public static Map<Integer,double[]> querie4(Filiais fil, String prod){
+        Map<Integer,double[]> res = null;
 
+        if(validaProduto(prod)) res = fil.getQuerie4(prod);
 
+        return res;
 
-
-
-
-
-
-
-
-
+    }
 
 
     //querie 5

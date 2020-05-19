@@ -59,12 +59,10 @@ public class Main
 
         //System.out.println(q.querie3(filiais, "A1231"));
 
-        /*
-        Map<String, Integer> q5 = q.querie5("A1231", filiais);
-        for(Map.Entry<String, Integer> e : q5.entrySet())
-            System.out.println(e.getKey() + " -> " + e.getValue());
 
-        Map<Integer, int[]> q2= q.querie2( filiais,1);
+
+
+       /* Map<Integer, int[]> q2= q.querie2( filiais,1);
         for(Map.Entry<Integer, int[]> e : q2.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +"]");
 
@@ -72,7 +70,14 @@ public class Main
         Map<Integer, double[]> q3= q.querie3( filiais,"A1231");
         for(Map.Entry<Integer, double[]> e : q3.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
+*/
+        Map<Integer, double[]> q4= q.querie4( filiais,"XA1231");
+        for(Map.Entry<Integer, double[]> e : q4.entrySet())
+            System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
 
+       /* Map<String, Integer> q5 = q.querie5("A1231", filiais);
+        for(Map.Entry<String, Integer> e : q5.entrySet())
+            System.out.println(e.getKey() + " -> " + e.getValue());
 
         Map<String, int[]> q6= q.querie6( 5,filiais);
         for(Map.Entry<String, int[]> e : q6.entrySet())
@@ -85,12 +90,11 @@ public class Main
                 System.out.println(gh.getKey() + " -> [ " + gh.getValue() + " ]");
             }
         }
-        */
 
         Map<String, Integer> q8= q.querie8( filiais,5);
         for(Map.Entry<String, Integer> e : q8.entrySet())
             System.out.println(e.getKey() + " -> [" + e.getValue() + "]");
-
+*/
     }
 }
 
