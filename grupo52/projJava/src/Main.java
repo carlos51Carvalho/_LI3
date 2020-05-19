@@ -20,8 +20,8 @@ public class Main
 
         faturacao.addProds(produtos.getSetDeProdutos());
 
-        System.out.println("\n\n" + c);
-        System.out.println("\n\n" + p);
+        System.out.println("\n" + c);
+        System.out.println("\n" + p);
         for (int j = 0; j < 26; j++)
             f = f + faturacao.getArr(j).size();
 
@@ -30,8 +30,8 @@ public class Main
         for(int j =0 ; j<26;j++)
             fi += filiais.getArr(j).size();
 
-        System.out.println("\n\n"+ f+ "\n");
-        System.out.println("\n\n" + fi +  "\n");
+        System.out.println("\n"+ f+ "\n");
+        System.out.println("\n" + fi +"\n");
         int vend = v.ler_vendas(faturacao,filiais,clientes.getSetDeClientes(),produtos.getSetDeProdutos(), "Dados_Iniciais/Vendas_1M.txt");
         System.out.println(vend+ "\n");
 
