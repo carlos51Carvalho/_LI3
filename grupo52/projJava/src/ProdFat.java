@@ -93,7 +93,7 @@ public class ProdFat {
         //this.prod;
         for(Map.Entry<Integer, FilFat> f : this.fil.entrySet()){
             for (int i=1;i<13;i++){
-                if(!res.get(1).containsKey(f.getKey())) res.get(i).put(f.getKey(),new TreeMap<>());
+                if(!res.get(i).containsKey(f.getKey())) res.get(i).put(f.getKey(),new TreeMap<>());
                 res.get(i).get(f.getKey()).put(this.prod,f.getValue().getFatPorMes(i));
 
 

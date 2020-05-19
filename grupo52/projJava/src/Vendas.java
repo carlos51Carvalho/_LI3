@@ -18,7 +18,6 @@ public class Vendas {
     private static int tclsc;
     private static int tvendaszero;
     private static double fattotal;
-
     private static  int[] res = new int[12];
     private static Map<Integer,Double[] > res2 = new TreeMap<>();
     private static Map<Integer, int[]> res3 = new TreeMap<>();

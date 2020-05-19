@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Começado o vista!">
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Query 8 feita. Falta adicionar comparador para ordenar na insersao. adicao tambem de funçoes intermedias para a realizacao da mesma">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Faturacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Faturacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/FilFat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/FilFat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/ProdFat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/ProdFat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Queries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProdFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProdFat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vendas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,84 +95,61 @@
       <option name="project" value="LOCAL" />
       <updated>1589904704223</updated>
     </task>
-    <task id="LOCAL-00002" summary="Querie 4 funcional">
-      <created>1589916483148</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1589916483149</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Começado o vista!">
-      <created>1589930253443</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1589930253443</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="novos ficheiros" />
-    <MESSAGE value="Querie 4 funcional" />
-    <MESSAGE value="Começado o vista!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Começado o vista!" />
+    <option name="LAST_COMMIT_MESSAGE" value="novos ficheiros" />
   </component>
   <component name="WindowStateProjectService">
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1589909431318">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/69.27.1851.1053@69.27.1851.1053" timestamp="1589909431318" />
-    <state x="610" y="273" width="860" height="807" key="CommitChangelistDialog2" timestamp="1589916483002">
+    <state x="542" y="149" width="893" height="807" key="CommitChangelistDialog2" timestamp="1589931400399">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="610" y="273" width="860" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1589916483002" />
-    <state width="1805" height="360" key="GridCell.Tab.0.bottom" timestamp="1589929353637">
-      <screen x="69" y="27" width="1851" height="1053" />
-    </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1589918444731" />
-    <state width="1805" height="360" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1589929353637" />
-    <state width="1805" height="360" key="GridCell.Tab.0.center" timestamp="1589929353636">
-      <screen x="69" y="27" width="1851" height="1053" />
-    </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1589918444731" />
-    <state width="1805" height="360" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1589929353636" />
-    <state width="1805" height="360" key="GridCell.Tab.0.left" timestamp="1589929353636">
-      <screen x="69" y="27" width="1851" height="1053" />
-    </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1589918444731" />
-    <state width="1805" height="360" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1589929353636" />
-    <state width="1805" height="360" key="GridCell.Tab.0.right" timestamp="1589929353637">
-      <screen x="69" y="27" width="1851" height="1053" />
-    </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1589918444731" />
-    <state width="1805" height="360" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1589929353637" />
-    <state x="727" y="269" width="522" height="566" key="VCS.ChangeListViewerDialog" timestamp="1589915942821">
+    <state x="542" y="149" width="893" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1589931400399" />
+    <state width="1807" height="207" key="GridCell.Tab.0.bottom" timestamp="1589931081159">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="727" y="269" width="522" height="566" key="VCS.ChangeListViewerDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1589915942821" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1589915862510">
+    <state width="1807" height="207" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1589931081159" />
+    <state width="1805" height="106" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774648" />
+    <state width="1807" height="207" key="GridCell.Tab.0.center" timestamp="1589931081159">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1589915862510" />
-    <state x="761" y="472" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589915948664">
+    <state width="1807" height="207" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1589931081159" />
+    <state width="1805" height="106" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774646" />
+    <state width="1807" height="207" key="GridCell.Tab.0.left" timestamp="1589931081159">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="761" y="472" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1589915948664" />
+    <state width="1807" height="207" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1589931081159" />
+    <state width="1805" height="106" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774644" />
+    <state width="1807" height="207" key="GridCell.Tab.0.right" timestamp="1589931081159">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="207" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1589931081159" />
+    <state width="1805" height="106" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774647" />
+    <state x="761" y="472" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589931381194">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="761" y="472" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1589931381194" />
   </component>
 </project>
