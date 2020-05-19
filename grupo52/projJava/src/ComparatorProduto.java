@@ -8,6 +8,7 @@
 import java.util.Comparator;
 public class ComparatorProduto implements Comparator<Produto>
 {
+
     public int compare(Produto c1, Produto c2){
         return c1.getProduto().compareTo(c2.getProduto());
     }

@@ -34,6 +34,7 @@ public class Produto
     public Produto(String c){
         this.produto=c;
     }
+
     public Produto(Produto c){
         this.produto=c.getProduto();
     }

@@ -23,6 +23,7 @@ public class PrdFil {
         this.gP = gP;
     }
 
+
     public String getPrd(){return this.prd;}
 
     public void setPrd(String prd){ this.prd = prd;}

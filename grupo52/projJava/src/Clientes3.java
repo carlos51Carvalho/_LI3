@@ -104,7 +104,7 @@ public class Clientes3 implements InterfaceClientes
         }
         return res;
     }
-    
+
     public int ler_clientes(String filepath) throws Exception{
         String st;
         int i=0;

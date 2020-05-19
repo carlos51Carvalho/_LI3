@@ -17,6 +17,7 @@ public class MesFat {
         this.fP = m.getfP();
         this.vP = m.getvP();
     }
+
     public double getfN() {
         return this.fN;
     }

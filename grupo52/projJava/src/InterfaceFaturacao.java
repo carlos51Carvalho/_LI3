@@ -8,4 +8,5 @@ public interface InterfaceFaturacao {
     void acrescentaFat(String[] p);
 
 
+
 }
