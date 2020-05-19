@@ -39,6 +39,24 @@ public class ProdFat {
         this.used = used;
         return this;
     }
+
+    public void incFilialUsed(int f){
+        this.fil.get(f).incUsed();
+    }
+    public void addFN(int f,int m, double p){
+        this.fil.get(f).addFN(m,p);
+    }
+
+    public void addFP(int f,int m, double p){
+        this.fil.get(f).addFP(m,p);
+    }
+
+     public void incVN(int f,int m){
+        this.fil.get(f).incVN(m);
+    }
+     public void incVP(int f,int m){
+        this.fil.get(f).incVP(m);
+    }
 /*
     public Map<Integer, FilFaor eu vou int> getPrd(){
         Map<Integer, FilFat> p = new HashMap<>();

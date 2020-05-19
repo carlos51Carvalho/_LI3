@@ -115,8 +115,6 @@ public class Queries {
                     total++;
                 }
         }
-        System.out.println(total);
-        System.out.println(res);
         return res;
     }
 

@@ -81,21 +81,22 @@ public class Filiais implements InterfaceFiliais{
             int q = Integer.parseInt(cl[2]);
             int m = Integer.parseInt(cl[5]);
             int f = Integer.parseInt(cl[6]);
+            int key = hashProd(cl[4]);
 
-            this.filiais.get(hashProd(cl[4])).get(ip).setFilialUsada(f,1);
-            this.filiais.get(hashProd(cl[4])).get(ip).incnVendasMes(f,m);
-            this.filiais.get(hashProd(cl[4])).get(ip).setUsedFilMes(f,m,true);
+            this.filiais.get(key).get(ip).setFilialUsada(f,1);
+            this.filiais.get(key).get(ip).incnVendasMes(f,m);
+            this.filiais.get(key).get(ip).setUsedFilMes(f,m,true);
 
-            if (!existeProd(cl[4], ip, f, m, p)) this.filiais.get(hashProd(cl[4])).get(ip).addPrs(f,m,p);
+            if (!existeProd(cl[4], ip, f, m, p)) this.filiais.get(key).get(ip).addPrs(f,m,p);
 
             //System.out.println(cl[3] + cl[3].equals("N"));
             if (cl[3].equals("N")) {
-                this.filiais.get(hashProd(cl[4])).get(ip).addgN(f,m,p,pr * q);
-                this.filiais.get(hashProd(cl[4])).get(ip).addqN(f,m,p,q);
+                this.filiais.get(key).get(ip).addgN(f,m,p,pr * q);
+                this.filiais.get(key).get(ip).addqN(f,m,p,q);
 
             }else{
-                this.filiais.get(hashProd(cl[4])).get(ip).addgP(f,m,p,pr * q);
-                this.filiais.get(hashProd(cl[4])).get(ip).addqP(f,m,p,q);
+                this.filiais.get(key).get(ip).addgP(f,m,p,pr * q);
+                this.filiais.get(key).get(ip).addqP(f,m,p,q);
             }
 
         }

@@ -47,7 +47,7 @@ public class Main
         System.out.println(filiais.naocompram());
         System.out.println(filiais.numeroComparadores());
 */
-        //System.out.println(q.querie1(faturacao));
+        System.out.println(q.querie1(faturacao));
 
 
 //        int[] r = q.numeroCompPMes(filiais);

@@ -59,16 +59,22 @@ public class Faturacao implements InterfaceFaturacao{
             int q = Integer.parseInt(p[2]);
             int m = Integer.parseInt(p[5]);
             int f = Integer.parseInt(p[6]);
+            int key = hashProd(p[0]);
 
-            this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).setUsed(1);
+            //this.faturacoes.get(key).get(ip).getFil().get(f).setUsed(1);
+            this.faturacoes.get(key).get(ip).incFilialUsed(f);
             //System.out.println(this.faturacoes.get(hashProd(p[0])).get(ip).getPrd());
             if (p[3].equals("N")) {
-                this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).getFilF().get(m).addfN(pr * q);
-                this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).getFilF().get(m).incvN();
+                //this.faturacoes.get(key).get(ip).getFil().get(f).getFilF().get(m).addfN(pr * q);
+                this.faturacoes.get(key).get(ip).addFN(f,m,pr*q);
+                //this.faturacoes.get(key).get(ip).getFil().get(f).getFilF().get(m).incvN();
+                this.faturacoes.get(key).get(ip).incVN(f,m);
 
             } else if (p[3].equals("P")){
-                this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).getFilF().get(m).addfP(pr * q);
-                this.faturacoes.get(hashProd(p[0])).get(ip).getFil().get(f).getFilF().get(m).incvP();
+                //this.faturacoes.get(key).get(ip).getFil().get(f).getFilF().get(m).addfP(pr * q);
+                this.faturacoes.get(key).get(ip).addFP(f,m,pr*q);
+                //this.faturacoes.get(key).get(ip).getFil().get(f).getFilF().get(m).incvP();
+                this.faturacoes.get(key).get(ip).incVP(f,m);
             }
 
         }

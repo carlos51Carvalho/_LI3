@@ -28,4 +28,19 @@ public class FilFat {
     public Map<Integer,MesFat> getFilF(){
         return this.filial;
     }
+
+    public void addFN(int m, double p){
+        this.filial.get(m).addfN(p);
+    }
+
+    public void addFP(int m, double p){
+        this.filial.get(m).addfP(p);
+    }
+
+    public void incVN(int m){
+        this.filial.get(m).incvN();
+    }
+    public void incVP(int m){
+        this.filial.get(m).incvP();
+    }
 }
