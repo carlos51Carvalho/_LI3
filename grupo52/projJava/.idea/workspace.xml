@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d962c6c2-590d-4736-9409-031c8ce532c8" name="Default Changelist" comment="Merge branch 'master' of https://github.com/dium-li3/grupo52&#10;&#10;# Conflicts:&#10;#&#9;grupo52/projJava/out/production/projJava/Main.class&#10;#&#9;grupo52/projJava/out/production/projJava/Queries.class&#10;#&#9;grupo52/projJava/src/Filiais.java&#10;#&#9;grupo52/projJava/src/Main.java&#10;#&#9;grupo52/projJava/src/PrdFil.java&#10;#&#9;grupo52/projJava/src/Queries.java">
+      <change beforePath="$PROJECT_DIR$/../projC/bin/Dados_Iniciais/Clientes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projC/bin/Dados_Iniciais/Vendas_1M.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projC/relatorio LI3.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dados_Iniciais/Clientes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dados_Iniciais/Produtos.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dados_Iniciais/Vendas_1M.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/ClFil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Cliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Clientes3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/ComparatorCliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/ComparatorProduto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Faturacao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/FilFat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/FilFil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Filiais.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/InterfaceClientes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/InterfaceFaturacao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/InterfaceFiliais.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/InterfaceProdutos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/META-INF/projJava.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/MesFat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/MesFil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/PrdFil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/ProdFat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Produto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Produtos3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Queries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Vendas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projJava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClFil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clientes3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ComparatorCliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ComparatorProduto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Faturacao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FilFat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FilFil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Filiais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Filiais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InterfaceClientes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InterfaceFaturacao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InterfaceFiliais.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InterfaceProdutos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MesFat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MesFil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrdFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrdFil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProdFat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Produto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Produtos3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vendas.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1boSl0yiZBwwuPk7YCMqFBv4W72" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="projJava" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d962c6c2-590d-4736-9409-031c8ce532c8" name="Default Changelist" comment="" />
+      <created>1589297100124</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589297100124</updated>
+      <workItem from="1589297101574" duration="3593000" />
+      <workItem from="1589489271734" duration="24000" />
+      <workItem from="1589493643042" duration="17000" />
+      <workItem from="1589493682059" duration="17000" />
+      <workItem from="1589555411681" duration="1313000" />
+      <workItem from="1589558029869" duration="81000" />
+      <workItem from="1589558211590" duration="7511000" />
+      <workItem from="1589575368560" duration="11752000" />
+      <workItem from="1589634915701" duration="3222000" />
+      <workItem from="1589806560311" duration="6433000" />
+      <workItem from="1589818706031" duration="8184000" />
+      <workItem from="1589893329130" duration="600000" />
+    </task>
+    <task id="LOCAL-00001" summary="estrutura filiais">
+      <created>1589299762648</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589299762648</updated>
+    </task>
+    <task id="LOCAL-00002" summary="estrutura filiais">
+      <created>1589300062693</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589300062693</updated>
+    </task>
+    <task id="LOCAL-00003" summary="estrutura filiais">
+      <created>1589562120072</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589562120072</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Interface Clientes">
+      <created>1589567290372</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589567290372</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Interface Faturacao e Filiais">
+      <created>1589567828868</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589567828868</updated>
+    </task>
+    <task id="LOCAL-00006" summary="vendas">
+      <created>1589578691542</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589578691542</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Queries Estatisticas das vendas">
+      <created>1589636930609</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589636930609</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Merge branch 'master' of https://github.com/dium-li3/grupo52&#10;&#10;# Conflicts:&#10;#&#9;grupo52/projJava/src/Clientes.java">
+      <created>1589637781140</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589637781140</updated>
+    </task>
+    <task id="LOCAL-00009" summary="querie 5">
+      <created>1589818731923</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1589818731923</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Merge">
+      <created>1589893424466</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1589893424466</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="estrutura filiais" />
+    <MESSAGE value="Interface Clientes" />
+    <MESSAGE value="Interface Faturacao e Filiais" />
+    <MESSAGE value="vendas" />
+    <MESSAGE value="Queries Estatisticas das vendas" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/dium-li3/grupo52&#10;&#10;# Conflicts:&#10;#&#9;grupo52/projJava/src/Clientes.java" />
+    <MESSAGE value="querie 5" />
+    <MESSAGE value="Merge" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/dium-li3/grupo52&#10;&#10;# Conflicts:&#10;#&#9;grupo52/projJava/out/production/projJava/Main.class&#10;#&#9;grupo52/projJava/out/production/projJava/Queries.class&#10;#&#9;grupo52/projJava/src/Filiais.java&#10;#&#9;grupo52/projJava/src/Main.java&#10;#&#9;grupo52/projJava/src/PrdFil.java&#10;#&#9;grupo52/projJava/src/Queries.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/dium-li3/grupo52&#10;&#10;# Conflicts:&#10;#&#9;grupo52/projJava/out/production/projJava/Main.class&#10;#&#9;grupo52/projJava/out/production/projJava/Queries.class&#10;#&#9;grupo52/projJava/src/Filiais.java&#10;#&#9;grupo52/projJava/src/Main.java&#10;#&#9;grupo52/projJava/src/PrdFil.java&#10;#&#9;grupo52/projJava/src/Queries.java" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="801" y="239" width="544" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1589582099577">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="801" y="239" width="544" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1589582099577" />
+    <state x="558" y="149" width="860" height="807" key="CommitChangelistDialog2" timestamp="1589893711200">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="558" y="149" width="860" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1589893711199" />
+    <state x="776" y="251" width="424" height="603" key="FileChooserDialogImpl" timestamp="1589489293153">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="251" width="424" height="603" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1589489293153" />
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1589824707766">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1589824707766" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1589824707766">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1589824707766" />
+    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1589824707765">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1589824707765" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1589824707766">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1589824707766" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1589893342102">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1589893342102" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1589636232878">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1589636232878" />
+  </component>
+</project>
