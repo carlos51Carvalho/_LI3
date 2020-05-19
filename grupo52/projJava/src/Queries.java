@@ -273,6 +273,18 @@ public class Queries {
         return res;
     }
 
+    // querie 9
+
+    public static Map<String,Double> querie9(Filiais fil, String prod){
+        Map<String,Double> res = null;
+
+        if(validaProduto(prod)) res = fil.getQuerie9(prod);
+
+        return res;
+
+    }
+
+
 
 
 }

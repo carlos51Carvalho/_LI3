@@ -199,4 +199,10 @@ public class ClFil {
         return aux.size();
     }
 
+    public Map<String,Double> getQuerie9(String prod, Map<String,Double> res, String c){
+        for (FilFil f: this.fil.values() ){
+            f.getQuerie9(prod,res,c);
+        }
+        return res;
+    }
 }

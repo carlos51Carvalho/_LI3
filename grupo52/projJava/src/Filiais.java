@@ -200,4 +200,15 @@ public class Filiais implements InterfaceFiliais{
         }
         return res;
     }
+
+    public Map<String,Double> getQuerie9(String prod) {
+        Map<String,Double> res = new TreeMap<>();
+        for (int i = 0; i < 26; i++) {
+            for (ClFil cl : filiais.get(i)) {
+                String c = cl.getCl();
+                res = cl.getQuerie9(prod,res,c);
+            }
+        }
+        return res;
+    }
 }

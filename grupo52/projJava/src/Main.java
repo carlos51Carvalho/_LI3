@@ -95,6 +95,9 @@ public class Main
         for(Map.Entry<String, Integer> e : q8.entrySet())
             System.out.println(e.getKey() + " -> [" + e.getValue() + "]");
 */
+        Map<String, Double> q9= q.querie9( filiais,"XA1231");
+        for(Map.Entry<String, Double> e : q9.entrySet())
+            System.out.println(e.getKey() + " -> [" + e.getValue() + "]");
     }
 }
 
