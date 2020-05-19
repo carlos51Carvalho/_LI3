@@ -81,11 +81,11 @@ public class Vendas {
                 res[Integer.parseInt(st[5])-1]++;
 
                 //querie 1.2.2
-                key = Integer.parseInt(st[6]);
+                key = Integer.parseInt(st[5]);
                 if (!res2.containsKey(key)){
-                    res2.put(key,new Double[12]);
+                    res2.put(key,new Double[4]);
                 }
-                res2.get(key) [Integer.parseInt(st[5]) -1] += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
+                res2.get(key) [Integer.parseInt(st[6])] += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
 
 
 
@@ -107,9 +107,10 @@ public class Vendas {
 
         // querie 1.2.2 inicialização da faturaçao global
         if (!res2.containsKey(0)){
-            res2.put(0,fattotal);
+            res2.put(0,new Double[4] );
+            //res2.get(0)[0] =fattotal;
         }else{
-            res2.put(0,fattotal);
+            res2.get(0)[0] += fattotal;
         }
         // querie 1.2.3
         numeroClientesByFil(fil);

@@ -19,16 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Querie 6 &quot;funcional&quot; até ver, Alteraçoes em modolus da classe Filiais.java e classes a ela adjacentes">
-      <change afterPath="$PROJECT_DIR$/src/Vista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Faturacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Faturacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/FilFat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/FilFat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/ProdFat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/ProdFat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Queries.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Começado o vista!">
       <change beforePath="$PROJECT_DIR$/src/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vendas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589916483149</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Começado o vista!">
+      <created>1589930253443</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589930253443</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,7 +121,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="novos ficheiros" />
     <MESSAGE value="Querie 4 funcional" />
-    <option name="LAST_COMMIT_MESSAGE" value="Querie 4 funcional" />
+    <MESSAGE value="Começado o vista!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Começado o vista!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1589909431318">
