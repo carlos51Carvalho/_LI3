@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,8 @@ public class Controlador {
         this.v = v;
         this.i = i;
     }
+    
+    
     public void run(){
         int op = 1;
         do{//chamar menu da view
@@ -361,6 +364,23 @@ public class Controlador {
 
 
     // Gravar para ficheiro
+
+    public void gravarObj(String filename) throws IOException {
+        ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(filename));
+        o.writeObject(this);
+        o.flush();
+        o.close();
+    }
+
+
+    //Ler de ficheiros bin
+
+    public static Controlador lerObj(String filename) throws IOException, ClassNotFoundException {
+        ObjectInputStream o = new ObjectInputStream(new FileInputStream(filename));
+        Controlador c = (Controlador) o.readObject();
+        o.close();
+        return c;
+    }
 
 
 

@@ -1,7 +1,8 @@
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Faturacao implements InterfaceFaturacao{
+public class Faturacao implements InterfaceFaturacao, Serializable {
     private Map<Integer, List<ProdFat>> faturacoes;
 
 

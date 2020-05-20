@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -105,6 +106,24 @@ public class Main
         }
 
        */
+/*
+        try {
+            gravarObj("FileObj");
+        }
+        catch (IOException e){
+            System.out.println("Erro a gravar!");
+        }
+
+
+        try {
+            Controlador.lerObj("FileObj");
+        }
+        catch (IOException | ClassNotFoundException e){
+            System.out.println("Erro na leitura!");
+        }
+
+ */
+
     }
 
 }

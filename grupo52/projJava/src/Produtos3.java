@@ -5,12 +5,13 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+import java.io.Serializable;
 import java.util.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
-public class Produtos3 implements InterfaceProdutos
+public class Produtos3 implements InterfaceProdutos, Serializable
 {
     // instance variables - replace the example below with your own
     private Map<Integer,Set<Produto>> produtos;

@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class Filiais implements InterfaceFiliais{
+public class Filiais implements InterfaceFiliais, Serializable {
     private Map<Integer, List<ClFil>> filiais;
 
 

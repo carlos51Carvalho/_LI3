@@ -1,11 +1,12 @@
 
 
+import java.io.Serializable;
 import java.util.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
-public class Clientes3 implements InterfaceClientes
+public class Clientes3 implements InterfaceClientes, Serializable
 {
     // instance variables - replace the example below with your own
     private Map<Integer,Set<Cliente>> clientes;
