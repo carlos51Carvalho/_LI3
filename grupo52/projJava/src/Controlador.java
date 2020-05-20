@@ -271,7 +271,7 @@ public class Controlador {
 
     //int[0] nquantidade vendida;
     //int[1] n clientes;
-    public static Map<String, int[]> querie6(int limite, Filiais fil){
+    public static TreeSet<Map.Entry<String, int[]>> querie6(int limite, Filiais fil){
         Crono.start();
         Map<String,int[]> res = null;
 
@@ -280,13 +280,14 @@ public class Controlador {
             res = fil.getQuerie6();
         }
 
-        //Falta ordenar, e dar apenas o limite
+        //Falta dar apenas o limite
 
-        //?????????
-
+        TreeSet<Map.Entry<String, int[]>> q6 = new TreeSet<>(new ComparatorQ6());
+        assert res != null;
+        q6.addAll(res.entrySet());
 
         System.out.println( Crono.getTImeString());
-        return res;
+        return q6;
     }
 
 
@@ -304,7 +305,7 @@ public class Controlador {
 
 
     // querie 8
-    public static Map<String, Integer> querie8(Filiais f, int limite){
+    public static TreeSet<Map.Entry<String, Integer>> querie8(Filiais f, int limite){
         Crono.start();
         Map<String, Integer> res = null;
 
@@ -313,23 +314,29 @@ public class Controlador {
         }
 
         //Ordenar e limitar
+         TreeSet<Map.Entry<String, Integer>> q8 =  new TreeSet<>(new ComparatorQ5());
+        assert res != null;
+        q8.addAll(res.entrySet());
 
 
         System.out.println( Crono.getTImeString());
-        return res;
+        return q8;
     }
 
     // querie 9
 
-    public static Map<String,Double> querie9(Filiais fil, String prod){
+    public static TreeSet<Map.Entry<String,Double>> querie9(Filiais fil, String prod){
         Crono.start();
         Map<String,Double> res = null;
 
         if(validaProduto(prod)) res = fil.getQuerie9(prod);
 
+        TreeSet<Map.Entry<String, Double>> q9 =  new TreeSet<>(new ComparatorQ9());
+        assert res != null;
+        q9.addAll(res.entrySet());
 
         System.out.println( Crono.getTImeString());
-        return res;
+        return q9;
 
     }
 

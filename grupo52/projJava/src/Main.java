@@ -62,14 +62,19 @@ public class Main
         Map<Integer, double[]> q4= q.querie4( filiais,"XA1231");
         for(Map.Entry<Integer, double[]> e : q4.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
-*/
+
+
         TreeSet<Map.Entry<String, Integer>> q5 = Controlador.querie5("A1231", filiais);
         for(Map.Entry<String, Integer> e : q5 )
             System.out.println(e.getKey() + " -> " + e.getValue());
-    /*
-        Map<String, int[]> q6= q.querie6( 5,filiais);
-        for(Map.Entry<String, int[]> e : q6.entrySet())
-            System.out.println(e.getKey() + "[ " + e.getValue()[0] + " , "+e.getValue()[1] + " ]");
+
+
+        TreeSet<Map.Entry<String, int[]>> q6= Controlador.querie6( 5,filiais);
+        int jdk =0;
+        for(Map.Entry<String, int[]> e : q6) {
+            if (jdk < 5) System.out.println(e.getKey() + "[ " + e.getValue()[0] + " , " + e.getValue()[1] + " ]");
+            jdk++;
+        }
 
         Map<Integer, Map<String, Double>> q7= q.querie7( filiais);
         for(Map.Entry<Integer, Map<String, Double>> e : q7.entrySet()) {
@@ -79,15 +84,16 @@ public class Main
             }
         }
 
-        Map<String, Integer> q8= q.querie8( filiais,5);
-        for(Map.Entry<String, Integer> e : q8.entrySet())
-            System.out.println(e.getKey() + " -> [" + e.getValue() + "]");
-*/
-      /*  Map<String, Double> q9= q.querie9( filiais,"XA1231");
-        for(Map.Entry<String, Double> e : q9.entrySet())
+        TreeSet<Map.Entry<String, Integer>> q8 = Controlador.querie8( filiais, 5);
+        for(Map.Entry<String, Integer> e : q8 )
+            System.out.println(e.getKey() + " -> " + e.getValue());
+
+
+       TreeSet<Map.Entry<String,Double>> q9= Controlador.querie9( filiais,"XA1231");
+        for(Map.Entry<String, Double> e : q9)
             System.out.println(e.getKey() + " -> [" + e.getValue() + "]");
 
-        Map<Integer,Map<Integer,Map<String,Double>>> q10= q.querie10( faturacao);
+        Map<Integer,Map<Integer,Map<String,Double>>> q10= Controlador.querie10( faturacao);
         for( Map.Entry<Integer,Map<Integer,Map<String,Double>>> m : q10.entrySet()) {
             System.out.println("Mes" + m.getKey());
             for (Map.Entry<Integer, Map<String, Double>> fil : m.getValue().entrySet()){
