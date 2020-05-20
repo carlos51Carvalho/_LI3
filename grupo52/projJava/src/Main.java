@@ -13,7 +13,7 @@ public class Main
         InterfaceProdutos produtos = new Produtos3();
         Faturacao faturacao = new Faturacao();
         Filiais filiais = new Filiais();
-        Queries q = new Queries();
+        //Controlador q = new Controlador();
         Vendas v = new Vendas();
         int c = clientes.ler_clientes("Dados_Iniciais/Clientes.txt");
         int p = produtos.ler_produtos("Dados_Iniciais/Produtos.txt");
@@ -70,7 +70,7 @@ public class Main
         Map<Integer, double[]> q3= q.querie3( filiais,"A1231");
         for(Map.Entry<Integer, double[]> e : q3.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
-*/
+
         Map<Integer, double[]> q4= q.querie4( filiais,"XA1231");
         for(Map.Entry<Integer, double[]> e : q4.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
@@ -98,7 +98,7 @@ public class Main
       /*  Map<String, Double> q9= q.querie9( filiais,"XA1231");
         for(Map.Entry<String, Double> e : q9.entrySet())
             System.out.println(e.getKey() + " -> [" + e.getValue() + "]");
-*/
+
         Map<Integer,Map<Integer,Map<String,Double>>> q10= q.querie10( faturacao);
         for( Map.Entry<Integer,Map<Integer,Map<String,Double>>> m : q10.entrySet()) {
             System.out.println("Mes" + m.getKey());
@@ -107,10 +107,14 @@ public class Main
                     System.out.println("Filial" + fil.getKey() + " -> [" + prod.getKey() + "|" + prod.getValue() + "]");
                 }
             }
+
         }
+
+       */
     }
 
 }
+
 
 
 

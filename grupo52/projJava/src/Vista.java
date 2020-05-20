@@ -2,6 +2,21 @@ import java.util.Map;
 
 public class Vista {
 
+    //public Vista(){
+
+
+    public void printmenu(){
+        System.out.println("1-Querie1");
+        System.out.println("2-Querie2");
+        System.out.println("3-Querie3");
+        System.out.println("4-Querie4");
+        System.out.println("5-Querie5");
+        System.out.println("6-Querie6");
+        System.out.println("7-Querie7");
+        System.out.println("8-Querie8");
+        System.out.println("9-Querie9");
+        System.out.println("10-Querie10");
+    }
     // ===================================== QUERIES ESTATISTICAS 1.1 ================================================
 
 

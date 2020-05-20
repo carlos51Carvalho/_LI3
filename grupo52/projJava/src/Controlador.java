@@ -1,7 +1,36 @@
 import java.util.*;
 
-public class Queries {
+public class Controlador {
 
+    private InterfaceClientes cl;
+    private InterfaceProdutos pr;
+    private InterfaceFaturacao fat;
+    private InterfaceFiliais fil;
+    private Vista v;
+    private Input i;
+
+
+    public Controlador(InterfaceClientes cl, InterfaceProdutos pr, InterfaceFaturacao fat, InterfaceFiliais fil, Vista v, Input i){
+        this.cl = cl;
+        this.pr = pr;
+        this.fat = fat;
+        this.fil = fil;
+        this.v = v;
+        this.i = i;
+    }
+    public void run(){
+        int op = 1;
+        do{//chamar menu da view
+            this.v.printmenu();
+
+            //chamar do input
+            op = this.i.lerInt();
+            //switch
+
+            //processar no controlador
+            } while( op!=0);
+
+    }
 
     public static boolean validaNum(String p) {
         boolean r = true;
