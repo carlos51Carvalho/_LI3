@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Controlador {
 
@@ -240,10 +241,10 @@ public class Controlador {
 
 
     //querie 5
-    public static Map<String,Integer> querie5(String c, Filiais f)  {
+    public static TreeSet<Map.Entry<String, Integer>> querie5(String c, Filiais f)  {
         Crono.start();
         //Comparator<Map.Entry<String,Integer>> cp = new ComparatorQ5();
-        Map<String, Integer> q5 = new TreeMap<String, Integer>();
+        Map<String, Integer> q5 = new TreeMap<>();
 
         int kc = hashCL(c);
         int ip = f.pBinaria(c, kc);
@@ -256,9 +257,11 @@ public class Controlador {
         }
         //ordenar!
 
+        TreeSet<Map.Entry<String, Integer>> res =  new TreeSet<>(new ComparatorQ5());
+        res.addAll(q5.entrySet());
 
         System.out.println( Crono.getTImeString());
-        return q5;
+        return res;
     }
 
 
@@ -347,5 +350,11 @@ public class Controlador {
         return res;
 
     }
+
+
+
+    // Gravar para ficheiro
+
+
 
 }

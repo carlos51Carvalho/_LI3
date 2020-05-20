@@ -62,11 +62,11 @@ public class Main
         Map<Integer, double[]> q4= q.querie4( filiais,"XA1231");
         for(Map.Entry<Integer, double[]> e : q4.entrySet())
             System.out.println(e.getKey() + "[" + e.getValue()[0]+" , "+e.getValue()[1] +" , "+e.getValue()[2]+"]");
-
-       /* Map<String, Integer> q5 = q.querie5("A1231", filiais);
-        for(Map.Entry<String, Integer> e : q5.entrySet())
+*/
+        TreeSet<Map.Entry<String, Integer>> q5 = Controlador.querie5("A1231", filiais);
+        for(Map.Entry<String, Integer> e : q5 )
             System.out.println(e.getKey() + " -> " + e.getValue());
-
+    /*
         Map<String, int[]> q6= q.querie6( 5,filiais);
         for(Map.Entry<String, int[]> e : q6.entrySet())
             System.out.println(e.getKey() + "[ " + e.getValue()[0] + " , "+e.getValue()[1] + " ]");
