@@ -106,6 +106,7 @@ public class Clientes3 implements InterfaceClientes
     }
 
     public int ler_clientes(String filepath) throws Exception{
+        Crono.start();
         String st;
         int i=0;
         File file= new File(filepath);
@@ -116,6 +117,8 @@ public class Clientes3 implements InterfaceClientes
                 i++;
             }
         }
+        System.out.println("Clientes Lidos em:");
+        System.out.println(Crono.getTImeString());
         return i;
     }
     

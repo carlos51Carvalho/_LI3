@@ -47,6 +47,7 @@ public class Vendas {
 
     public static int ler_vendas(Faturacao fat,Filiais fil,TreeSet<String> c, TreeSet<String> p,String filepath) throws Exception
     {
+        Crono.start();
     int i = 0;
     int t = 0;
     int zero = 0;
@@ -75,20 +76,20 @@ public class Vendas {
                 if(pt.contains(st[0])) pt.remove(st[0]);
                 if(ct.contains(st[4])) ct.remove(st[4]);
 
+                ft += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
 
                 // querie 1.2.1
                 res[Integer.parseInt(st[5])-1]++;
 
                 //querie 1.2.2
-                key = Integer.parseInt(st[5]);
-                if (!res2.containsKey(key)){
-                    res2.put(key,new Double[4]);
-                }
-                res2.get(key) [Integer.parseInt(st[6])] += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
+//                key = Integer.parseInt(st[5]);
+//                if (!res2.containsKey(key)){
+//                    res2.put(key,new Double[4]); }
+//
+//                res2.get(key) [Integer.parseInt(st[6])] += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
+//
 
 
-
-                ft += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
             }
         }
         String[] parsepath = filepath.split("/");
@@ -105,12 +106,14 @@ public class Vendas {
         fattotal = ft;
 
         // querie 1.2.2 inicialização da faturaçao global
-        if (!res2.containsKey(0)){
-            res2.put(0,new Double[4] );
-            //res2.get(0)[0] =fattotal;
-        }else{
-            res2.get(0)[0] += fattotal;
-        }
+//        if (!res2.containsKey(0)){
+//            res2.put(0,new Double[4] );
+//            //res2.get(0)[0] =fattotal;
+//        }
+//        //else{
+//            res2.get(0)[0] += fattotal;
+        //}
+
         // querie 1.2.3
         numeroClientesByFil(fil);
 /*
@@ -139,10 +142,9 @@ public class Vendas {
             for (int h= 1; h<13; h++)
                 System.out.println(r.getValue()[h]);
         }
-
- */
-
+*/
     System.out.println("Vendas lidas Lidos \n");
+     System.out.println(Crono.getTImeString());
     return i;
 
     }

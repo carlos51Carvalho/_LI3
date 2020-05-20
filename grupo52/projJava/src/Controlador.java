@@ -140,6 +140,8 @@ public class Controlador {
 
 
     public static List<String> querie1(Faturacao fat){
+        Crono.start();
+
         int total =0;
         List<String> res = new ArrayList<>();
         for (int i = 0; i<26 ; i++){
@@ -149,6 +151,7 @@ public class Controlador {
                     total++;
                 }
         }
+        Crono.getTImeString();
         return res;
     }
 
@@ -164,7 +167,7 @@ public class Controlador {
 //        int c2 =0;
 //        int c3 =0;
 //        int ct =0; // sem olhar a filiais
-
+        Crono.start();
         Map<Integer,int[]> res = new TreeMap<>();
         if (mesvalido(mes)) {
             res=fil.getVendasTotaisFiliaisPorMes(mes,res);
@@ -197,6 +200,7 @@ public class Controlador {
 //
 //        }
 //        total = v1+v2+v3;
+        System.out.println(Crono.getTImeString());
         return res;
     }
 
@@ -205,6 +209,7 @@ public class Controlador {
 // querie 3
 
     public static Map<Integer,double[]> querie3(Filiais fil, String cliente){
+        Crono.start();
         Map<Integer,double[]> res = null;
 
         int kc = hashCL(cliente);
@@ -215,7 +220,7 @@ public class Controlador {
                 res = fil.getQuerie3(kc,ip);
             }
         }
-
+        System.out.println( Crono.getTImeString());
         return res;
     }
 
@@ -223,10 +228,12 @@ public class Controlador {
     // querie 4
 
     public static Map<Integer,double[]> querie4(Filiais fil, String prod){
+        Crono.start();
         Map<Integer,double[]> res = null;
 
         if(validaProduto(prod)) res = fil.getQuerie4(prod);
 
+        System.out.println( Crono.getTImeString());
         return res;
 
     }
@@ -234,7 +241,7 @@ public class Controlador {
 
     //querie 5
     public static Map<String,Integer> querie5(String c, Filiais f)  {
-
+        Crono.start();
         //Comparator<Map.Entry<String,Integer>> cp = new ComparatorQ5();
         Map<String, Integer> q5 = new TreeMap<String, Integer>();
 
@@ -250,6 +257,7 @@ public class Controlador {
         //ordenar!
 
 
+        System.out.println( Crono.getTImeString());
         return q5;
     }
 
@@ -261,7 +269,7 @@ public class Controlador {
     //int[0] nquantidade vendida;
     //int[1] n clientes;
     public static Map<String, int[]> querie6(int limite, Filiais fil){
-
+        Crono.start();
         Map<String,int[]> res = null;
 
         if(limite >0){
@@ -273,6 +281,8 @@ public class Controlador {
 
         //?????????
 
+
+        System.out.println( Crono.getTImeString());
         return res;
     }
 
@@ -280,10 +290,11 @@ public class Controlador {
 
     //querie 7
     public static Map<Integer, Map<String,Double>> querie7(Filiais f){
-
+        Crono.start();
         Map<Integer, Map<String, Double>> res = null;
         res = f.getQuerie7();
 
+        System.out.println( Crono.getTImeString());
         return res;
     }
 
@@ -291,6 +302,7 @@ public class Controlador {
 
     // querie 8
     public static Map<String, Integer> querie8(Filiais f, int limite){
+        Crono.start();
         Map<String, Integer> res = null;
 
         if(limite >0) {
@@ -299,16 +311,21 @@ public class Controlador {
 
         //Ordenar e limitar
 
+
+        System.out.println( Crono.getTImeString());
         return res;
     }
 
     // querie 9
 
     public static Map<String,Double> querie9(Filiais fil, String prod){
+        Crono.start();
         Map<String,Double> res = null;
 
         if(validaProduto(prod)) res = fil.getQuerie9(prod);
 
+
+        System.out.println( Crono.getTImeString());
         return res;
 
     }
@@ -325,6 +342,8 @@ public class Controlador {
 
         fat.getFatPorMesEFil(res);
 
+
+        System.out.println( Crono.getTImeString());
         return res;
 
     }

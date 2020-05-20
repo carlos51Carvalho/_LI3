@@ -14,26 +14,14 @@ public class Main
         Faturacao faturacao = new Faturacao();
         Filiais filiais = new Filiais();
         //Controlador q = new Controlador();
-        Vendas v = new Vendas();
-        int c = clientes.ler_clientes("Dados_Iniciais/Clientes.txt");
-        int p = produtos.ler_produtos("Dados_Iniciais/Produtos.txt");
+        System.out.println("-> " + clientes.ler_clientes("Dados_Iniciais/Clientes.txt") + "\n");
+        System.out.println("-> " +produtos.ler_produtos("Dados_Iniciais/Produtos.txt")+ "\n");
 
         faturacao.addProds(produtos.getSetDeProdutos());
-
-        System.out.println("\n" + c);
-        System.out.println("\n" + p);
-        for (int j = 0; j < 26; j++)
-            f = f + faturacao.getArr(j).size();
-
         filiais.addCls(clientes.getSetDeClientes());
 
-        for(int j =0 ; j<26;j++)
-            fi += filiais.getArr(j).size();
+        System.out.println("-> " + Vendas.ler_vendas(faturacao,filiais,clientes.getSetDeClientes(),produtos.getSetDeProdutos(), "Dados_Iniciais/Vendas_1M.txt"));
 
-        System.out.println("\n"+ f+ "\n");
-        System.out.println("\n" + fi +"\n");
-        int vend = v.ler_vendas(faturacao,filiais,clientes.getSetDeClientes(),produtos.getSetDeProdutos(), "Dados_Iniciais/Vendas_1M.txt");
-        System.out.println(vend+ "\n");
 
         /*for (Object s: produtos.prodStartedByLetter('Z'))
             System.out.println(s +"\n");
