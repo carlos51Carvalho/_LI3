@@ -16,10 +16,12 @@
  */
 import static java.lang.System.out;
 import static java.lang.System.in;
+
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
-public class Input {
+public class Input implements Serializable {
 
     /**
      * Métodos de Classe

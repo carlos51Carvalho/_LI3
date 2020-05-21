@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.*;
 
 
-public class MesFil {
+public class MesFil implements Serializable {
     private boolean used;
     private int nVendas;
     private Map<String,PrdFil> prs;

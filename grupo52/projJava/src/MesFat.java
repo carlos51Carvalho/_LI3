@@ -1,4 +1,6 @@
-public class MesFat {
+import java.io.Serializable;
+
+public class MesFat implements Serializable {
     private double fN;
     private double fP;
     private int vN;
