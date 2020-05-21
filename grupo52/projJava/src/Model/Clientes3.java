@@ -1,10 +1,7 @@
 package Model;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
 
 public class Clientes3 implements InterfaceClientes, Serializable
 {
@@ -106,7 +103,7 @@ public class Clientes3 implements InterfaceClientes, Serializable
         return res;
     }
 
-    public int ler_clientes(String filepath) throws Exception{
+    public int ler_clientes(String filepath) throws IOException {
         Crono.start();
         String st;
         int i=0;

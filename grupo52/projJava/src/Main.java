@@ -10,15 +10,21 @@ public class Main
         InterfaceProdutos produtos = new Produtos3();
         InterfaceFaturacao faturacao = new Faturacao();
         InterfaceFiliais filiais = new Filiais();
+        Vista v = new Vista();
+        Input i = new Input();
+        Vendas vend = new Vendas();
         //Controlador q = new Controlador();
-        System.out.println("-> " + clientes.ler_clientes("Dados_Iniciais/Clientes.txt") + "\n");
-        System.out.println("-> " +produtos.ler_produtos("Dados_Iniciais/Produtos.txt")+ "\n");
+        //System.out.println("-> " + clientes.ler_clientes("Dados_Iniciais/Clientes.txt") + "\n");
+        //System.out.println("-> " +produtos.ler_produtos("Dados_Iniciais/Produtos.txt")+ "\n");
 
         faturacao.addProds(produtos.getSetDeProdutos());
         filiais.addCls(clientes.getSetDeClientes());
 
-        System.out.println("-> " + Vendas.ler_vendas(faturacao,filiais,clientes.getSetDeClientes(),produtos.getSetDeProdutos(), "Dados_Iniciais/Vendas_1M.txt"));
+        System.out.println("-> " + vend.ler_vendas(faturacao,filiais,clientes.getSetDeClientes(),produtos.getSetDeProdutos(), "Dados_Iniciais/Vendas_1M.txt"));
 
+
+        Controlador c = new Controlador(clientes,produtos,faturacao,filiais,v,i);
+        c.run();
 
 
 
@@ -114,6 +120,8 @@ public class Main
         }
 
  */
+
+
 
 
     }

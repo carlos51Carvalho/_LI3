@@ -7,11 +7,8 @@ package Model;
  * @version (a version number or a date)
  */
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
 
 public class Produtos3 implements InterfaceProdutos, Serializable
 {
@@ -109,7 +106,7 @@ public class Produtos3 implements InterfaceProdutos, Serializable
         }
     }
     
-    public int ler_produtos(String filepath) throws Exception{
+    public int ler_produtos(String filepath) throws IOException {
         Crono.start();
         File file2= new File(filepath);
         BufferedReader br2 = new BufferedReader(new FileReader(file2));
