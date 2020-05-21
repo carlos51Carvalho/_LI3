@@ -1,8 +1,9 @@
+import Model.*;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -19,7 +20,7 @@ public class Vendas {
     private static int tvendaszero;
     private static double fattotal;
     private static  int[] res = new int[12];
-    private static Map<Integer,Double[] > res2 = new TreeMap<>();
+    private static Map<Integer,double[] > res2 = new TreeMap<>();
     private static Map<Integer, int[]> res3 = new TreeMap<>();
 
 
@@ -45,7 +46,7 @@ public class Vendas {
     }
 
 
-    public static int ler_vendas(Faturacao fat,Filiais fil,TreeSet<String> c, TreeSet<String> p,String filepath) throws Exception
+    public static int ler_vendas(InterfaceFaturacao fat, InterfaceFiliais fil, TreeSet<String> c, TreeSet<String> p, String filepath) throws Exception
     {
         Crono.start();
     int i = 0;
@@ -73,8 +74,8 @@ public class Vendas {
                 int pk = hashp(st[0]);
                 int ck = hashc(st[0]);
                 if(Double.parseDouble(st[1]) == 0.0) zero++;
-                if(pt.contains(st[0])) pt.remove(st[0]);
-                if(ct.contains(st[4])) ct.remove(st[4]);
+                pt.remove(st[0]);
+                ct.remove(st[4]);
 
                 ft += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
 
@@ -82,12 +83,12 @@ public class Vendas {
                 res[Integer.parseInt(st[5])-1]++;
 
                 //querie 1.2.2
-//                key = Integer.parseInt(st[5]);
-//                if (!res2.containsKey(key)){
-//                    res2.put(key,new Double[4]); }
-//
-//                res2.get(key) [Integer.parseInt(st[6])] += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
-//
+                key = Integer.parseInt(st[5]);
+                if (!res2.containsKey(key)){
+                    res2.put(key,new double[4]); }
+
+                res2.get(key) [Integer.parseInt(st[6])] += Double.parseDouble(st[1]) * Integer.parseInt(st[2]);
+
 
 
             }
@@ -106,13 +107,13 @@ public class Vendas {
         fattotal = ft;
 
         // querie 1.2.2 inicialização da faturaçao global
-//        if (!res2.containsKey(0)){
-//            res2.put(0,new Double[4] );
-//            //res2.get(0)[0] =fattotal;
-//        }
-//        //else{
-//            res2.get(0)[0] += fattotal;
-        //}
+        if (!res2.containsKey(0)){
+            //double[] a = new Double[4];
+            res2.put(0, new double[4] );
+            //res2.get(0)[0] =fattotal;
+        }
+        res2.get(0)[0] += fattotal;
+
 
         // querie 1.2.3
         numeroClientesByFil(fil);
@@ -132,10 +133,17 @@ public class Vendas {
         for (int k = 0; k<12; k++){
             System.out.println(res[k]);
         }
+
         // querie 1.2.2
-        for (Double dp : res2.values()){
-            System.out.println(dp);
+        for(Map.Entry<Integer,double[]> e: res2.entrySet()) {
+            System.out.println("Mes " + e.getKey() + ": ");
+            for (int g = 0; g < 4; g++) {
+                System.out.println("Fat" + g + ": " + e.getValue()[g]);
+            }
         }
+
+ */
+            /*
         // querie 1.2.3
         for (Map.Entry<Integer,int[]> r : res3.entrySet()) {
             System.out.println(r.getKey());
@@ -152,7 +160,7 @@ public class Vendas {
 
 
 
-      public static void numeroClientesByFil(Filiais fil) {
+      public static void numeroClientesByFil(InterfaceFiliais fil) {
             res3 = fil.getUsedFilialMes(res3);
       }
 

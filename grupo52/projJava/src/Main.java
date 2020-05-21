@@ -1,8 +1,4 @@
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
+import Model.*;
 
 public class Main
 {
@@ -12,8 +8,8 @@ public class Main
         int fi = 0;
         InterfaceClientes clientes = new Clientes3();
         InterfaceProdutos produtos = new Produtos3();
-        Faturacao faturacao = new Faturacao();
-        Filiais filiais = new Filiais();
+        InterfaceFaturacao faturacao = new Faturacao();
+        InterfaceFiliais filiais = new Filiais();
         //Controlador q = new Controlador();
         System.out.println("-> " + clientes.ler_clientes("Dados_Iniciais/Clientes.txt") + "\n");
         System.out.println("-> " +produtos.ler_produtos("Dados_Iniciais/Produtos.txt")+ "\n");
@@ -36,20 +32,13 @@ public class Main
         System.out.println(filiais.naocompram());
         System.out.println(filiais.numeroComparadores());
 */
-        //System.out.println(q.querie1(faturacao));
-
+//        System.out.println(Controlador.querie1(faturacao));
+//        System.out.println(Controlador.querie1(faturacao).size());
 
 //        int[] r = q.numeroCompPMes(filiais);
 //        for (int i=0; i<12 ; i++){
 //            System.out.println(r[i]);
 //        }
-
-        //q.querie3(filiais, "A1231");
-
-        //System.out.println(q.querie3(filiais, "A1231"));
-
-
-
 
        /* Map<Integer, int[]> q2= q.querie2( filiais,1);
         for(Map.Entry<Integer, int[]> e : q2.entrySet())
@@ -123,6 +112,7 @@ public class Main
         }
 
  */
+
 
     }
 

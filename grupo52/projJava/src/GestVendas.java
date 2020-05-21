@@ -1,3 +1,5 @@
+import Model.*;
+
 public class GestVendas {
     //init modelo
     InterfaceClientes cl = new Clientes3();

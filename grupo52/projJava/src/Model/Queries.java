@@ -1,42 +1,14 @@
-import Model.*;
+package Model;
+
 
 import java.io.*;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
-public class Controlador {
+public class Queries {
 
-    private InterfaceClientes cl;
-    private InterfaceProdutos pr;
-    private InterfaceFaturacao fat;
-    private InterfaceFiliais fil;
-    private Vista v;
-    private Input i;
-
-
-    public Controlador(InterfaceClientes cl, InterfaceProdutos pr, InterfaceFaturacao fat, InterfaceFiliais fil, Vista v, Input i){
-        this.cl = cl;
-        this.pr = pr;
-        this.fat = fat;
-        this.fil = fil;
-        this.v = v;
-        this.i = i;
-
-    }
-    
-    
-    public void run(){
-        int op = 1;
-        do{//chamar menu da view
-            this.v.printmenu();
-
-            //chamar do input
-            op = this.i.lerInt();
-            //switch
-
-            //processar no controlador
-            } while( op!=0);
-
-    }
 
     public static boolean validaNum(String p) {
         boolean r = true;
@@ -355,7 +327,7 @@ public class Controlador {
     }
 
 
-
+/*
     // Gravar para ficheiro
 
     public void gravarObj(String filename) throws IOException {
@@ -374,7 +346,8 @@ public class Controlador {
         o.close();
         return c;
     }
-
+*/
 
 
 }
+
