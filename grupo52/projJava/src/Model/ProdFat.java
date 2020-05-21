@@ -1,11 +1,15 @@
+
 package Model;
 
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 
-public class ProdFat {
+public class ProdFat implements Serializable {
+
     private String prod;
     private boolean used;
     private Map<Integer, FilFat> fil;

@@ -3,11 +3,12 @@ import Model.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class Vendas {
+public class Vendas implements Serializable {
 
     private static String nome;
     private static int errados;

@@ -20,6 +20,8 @@ public class Main
         System.out.println("-> " + Vendas.ler_vendas(faturacao,filiais,clientes.getSetDeClientes(),produtos.getSetDeProdutos(), "Dados_Iniciais/Vendas_1M.txt"));
 
 
+
+
         /*for (Object s: produtos.prodStartedByLetter('Z'))
             System.out.println(s +"\n");
         */

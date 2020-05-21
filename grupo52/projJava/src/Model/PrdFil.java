@@ -1,7 +1,10 @@
+
 package Model;
 
+import java.io.Serializable;
+import java.util.Objects;
 
-public class PrdFil {
+public class PrdFil implements Serializable {
     private String prd;
     private int qN;
     private int qP;

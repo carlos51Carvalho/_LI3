@@ -1,4 +1,7 @@
+
 package Model;
+
+import java.io.Serializable;
 
 /**
  * Write a description of class Model.Cliente here.
@@ -6,7 +9,7 @@ package Model;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Cliente
+public class Cliente implements Serializable
 {
     private String cliente;
 

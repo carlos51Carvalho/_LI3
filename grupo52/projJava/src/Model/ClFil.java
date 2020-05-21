@@ -1,8 +1,10 @@
+
 package Model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class ClFil {
+public class ClFil implements Serializable {
     private String cl;
     private boolean used;
     private Map<Integer, FilFil> fil;

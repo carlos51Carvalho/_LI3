@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Map;
 
-public class Vista {
+public class Vista implements Serializable {
 
     //public Vista(){
 

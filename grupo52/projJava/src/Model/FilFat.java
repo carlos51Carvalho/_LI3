@@ -1,9 +1,11 @@
+
 package Model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FilFat {
+public class FilFat implements Serializable {
     private int used;
     private Map<Integer, MesFat> filial;
 
