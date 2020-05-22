@@ -32,7 +32,7 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
     }
 
 
-
+/*
     public static int pBinaria(String p, List<ProdFat> f){
         int r = -1;
         int meio;
@@ -51,10 +51,29 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
     return r;
 
 }
+*/
+    public int pBinaria(String p, int k){
+        List<ProdFat> f = faturacoes.get(k);
+        int r = -1;
+        int meio;
+        int inicio = 0;
+        int fim = f.size()-1;
+        while (inicio <= fim && r==-1) {
+            meio = (inicio + fim)/2;
+            if (p.compareTo(f.get(meio).getProd()) == 0) {
+                r = meio;
+            }
+            if (p.compareTo(f.get(meio).getProd()) < 0)
+                fim = meio - 1;
+            else
+                inicio = meio + 1;
+        }
+        return r;
+    }
 
     public void acrescentaFat(String[] p) {
 
-        int ip = pBinaria(p[0],faturacoes.get(hashProd(p[0])));
+        int ip = pBinaria(p[0],hashProd(p[0]));
         if (ip >= 0) {
             this.faturacoes.get(hashProd(p[0])).get(ip).setUsed(true);
             double pr = Double.parseDouble(p[1]);

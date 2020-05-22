@@ -27,6 +27,8 @@ public class Controlador {
     
     public void run() throws Exception {
         int op = 1;
+        boolean load = false;
+        int value;
         v.printHeader();
         do{//chamar menu da view
             this.v.printmenu();
@@ -37,54 +39,12 @@ public class Controlador {
             //switch
 
             //processar no controlador
-            executeChoice(op);
-
-            } while( op!=0);
-
-    }
-
-
-    public void executeChoice(int op) throws Exception {
-        int limite;
-        String fc,fp,fv;
-        String cl;
-        String pr;
-        boolean load = false;
-        boolean opl = true;
-        int opleit;
-
-        switch (op){
+            switch (op){
             case 0:
                  v.printExit();
             case 1:
-                while (opl) {
-                    v.printOpLeitura();
-                    opleit = this.i.lerInt();
-                    //falta o load de um binário
-                    if (opleit == 1) {
-                        opl = false;
-                        leituras("Dados_Iniciais/Clientes.txt","Dados_Iniciais/Produtos.txt","Dados_Iniciais/Vendas_1M.txt");
-                        load =true;
-                    } else if (opleit == 2) {
-
-                        try {
-                            opl = false;
-                            v.fileNameC();
-                            fc = this.i.lerString();
-                            v.fileNameP();
-                            fp = this.i.lerString();
-                            v.fileNameV();
-                            fv = this.i.lerString();
-                            leituras(fc,fp,fv);
-                            load =true;
-                        }catch (IOException e){
-                            v.printErrorFIle(e.getMessage());
-                        }
-                    } else {
-                        v.printError();
-                        opleit = this.i.lerInt();
-                    }
-                }
+                load = case1();
+                break;
             case 2:
                 if (load) {
                     v.queriesEstatisticas(vendas.getNome(),vendas.getErrados(),vendas.getTprod(),vendas.getDprod(),vendas.getPnc(),
@@ -92,6 +52,7 @@ public class Controlador {
                     v.printDone();
                 }
                 else v.printNotLoad();
+                break;
 
             case 3:
                 if (load){
@@ -99,6 +60,7 @@ public class Controlador {
                     v.printDone();
                 }
                 else v.printNotLoad();
+                break;
 
             case 4:
                 if (load) {
@@ -106,20 +68,53 @@ public class Controlador {
                     v.printDone();
                 }
                 else v.printNotLoad();
+                break;
             case 5:
                 if (load) {
                     v.querie_2_3(vendas.getRes3());
                     v.printDone();
                 }
                 else v.printNotLoad();
+                break;
             case 6:
+                if (load) {
+                    v.querie1(Queries.querie1(fat));
+                    v.printDone();
+                }
+                else v.printNotLoad();
+                break;
+
+            case 7:
+                case7(load);
+                break;
+
+            case 8:
+                case8(load);
+                break;
+            case 9:
+                case9(load);
+                break;
+            case 10:
+                case10(load);
+                break;
+            case 11:
+                case11(load);
+                break;
+
+            //default:
+            //    v.printError();
 
         }
+
+            } while( op!=0);
+
     }
 
 
+
+
     public void leituras(String fc, String fp, String fv) throws Exception {
-        Crono.start();
+        //Crono.start();
         clientes.ler_clientes(fc);
         produtos.ler_produtos(fp);
         fat.addProds(produtos.getSetDeProdutos());
@@ -127,7 +122,160 @@ public class Controlador {
         vendas.ler_vendas(fat, fil, clientes.getSetDeClientes(), produtos.getSetDeProdutos(), fv);
         v.printFilePaths(fc, fp, fv);
         v.printDone();
-        System.out.println(Crono.getTImeString());
+        //System.out.println(Crono.getTImeString());
     }
+
+
+    public boolean case1() throws Exception {
+        String fc,fp,fv;
+        boolean load = false;
+        boolean opl = true;
+        int opleit;
+
+        while (opl) {
+            v.printOpLeitura();
+            opleit = this.i.lerInt();
+            //falta o load de um binário
+            if (opleit == 1) {
+                opl = false;
+                try {
+                    leituras("Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt");
+                    load = true;
+                }
+                catch (IOException e){
+                    v.printErrorFIle(e.getMessage());
+                }
+            } else if (opleit == 2) {
+                try {
+                    opl = false;
+                    v.fileNameC();
+                    fc = this.i.lerString();
+                    v.fileNameP();
+                    fp = this.i.lerString();
+                    v.fileNameV();
+                    fv = this.i.lerString();
+                    leituras(fc, fp, fv);
+                    load = true;
+                } catch (IOException e) {
+                    v.printErrorFIle(e.getMessage());
+                }
+            } else {
+                v.printError();
+                opleit = this.i.lerInt();
+            }
+        }
+        return load;
+    }
+
+
+    public int case7(boolean load) throws ValorInvalidoException {
+        int mes;
+        boolean valid = true;
+
+        if (load) {
+            while (valid) {
+                v.printMes();
+                mes = this.i.lerInt();
+                try {
+                    v.querie2(Queries.querie2(fil, mes), mes);
+                    valid = false;
+                    v.printDone();
+                }catch (ValorInvalidoException e){
+                    v.printErrorMes();
+                }
+            }
+        } else v.printNotLoad();
+
+        return 0;
+    }
+
+    public void case8(boolean load) throws ValorInvalidoException {
+        String c;
+        boolean valid = true;
+
+        if (load) {
+            while (valid) {
+                v.printCliente();
+                c = this.i.lerString();
+                try {
+                    v.querie3(Queries.querie3(fil, c), c);
+                    valid = false;
+                    v.printDone();
+                }catch (ValorInvalidoException e){
+                    v.printErrorCliente();
+                }
+            }
+        } else v.printNotLoad();
+
+    }
+
+    public void case9(boolean load) throws ValorInvalidoException {
+        String p;
+        boolean valid = true;
+
+        if (load) {
+            while (valid) {
+                v.printProduto();
+                p = this.i.lerString();
+                try {
+                    v.querie4(Queries.querie4(fil, fat,p), p);
+                    valid = false;
+                    v.printDone();
+                }catch (ValorInvalidoException e){
+                    v.printErrorProduto();
+                }
+            }
+        } else v.printNotLoad();
+    }
+
+    public void case10(boolean load) throws ValorInvalidoException {
+        String c;
+        boolean valid = true;
+
+        if (load) {
+            while (valid) {
+                v.printCliente();
+                c = this.i.lerString();
+                try {
+                    v.querie5(Queries.querie5(c,fil), c);
+                    valid = false;
+                    v.printDone();
+                }catch (ValorInvalidoException e){
+                    v.printErrorCliente();
+                }
+            }
+        } else v.printNotLoad();
+
+    }
+
+
+    public void case11(boolean load) throws ValorInvalidoException {
+        int limite;
+        boolean valid = true;
+
+        if (load) {
+            while (valid) {
+                v.printLimite();
+                limite = this.i.lerInt();
+                try {
+                    v.querie6(Queries.querie6(limite,fil), limite);
+                    valid = false;
+                    v.printDone();
+                }catch (ValorInvalidoException e){
+                    v.printErrorLimite();
+                }
+            }
+        } else v.printNotLoad();
+
+    }
+
+
+
+
+
+
+
+
+
 
 }

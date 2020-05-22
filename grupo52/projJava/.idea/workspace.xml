@@ -19,13 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Iniciado o controlador, mudanças em vendas criaçao do menu em Vista">
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Modulos de print em Vista.java correçoes de menu, impressão de queries estatisticas a funcionar, erro no executar do controler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Controlador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/FilFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/FilFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Vista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Vista.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/FilFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/FilFil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Faturacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Faturacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/InterfaceFaturacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/InterfaceFaturacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Queries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vista.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590095334895</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Modulos de print em Vista.java correçoes de menu, impressão de queries estatisticas a funcionar, erro no executar do controler">
+      <created>1590117368505</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590117368505</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +185,8 @@
     <MESSAGE value="Querie 6, 8, 9 ordenadas, falta definir os limites" />
     <MESSAGE value="Gravar e ler ficheiros inicializado mas ainda tem problemas, ATENÇÃO é preciso resolver a querie estatistica 1.2.2" />
     <MESSAGE value="Iniciado o controlador, mudanças em vendas criaçao do menu em Vista" />
-    <option name="LAST_COMMIT_MESSAGE" value="Iniciado o controlador, mudanças em vendas criaçao do menu em Vista" />
+    <MESSAGE value="Modulos de print em Vista.java correçoes de menu, impressão de queries estatisticas a funcionar, erro no executar do controler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modulos de print em Vista.java correçoes de menu, impressão de queries estatisticas a funcionar, erro no executar do controler" />
   </component>
   <component name="WindowStateProjectService">
     <state x="477" y="130" width="1024" height="845" key="#Project_Structure" timestamp="1589979419347">
@@ -199,26 +209,26 @@
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state x="777" y="310" width="424" height="484" key="FileChooserDialogImpl/69.27.1851.1053@69.27.1851.1053" timestamp="1590089724862" />
-    <state width="1805" height="350" key="GridCell.Tab.0.bottom" timestamp="1590116918379">
+    <state width="1805" height="283" key="GridCell.Tab.0.bottom" timestamp="1590171704361">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1807" height="207" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1589931081159" />
-    <state width="1805" height="350" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1590116918379" />
-    <state width="1805" height="350" key="GridCell.Tab.0.center" timestamp="1590116918379">
+    <state width="1805" height="283" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1590171704361" />
+    <state width="1805" height="283" key="GridCell.Tab.0.center" timestamp="1590171704361">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1807" height="207" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1589931081159" />
-    <state width="1805" height="350" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1590116918379" />
-    <state width="1805" height="350" key="GridCell.Tab.0.left" timestamp="1590116918378">
+    <state width="1805" height="283" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1590171704361" />
+    <state width="1805" height="283" key="GridCell.Tab.0.left" timestamp="1590171704361">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1807" height="207" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1589931081159" />
-    <state width="1805" height="350" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1590116918378" />
-    <state width="1805" height="350" key="GridCell.Tab.0.right" timestamp="1590116918379">
+    <state width="1805" height="283" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1590171704361" />
+    <state width="1805" height="283" key="GridCell.Tab.0.right" timestamp="1590171704361">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1807" height="207" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1589931081159" />
-    <state width="1805" height="350" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1590116918379" />
+    <state width="1805" height="283" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1590171704361" />
     <state width="1805" height="344" key="GridCell.Tab.1.bottom" timestamp="1590116698589">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>

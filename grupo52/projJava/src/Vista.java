@@ -1,5 +1,10 @@
+import Model.Queries;
+
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 
 public class Vista implements Serializable {
 
@@ -84,6 +89,38 @@ public class Vista implements Serializable {
         System.out.printf("FilePath Clientes lido: %s\nFilePath Produtos lido:%s\nFilePath Vendas lido:%s\n",fc,fp,fv );
     }
 
+    //====== Queries =======//
+
+    public void printMes(){
+        System.out.println("Insira um Més:" );
+    }
+
+    public void printErrorMes(){
+        System.out.println("Més inserido não válido. Por favor tente outra vez:");
+    }
+    public void printErrorCliente(){
+        System.out.println("Cliente inserido não válido ou não existente. Por favor tente outra vez:");
+    }
+
+    public void printCliente(){
+        System.out.println("Insira um Cliente:" );
+    }
+   public void printErrorProduto(){
+        System.out.println("Produto inserido não válido ou não existente. Por favor tente outra vez:");
+    }
+
+    public void printProduto(){
+        System.out.println("Insira um Produto:" );
+    }
+
+    public void printLimite(){
+        System.out.println("Insira um limite:");
+    }
+
+    public void printErrorLimite(){
+        System.out.println("O Limite que inseriu não é válido, POr favor tente outra vez:");
+    }
+
 
 
     // ===================================== QUERIES ESTATISTICAS 1.1 ================================================
@@ -143,6 +180,7 @@ public class Vista implements Serializable {
 
 
     public void querie_2_1(int[] a){
+        System.out.println("Número total de vendas mes a mes:\n");
         System.out.println("_______________________________");
         for (int i =1; i<13 ; i++){
             System.out.printf("|Mes %3d:___________ %d    |\n" ,i,a[i-1]);
@@ -151,6 +189,7 @@ public class Vista implements Serializable {
     }
 
     public void querie_2_2(Map<Integer,double[] > res2){
+        System.out.println("Faturação total mês a mẽs filial a filial:\n");
         System.out.printf("Global ->   %f\n\n", res2.get(0)[0]);
         System.out.printf("\n           Filial 1                Filial 2                Filial 3   \n");
         for(Map.Entry<Integer,double[]> e: res2.entrySet()){
@@ -161,6 +200,7 @@ public class Vista implements Serializable {
         }
 
     public void querie_2_3(Map<Integer,int[] > res3) {
+        System.out.println("Total de clientes que realizaram compras mẽs a mẽs filial a filial: \n");
         System.out.printf("\nMes:            1         2         3         4         5         6         7         8         9         10        11        12      \n");
         for (Map.Entry<Integer, int[]> e : res3.entrySet()) {
             if (e.getKey() != 0) {
@@ -175,6 +215,84 @@ public class Vista implements Serializable {
 
 
     //============================================Interativas ==========================================================
+
+
+
+
+    public void querie1(List<String> q1){
+        System.out.printf("O total de produtos nunca cmoprados é -> %d\n",q1.size());
+        System.out.println("A lista ordenada de produtos nunca comprados :");
+        for (String s : q1){
+            System.out.println(s);
+        }
+    }
+
+    public void querie2(Map<Integer,int[]> q2, int mes){
+        System.out.printf("Para o Més %d:\n\n", mes);
+        System.out.printf("O numero global de clientes diferentes que fizeram compras -> %d   \n", q2.get(0)[0]);
+        System.out.printf("O numero total de vendas diferentes efetuadas -> %d    \n", q2.get(0)[1]);
+        System.out.println("               nºclientes        nºvendas");
+        for (Map.Entry<Integer,int[]> e : q2.entrySet()){
+            if (e.getKey()!=0) System.out.printf("FILIAL %d:     %6d            %6d\n", e.getKey(),e.getValue()[0],e.getValue()[1]);
+        }
+    }
+
+
+
+    //int[0] nvendas
+    //int[1] n produtos diferentes
+    //int[2] faturado
+
+    public void querie3(Map<Integer,double[]> q3, String c){
+        System.out.println("Para o cliente:"+ c +"\n");
+        System.out.println("            nªvendas          nºprodutos        faturado");
+        for (Map.Entry<Integer,double[]> e : q3.entrySet()){
+            System.out.printf("Mes %2d:     %d                 %d                 %8f  \n", e.getKey(),(int)e.getValue()[0],(int) e.getValue()[1], e.getValue()[2]);
+        }
+    }
+
+    //quantidade
+    //n clientes
+    //gasto
+
+    public void querie4(Map<Integer,double[]> q4, String p){
+        System.out.println("Para o produto:"+ p +"\n");
+        System.out.println("              quant           nºclientes       gasto");
+        for (Map.Entry<Integer,double[]> e : q4.entrySet()){
+            System.out.printf("Mes %2d:     %5d          %5d               %6.6f  \n", e.getKey(),(int)e.getValue()[0], (int)e.getValue()[1], e.getValue()[2]);
+        }
+    }
+
+    public void querie5(TreeSet<Map.Entry<String,Integer>>q5, String c){
+        System.out.println("Para o cliente:"+ c +"\n");
+        System.out.println("Produto   ->  Quantidade");
+        for (Map.Entry<String,Integer> e : q5){
+            System.out.println(e.getKey()+"        " + e.getValue());
+        }
+    }
+
+
+    //corrigir
+    public void querie6(TreeSet<Map.Entry<String, int[]>> q6, int limite){
+        if (q6.size()<= limite){
+            System.out.println("O limite ultrapassa ou é igual ao tamanho da lista dos produtos");
+            System.out.println("Produto  ->  Quantidade      nºClientes");
+            for(Map.Entry<String,int[]> e: q6){
+                System.out.println(e.getKey()+"      "+ e.getValue()[0]+ "     " + e.getValue()[1]);
+            }
+        }
+        else{
+            int i =0;
+            Iterator<Map.Entry<String,int[]>> aux = q6.iterator();
+            System.out.println("Produto  ->  Quantidade      nºClientes");
+            while (aux.hasNext() && i<limite ){
+                //System.out.println(e.getKey()+"      "+ e.getValue()[0]+ "     " + e.getValue()[1]);
+                i++;
+                aux.next();
+            }
+        }
+    }
+
 
 
 

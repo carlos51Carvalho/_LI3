@@ -10,6 +10,7 @@ public interface InterfaceFaturacao {
     void addProds(Set<String> produtos);
     void acrescentaFat(String[] p);
     int numeroProdUsados();
+    int pBinaria(String p, int k);
     int numeroProdNuncaUsados();
     List<String> getQuerie1();
     void getFatPorMesEFil(Map<Integer,Map<Integer, Map<String,Double>>> res);

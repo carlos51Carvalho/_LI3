@@ -41,78 +41,6 @@ public class Queries {
 
 
 
-    // estaticas 1.2
-
-    // estatistica 1.2.1
-
-//    public int[] numeroCompPMes(Model.Filiais fil){
-//        int[] res = new int[12];
-//         for (int i = 0; i < 26; i++) {
-//             for (Model.ClFil c : fil.getArr(i)) {
-//                 for (int j = 1; j < 4; j++) {
-//                     for (int m = 1; m < 13; m++) {
-//                         res[m - 1] += c.getNVendasMes(j, m);
-//                     }
-//                 }
-//             }
-//         }
-//         return res;
-//    }
-
-
-    // estatistica 1.2.2
-/*
-    public Map<Integer, int[]> fatTotalMes(Model.Faturacao fat){
-        int[] mes = new int[12];
-
-        Map<Integer, int[]> res = new HashMap<>();
-        for (int k =1 ; k<4; k++ ){
-            res.put(k,mes);
-        }
-        for (int i = 0; i < 26; i++) {
-             for (Model.ProdFat p : fat.getArr(i)) {
-                 for (int j = 1; j < 4; j++) {
-                     for (int m = 1; m < 13; m++) {
-                         mes[m-1] += (p.getFatN(j,m) + p.getFatP(j,m));
-                     }
-            }
-        }
-    }
-
-
-
-*/
-
-    // estatistica 1.2.3
-/*
-    public static Map<Integer, int[]> numeroClientesByFil(Model.Filiais fil) {
-        Map<Integer, int[]> res1 = new TreeMap<>();
-//        int[] res = new int[3];
-//        for (int i = 1; i < 13; i++) {
-//            res1.put(i, res);
-//        }
-
-        for (int i = 0; i < 26; i++) {
-            for (Model.ClFil c : fil.getArr(i)) {
-                for (Model.FilFil f : c.getFil().values()) {
-                    if (f.getUsed() == 1) {
-                        for (Model.MesFil m : f.getFilF().values()) {
-                            int[] res = new int[3];
-                            if (m.isUsed()) {
-                                res[]
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return res1;
-    }
-
-
-*/
-
-
 
     //====================================== interativas ===========================================================
 
@@ -126,7 +54,8 @@ public class Queries {
 
 
 // querie 2
-
+    //int[0] nclientes
+    //int[1] nvendas
     public static Map<Integer,int[]> querie2(InterfaceFiliais fil, int mes) throws ValorInvalidoException{
 
         Crono.start();
@@ -134,6 +63,7 @@ public class Queries {
         if (mesvalido(mes)) {
             res=fil.getVendasTotaisFiliaisPorMes(mes,res);
         }
+        else throw new ValorInvalidoException("Mês não válido!");
 
         System.out.println(Crono.getTImeString());
         return res;
@@ -142,31 +72,40 @@ public class Queries {
 
 
 // querie 3
+    //int[0] nvendas
+    //int[1] n produtos diferentes
+    //int[2] faturado
 
-    public static Map<Integer,double[]> querie3(InterfaceFiliais fil, String cliente){
+
+    public static Map<Integer,double[]> querie3(InterfaceFiliais fil, String cliente) throws ValorInvalidoException {
         Crono.start();
         Map<Integer,double[]> res = null;
 
-        int kc = hashCL(cliente);
-        int ip = fil.pBinaria(cliente, kc);
-
         if(validaCliente(cliente)){
+            int kc = hashCL(cliente);
+            int ip = fil.pBinaria(cliente, kc);
+
             if(ip!=-1){
                 res = fil.getQuerie3(kc,ip);
             }
-        }
+            else throw  new ValorInvalidoException("Cliente não existente");
+        }else throw new ValorInvalidoException("Cliente não válido");
         System.out.println( Crono.getTImeString());
         return res;
     }
 
 
     // querie 4
+        //quantidade
+        //n clientes
+        //gasto
 
-    public static Map<Integer,double[]> querie4(InterfaceFiliais fil, String prod){
+    public static Map<Integer,double[]> querie4(InterfaceFiliais fil,InterfaceFaturacao fat, String prod) throws ValorInvalidoException {
         Crono.start();
         Map<Integer,double[]> res = null;
 
-        if(validaProduto(prod)) res = fil.getQuerie4(prod);
+        if(validaProduto(prod) && fat.pBinaria(prod,hashCL(prod)) !=-1) res = fil.getQuerie4(prod);
+        else throw new ValorInvalidoException("Produto não válido");
 
         System.out.println( Crono.getTImeString());
         return res;
@@ -175,20 +114,21 @@ public class Queries {
 
 
     //querie 5
-    public static TreeSet<Map.Entry<String, Integer>> querie5(String c, InterfaceFiliais f)  {
+    public static TreeSet<Map.Entry<String, Integer>> querie5(String c, InterfaceFiliais f) throws ValorInvalidoException {
         Crono.start();
         //Comparator<Map.Entry<String,Integer>> cp = new Model.ComparatorQ5();
         Map<String, Integer> q5 = new TreeMap<>();
 
-        int kc = hashCL(c);
-        int ip = f.pBinaria(c, kc);
-
         if(validaCliente(c)){
+            int kc = hashCL(c);
+            int ip = f.pBinaria(c, kc);
+
             if(ip!=-1){
                 //Lista de produtos e quantidades
                 f.getQuerie5(kc,ip,q5);
-            }
+            }else throw new ValorInvalidoException("Cliente não existe");
         }
+        else throw new ValorInvalidoException("Cliente inválido!");
         //ordenar!
 
         TreeSet<Map.Entry<String, Integer>> res =  new TreeSet<>(new ComparatorQ5());
@@ -205,7 +145,7 @@ public class Queries {
 
     //int[0] nquantidade vendida;
     //int[1] n clientes;
-    public static TreeSet<Map.Entry<String, int[]>> querie6(int limite, InterfaceFiliais fil){
+    public static TreeSet<Map.Entry<String, int[]>> querie6(int limite, InterfaceFiliais fil) throws ValorInvalidoException {
         Crono.start();
         Map<String,int[]> res = null;
 
@@ -213,6 +153,7 @@ public class Queries {
             //Lista de produtos, com a quantidade e numero de clientes que o compraram
             res = fil.getQuerie6();
         }
+        else throw new ValorInvalidoException("Limite inválido");
 
         //Falta dar apenas o limite
 
