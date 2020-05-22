@@ -1,6 +1,7 @@
 package Model;
 
 
+
 import java.io.*;
 import java.util.List;
 import java.util.Map;
@@ -168,13 +169,23 @@ public class Queries {
 
 
     //querie 7
-    public static Map<Integer, Map<String,Double>> querie7(InterfaceFiliais f){
+    public static Map<Integer, TreeSet<Map.Entry <String,Double>>> querie7(InterfaceFiliais f){
         Crono.start();
         Map<Integer, Map<String, Double>> res = null;
         res = f.getQuerie7();
+        //ordenar
 
+        Map<Integer,TreeSet <Map.Entry<String, Double>>> res2= new TreeMap<>();
+//        Map<Integer,List<String>> cenas;
+//        TreeSet <Map.Entry<String, Double>> aux= new TreeSet<>(new ComparatorQ9());
+        assert res != null;
+        for(Map.Entry<Integer,Map<String, Double>> m : res.entrySet()){
+            res2.put(m.getKey(),new TreeSet<>(new ComparatorQ9()));
+            res2.get(m.getKey()).addAll(m.getValue().entrySet());
+        }
         System.out.println( Crono.getTImeString());
-        return res;
+
+        return res2;
     }
 
 

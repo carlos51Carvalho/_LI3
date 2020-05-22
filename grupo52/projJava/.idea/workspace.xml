@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Query 10 feita">
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Controlador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Faturacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Faturacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/InterfaceFaturacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/InterfaceFaturacao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Vista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Vista.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
@@ -101,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589904704223</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas">
+      <created>1590185114247</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1590185114247</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,32 +126,33 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="novos ficheiros" />
-    <option name="LAST_COMMIT_MESSAGE" value="novos ficheiros" />
+    <MESSAGE value="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas" />
+    <option name="LAST_COMMIT_MESSAGE" value="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas" />
   </component>
   <component name="WindowStateProjectService">
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1589909431318">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/69.27.1851.1053@69.27.1851.1053" timestamp="1589909431318" />
-    <state width="1253" height="55" key="GridCell.Tab.0.bottom" timestamp="1590184684406">
+    <state width="1253" height="560" key="GridCell.Tab.0.bottom" timestamp="1590188247376">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="55" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1590184684406" />
+    <state width="1253" height="560" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1590188247376" />
     <state width="1805" height="106" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774648" />
-    <state width="1253" height="55" key="GridCell.Tab.0.center" timestamp="1590184684406">
+    <state width="1253" height="560" key="GridCell.Tab.0.center" timestamp="1590188247376">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="55" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1590184684406" />
+    <state width="1253" height="560" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1590188247376" />
     <state width="1805" height="106" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774646" />
-    <state width="1253" height="55" key="GridCell.Tab.0.left" timestamp="1590184684405">
+    <state width="1253" height="560" key="GridCell.Tab.0.left" timestamp="1590188247375">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="55" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1590184684405" />
+    <state width="1253" height="560" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1590188247375" />
     <state width="1805" height="106" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774644" />
-    <state width="1253" height="55" key="GridCell.Tab.0.right" timestamp="1590184684406">
+    <state width="1253" height="560" key="GridCell.Tab.0.right" timestamp="1590188247376">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="55" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1590184684406" />
+    <state width="1253" height="560" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1590188247376" />
     <state width="1805" height="106" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774647" />
     <state x="192" y="85" width="1039" height="622" key="MergeDialog" timestamp="1590177745192">
       <screen x="67" y="27" width="1299" height="741" />

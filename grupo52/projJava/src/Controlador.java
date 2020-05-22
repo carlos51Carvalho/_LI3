@@ -43,69 +43,73 @@ public class Controlador {
 
             //processar no controlador
             switch (op){
-            case 0:
-                 v.printExit();
-                 break;
-            case 1:
-                load = case1();
-                break;
-            case 2:
-                if (load) {
-                    v.queriesEstatisticas(vendas.getNome(),vendas.getErrados(),vendas.getTprod(),vendas.getDprod(),vendas.getPnc(),
-                            vendas.getTcl(),vendas.getTclc(),vendas.getTclsc(),vendas.getTvendaszero(),vendas.getFattotal());
-                    v.printDone();
-                }
-                else v.printNotLoad();
+                case 0:
+                    v.printExit();
+                    break;
+                case 1:
+                    load = case1();
+                    break;
+                case 2:
+                    if (load) {
+                       v.queriesEstatisticas(vendas.getNome(),vendas.getErrados(),vendas.getTprod(),vendas.getDprod(),vendas.getPnc(),
+                               vendas.getTcl(),vendas.getTclc(),vendas.getTclsc(),vendas.getTvendaszero(),vendas.getFattotal());
+                        v.printDone();
+                    }
+                    else v.printNotLoad();
+                    break;
+
+                case 3:
+                    if (load){
+                        v.querie_2_1(vendas.getRes());
+                        v.printDone();
+                    }
+                    else v.printNotLoad();
+                    break;
+
+                case 4:
+                    if (load) {
+                        v.querie_2_2(vendas.getRes2());
+                        v.printDone();
+                    }
+                    else v.printNotLoad();
+                    break;
+                case 5:
+                    if (load) {
+                        v.querie_2_3(vendas.getRes3());
+                        v.printDone();
+                    }
+                    else v.printNotLoad();
+                    break;
+                case 6:
+                    if (load) {
+                       case6();
+                    }
+                    else v.printNotLoad();
+                    break;
+
+                case 7:
+                    case7(load);
+                    break;
+
+                case 8:
+                    case8(load);
+                    break;
+                case 9:
+                    case9(load);
+                    break;
+                case 10:
+                    case10(load);
+                    break;
+                case 11:
+                    case11(load);
+                    break;
+                case 12:
+                    case12(load);
                 break;
 
-            case 3:
-                if (load){
-                    v.querie_2_1(vendas.getRes());
-                    v.printDone();
-                }
-                else v.printNotLoad();
-                break;
 
-            case 4:
-                if (load) {
-                    v.querie_2_2(vendas.getRes2());
-                    v.printDone();
-                }
-                else v.printNotLoad();
-                break;
-            case 5:
-                if (load) {
-                    v.querie_2_3(vendas.getRes3());
-                    v.printDone();
-                }
-                else v.printNotLoad();
-                break;
-            case 6:
-                if (load) {
-                    case6();
-                }
-                else v.printNotLoad();
-                break;
-
-            case 7:
-                case7(load);
-                break;
-
-            case 8:
-                case8(load);
-                break;
-            case 9:
-                case9(load);
-                break;
-            case 10:
-                case10(load);
-                break;
-            case 11:
-                case11(load);
-                break;
-
-            //default:
-            //    v.printError();
+                //default:
+                //    v.printError();
 
         }
 
@@ -344,7 +348,26 @@ public class Controlador {
     }
 
 
+    public void case12(boolean load){
 
+        boolean valid = true;
+        Map<Integer, TreeSet<Map.Entry <String,Double>>> q7;
+        if (load){
+            while (valid) {
+                //try {
+                    q7 = Queries.querie7(fil);
+
+                    v.querie7(q7);
+                    valid = false;
+                    v.printDone();
+
+//                }catch (ValorInvalidoException e) {
+//                    v.printErrorMes();
+//                }
+            }
+
+        }else v.printNotLoad();
+    }
 
 
 

@@ -327,7 +327,18 @@ public class Vista implements Serializable {
 
     }
 
+    public void querie7(Map<Integer, TreeSet<Map.Entry <String,Double>>> q7){
 
+        System.out.println("Os 3 maiores compradores para cada filial foram: ");
+        for (Map.Entry<Integer, TreeSet<Map.Entry <String,Double>>> e : q7.entrySet()){
+            System.out.printf("Filial %2d:\n",e.getKey());
+            for (Map.Entry <String,Double> m : e.getValue()){
+                System.out.println(m.getKey());
+            }
+            System.out.println("");
+        }
+
+    }
 
 
 
