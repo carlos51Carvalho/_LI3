@@ -73,8 +73,8 @@ public class FilFil implements Serializable {
     }
 
     public int[] getUsedByMes(int[] res) {
-        for (int i = 1; i < 13; i++) {
-            if (getMesUsed(i))
+        for (int i = 0; i < 12; i++) {
+            if (getMesUsed(i+1))
                 res[i]++;
         }
         return res;

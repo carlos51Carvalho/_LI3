@@ -50,56 +50,84 @@ public class Controlador {
         String cl;
         String pr;
         boolean load = false;
+        boolean opl = true;
         int opleit;
 
         switch (op){
             case 0:
                  v.printExit();
             case 1:
-                while (true) {
+                while (opl) {
                     v.printOpLeitura();
                     opleit = this.i.lerInt();
+                    //falta o load de um binário
                     if (opleit == 1) {
-                        Crono.start();
-                        clientes.ler_clientes("Dados_Iniciais/Clientes.txt");
-                        produtos.ler_produtos("Dados_Iniciais/Produtos.txt");
-                        fat.addProds(produtos.getSetDeProdutos());
-                        fil.addCls(clientes.getSetDeClientes());
-                        vendas.ler_vendas(fat, fil, clientes.getSetDeClientes(), produtos.getSetDeProdutos(), "Dados_Iniciais/Vendas_1M.txt");
-                        v.printDone();
-                        Crono.getTImeString();
-                        break;
+                        opl = false;
+                        leituras("Dados_Iniciais/Clientes.txt","Dados_Iniciais/Produtos.txt","Dados_Iniciais/Vendas_1M.txt");
+                        load =true;
                     } else if (opleit == 2) {
-                        try {
 
+                        try {
+                            opl = false;
                             v.fileNameC();
                             fc = this.i.lerString();
                             v.fileNameP();
                             fp = this.i.lerString();
                             v.fileNameV();
                             fv = this.i.lerString();
-                            clientes.ler_clientes(fc);
-                            produtos.ler_produtos(fp);
-                            fat.addProds(produtos.getSetDeProdutos());
-                            fil.addCls(clientes.getSetDeClientes());
-                            vendas.ler_vendas(fat, fil, clientes.getSetDeClientes(), produtos.getSetDeProdutos(), fv);
-                            v.printFilePaths(fc, fp, fv);
-                            v.printDone();
-                            break;
+                            leituras(fc,fp,fv);
+                            load =true;
                         }catch (IOException e){
                             v.printErrorFIle(e.getMessage());
                         }
-
                     } else {
                         v.printError();
                         opleit = this.i.lerInt();
                     }
                 }
             case 2:
+                if (load) {
+                    v.queriesEstatisticas(vendas.getNome(),vendas.getErrados(),vendas.getTprod(),vendas.getDprod(),vendas.getPnc(),
+                            vendas.getTcl(),vendas.getTclc(),vendas.getTclsc(),vendas.getTvendaszero(),vendas.getFattotal());
+                    v.printDone();
+                }
+                else v.printNotLoad();
 
+            case 3:
+                if (load){
+                    v.querie_2_1(vendas.getRes());
+                    v.printDone();
+                }
+                else v.printNotLoad();
 
+            case 4:
+                if (load) {
+                    v.querie_2_2(vendas.getRes2());
+                    v.printDone();
+                }
+                else v.printNotLoad();
+            case 5:
+                if (load) {
+                    v.querie_2_3(vendas.getRes3());
+                    v.printDone();
+                }
+                else v.printNotLoad();
+            case 6:
 
         }
+    }
+
+
+    public void leituras(String fc, String fp, String fv) throws Exception {
+        Crono.start();
+        clientes.ler_clientes(fc);
+        produtos.ler_produtos(fp);
+        fat.addProds(produtos.getSetDeProdutos());
+        fil.addCls(clientes.getSetDeClientes());
+        vendas.ler_vendas(fat, fil, clientes.getSetDeClientes(), produtos.getSetDeProdutos(), fv);
+        v.printFilePaths(fc, fp, fv);
+        v.printDone();
+        System.out.println(Crono.getTImeString());
     }
 
 }
