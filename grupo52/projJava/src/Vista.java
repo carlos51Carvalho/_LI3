@@ -1,6 +1,7 @@
 import Model.Queries;
 
 import java.io.Serializable;
+import java.sql.SQLOutput;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +48,9 @@ public class Vista implements Serializable {
         System.out.println("|____________________________________________________________________________________________|");
     }
 
+    public void printBarraN(){
+        System.out.println("");
+    }
 
     public void printExit(){
         System.out.println("\nHasta la vista BaBy!");
@@ -118,7 +122,10 @@ public class Vista implements Serializable {
     }
 
     public void printErrorLimite(){
-        System.out.println("O Limite que inseriu não é válido, POr favor tente outra vez:");
+        System.out.println("O Limite que inseriu não é válido. Por favor tente outra vez.");
+    }
+    public void printErrorPagina(int pag){
+        System.out.printf("A pagina %d não é válida. Por favor tente outra vez: \n",pag);
     }
 
 
@@ -217,14 +224,22 @@ public class Vista implements Serializable {
     //============================================Interativas ==========================================================
 
 
+    public void insiraPag(){
+        System.out.println("Insira a pagina que quer ver ou 0 para sair: ");
+    }
 
-
-    public void querie1(List<String> q1){
-        System.out.printf("O total de produtos nunca cmoprados é -> %d\n",q1.size());
-        System.out.println("A lista ordenada de produtos nunca comprados :");
-        for (String s : q1){
-            System.out.println(s);
+    public void querie1(List<String> q1,int pag, int linhas){
+        int i;
+        int size = q1.size();
+        int totalpag = size/linhas ;
+        if(size%linhas!=0)totalpag++;
+        System.out.printf("O total de produtos nunca comprados é %d.\n",q1.size());
+        System.out.printf("A apresentar pagina %d de %d :\n",pag,totalpag);
+        for (i=(pag-1)*linhas;i<=pag*linhas;i++){
+            if(i<size)System.out.println(q1.get(i));
+            else System.out.println("");
         }
+
     }
 
     public void querie2(Map<Integer,int[]> q2, int mes){
@@ -263,34 +278,53 @@ public class Vista implements Serializable {
         }
     }
 
-    public void querie5(TreeSet<Map.Entry<String,Integer>>q5, String c){
-        System.out.println("Para o cliente:"+ c +"\n");
+    public void querie5(TreeSet<Map.Entry<String,Integer>>q5, String c,int pag,int linhas){
+        System.out.println("Para o cliente "+ c +":\n");
+
+        int size = q5.size();
+        int totalpag = size/linhas ;
+        if(size%linhas!=0)totalpag++;
+
+        System.out.printf("Output com %d linhas.\n",size);
+        System.out.printf("A apresentar pagina %d de %d :\n",pag,totalpag);
+
+        int i=0;
         System.out.println("Produto   ->  Quantidade");
-        for (Map.Entry<String,Integer> e : q5){
-            System.out.println(e.getKey()+"        " + e.getValue());
+        for(Map.Entry<String,Integer> e : q5){
+            if(i>pag*linhas)break;
+            if(i>=(pag-1)*linhas)System.out.println(e.getKey()+"        " + e.getValue());
+            i++;
         }
+
+        for (int k = i;k<=pag*linhas;k++) System.out.println("");
     }
 
 
     //corrigir
-    public void querie6(TreeSet<Map.Entry<String, int[]>> q6, int limite){
+    public void querie6(TreeSet<Map.Entry<String, int[]>> q6,int pag, int linhas, int limite){
+        int i;
+        int size = Math.min(q6.size(), limite);
+        int totalpag = size/linhas ;
+        if(size%linhas!=0)totalpag++;
+
+
         if (q6.size()<= limite){
-            System.out.println("O limite ultrapassa ou é igual ao tamanho da lista dos produtos");
-            System.out.println("Produto  ->  Quantidade      nºClientes");
-            for(Map.Entry<String,int[]> e: q6){
-                System.out.println(e.getKey()+"      "+ e.getValue()[0]+ "     " + e.getValue()[1]);
-            }
+            System.out.printf("O limite ultrapassa o tamanho da lista dos produtos. ");
+        }else System.out.println("");
+        System.out.printf("Output com %d linhas.\n",size);
+
+
+        System.out.printf("A apresentar pagina %d de %d :\n",pag,totalpag);
+
+        i=0;
+        System.out.println("Produto  ->  Quantidade    NºClientes");
+        for(Map.Entry<String,int[]> e: q6){
+            if(i>pag*linhas)break;
+            if(i>=(pag-1)*linhas)System.out.printf("%s\t%10d\t%10d\n",e.getKey(),e.getValue()[0],e.getValue()[1]);
+            i++;
         }
-        else{
-            int i =0;
-            Iterator<Map.Entry<String,int[]>> aux = q6.iterator();
-            System.out.println("Produto  ->  Quantidade      nºClientes");
-            while (aux.hasNext() && i<limite ){
-                //System.out.println(e.getKey()+"      "+ e.getValue()[0]+ "     " + e.getValue()[1]);
-                i++;
-                aux.next();
-            }
-        }
+        for (int k = i;k<=pag*linhas;k++) System.out.println("");
+
     }
 
 

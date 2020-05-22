@@ -44,7 +44,7 @@ public class Queries {
 
     //====================================== interativas ===========================================================
 
-
+    // querie 1
     public static List<String> querie1(InterfaceFaturacao fat){
         Crono.start();
         List<String> res = fat.getQuerie1();

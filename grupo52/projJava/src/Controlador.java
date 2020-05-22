@@ -1,6 +1,9 @@
 import Model.*;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
 public class Controlador {
 
@@ -42,6 +45,7 @@ public class Controlador {
             switch (op){
             case 0:
                  v.printExit();
+                 break;
             case 1:
                 load = case1();
                 break;
@@ -78,8 +82,7 @@ public class Controlador {
                 break;
             case 6:
                 if (load) {
-                    v.querie1(Queries.querie1(fat));
-                    v.printDone();
+                    case6();
                 }
                 else v.printNotLoad();
                 break;
@@ -106,7 +109,7 @@ public class Controlador {
 
         }
 
-            } while( op!=0);
+            } while(op!=0);
 
     }
 
@@ -167,6 +170,31 @@ public class Controlador {
         return load;
     }
 
+    public void case6() throws Exception{
+        List<String> prods= Queries.querie1(fat);
+
+        int linhas=10;
+        int size = prods.size();
+        int totalpag = size/linhas ;
+        if(size%linhas!=0)totalpag++;
+        int pag=1;
+        int op=pag;
+
+        while(op!=0){
+            if(op>0 && op<=totalpag){
+                   pag=op;
+            }
+            v.querie1(prods,pag,linhas);
+
+            if (op!=pag){
+                v.printErrorPagina(op);
+            }else v.printBarraN();
+
+            v.insiraPag();
+            op = this.i.lerInt();
+        }
+
+    }
 
     public int case7(boolean load) throws ValorInvalidoException {
         int mes;
@@ -229,17 +257,40 @@ public class Controlador {
     }
 
     public void case10(boolean load) throws ValorInvalidoException {
+        int linhas=10;
+
         String c;
         boolean valid = true;
+        TreeSet<Map.Entry<String,Integer>> q6result;
 
         if (load) {
             while (valid) {
                 v.printCliente();
                 c = this.i.lerString();
                 try {
-                    v.querie5(Queries.querie5(c,fil), c);
+                    q6result = Queries.querie5(c,fil);
+
+                    int size = q6result.size();
+                    int totalpag = size/linhas ;
+                    if(size%linhas!=0)totalpag++;
+                    int pag=1;
+                    int op=pag;
+
+                    while(op!=0){
+                        if(op>0 && op<=totalpag){
+                            pag=op;
+                        }
+                        v.querie5(q6result,c,pag,linhas);
+
+                        if (op!=pag){
+                            v.printErrorPagina(op);
+                        }else v.printBarraN();
+
+                        v.insiraPag();
+                        op = this.i.lerInt();
+                    }
                     valid = false;
-                    v.printDone();
+
                 }catch (ValorInvalidoException e){
                     v.printErrorCliente();
                 }
@@ -250,17 +301,40 @@ public class Controlador {
 
 
     public void case11(boolean load) throws ValorInvalidoException {
+        int linhas=10;
         int limite;
         boolean valid = true;
-
+        TreeSet<Map.Entry<String, int[]>> q6result;
         if (load) {
             while (valid) {
                 v.printLimite();
                 limite = this.i.lerInt();
                 try {
-                    v.querie6(Queries.querie6(limite,fil), limite);
+
+                    q6result = Queries.querie6(limite,fil);
                     valid = false;
-                    v.printDone();
+
+                    int size = Math.min(q6result.size(), limite);
+                    int totalpag = size/linhas ;
+                    if(size%linhas!=0)totalpag++;
+                    int pag=1;
+                    int op=pag;
+
+                    while(op!=0){
+                        if(op>0 && op<=totalpag){
+                            pag=op;
+                        }
+                        v.querie6(q6result,pag,linhas,limite);
+
+                        if (op!=pag){
+                            v.printErrorPagina(op);
+                        }else v.printBarraN();
+
+                        v.insiraPag();
+                        op = this.i.lerInt();
+                    }
+
+
                 }catch (ValorInvalidoException e){
                     v.printErrorLimite();
                 }
