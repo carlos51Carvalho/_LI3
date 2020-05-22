@@ -340,9 +340,15 @@ public class Vista implements Serializable {
 
     }
 
+    public void querie8(TreeSet<Map.Entry<String,Integer>> q8, int limite, int pag, int linhas){
+
+    }
 
 
 
+   public void querie9(TreeSet<Map.Entry<String,Double>> q9, int limite, String prod, int pag, int linhas){
+
+   }
 
 
 

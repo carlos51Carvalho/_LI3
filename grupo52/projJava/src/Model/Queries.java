@@ -191,13 +191,13 @@ public class Queries {
 
 
     // querie 8
-    public static TreeSet<Map.Entry<String, Integer>> querie8(InterfaceFiliais f, int limite){
+    public static TreeSet<Map.Entry<String, Integer>> querie8(InterfaceFiliais f, int limite) throws ValorInvalidoException {
         Crono.start();
         Map<String, Integer> res = null;
 
         if(limite >0) {
             res = f.getQuerie8();
-        }
+        }else throw new ValorInvalidoException("Limite inválido!");
 
         //Ordenar e limitar
          TreeSet<Map.Entry<String, Integer>> q8 =  new TreeSet<>(new ComparatorQ5());
@@ -211,11 +211,14 @@ public class Queries {
 
     // querie 9
 
-    public static TreeSet<Map.Entry<String,Double>> querie9(InterfaceFiliais fil, String prod){
+    public static TreeSet<Map.Entry<String,Double>> querie9(InterfaceFiliais fil,InterfaceFaturacao fat ,int limite, String prod) throws ValorInvalidoException, NotValideException {
         Crono.start();
         Map<String,Double> res = null;
 
-        if(validaProduto(prod)) res = fil.getQuerie9(prod);
+        if (limite > 0) {
+            if (validaProduto(prod) && fat.pBinaria(prod,hashCL(prod)) != -1) res = fil.getQuerie9(prod);
+            else throw new NotValideException("produto inválido");
+        }else throw new ValorInvalidoException("limite inválido");
 
         TreeSet<Map.Entry<String, Double>> q9 =  new TreeSet<>(new ComparatorQ9());
         assert res != null;

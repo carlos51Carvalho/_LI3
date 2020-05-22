@@ -105,11 +105,20 @@ public class Controlador {
                     break;
                 case 12:
                     case12(load);
-                break;
-
-
-                //default:
-                //    v.printError();
+                    break;
+                case 13:
+                    case13(load);
+                    break;
+                case 14:
+                    case14(load);
+                    break;
+                case 15:
+                    break;
+                case 16:
+                    break;
+                default:
+                    v.printError();
+                    break;
 
         }
 
@@ -367,6 +376,101 @@ public class Controlador {
             }
 
         }else v.printNotLoad();
+    }
+
+
+    public void case13(boolean load) throws ValorInvalidoException {
+        int linhas=10;
+
+        int limite;
+        boolean valid = true;
+        TreeSet<Map.Entry<String,Integer>> q8result;
+
+        if (load) {
+            while (valid) {
+                    v.printLimite();
+                limite = this.i.lerInt();
+                try {
+                    q8result = Queries.querie8(fil,limite);
+
+                    int size = q8result.size();
+                    int totalpag = size/linhas ;
+                    if(size%linhas!=0)totalpag++;
+                    int pag=1;
+                    int op=pag;
+
+                    while(op!=0){
+                        if(op>0 && op<=totalpag){
+                            pag=op;
+                        }
+                        v.querie8(q8result,limite,pag,linhas);
+
+                        if (op!=pag){
+                            v.printErrorPagina(op);
+                        }else v.printBarraN();
+
+                        v.insiraPag();
+                        op = this.i.lerInt();
+                    }
+                    valid = false;
+
+                }catch (ValorInvalidoException e){
+                    v.printErrorLimite();
+                }
+            }
+        } else v.printNotLoad();
+
+    }
+
+
+
+
+    public void case14(boolean load) throws ValorInvalidoException {
+        int linhas=10;
+
+        String p;
+        int limite;
+        boolean valid = true;
+        TreeSet<Map.Entry<String,Double>> q9result;
+
+        if (load) {
+            while (valid) {
+                v.printLimite();
+                limite = this.i.lerInt();
+                v.printProduto();
+                p = this.i.lerString();
+                try {
+                    q9result = Queries.querie9(fil,fat,limite,p);
+
+                    int size = q9result.size();
+                    int totalpag = size/linhas ;
+                    if(size%linhas!=0)totalpag++;
+                    int pag=1;
+                    int op=pag;
+
+                    while(op!=0){
+                        if(op>0 && op<=totalpag){
+                            pag=op;
+                        }
+                        v.querie9(q9result,limite,p,pag,linhas);
+
+                        if (op!=pag){
+                            v.printErrorPagina(op);
+                        }else v.printBarraN();
+
+                        v.insiraPag();
+                        op = this.i.lerInt();
+                    }
+                    valid = false;
+
+                }catch (NotValideException e){
+                    v.printErrorProduto();
+                }catch (ValorInvalidoException es){
+                    v.printErrorLimite();
+                }
+            }
+        } else v.printNotLoad();
+
     }
 
 
