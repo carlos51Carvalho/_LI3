@@ -3,18 +3,33 @@ package Model;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Classe que guarda todos os clientes lidos
+ */
 public class Clientes3 implements InterfaceClientes, Serializable
 {
     // instance variables - replace the example below with your own
     private Map<Integer,Set<Cliente>> clientes;
-    
+
+    /**
+     * Construtor sem argumentos
+     */
     public Clientes3(){
         this.clientes= new HashMap<>();
     }
-    
+
+    /**
+     * Construtor por cópia
+     * @param c     cliente
+     */
     public Clientes3(Clientes3 c){
         this.setClientes(c.getClientes());
     }
+
+    /**
+     * Set para a variavel clientes do objeto
+     * @param c     Map com os clientes a inserir
+     */
 
     public void setClientes(Map<Integer,Set<Cliente>> c){
         this.clientes = new TreeMap<>();
@@ -27,6 +42,11 @@ public class Clientes3 implements InterfaceClientes, Serializable
             }
         }
     }
+
+    /**
+     * Get para a variavel clientes do objeto
+     * @return Cópia dos clientes do objeto
+     */
     public Map<Integer,Set<Cliente>> getClientes(){
         Map<Integer,Set<Cliente>> aux = new TreeMap<>();
         
@@ -39,7 +59,11 @@ public class Clientes3 implements InterfaceClientes, Serializable
         }
         return aux;
     }
-    
+
+    /**
+     * Método que devolve um set dos clientes do objeto
+     * @return Set com cópia dos clientes
+     */
    
     public TreeSet<String> getSetDeClientes(){
         TreeSet<String> res = new TreeSet<>();
@@ -50,9 +74,12 @@ public class Clientes3 implements InterfaceClientes, Serializable
         }
         return res;
     }
-   
-    
-    
+
+
+    /**
+     * Método que adiciona um cliente á variavel clientes do objeto
+     * @param c     cliente
+     */
     public void addCliente(Cliente c){
         int i=c.hashCliente();
         if(!this.clientes.containsKey(i)){
@@ -61,6 +88,11 @@ public class Clientes3 implements InterfaceClientes, Serializable
         this.clientes.get(i).add(c);
     }
 
+
+    /**
+     * Método que adiciona um cliente á variavel clientes do objeto
+     * @param cc   String com código de cliente
+     */
     public void addCliente(String cc){ //com String (respeitar interface)
         Cliente c= new Cliente(cc);
         int i=c.hashCliente();
@@ -69,6 +101,11 @@ public class Clientes3 implements InterfaceClientes, Serializable
         }
         this.clientes.get(i).add(c);
     }
+
+    /**
+     * Método que remove um cliente a variavel clientes do objeto
+     * @param s     String com código de cliente
+     */
     
     public void rmCliente(String s){
         Iterator<Cliente> it;
@@ -88,11 +125,20 @@ public class Clientes3 implements InterfaceClientes, Serializable
             }
         }
     }
-    
+
+    /**
+     * Método que clona este objeto
+     * @return  clone do objeto
+     */
     public Clientes3 clone(){
         return new Clientes3(this);
     }
-    
+
+    /**
+     * Método que devolve um set com todos os clientes começados por uma letra
+     * @param l     char com a letra a procurar
+     * @return  Set com cópia dos clientes
+     */
     public Set<String> clStartedByLetter(char l){
         Set<String> res = new TreeSet<>();
         if(this.clientes.containsKey(l-'A')){
@@ -102,6 +148,13 @@ public class Clientes3 implements InterfaceClientes, Serializable
         }
         return res;
     }
+
+    /**
+     * Método que lê de um ficheiro
+     * @param filepath
+     * @return int com número de linhas lidas
+     * @throws IOException
+     */
 
     public int ler_clientes(String filepath) throws IOException {
         Crono.start();
@@ -119,6 +172,11 @@ public class Clientes3 implements InterfaceClientes, Serializable
         System.out.println(Crono.getTImeString());
         return i;
     }
+
+    /**
+     * Método que devolve o tamanho da variavel clientes do objeto
+     * @return int com o tamanho
+     */
     
     public int size(){
         int res=0;
@@ -127,6 +185,12 @@ public class Clientes3 implements InterfaceClientes, Serializable
         }
         return res;
     }
+
+    /**
+     * Método que verifica se um cliente existe
+     * @param s     String com codigo de cliente
+     * @return  boolean com o resultado
+     */
 
     public boolean existe(String s){
         int i = Cliente.hashString(s);
