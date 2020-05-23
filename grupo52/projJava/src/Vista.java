@@ -70,6 +70,10 @@ public class Vista implements Serializable {
 
     //==== Leitura =====//
 
+    public void printEscrever(){
+        System.out.println("Deseja escrever em novas estrutuas (1) , ou nas já criadas(2)");
+    }
+
     public void printErrorFIle(String e){
         System.out.println("Não encontrou fiheiro -> " +e);
     }

@@ -15,7 +15,15 @@ public class Controlador {
     private Input i;
     private Vendas vendas;
 
-
+    public Controlador(){
+        this.clientes = new Clientes3();
+        this.produtos = new Produtos3();
+        this.fat = new Faturacao();
+        this.fil = new Filiais();
+        this.v = new Vista();
+        this.i = new Input();
+        this.vendas = new Vendas();
+    }
     public Controlador(InterfaceClientes cl, InterfaceProdutos pr, InterfaceFaturacao fat, InterfaceFiliais fil, Vista v, Input i){
         this.clientes = cl;
         this.produtos = pr;
@@ -47,7 +55,7 @@ public class Controlador {
                     v.printExit();
                     break;
                 case 1:
-                    load = case1();
+                    load = case1(load);
                     break;
                 case 2:
                     if (load) {
@@ -142,12 +150,32 @@ public class Controlador {
     }
 
 
-    public boolean case1() throws Exception {
+    public boolean case1(boolean load) throws Exception {
         String fc,fp,fv;
-        boolean load = false;
+        //boolean load = false;
         boolean opl = true;
+        boolean escrever = true;
         int opleit;
-
+        int escrita;
+        if (load) {
+            while (escrever) {
+                v.printEscrever();
+                escrita = this.i.lerInt();
+                if (escrita == 1){
+                    this.clientes = new Clientes3();
+                    this.produtos = new Produtos3();
+                    this.fat = new Faturacao();
+                    this.fil = new Filiais();
+                    this.v = new Vista();
+                    this.i = new Input();
+                    this.vendas = new Vendas();
+                    load = false;
+                    escrever =false;
+                }
+                else if (escrita == 2) escrever = false;
+                else v.printError();
+            }
+        }
         while (opl) {
             v.printOpLeitura();
             opleit = this.i.lerInt();

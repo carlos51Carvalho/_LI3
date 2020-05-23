@@ -19,18 +19,32 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="View da querie7 completa">
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Modulos de print em Vista.java correçoes de menu, impressão de queries, falta riar as vista querie 8,9">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Controlador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Vista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Vista.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Queries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vista.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -54,7 +68,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Model" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.GestVendas">
     <configuration name="GestVendas" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -91,6 +109,7 @@
       <workItem from="1589903971644" duration="8293000" />
       <workItem from="1589912632253" duration="457000" />
       <workItem from="1589913578182" duration="2001000" />
+      <workItem from="1590251468225" duration="1885000" />
     </task>
     <task id="LOCAL-00001" summary="novos ficheiros">
       <created>1589904704223</created>
@@ -99,14 +118,7 @@
       <option name="project" value="LOCAL" />
       <updated>1589904704223</updated>
     </task>
-    <task id="LOCAL-00002" summary="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas">
-      <created>1590185114247</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1590185114247</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,33 +138,36 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="novos ficheiros" />
-    <MESSAGE value="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas" />
-    <option name="LAST_COMMIT_MESSAGE" value="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas" />
+    <option name="LAST_COMMIT_MESSAGE" value="novos ficheiros" />
   </component>
   <component name="WindowStateProjectService">
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1589909431318">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/69.27.1851.1053@69.27.1851.1053" timestamp="1589909431318" />
-    <state width="1253" height="560" key="GridCell.Tab.0.bottom" timestamp="1590193048635">
+    <state x="747" y="447" width="494" height="219" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1590190284305">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state x="747" y="447" width="494" height="219" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/69.27.1851.1053@69.27.1851.1053" timestamp="1590190284305" />
+    <state width="1253" height="55" key="GridCell.Tab.0.bottom" timestamp="1590184684406">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="560" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1590193048635" />
+    <state width="1253" height="55" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1590184684406" />
     <state width="1805" height="106" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774648" />
-    <state width="1253" height="560" key="GridCell.Tab.0.center" timestamp="1590193048634">
+    <state width="1253" height="55" key="GridCell.Tab.0.center" timestamp="1590184684406">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="560" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1590193048634" />
+    <state width="1253" height="55" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1590184684406" />
     <state width="1805" height="106" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774646" />
-    <state width="1253" height="560" key="GridCell.Tab.0.left" timestamp="1590193048633">
+    <state width="1253" height="55" key="GridCell.Tab.0.left" timestamp="1590184684405">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="560" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1590193048633" />
+    <state width="1253" height="55" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1590184684405" />
     <state width="1805" height="106" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774644" />
-    <state width="1253" height="560" key="GridCell.Tab.0.right" timestamp="1590193048635">
+    <state width="1253" height="55" key="GridCell.Tab.0.right" timestamp="1590184684406">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="560" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1590193048635" />
+    <state width="1253" height="55" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1590184684406" />
     <state width="1805" height="106" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774647" />
     <state x="192" y="85" width="1039" height="622" key="MergeDialog" timestamp="1590177745192">
       <screen x="67" y="27" width="1299" height="741" />
