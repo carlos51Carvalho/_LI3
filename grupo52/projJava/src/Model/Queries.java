@@ -199,7 +199,7 @@ public class Queries {
             res = f.getQuerie8();
         }else throw new ValorInvalidoException("Limite inválido!");
 
-        //Ordenar e limitar
+        //Ordenar
          TreeSet<Map.Entry<String, Integer>> q8 =  new TreeSet<>(new ComparatorQ5());
         assert res != null;
         q8.addAll(res.entrySet());

@@ -340,41 +340,56 @@ public class Vista implements Serializable {
 
     }
 
+    //13 -> Q8 -Determinar os códigos dos X clientes que compraram mais produtos diferentes
     public void querie8(TreeSet<Map.Entry<String,Integer>> q8, int limite, int pag, int linhas){
+        int size = Math.min(q8.size(), limite);
+        int totalpag = size/linhas;
+        if(size%linhas!=0)totalpag++;
 
+        if (q8.size()<= limite){
+            System.out.printf("O limite ultrapassa o tamanho da lista de clientes. ");
+        }else System.out.println("");
+        System.out.printf("Output dos %d clientes que mais compraram produtos diferentes.\n",size);
+
+
+        System.out.printf("A apresentar pagina %d de %d :\n",pag,totalpag);
+
+        int i=0;
+        System.out.println("Clientes   ->  NºProdutos");
+        for(Map.Entry<String,Integer> e : q8){
+            if(i>pag*linhas)break;
+            if(i>=(pag-1)*linhas)System.out.println(e.getKey()+"   ->  [" + e.getValue()+"]");
+            i++;
+        }
+
+        for (int k = i;k<=pag*linhas;k++) System.out.println("");
     }
 
 
-
+//14 -> Q9 -Determinar os códigos de clientes que mais compraram um X produto, e quanto gatou");
    public void querie9(TreeSet<Map.Entry<String,Double>> q9, int limite, String prod, int pag, int linhas){
+       int size = Math.min(q9.size(), limite);
+       int totalpag = size/linhas;
+       if(size%linhas!=0)totalpag++;
 
+       if (q9.size()<= limite){
+           System.out.printf("O limite ultrapassa o tamanho da lista dos produtos. ");
+       }else System.out.println("");
+       System.out.printf("Output dos %d clientes que mais compraram o produto %s.\n",size,prod);
+
+
+       System.out.printf("A apresentar pagina %d de %d :\n",pag,totalpag);
+
+       int i=0;
+       System.out.println("Clientes       Dinheiro Gasto");
+       for(Map.Entry<String,Double> e : q9){
+           if(i>pag*linhas)break;
+           if(i>=(pag-1)*linhas)System.out.println(e.getKey()+"     " + e.getValue());
+           i++;
+       }
+
+       for (int k = i;k<=pag*linhas;k++) System.out.println("");
    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

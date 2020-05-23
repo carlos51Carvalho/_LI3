@@ -388,7 +388,7 @@ public class Controlador {
 
         if (load) {
             while (valid) {
-                    v.printLimite();
+                v.printLimite();
                 limite = this.i.lerInt();
                 try {
                     q8result = Queries.querie8(fil,limite);
