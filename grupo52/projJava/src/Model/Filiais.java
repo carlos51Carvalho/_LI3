@@ -27,9 +27,9 @@ public class Filiais implements InterfaceFiliais, Serializable {
             addCl(cl);
     }
 
-    public List<ClFil> getArr(int i){
-        return filiais.get(i);
-    }
+//    public List<ClFil> getArr(int i){
+//        return filiais.get(i);
+//    }
 
 
     public int pBinaria(String p, int k){

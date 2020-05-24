@@ -8,6 +8,9 @@ public class GestVendas {
         InterfaceProdutos pr = new Produtos3();
         InterfaceFiliais filiais = new Filiais();
         InterfaceFaturacao faturacao = new Faturacao();
+        Vendas vendas = new Vendas();
+
+        Queries q = new Queries(cl,pr,faturacao,filiais,vendas);
 
         //init vista
         Vista v = new Vista();
@@ -15,7 +18,7 @@ public class GestVendas {
 
 
         //init controlador
-        Controlador c = new Controlador(cl, pr, faturacao, filiais, v, i);
+        Controlador c = new Controlador(q, v, i);
         c.run();
 
     }

@@ -23,8 +23,8 @@ public class Main
         System.out.println("-> " + vend.ler_vendas(faturacao,filiais,clientes.getSetDeClientes(),produtos.getSetDeProdutos(), "Dados_Iniciais/Vendas_1M.txt"));
 
 
-        Controlador c = new Controlador(clientes,produtos,faturacao,filiais,v,i);
-        c.run();
+        //Controlador c = new Controlador(clientes,produtos,faturacao,filiais,v,i);
+        //c.run();
 
 
 

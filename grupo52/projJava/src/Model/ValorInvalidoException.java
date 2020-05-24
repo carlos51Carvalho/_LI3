@@ -1,6 +1,8 @@
 package Model;
 
-public class ValorInvalidoException extends Exception {
+import java.io.Serializable;
+
+public class ValorInvalidoException extends Exception implements Serializable {
 
     public ValorInvalidoException() {
         super();

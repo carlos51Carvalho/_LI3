@@ -7,32 +7,20 @@ import java.util.TreeSet;
 
 public class Controlador {
 
-    private InterfaceClientes clientes;
-    private InterfaceProdutos produtos;
-    private InterfaceFaturacao fat;
-    private InterfaceFiliais fil;
+    private Queries q;
     private Vista v;
     private Input i;
-    private Vendas vendas;
 
     public Controlador(){
-        this.clientes = new Clientes3();
-        this.produtos = new Produtos3();
-        this.fat = new Faturacao();
-        this.fil = new Filiais();
+        this.q = new Queries();
         this.v = new Vista();
         this.i = new Input();
-        this.vendas = new Vendas();
     }
-    public Controlador(InterfaceClientes cl, InterfaceProdutos pr, InterfaceFaturacao fat, InterfaceFiliais fil, Vista v, Input i){
-        this.clientes = cl;
-        this.produtos = pr;
-        this.fat = fat;
-        this.fil = fil;
+
+    public Controlador(Queries q,Vista v, Input i){
+        this.q=q;
         this.v = v;
         this.i = i;
-        this.vendas = new Vendas();
-
     }
     
     
@@ -59,8 +47,8 @@ public class Controlador {
                     break;
                 case 2:
                     if (load) {
-                       v.queriesEstatisticas(vendas.getNome(),vendas.getErrados(),vendas.getTprod(),vendas.getDprod(),vendas.getPnc(),
-                               vendas.getTcl(),vendas.getTclc(),vendas.getTclsc(),vendas.getTvendaszero(),vendas.getFattotal());
+                       v.queriesEstatisticas(q.getNome(),q.getErrados(),q.getTprod(),q.getDprod(),q.getPnc(),
+                               q.getTcl(),q.getTclc(),q.getTclsc(),q.getTvendaszero(),q.getFattotal());
                         v.printDone();
                     }
                     else v.printNotLoad();
@@ -68,7 +56,7 @@ public class Controlador {
 
                 case 3:
                     if (load){
-                        v.querie_2_1(vendas.getRes());
+                        v.querie_2_1(q.getRes());
                         v.printDone();
                     }
                     else v.printNotLoad();
@@ -76,14 +64,14 @@ public class Controlador {
 
                 case 4:
                     if (load) {
-                        v.querie_2_2(vendas.getRes2());
+                        v.querie_2_2(q.getRes2());
                         v.printDone();
                     }
                     else v.printNotLoad();
                     break;
                 case 5:
                     if (load) {
-                        v.querie_2_3(vendas.getRes3());
+                        v.querie_2_3(q.getRes3());
                         v.printDone();
                     }
                     else v.printNotLoad();
@@ -121,8 +109,10 @@ public class Controlador {
                     case14(load);
                     break;
                 case 15:
+                    //Imprimir
                     break;
                 case 16:
+                    q.gravarObj("dados.dat");
                     break;
                 default:
                     v.printError();
@@ -137,59 +127,56 @@ public class Controlador {
 
 
 
-    public void leituras(String fc, String fp, String fv) throws Exception {
-        //Crono.start();
-        clientes.ler_clientes(fc);
-        produtos.ler_produtos(fp);
-        fat.addProds(produtos.getSetDeProdutos());
-        fil.addCls(clientes.getSetDeClientes());
-        vendas.ler_vendas(fat, fil, clientes.getSetDeClientes(), produtos.getSetDeProdutos(), fv);
-        v.printFilePaths(fc, fp, fv);
-        v.printDone();
-        //System.out.println(Crono.getTImeString());
-    }
-
 
     public boolean case1(boolean load) throws Exception {
         String fc,fp,fv;
+        fc = "Dados_Iniciais/Clientes.txt";     //estar no config;
+        fp = "Dados_Iniciais/Produtos.txt";
+        fv = "Dados_Iniciais/Vendas_1M.txt";
+
         //boolean load = false;
         boolean opl = true;
         boolean escrever = true;
-        int opleit;
+        int opleit=0;
         int escrita;
-        if (load) {
-            while (escrever) {
-                v.printEscrever();
-                escrita = this.i.lerInt();
-                if (escrita == 1){
-                    this.clientes = new Clientes3();
-                    this.produtos = new Produtos3();
-                    this.fat = new Faturacao();
-                    this.fil = new Filiais();
-                    this.v = new Vista();
-                    this.i = new Input();
-                    this.vendas = new Vendas();
-                    load = false;
-                    escrever =false;
-                }
-                else if (escrita == 2) escrever = false;
-                else v.printError();
-            }
-        }
-        while (opl) {
+
+        while(opleit<1||opleit>3){
             v.printOpLeitura();
             opleit = this.i.lerInt();
-            //falta o load de um binário
-            if (opleit == 1) {
-                opl = false;
-                try {
-                    leituras("Dados_Iniciais/Clientes.txt", "Dados_Iniciais/Produtos.txt", "Dados_Iniciais/Vendas_1M.txt");
-                    load = true;
+            if(opleit<1||opleit>3)v.printError();
+        }
+
+        if (opleit == 1) {//ler binario
+            try {
+                q=q.lerObj("dados.dat");         //nome do ficheiro pode estar no config
+                load = true;
+            }catch (IOException e){
+                v.printErrorFIle(e.getMessage());
+            }
+
+        }else{
+            if(load){
+                while (escrever) {
+                    v.printEscrever();
+                    escrita = this.i.lerInt();
+                    if (escrita == 1){
+//                    this.clientes = new Clientes3();
+//                    this.produtos = new Produtos3();
+//                    this.fat = new Faturacao();
+//                    this.fil = new Filiais();
+//                    this.v = new Vista();
+//                    this.i = new Input();
+//                    this.vendas = new Vendas();
+                        //reiniciar modelo;
+                        q.reiniciarModelo();
+                        load = false;
+                        escrever =false;
+                    }
+                    else if (escrita == 2) escrever = false;
+                    else v.printError();
                 }
-                catch (IOException e){
-                    v.printErrorFIle(e.getMessage());
-                }
-            } else if (opleit == 2) {
+            }
+            if (opleit == 3) {
                 try {
                     opl = false;
                     v.fileNameC();
@@ -198,21 +185,28 @@ public class Controlador {
                     fp = this.i.lerString();
                     v.fileNameV();
                     fv = this.i.lerString();
-                    leituras(fc, fp, fv);
+                    q.leituras(fc, fp, fv);
                     load = true;
+                    v.printFilePaths(fc, fp, fv);
                 } catch (IOException e) {
                     v.printErrorFIle(e.getMessage());
                 }
-            } else {
-                v.printError();
-                opleit = this.i.lerInt();
+            }else{
+                try {
+                    q.leituras(fc, fp, fv);
+                    load = true;
+                    v.printFilePaths(fc, fp, fv);
+                } catch (IOException e) {
+                    v.printErrorFIle(e.getMessage());
+                }
             }
         }
+
         return load;
     }
 
     public void case6() throws Exception{
-        List<String> prods= Queries.querie1(fat);
+        List<String> prods= q.querie1();
 
         int linhas=10;
         int size = prods.size();
@@ -237,7 +231,7 @@ public class Controlador {
 
     }
 
-    public int case7(boolean load) throws ValorInvalidoException {
+    public void case7(boolean load) throws ValorInvalidoException {
         int mes;
         boolean valid = true;
 
@@ -246,7 +240,7 @@ public class Controlador {
                 v.printMes();
                 mes = this.i.lerInt();
                 try {
-                    v.querie2(Queries.querie2(fil, mes), mes);
+                    v.querie2(q.querie2(mes), mes);
                     valid = false;
                     v.printDone();
                 }catch (ValorInvalidoException e){
@@ -254,8 +248,6 @@ public class Controlador {
                 }
             }
         } else v.printNotLoad();
-
-        return 0;
     }
 
     public void case8(boolean load) throws ValorInvalidoException {
@@ -267,7 +259,7 @@ public class Controlador {
                 v.printCliente();
                 c = this.i.lerString();
                 try {
-                    v.querie3(Queries.querie3(fil, c), c);
+                    v.querie3(q.querie3(c), c);
                     valid = false;
                     v.printDone();
                 }catch (ValorInvalidoException e){
@@ -287,7 +279,7 @@ public class Controlador {
                 v.printProduto();
                 p = this.i.lerString();
                 try {
-                    v.querie4(Queries.querie4(fil, fat,p), p);
+                    v.querie4(q.querie4(p), p);
                     valid = false;
                     v.printDone();
                 }catch (ValorInvalidoException e){
@@ -302,16 +294,16 @@ public class Controlador {
 
         String c;
         boolean valid = true;
-        TreeSet<Map.Entry<String,Integer>> q6result;
+        TreeSet<Map.Entry<String,Integer>> q5result;
 
         if (load) {
             while (valid) {
                 v.printCliente();
                 c = this.i.lerString();
                 try {
-                    q6result = Queries.querie5(c,fil);
+                    q5result = q.querie5(c);
 
-                    int size = q6result.size();
+                    int size = q5result.size();
                     int totalpag = size/linhas ;
                     if(size%linhas!=0)totalpag++;
                     int pag=1;
@@ -321,7 +313,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
-                        v.querie5(q6result,c,pag,linhas);
+                        v.querie5(q5result,c,pag,linhas);
 
                         if (op!=pag){
                             v.printErrorPagina(op);
@@ -351,8 +343,7 @@ public class Controlador {
                 v.printLimite();
                 limite = this.i.lerInt();
                 try {
-
-                    q6result = Queries.querie6(limite,fil);
+                    q6result = q.querie6(limite);
                     valid = false;
 
                     int size = Math.min(q6result.size(), limite);
@@ -392,7 +383,7 @@ public class Controlador {
         if (load){
             while (valid) {
                 //try {
-                    q7 = Queries.querie7(fil);
+                    q7 = q.querie7();
 
                     v.querie7(q7);
                     valid = false;
@@ -419,7 +410,7 @@ public class Controlador {
                 v.printLimite();
                 limite = this.i.lerInt();
                 try {
-                    q8result = Queries.querie8(fil,limite);
+                    q8result = q.querie8(limite);
 
                     int size = Math.min(q8result.size(), limite);
                     int totalpag = size/linhas ;
@@ -451,8 +442,6 @@ public class Controlador {
     }
 
 
-
-
     public void case14(boolean load) throws ValorInvalidoException {
         int linhas=10;
 
@@ -468,7 +457,7 @@ public class Controlador {
                 v.printProduto();
                 p = this.i.lerString();
                 try {
-                    q9result = Queries.querie9(fil,fat,limite,p);
+                    q9result = q.querie9(limite,p);
 
                     int size = Math.min(q9result.size(), limite);
                     int totalpag = size/linhas ;
@@ -498,13 +487,7 @@ public class Controlador {
                 }
             }
         } else v.printNotLoad();
-
     }
-
-
-
-
-
 
 
 }

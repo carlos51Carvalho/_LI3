@@ -1,9 +1,10 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map;
 
-public class ComparatorQ5 implements Comparator<Map.Entry<String,Integer>> {
+public class ComparatorQ5 implements Comparator<Map.Entry<String,Integer>>, Serializable {
 
     @Override
     public int compare(Map.Entry<String, Integer> q1, Map.Entry<String, Integer> q2) {

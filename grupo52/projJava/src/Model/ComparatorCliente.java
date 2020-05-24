@@ -5,8 +5,9 @@ package Model;
  * @author (your name)
  * @version (a version number or a date)
  */
+import java.io.Serializable;
 import java.util.Comparator;
-public class ComparatorCliente implements Comparator<Cliente>
+public class ComparatorCliente implements Comparator<Cliente>, Serializable
 {
 
     public int compare(Cliente c1, Cliente c2){

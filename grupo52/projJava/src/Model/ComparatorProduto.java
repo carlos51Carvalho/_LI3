@@ -5,8 +5,9 @@ package Model;
  * @author (your name)
  * @version (a version number or a date)
  */
+import java.io.Serializable;
 import java.util.Comparator;
-public class ComparatorProduto implements Comparator<Produto>
+public class ComparatorProduto implements Comparator<Produto>, Serializable
 {
 
     public int compare(Produto c1, Produto c2){

@@ -8,8 +8,47 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class Queries {
+public class Queries implements Serializable{
 
+    private InterfaceClientes clientes;
+    private InterfaceProdutos produtos;
+    private InterfaceFaturacao fat;
+    private InterfaceFiliais fil;
+    private Vendas vendas;
+
+    public Queries(){
+        this.clientes = new Clientes3();
+        this.produtos = new Produtos3();
+        this.fat = new Faturacao();
+        this.fil = new Filiais();
+        this.vendas = new Vendas();
+    }
+    public Queries(InterfaceClientes cl, InterfaceProdutos pr, InterfaceFaturacao fat, InterfaceFiliais fil, Vendas v){
+        this.clientes = cl;
+        this.produtos = pr;
+        this.fat = fat;
+        this.fil = fil;
+        this.vendas = v;
+
+    }
+
+    public void reiniciarModelo(){//mudar para apenas limpar as estruturas?
+        this.clientes = new Clientes3();
+        this.produtos = new Produtos3();
+        this.fat = new Faturacao();
+        this.fil = new Filiais();
+        this.vendas = new Vendas();
+    }
+
+    public void leituras(String fc, String fp, String fv) throws Exception {
+        //Crono.start();
+        clientes.ler_clientes(fc);
+        produtos.ler_produtos(fp);
+        fat.addProds(produtos.getSetDeProdutos());
+        fil.addCls(clientes.getSetDeClientes());
+        vendas.ler_vendas(fat, fil, clientes.getSetDeClientes(), produtos.getSetDeProdutos(), fv);
+        //System.out.println(Crono.getTImeString());
+    }
 
     public static boolean validaNum(String p) {
         boolean r = true;
@@ -36,19 +75,60 @@ public class Queries {
         return mes >= 1 && mes <= 12;
     }
 
-    public static  int hashCL(String cl) {
+    public static int hashCL(String cl) {
         return cl.charAt(0) - 'A';
     }
 
 
+    //========================================estaticas============================================================
+
+    public String getNome(){
+        return vendas.getNome();
+    }
+    public int getErrados(){
+        return vendas.getErrados();
+    }
+    public int getTprod(){
+        return vendas.getTprod();
+    }
+    public int getDprod(){
+        return vendas.getDprod();
+    }
+    public int getPnc(){
+        return vendas.getPnc();
+    }
+    public int getTcl(){
+        return vendas.getTcl();
+    }
+    public int getTclc(){
+        return vendas.getTclc();
+    }
+    public int getTclsc(){
+        return vendas.getTclsc();
+    }
+    public int getTvendaszero(){
+        return vendas.getTvendaszero();
+    }
+    public int getFattotal(){
+        return vendas.getTvendaszero();
+    }
+    public int[] getRes(){
+        return vendas.getRes();
+    }
+    public Map<Integer,double[]> getRes2(){
+        return vendas.getRes2();
+    }
+    public Map<Integer,int[]> getRes3(){
+        return vendas.getRes3();
+    }
 
 
     //====================================== interativas ===========================================================
 
     // querie 1
-    public static List<String> querie1(InterfaceFaturacao fat){
+    public List<String> querie1(){
         Crono.start();
-        List<String> res = fat.getQuerie1();
+        List<String> res = this.fat.getQuerie1();
         Crono.getTImeString();
         return res;
     }
@@ -57,12 +137,12 @@ public class Queries {
 // querie 2
     //int[0] nclientes
     //int[1] nvendas
-    public static Map<Integer,int[]> querie2(InterfaceFiliais fil, int mes) throws ValorInvalidoException{
+    public Map<Integer,int[]> querie2(int mes) throws ValorInvalidoException{
 
         Crono.start();
         Map<Integer,int[]> res = new TreeMap<>();
         if (mesvalido(mes)) {
-            res=fil.getVendasTotaisFiliaisPorMes(mes,res);
+            res=this.fil.getVendasTotaisFiliaisPorMes(mes,res);
         }
         else throw new ValorInvalidoException("Mês não válido!");
 
@@ -78,16 +158,16 @@ public class Queries {
     //int[2] faturado
 
 
-    public static Map<Integer,double[]> querie3(InterfaceFiliais fil, String cliente) throws ValorInvalidoException {
+    public  Map<Integer,double[]> querie3(String cliente) throws ValorInvalidoException {
         Crono.start();
-        Map<Integer,double[]> res = null;
+        Map<Integer,double[]> res;
 
         if(validaCliente(cliente)){
             int kc = hashCL(cliente);
-            int ip = fil.pBinaria(cliente, kc);
+            int ip = this.fil.pBinaria(cliente, kc);
 
             if(ip!=-1){
-                res = fil.getQuerie3(kc,ip);
+                res = this.fil.getQuerie3(kc,ip);
             }
             else throw  new ValorInvalidoException("Cliente não existente");
         }else throw new ValorInvalidoException("Cliente não válido");
@@ -101,32 +181,32 @@ public class Queries {
         //n clientes
         //gasto
 
-    public static Map<Integer,double[]> querie4(InterfaceFiliais fil,InterfaceFaturacao fat, String prod) throws ValorInvalidoException {
+    public Map<Integer,double[]> querie4(String prod) throws ValorInvalidoException {
         Crono.start();
-        Map<Integer,double[]> res = null;
+        Map<Integer,double[]> res;
 
-        if(validaProduto(prod) && fat.pBinaria(prod,hashCL(prod)) !=-1) res = fil.getQuerie4(prod);
+        if(validaProduto(prod) && this.fat.pBinaria(prod,hashCL(prod)) !=-1) res = this.fil.getQuerie4(prod);
         else throw new ValorInvalidoException("Produto não válido");
 
-        System.out.println( Crono.getTImeString());
+        System.out.println(Crono.getTImeString());
         return res;
 
     }
 
 
     //querie 5
-    public static TreeSet<Map.Entry<String, Integer>> querie5(String c, InterfaceFiliais f) throws ValorInvalidoException {
+    public TreeSet<Map.Entry<String, Integer>> querie5(String c) throws ValorInvalidoException {
         Crono.start();
         //Comparator<Map.Entry<String,Integer>> cp = new Model.ComparatorQ5();
         Map<String, Integer> q5 = new TreeMap<>();
 
         if(validaCliente(c)){
             int kc = hashCL(c);
-            int ip = f.pBinaria(c, kc);
+            int ip = this.fil.pBinaria(c, kc);
 
             if(ip!=-1){
                 //Lista de produtos e quantidades
-                f.getQuerie5(kc,ip,q5);
+                this.fil.getQuerie5(kc,ip,q5);
             }else throw new ValorInvalidoException("Cliente não existe");
         }
         else throw new ValorInvalidoException("Cliente inválido!");
@@ -146,13 +226,13 @@ public class Queries {
 
     //int[0] nquantidade vendida;
     //int[1] n clientes;
-    public static TreeSet<Map.Entry<String, int[]>> querie6(int limite, InterfaceFiliais fil) throws ValorInvalidoException {
+    public TreeSet<Map.Entry<String, int[]>> querie6(int limite) throws ValorInvalidoException {
         Crono.start();
-        Map<String,int[]> res = null;
+        Map<String,int[]> res;
 
         if(limite >0){
             //Lista de produtos, com a quantidade e numero de clientes que o compraram
-            res = fil.getQuerie6();
+            res = this.fil.getQuerie6();
         }
         else throw new ValorInvalidoException("Limite inválido");
 
@@ -169,15 +249,14 @@ public class Queries {
 
 
     //querie 7
-    public static Map<Integer, TreeSet<Map.Entry <String,Double>>> querie7(InterfaceFiliais f){
+    public Map<Integer, TreeSet<Map.Entry <String,Double>>> querie7(){
         Crono.start();
-        Map<Integer, Map<String, Double>> res = null;
-        res = f.getQuerie7();
+        Map<Integer, Map<String, Double>> res;
+        res = this.fil.getQuerie7();
         //ordenar
 
         Map<Integer,TreeSet <Map.Entry<String, Double>>> res2= new TreeMap<>();
-//        Map<Integer,List<String>> cenas;
-//        TreeSet <Map.Entry<String, Double>> aux= new TreeSet<>(new ComparatorQ9());
+
         assert res != null;
         for(Map.Entry<Integer,Map<String, Double>> m : res.entrySet()){
             res2.put(m.getKey(),new TreeSet<>(new ComparatorQ9()));
@@ -191,12 +270,12 @@ public class Queries {
 
 
     // querie 8
-    public static TreeSet<Map.Entry<String, Integer>> querie8(InterfaceFiliais f, int limite) throws ValorInvalidoException {
+    public TreeSet<Map.Entry<String, Integer>> querie8(int limite) throws ValorInvalidoException {
         Crono.start();
-        Map<String, Integer> res = null;
+        Map<String, Integer> res;
 
         if(limite >0) {
-            res = f.getQuerie8();
+            res = this.fil.getQuerie8();
         }else throw new ValorInvalidoException("Limite inválido!");
 
         //Ordenar
@@ -211,12 +290,12 @@ public class Queries {
 
     // querie 9
 
-    public static TreeSet<Map.Entry<String,Double>> querie9(InterfaceFiliais fil,InterfaceFaturacao fat ,int limite, String prod) throws ValorInvalidoException, NotValideException {
+    public TreeSet<Map.Entry<String,Double>> querie9(int limite, String prod) throws ValorInvalidoException, NotValideException {
         Crono.start();
-        Map<String,Double> res = null;
+        Map<String,Double> res;
 
         if (limite > 0) {
-            if (validaProduto(prod) && fat.pBinaria(prod,hashCL(prod)) != -1) res = fil.getQuerie9(prod);
+            if (validaProduto(prod) && this.fat.pBinaria(prod,hashCL(prod)) != -1) res = this.fil.getQuerie9(prod);
             else throw new NotValideException("produto inválido");
         }else throw new ValorInvalidoException("limite inválido");
 
@@ -252,22 +331,26 @@ public class Queries {
     // Gravar para ficheiro
 
     public void gravarObj(String filename) throws IOException {
+        Crono.start();
         ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(filename));
         o.writeObject(this);
         o.flush();
         o.close();
+        System.out.println(Crono.getTImeString());
     }
 
-/*
+
     //Ler de ficheiros bin
 
-    public static Controlador lerObj(String filename) throws IOException, ClassNotFoundException {
+    public Queries lerObj(String filename) throws IOException, ClassNotFoundException {
+        Crono.start();
         ObjectInputStream o = new ObjectInputStream(new FileInputStream(filename));
-        Controlador c = (Controlador) o.readObject();
+        Queries c = (Queries) o.readObject();
         o.close();
+        System.out.println(Crono.getTImeString());
         return c;
     }
-*/
+
 
 
 }

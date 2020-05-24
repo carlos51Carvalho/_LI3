@@ -75,7 +75,7 @@ public class Vista implements Serializable {
         System.out.println("Não encontrou fiheiro -> " +e);
     }
     public void printOpLeitura(){
-        System.out.println("\nDeseja ler de ficheiros predfenidos (1) , ou ficheiros escolhidos por si (2) ?");
+        System.out.println("\nDeseja ler do ficheiro .dat (1), dos ficheiros predfenidos (2) ou ficheiros escolhidos por si (3)?");
     }
 
     public void fileNameC(){
