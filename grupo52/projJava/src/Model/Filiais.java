@@ -6,6 +6,9 @@ import java.util.*;
 public class Filiais implements InterfaceFiliais, Serializable {
     private Map<Integer, List<ClFil>> filiais;
 
+    /**
+     * Construtor sem parametros
+     */
 
     public Filiais() {
         this.filiais = new HashMap<>();
@@ -13,15 +16,28 @@ public class Filiais implements InterfaceFiliais, Serializable {
             this.filiais.put(i, new ArrayList<>());
     }
 
+    /**
+     * Método que calcula a chave de um cliente
+     * @param p     codigo de pcliente
+     * @return
+     */
     public int hashProd(String p) {
         return p.charAt(0) - 'A';
     }
 
+    /**
+     * Método que adiciona um cliente á variavel filiais
+     * @param cl        codigo de cliente
+     */
     public void addCl(String cl) {
         ClFil cls = new ClFil(cl);
         filiais.get(hashProd(cl)).add(cls);
     }
 
+    /**
+     * Método que adiciona um Set de clientes a variavel filiais
+     * @param clientes      Set de codigos de cliente
+     */
     public void addCls(Set<String> clientes) {
         for (String cl : clientes)
             addCl(cl);
@@ -32,6 +48,12 @@ public class Filiais implements InterfaceFiliais, Serializable {
 //    }
 
 
+    /**
+     * Método que faz uma procura binaria numa lista
+     * @param p     codigo de cliente
+     * @param k     int com chave
+     * @return
+     */
     public int pBinaria(String p, int k){
         List<ClFil> f = filiais.get(k);
         int r = -1;
@@ -51,10 +73,23 @@ public class Filiais implements InterfaceFiliais, Serializable {
         return r;
     }
 
+    /**
+     * Método que verifica se um cliente comprou um produto
+     * @param cl        codigo de cliente
+     * @param ip        int com posição na lista
+     * @param f         int com filial
+     * @param m         int com mês
+     * @param p         codigo de produto
+     * @return          boolean
+     */
     public boolean existeProd(String cl, int ip, int f, int m, String p){
         return this.filiais.get(hashProd(cl)).get(ip).existeProd(f,m,p);
     }
 
+    /**
+     * Método que acrescenta a informação de uma venda ás filiais
+     * @param cl        String com parametros de uma venda
+     */
 
     public void acrescentaFil(String[] cl) {
 
@@ -87,6 +122,11 @@ public class Filiais implements InterfaceFiliais, Serializable {
         }
     }
 
+    /**
+     * Método que conta quantos clientes fizera compras
+     * @return int com total de compradores
+     */
+
         public int numeroComparadores(){
         int count = 0;
         for (int i = 0; i<26; i++){
@@ -95,6 +135,10 @@ public class Filiais implements InterfaceFiliais, Serializable {
         return count;
     }
 
+    /**
+     * Método que calcula quantos clientes nunca fizeram compras
+     * @return int com total de clientes
+     */
     public int naocompram(){
         int count = 0;
         for (int i = 0; i<26; i++){
@@ -103,16 +147,36 @@ public class Filiais implements InterfaceFiliais, Serializable {
         return count-numeroComparadores();
     }
 
+    /**
+     * Método que verifica se um mês é usado
+     * @param key       int com chave
+     * @param ip        int com posição na lista
+     * @param f         int com filial
+     * @param m         int com mês
+     * @return  boolean
+     */
     public boolean getMesUsed(int key, int ip, int f, int m){
         return filiais.get(key).get(ip).getMesUsed(f,m);
     }
 
-
+    /**
+     * Método que devolve o numero de vendas num mês
+     * @param key       int com chave
+     * @param ip        int com posição na lista
+     * @param f         int com filial
+     * @param m         int com mês
+     * @return int com total de vendas
+     */
     public int getNVendasMes(int key, int ip, int f, int m){
         return filiais.get(key).get(ip).getFil().get(f).getFilF().get(m).getnVendas();
     }
 
 
+    /**
+     * Método que verifica quais meses sao usados
+     * @param res       Map a preencher
+     * @return Map com utilização de todos os meses
+     */
     public Map<Integer, int[]> getUsedFilialMes(Map<Integer, int[]> res){
         for (int i =0; i<26; i++){
             for (ClFil c: filiais.get(i)){
@@ -122,6 +186,12 @@ public class Filiais implements InterfaceFiliais, Serializable {
         return res;
     }
 
+    /**
+     * Método que devolve o total de vendas por mês e filial
+     * @param mes       int com mês
+     * @param res       Map a preencher
+     * @return Map com total de vendas por mês
+     */
     public Map<Integer, int[]> getVendasTotaisFiliaisPorMes(int mes,Map<Integer, int[]> res){
         for (int i =0; i<26; i++){
             for (ClFil c: filiais.get(i)){
@@ -132,10 +202,21 @@ public class Filiais implements InterfaceFiliais, Serializable {
     }
 
 
+    /**
+     * Get para Querie 3
+     * @param kc        int com chave
+     * @param ip        int com posição na lista
+     * @return Map com resposta da querie 3
+     */
     public Map<Integer,double[]> getQuerie3(int kc, int ip){
         return filiais.get(kc).get(ip).getQuerie3();
     }
 
+    /**
+     * Get para Querie 4
+     * @param prod      codigo de produto
+     * @return Map com resposta da querie 4
+     */
     public Map<Integer,double[]> getQuerie4(String prod) {
         Map<Integer,double[]> res = new TreeMap<>();
         for (int i = 0; i < 26; i++) {
@@ -146,11 +227,22 @@ public class Filiais implements InterfaceFiliais, Serializable {
         return res;
     }
 
+    /**
+     * Get para Querie 5
+     * @param kc        int com chave
+     * @param ip        int com posição na lista
+     * @param q5        Map a preencher
+     * @return Map com resposta da querie 5
+     */
     public void getQuerie5(int kc, int ip,Map<String, Integer> q5){
         filiais.get(kc).get(ip).getQuerie5(q5);
     }
 
 
+    /**
+     * Get para Querie 6
+     * @return Map com resposta da querie 6
+     */
 
     public Map<String,int[]> getQuerie6() {
         Map<String,int[]> res = new TreeMap<>();
@@ -162,6 +254,10 @@ public class Filiais implements InterfaceFiliais, Serializable {
         return res;
     }
 
+    /**
+     * Get para Querie 7
+     * @return Map com resposta da querie 7
+     */
     public Map<Integer, Map<String, Double>> getQuerie7() {
         Map<Integer, Map<String, Double>> res = new TreeMap<>();
 
@@ -174,6 +270,10 @@ public class Filiais implements InterfaceFiliais, Serializable {
         }
         return res;
     }
+    /**
+     * Get para Querie 8
+     * @return Map com resposta da querie 8
+     */
 
     public Map<String, Integer> getQuerie8(){
         Map<String, Integer> res = new TreeMap<>();
@@ -186,6 +286,11 @@ public class Filiais implements InterfaceFiliais, Serializable {
         return res;
     }
 
+    /**
+     * Get para Querie 9
+     * @param prod      codigo de produto
+     * @return Map com resposta da querie 9
+     */
     public Map<String,Double> getQuerie9(String prod) {
         Map<String,Double> res = new TreeMap<>();
         for (int i = 0; i < 26; i++) {

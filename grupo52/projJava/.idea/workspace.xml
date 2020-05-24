@@ -19,32 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Bugs nas views das queries que necessitam de paginação corrigidos">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Controlador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/GestVendas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/GestVendas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorCliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorCliente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorProduto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorProduto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Filiais.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Filiais.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Vista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Vista.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GestVendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestVendas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ComparatorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ComparatorCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ComparatorProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ComparatorProduto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ComparatorQ5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ComparatorQ5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ComparatorQ6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ComparatorQ6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ComparatorQ9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ComparatorQ9.java" afterDir="false" />
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Model/ClFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ClFil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/FilFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/FilFil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Filiais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Filiais.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/NotValideException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/NotValideException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Queries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ValorInvalidoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ValorInvalidoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MesFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MesFil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PrdFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PrdFil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Vendas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,12 +124,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="novos ficheiros" />

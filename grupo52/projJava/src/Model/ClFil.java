@@ -9,6 +9,9 @@ public class ClFil implements Serializable {
     private boolean used;
     private Map<Integer, FilFil> fil;
 
+    /**
+     * Construtor sem parâmetros
+     */
     public ClFil(){
         this.cl = "";
         this.used = false;
@@ -17,6 +20,10 @@ public class ClFil implements Serializable {
             this.fil.put(i, new FilFil());
     }
 
+    /**
+     * Construtor paramtrizado
+     * @param p     codigo de cliente
+     */
     public ClFil(String p){
         this.cl = p;
         this.used = false;
@@ -25,53 +32,124 @@ public class ClFil implements Serializable {
             this.fil.put(i, new FilFil());
     }
 
+    /**
+     * Get da variavel cl do objeto
+     * @return String com o codigo de cliente
+     */
     public String getCl() {
         return this.cl;
     }
 
+    /**
+     * Set d variavel cl do objeto
+     * @param ID        String com codigo de cliente
+     */
     public void setCl(String ID) {
         this.cl = ID;
     }
 
+    /**
+     * Get da variavel used do objeto
+     * @return boolean
+     */
     public boolean getUsed() {
         return used;
     }
 
+    /**
+     * Set da variavel used do objeto
+     * @param used boolean
+     */
     public void setUsed(boolean used) {
         this.used = used;
     }
 
+    /**
+     * Método que altera a utilização de uma filial
+     * @param f     int com filial
+     * @param v     int 0 ou 1
+     */
     public void setFilialUsada(int f,int v){
         this.fil.get(f).setUsed(v);
     }
 
+    /**
+     * étodo que verifica se um clientes comprou um produto
+     * @param f     int com a filial
+     * @param m     int com o mês
+     * @param p     codigo de produto
+     * @return boolean
+     */
     public boolean existeProd(int f, int m,String p){
         return this.fil.get(f).existeProd(m,p);
     }
 
+    /**
+     * Método que adiciona um gasto em modo 'N' á filial
+     * @param f     int com  filial
+     * @param m     int com o mês
+     * @param p     codigo de produto
+     * @param t     double com valor a adicionar
+     */
 
     public void addgN(int f,int m, String p, double t){
         this.fil.get(f).addgN(m,p,t);
     }
+    /**
+     * Método que adiciona uma quantidade em modo 'N' á filial
+     * @param f     int com  filial
+     * @param m     int com o mês
+     * @param p     codigo de produto
+     * @param t     int com valor a adicionar
+     */
     public void addqN(int f,int m, String p, int t){
         this.fil.get(f).addqN(m,p,t);
     }
+    /**
+     * Método que adiciona um gasto em modo 'P' á filial
+     * @param f     int com  filial
+     * @param m     int com o mês
+     * @param p     codigo de produto
+     * @param t     double com valor a adicionar
+     */
     public void addgP(int f,int m, String p, double t){
         this.fil.get(f).addgP(m,p,t);
     }
+    /**
+     * Método que adiciona uma quantidade em modo 'P' á filial
+     * @param f     int com  filial
+     * @param m     int com o mês
+     * @param p     codigo de produto
+     * @param t     int com valor a adicionar
+     */
     public void addqP(int f,int m, String p, int t){
         this.fil.get(f).addqP(m,p,t);
     }
-
+    /**
+     * Método que adiciona um produto á filial
+     * @param f     int com  filial
+     * @param m     int com o mês
+     * @param p     codigo de produto
+     */
     public void addPrs(int f, int m, String p){
         this.fil.get(f).addPrs(m,p);
     }
 
-
+    /**
+     * Método que incremente o total de vendas num mês
+     * @param f     int com filial
+     * @param m     int com mês
+     */
     public void incnVendasMes(int f, int m){
         this.fil.get(f).incnVendasMes(m);
     }
 
+    /**
+     * Método que altera se um mẽs é usado ou não
+     * @param f     int com filial
+     * @param m     int com mês
+     * @param b     boolean
+     */
     public void setUsedFilMes(int f,int m,boolean b){
         this.fil.get(f).setUsedMes(m,b);
     }
@@ -86,14 +164,28 @@ public class ClFil implements Serializable {
     }
 */
 
+    /**
+     * Get da variavel fil do objeto
+     * @return  Map com objeto FilFil
+     */
     public Map<Integer, FilFil> getFil(){
         return this.fil;
     }
 
+    /**
+     * Método que devolve a utilização de um mẽs
+     * @param f     int com filial
+     * @param m     int com mês
+     * @return  boolean
+     */
     public boolean getMesUsed( int f, int m){
         return fil.get(f).getMesUsed(m);
     }
 
+    /**Método que verifica filial a filial em quais meses sao efetuadas compras
+     * @param res       Map onde vai ser guardada a informação
+     * @return Map com o resultado
+     * */
     public Map<Integer, int[]> getUsedFilialMes(Map<Integer, int[]> res){
         for (Map.Entry<Integer, FilFil> f: this.fil.entrySet() ){
 
@@ -104,10 +196,23 @@ public class ClFil implements Serializable {
         return res;
     }
 
+    /**
+     * Método que devolve o total de vendas num mês
+     * @param f     int com filial
+     * @param m     int com mês
+     * @return int com total de vendas
+     */
+
     public int getNVendasMes( int f, int m){
         return fil.get(f).getFilF().get(m).getnVendas();
     }
 
+    /**
+     * Método que conta o total de vendas efetuadas num mês
+     * @param mes       mês a verificar
+     * @param res       Map onde vai ser guardada a informação
+     * @return Map com a informação
+     */
     public Map<Integer, int[]> getVendasTotaisFiliaisPorMes(int mes,Map<Integer, int[]> res){
         int aux;
         boolean alterado=false;
@@ -134,6 +239,10 @@ public class ClFil implements Serializable {
         return res;
     }
 
+    /**
+     * Get para a Querie 3
+     * @return Map com resposta á querie 3
+     */
     public Map<Integer,double[]> getQuerie3(){
         Map<Integer,double[]> res = new TreeMap<>();
         for (FilFil f: this.fil.values() ){
@@ -142,6 +251,12 @@ public class ClFil implements Serializable {
         return res;
     }
 
+    /**
+     * Get para a Querie 4
+     * @param prod      codigo de produto
+     * @param res       Map onde vai ser guardada a informação
+     * @return Map com resposta á querie 4
+     */
     public Map<Integer,double[]> getQuerie4(String prod, Map<Integer,double[]> res){
         for (FilFil f: this.fil.values() ){
             f.getQuerie4(prod,res);
@@ -149,19 +264,31 @@ public class ClFil implements Serializable {
         return res;
     }
 
+    /**
+     * Get para a Querie 5
+     * @param q5        Map onde vai ser guardada a informação
+     * @return Map com resposta á querie 5
+     */
     public void getQuerie5(Map<String, Integer> q5){
         for (FilFil f: this.fil.values() ) {
             if (f.getUsed() == 1) f.getQuerie5(q5);
         }
     }
+    /**
+     * Get para a Querie 6
+     * @param res       Map onde vai ser guardada a informação
+     * @return Map com resposta á querie 6
+     */
     public void getQuerie6(Map<String,int[]> res){
         for (FilFil f: this.fil.values() )
             f.getQuerie6(res);
     }
-
-
-
-
+    /**
+     * Get para a Querie 7
+     * @param res       Map onde vai ser guardada a informação
+     * @param c         String com codigo de cliente
+     * @return Map com resposta á querie 7
+     */
 
     public void getQuerie7(Map<Integer, Map<String, Double>> res, String c ) {
         double med;
@@ -194,6 +321,10 @@ public class ClFil implements Serializable {
         }
     }
 
+    /**
+     * Get para a Querie 8
+     * @return int com resposta á querie 8
+     */
     public int getQuerie8(){
         Set<String> aux = new HashSet<>();
         for (FilFil f: this.fil.values() ) {
@@ -203,6 +334,13 @@ public class ClFil implements Serializable {
         return aux.size();
     }
 
+    /**
+     * Get para a Querie 9
+     * @param prod      codigo de produto
+     * @param res       Map onde vai ser guardada a informação
+     * @param c         codigo de cliente
+     * @return Map com resposta á querie 9
+     */
     public Map<String,Double> getQuerie9(String prod, Map<String,Double> res, String c){
         for (FilFil f: this.fil.values() ){
             f.getQuerie9(prod,res,c);
