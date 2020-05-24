@@ -248,7 +248,7 @@ public class Queries {
     }
 
 
-/*
+
     // Gravar para ficheiro
 
     public void gravarObj(String filename) throws IOException {
@@ -258,7 +258,7 @@ public class Queries {
         o.close();
     }
 
-
+/*
     //Ler de ficheiros bin
 
     public static Controlador lerObj(String filename) throws IOException, ClassNotFoundException {

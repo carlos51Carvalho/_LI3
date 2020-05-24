@@ -37,7 +37,7 @@ public class Controlador {
     
     
     public void run() throws Exception {
-        int op = 1;
+        int op;
         boolean load = false;
         int value;
         v.printHeader();
@@ -421,7 +421,7 @@ public class Controlador {
                 try {
                     q8result = Queries.querie8(fil,limite);
 
-                    int size = q8result.size();
+                    int size = Math.min(q8result.size(), limite);
                     int totalpag = size/linhas ;
                     if(size%linhas!=0)totalpag++;
                     int pag=1;
@@ -470,7 +470,7 @@ public class Controlador {
                 try {
                     q9result = Queries.querie9(fil,fat,limite,p);
 
-                    int size = q9result.size();
+                    int size = Math.min(q9result.size(), limite);
                     int totalpag = size/linhas ;
                     if(size%linhas!=0)totalpag++;
                     int pag=1;

@@ -1,7 +1,4 @@
-import Model.Queries;
-
 import java.io.Serializable;
-import java.sql.SQLOutput;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -22,30 +19,30 @@ public class Vista implements Serializable {
 
 
     public void printmenu(){
-        System.out.println("______________________________________________________________________________________________");
-        System.out.println("|Por favor escolha a instrução a executar:                                                   |");
-        System.out.println("|1  -> Load dos ficheiros.                                                                   |");
-        System.out.println("|2  -> Dados obtidos, diretamente após leitura (Queries estatisticas 1.1).                   |");
-        System.out.println("|3  -> Número TOTAL de compras relizadas por més.                                            |");
-        System.out.println("|4  -> Faturação total por mês para cada filial e o valor total global.                      |");
-        System.out.println("|5  -> Número de distintos clientes que compraram em cada mês filial a filial.               |");
-        System.out.println("|6  -> Q1 -Lista ordenada alfabeticamente com os códigos dos produtos nunca comprados.       |");
-        System.out.println("|7  -> Q2 -Número total de vendas realizadas e o total de compradores distintos num mês.     |");
-        System.out.println("|8  -> Q3 -Determinar para  cada  mês,  quantas  compras um certo cliente fez,               |");
-        System.out.println("|          quantos produtos distintos comprou e quanto gastou no total.                      |");
-        System.out.println("|9  -> Q4 -Determinar, mês a mês, quantas vezes um certo produto foi comprado, por quantos   |");
-        System.out.println("|          clientes diferentes e o total faturado.                                           |");
-        System.out.println("|10 -> Q5 -Determinar a lista ordenada por ordem  decrescente de quantidade de códigos de    |");
-        System.out.println("|          produtos que mais comprou.                                                        |");
-        System.out.println("|11 -> Q6 -Determinar o conjunto dos X produtos mais vendidos em todo o ano indicando o      |");
-        System.out.println("|          número total de distintos clientes que o compraram.                               |");
-        System.out.println("|12 -> Q7 -Determinar, para cada filial, a lista dos três  maiores  compradores (dinheiro)   |");
-        System.out.println("|13 -> Q8 -Determinar os códigos dos X clientes que compraram mais produtos diferentes       |");
-        System.out.println("|14 -> Q9 -Determinar os códigos de clientes que mais compraram um X produto, e quanto gatou |");
-        System.out.println("|15 -> Q10-Determinar a faturação total de cada produto, mês a mês, filial a filial          |");
-        System.out.println("|16 -> Gravar em Binário                                                                     |");
-        System.out.println("|0  -> Exit Program                                                                          |");
-        System.out.println("|____________________________________________________________________________________________|");
+        System.out.println("_____________________________________________________________________________________________");
+        System.out.println("|Por favor escolha a instrução a executar:                                                  |");
+        System.out.println("|1  -> Load dos ficheiros.                                                                  |");
+        System.out.println("|2  -> Dados obtidos, diretamente após leitura (Queries estatisticas 1.1).                  |");
+        System.out.println("|3  -> Número TOTAL de compras relizadas por més.                                           |");
+        System.out.println("|4  -> Faturação total por mês para cada filial e o valor total global.                     |");
+        System.out.println("|5  -> Número de distintos clientes que compraram em cada mês filial a filial.              |");
+        System.out.println("|6  -> Q1 -Lista ordenada alfabeticamente com os códigos dos produtos nunca comprados.      |");
+        System.out.println("|7  -> Q2 -Número total de vendas realizadas e o total de compradores distintos num mês.    |");
+        System.out.println("|8  -> Q3 -Determinar para  cada  mês,  quantas  compras um certo cliente fez,              |");
+        System.out.println("|          quantos produtos distintos comprou e quanto gastou no total.                     |");
+        System.out.println("|9  -> Q4 -Determinar, mês a mês, quantas vezes um certo produto foi comprado, por quantos  |");
+        System.out.println("|          clientes diferentes e o total faturado.                                          |");
+        System.out.println("|10 -> Q5 -Determinar a lista ordenada por ordem  decrescente de quantidade de códigos de   |");
+        System.out.println("|          produtos que mais comprou.                                                       |");
+        System.out.println("|11 -> Q6 -Determinar o conjunto dos X produtos mais vendidos em todo o ano indicando o     |");
+        System.out.println("|          número total de distintos clientes que o compraram.                              |");
+        System.out.println("|12 -> Q7 -Determinar, para cada filial, a lista dos três  maiores  compradores (dinheiro)  |");
+        System.out.println("|13 -> Q8 -Determinar os códigos dos X clientes que compraram mais produtos diferentes      |");
+        System.out.println("|14 -> Q9 -Determinar os códigos de clientes que mais compraram um X produto, e quanto gatou|");
+        System.out.println("|15 -> Q10-Determinar a faturação total de cada produto, mês a mês, filial a filial         |");
+        System.out.println("|16 -> Gravar em Binário                                                                    |");
+        System.out.println("|0  -> Exit Program                                                                         |");
+        System.out.println("|___________________________________________________________________________________________|");
     }
 
     public void printBarraN(){
@@ -129,7 +126,7 @@ public class Vista implements Serializable {
         System.out.println("O Limite que inseriu não é válido. Por favor tente outra vez.");
     }
     public void printErrorPagina(int pag){
-        System.out.printf("A pagina %d não é válida. Por favor tente outra vez: \n",pag);
+        System.out.printf("A pagina %d não é válida. Por favor tente outra vez.\n",pag);
     }
 
 
@@ -294,9 +291,13 @@ public class Vista implements Serializable {
 
         int i=0;
         System.out.println("Produto   ->  Quantidade");
-        for(Map.Entry<String,Integer> e : q5){
-            if(i>pag*linhas)break;
-            if(i>=(pag-1)*linhas)System.out.println(e.getKey()+"        " + e.getValue());
+
+        Iterator<Map.Entry<String,Integer>> it = q5.iterator();
+        Map.Entry<String,Integer> aux;
+        while(it.hasNext()){
+            aux=it.next();
+            if(i>pag*linhas || i>size)break;
+            if(i>=(pag-1)*linhas)System.out.println(aux.getKey()+"        " + aux.getValue());
             i++;
         }
 
@@ -322,11 +323,17 @@ public class Vista implements Serializable {
 
         i=0;
         System.out.println("Produto  ->  Quantidade    NºClientes");
-        for(Map.Entry<String,int[]> e: q6){
-            if(i>pag*linhas)break;
-            if(i>=(pag-1)*linhas)System.out.printf("%s\t%10d\t%10d\n",e.getKey(),e.getValue()[0],e.getValue()[1]);
+
+        Iterator<Map.Entry<String,int[]>> it = q6.iterator();
+        Map.Entry<String,int[]> aux;
+        while(it.hasNext()){
+            aux=it.next();
+            if(i>pag*linhas || i>size)break;
+            if(i>=(pag-1)*linhas)System.out.printf("%s\t%10d\t%10d\n",aux.getKey(),aux.getValue()[0],aux.getValue()[1]);
             i++;
         }
+
+
         for (int k = i;k<=pag*linhas;k++) System.out.println("");
 
     }
@@ -337,7 +344,7 @@ public class Vista implements Serializable {
         for (Map.Entry<Integer, TreeSet<Map.Entry <String,Double>>> e : q7.entrySet()){
             System.out.printf("Filial %2d:\n",e.getKey());
             for (Map.Entry <String,Double> m : e.getValue()){
-                System.out.println(m.getKey());
+                System.out.println("->" + m.getKey());
             }
             System.out.println("");
         }
@@ -360,9 +367,12 @@ public class Vista implements Serializable {
 
         int i=0;
         System.out.println("Clientes   ->  NºProdutos");
-        for(Map.Entry<String,Integer> e : q8){
-            if(i>pag*linhas)break;
-            if(i>=(pag-1)*linhas)System.out.println(e.getKey()+"   ->  [" + e.getValue()+"]");
+        Iterator<Map.Entry<String,Integer>> it = q8.iterator();
+        Map.Entry<String,Integer> aux;
+        while(it.hasNext()){
+            aux=it.next();
+            if(i>pag*linhas || i>size)break;
+            if(i>=(pag-1)*linhas)System.out.println(aux.getKey()+"   ->  [" + aux.getValue()+"]");
             i++;
         }
 
@@ -386,9 +396,12 @@ public class Vista implements Serializable {
 
        int i=0;
        System.out.println("Clientes       Dinheiro Gasto");
-       for(Map.Entry<String,Double> e : q9){
-           if(i>pag*linhas)break;
-           if(i>=(pag-1)*linhas)System.out.println(e.getKey()+"     " + e.getValue());
+       Iterator<Map.Entry<String,Double>> it = q9.iterator();
+       Map.Entry<String,Double> aux;
+       while(it.hasNext()){
+           aux=it.next();
+           if(i>pag*linhas || i>size)break;
+           if(i>=(pag-1)*linhas)System.out.printf("%6s     %.2f\n",aux.getKey(),aux.getValue());
            i++;
        }
 
