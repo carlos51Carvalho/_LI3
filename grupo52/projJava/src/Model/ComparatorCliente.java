@@ -7,6 +7,9 @@ package Model;
  */
 import java.io.Serializable;
 import java.util.Comparator;
+/**
+ * Classe que contem um comparador para clientes
+ */
 public class ComparatorCliente implements Comparator<Cliente>, Serializable
 {
 

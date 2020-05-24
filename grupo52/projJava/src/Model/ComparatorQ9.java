@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map;
 
+/**
+ * Classe que contem o comparador para a Querie 9
+ */
 public class ComparatorQ9 implements Comparator<Map.Entry<String,Double>>, Serializable {
 
     @Override

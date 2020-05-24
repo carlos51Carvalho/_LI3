@@ -7,6 +7,9 @@ package Model;
  */
 import java.io.Serializable;
 import java.util.Comparator;
+/**
+ * Classe que contem um comparador para produtos
+ */
 public class ComparatorProduto implements Comparator<Produto>, Serializable
 {
 
