@@ -20,12 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Model/ClFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ClFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/FilFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/FilFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Filiais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Filiais.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MesFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MesFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/PrdFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PrdFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Vendas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ClFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ClFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/FilFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/FilFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Filiais.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Filiais.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/MesFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/MesFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/PrdFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/PrdFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Faturacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Faturacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/FilFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/FilFat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MesFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MesFat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ProdFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ProdFat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590279981154</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Todas as Filiais e Vendas comentadas">
+      <created>1590329713780</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1590329713780</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +147,8 @@
     <MESSAGE value="novos ficheiros" />
     <MESSAGE value="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas" />
     <MESSAGE value="Bugs nas views das queries que necessitam de paginação corrigidos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugs nas views das queries que necessitam de paginação corrigidos" />
+    <MESSAGE value="Todas as Filiais e Vendas comentadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Todas as Filiais e Vendas comentadas" />
   </component>
   <component name="WindowStateProjectService">
     <state x="412" y="198" width="599" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590295013246">
@@ -147,6 +159,10 @@
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/69.27.1851.1053@69.27.1851.1053" timestamp="1589909431318" />
+    <state x="544" y="149" width="888" height="807" key="CommitChangelistDialog2" timestamp="1590329713681">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="544" y="149" width="888" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1590329713681" />
     <state width="1253" height="374" key="GridCell.Tab.0.bottom" timestamp="1590296316797">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

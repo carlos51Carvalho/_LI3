@@ -7,25 +7,48 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
     private Map<Integer, List<ProdFat>> faturacoes;
 
 
+    /**
+     * Construtor sem parametros
+     */
     public Faturacao() {
         this.faturacoes = new HashMap<>();
         for (int i = 0; i < 26; i++)
             this.faturacoes.put(i, new ArrayList<>());
     }
 
+    /***
+     * Método que calcula a chave de um produto
+     * @param p     codigo de produto
+     * @return int com a chave
+     */
+
     public int hashProd(String p) {
         return p.charAt(0) - 'A';
     }
 
+    /**
+     * Método que adiciona um produto a variavel faturações do bojeto
+     * @param p     codigo de produto
+     */
     public void addProd(String p) {
         ProdFat prd = new ProdFat(p);
         faturacoes.get(hashProd(p)).add(prd);
     }
 
+    /**
+     * Método que adiciona um set de produtos a variavel faturaçõoes do objeto
+     * @param produtos      set de codigos de produto
+     */
     public void addProds(Set<String> produtos) {
         for (String p : produtos)
             addProd(p);
     }
+
+    /**
+     * Método de devolve uma lista de produtos dado uma chave
+     * @param i     int com chave
+     * @return  Lista de produtos
+     */
 
     public List<ProdFat> getArr(int i){
         return faturacoes.get(i);
@@ -52,6 +75,13 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
 
 }
 */
+
+    /**
+     * Método que faz uma procura binaria numa lista de produtos
+     * @param p     codigo de produto
+     * @param k     int chave
+     * @return
+     */
     public int pBinaria(String p, int k){
         List<ProdFat> f = faturacoes.get(k);
         int r = -1;
@@ -71,6 +101,10 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
         return r;
     }
 
+    /**
+     * Método que adiciona a faturação de uma venda á faturação
+     * @param p     Array com parametros a venda
+     */
     public void acrescentaFat(String[] p) {
 
         int ip = pBinaria(p[0],hashProd(p[0]));
@@ -102,6 +136,11 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
 
     }
 
+    /**
+     * Método que devolve o numero de produtos comprados
+     * @return  int com total de produtos
+     */
+
     public int numeroProdUsados(){
         int count = 0;
         for (int i = 0; i<26; i++){
@@ -110,6 +149,10 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
         return count;
     }
 
+    /**
+     * Método que devolve numero de produtos nunca comprados
+     * @return int com total de produtos nunca comprados
+     */
     public int numeroProdNuncaUsados(){
         int count = 0;
         for (int i = 0; i<26; i++){
@@ -118,6 +161,10 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
         return count-numeroProdUsados();
     }
 
+    /**
+     * Get da Querie 1
+     * @return Lista de produtos de resposta da querie 1
+     */
     public List<String> getQuerie1() {
         List<String> res = new ArrayList<>();
         for (int i = 0; i < 26; i++) {
@@ -131,6 +178,10 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
     }
 
 
+    /**
+     * Método que calcula a faturação total por mes e filial
+     * @param res       Map a preencher
+     */
     public void getFatPorMesEFil(Map<Integer,Map<Integer,Map<String,Double>>> res){
         for (int i = 0; i<26; i++){
             for (ProdFat f : this.faturacoes.get(i)){
