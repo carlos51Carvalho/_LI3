@@ -156,7 +156,6 @@ public class Clientes3 implements InterfaceClientes, Serializable
      */
 
     public int ler_clientes(String filepath) throws IOException {
-        Crono.start();
         String st;
         int i=0;
         File file= new File(filepath);
@@ -167,8 +166,6 @@ public class Clientes3 implements InterfaceClientes, Serializable
                 i++;
             }
         }
-        System.out.println("Clientes Lidos em:");
-        System.out.println(Crono.getTImeString());
         return i;
     }
 

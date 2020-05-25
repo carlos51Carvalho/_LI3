@@ -124,7 +124,6 @@ public class Vendas implements Serializable {
      */
     public int ler_vendas(InterfaceFaturacao fat, InterfaceFiliais fil, TreeSet<String> c, TreeSet<String> p, String filepath,int nfiliais) throws IOException
     {
-        Crono.start();
     int i = 0;
     int t = 0;
     int zero = 0;
@@ -189,31 +188,7 @@ public class Vendas implements Serializable {
 
         // querie 1.2.3
         numeroClientesByFil(fil);
-/*
-        // querie 1.2.1
-        for (int k = 0; k<12; k++){
-            System.out.println(res[k]);
-        }
 
-        // querie 1.2.2
-        for(Map.Entry<Integer,double[]> e: res2.entrySet()) {
-            System.out.println("Mes " + e.getKey() + ": ");
-            for (int g = 0; g < 4; g++) {
-                System.out.println("Fat" + g + ": " + e.getValue()[g]);
-            }
-        }
-
- */
-            /*
-        // querie 1.2.3
-        for (Map.Entry<Integer,int[]> r : res3.entrySet()) {
-            System.out.println(r.getKey());
-            for (int h= 1; h<13; h++)
-                System.out.println(r.getValue()[h]);
-        }
-*/
-     System.out.println("Model.Vendas lidas Lidos \n");
-     System.out.println(Crono.getTImeString());
     return i;
 
     }

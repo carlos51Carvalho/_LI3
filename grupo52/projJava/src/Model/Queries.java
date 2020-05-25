@@ -127,9 +127,7 @@ public class Queries implements Serializable{
 
     // querie 1
     public List<String> querie1(){
-        Crono.start();
         List<String> res = this.fat.getQuerie1();
-        Crono.getTImeString();
         return res;
     }
 
@@ -139,14 +137,12 @@ public class Queries implements Serializable{
     //int[1] nvendas
     public Map<Integer,int[]> querie2(int mes) throws ValorInvalidoException{
 
-        Crono.start();
         Map<Integer,int[]> res = new TreeMap<>();
         if (mesvalido(mes)) {
             res=this.fil.getVendasTotaisFiliaisPorMes(mes,res);
         }
         else throw new ValorInvalidoException("Mês não válido!");
 
-        System.out.println(Crono.getTImeString());
         return res;
     }
 
@@ -159,7 +155,6 @@ public class Queries implements Serializable{
 
 
     public  Map<Integer,double[]> querie3(String cliente) throws ValorInvalidoException {
-        Crono.start();
         Map<Integer,double[]> res;
 
         if(validaCliente(cliente)){
@@ -171,7 +166,6 @@ public class Queries implements Serializable{
             }
             else throw  new ValorInvalidoException("Cliente não existente");
         }else throw new ValorInvalidoException("Cliente não válido");
-        System.out.println( Crono.getTImeString());
         return res;
     }
 
@@ -182,13 +176,11 @@ public class Queries implements Serializable{
         //gasto
 
     public Map<Integer,double[]> querie4(String prod) throws ValorInvalidoException {
-        Crono.start();
         Map<Integer,double[]> res;
 
         if(validaProduto(prod) && this.fat.pBinaria(prod,hashCL(prod)) !=-1) res = this.fil.getQuerie4(prod);
         else throw new ValorInvalidoException("Produto não válido");
 
-        System.out.println(Crono.getTImeString());
         return res;
 
     }
@@ -196,7 +188,6 @@ public class Queries implements Serializable{
 
     //querie 5
     public TreeSet<Map.Entry<String, Integer>> querie5(String c) throws ValorInvalidoException {
-        Crono.start();
         //Comparator<Map.Entry<String,Integer>> cp = new Model.ComparatorQ5();
         Map<String, Integer> q5 = new TreeMap<>();
 
@@ -215,7 +206,6 @@ public class Queries implements Serializable{
         TreeSet<Map.Entry<String, Integer>> res =  new TreeSet<>(new ComparatorQ5());
         res.addAll(q5.entrySet());
 
-        System.out.println( Crono.getTImeString());
         return res;
     }
 
@@ -227,7 +217,6 @@ public class Queries implements Serializable{
     //int[0] nquantidade vendida;
     //int[1] n clientes;
     public TreeSet<Map.Entry<String, int[]>> querie6(int limite) throws ValorInvalidoException {
-        Crono.start();
         Map<String,int[]> res;
 
         if(limite >0){
@@ -242,7 +231,6 @@ public class Queries implements Serializable{
         assert res != null;
         q6.addAll(res.entrySet());
 
-        System.out.println( Crono.getTImeString());
         return q6;
     }
 
@@ -250,7 +238,6 @@ public class Queries implements Serializable{
 
     //querie 7
     public Map<Integer, TreeSet<Map.Entry <String,Double>>> querie7(){
-        Crono.start();
         Map<Integer, Map<String, Double>> res;
         res = this.fil.getQuerie7();
         //ordenar
@@ -262,7 +249,7 @@ public class Queries implements Serializable{
             res2.put(m.getKey(),new TreeSet<>(new ComparatorQ9()));
             res2.get(m.getKey()).addAll(m.getValue().entrySet());
         }
-        System.out.println( Crono.getTImeString());
+
 
         return res2;
     }
@@ -271,7 +258,7 @@ public class Queries implements Serializable{
 
     // querie 8
     public TreeSet<Map.Entry<String, Integer>> querie8(int limite) throws ValorInvalidoException {
-        Crono.start();
+
         Map<String, Integer> res;
 
         if(limite >0) {
@@ -284,14 +271,12 @@ public class Queries implements Serializable{
         q8.addAll(res.entrySet());
 
 
-        System.out.println( Crono.getTImeString());
         return q8;
     }
 
     // querie 9
 
     public TreeSet<Map.Entry<String,Double>> querie9(int limite, String prod) throws ValorInvalidoException, NotValideException {
-        Crono.start();
         Map<String,Double> res;
 
         if (limite > 0) {
@@ -303,7 +288,6 @@ public class Queries implements Serializable{
         assert res != null;
         q9.addAll(res.entrySet());
 
-        System.out.println( Crono.getTImeString());
         return q9;
 
     }
@@ -331,23 +315,19 @@ public class Queries implements Serializable{
     // Gravar para ficheiro
 
     public void gravarObj(String filename) throws IOException {
-        Crono.start();
         ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(filename));
         o.writeObject(this);
         o.flush();
         o.close();
-        System.out.println(Crono.getTImeString());
     }
 
 
     //Ler de ficheiros bin
 
     public Queries lerObj(String filename) throws IOException, ClassNotFoundException {
-        Crono.start();
         ObjectInputStream o = new ObjectInputStream(new FileInputStream(filename));
         Queries c = (Queries) o.readObject();
         o.close();
-        System.out.println(Crono.getTImeString());
         return c;
     }
 

@@ -159,7 +159,6 @@ public class Produtos3 implements InterfaceProdutos, Serializable
      * @throws IOException
      */
     public int ler_produtos(String filepath) throws IOException {
-        Crono.start();
         File file2= new File(filepath);
         BufferedReader br2 = new BufferedReader(new FileReader(file2));
         String st;
@@ -170,8 +169,7 @@ public class Produtos3 implements InterfaceProdutos, Serializable
                 i++;
                 this.addProduto(new Produto(st));
             }
-        }System.out.println("Produtos Lidos em:");
-        System.out.println(Crono.getTImeString());
+        }
         return i;
     }
 /*

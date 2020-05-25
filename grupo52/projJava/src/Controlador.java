@@ -37,7 +37,7 @@ public class Controlador {
         fp = "Dados_Iniciais/Produtos.txt";
         fv = "Dados_Iniciais/Vendas_1M.txt";
         nfiliais=3;
-        nlinhasoutput=10;
+        nlinhasoutput=20;
         try {
             String st;
             String[] linhaPartida;
@@ -76,6 +76,7 @@ public class Controlador {
                 v.printErrorFIle(n.getMessage());
             }
         }
+        v.flush();
 
         v.printHeader();
         do{//chamar menu da view
@@ -223,7 +224,10 @@ public class Controlador {
 
         if (opleit == 1) {//ler binario
             try {
+                Crono.start();
                 q=q.lerObj("dados.dat");         //nome do ficheiro pode estar no config
+                double time = Crono.stop();
+                //Vista
                 load = true;
             }catch (IOException e){
                 v.printErrorFIle(e.getMessage());
@@ -253,17 +257,21 @@ public class Controlador {
                     fp = this.i.lerString();
                     v.fileNameV();
                     fv = this.i.lerString();
+                    Crono.start();
                     q.leituras(fc, fp, fv,nfiliais);
+                    double time = Crono.stop();
+                    v.printFilePaths(fc, fp, fv, time);
                     load = true;
-                    v.printFilePaths(fc, fp, fv);
                 } catch (IOException e) {
                     v.printErrorFIle(e.getMessage());
                 }
             }else{
                 try {
+                    Crono.start();
                     q.leituras(fc, fp, fv,nfiliais);
+                    double time = Crono.stop();
+                    v.printFilePaths(fc, fp, fv, time);
                     load = true;
-                    v.printFilePaths(fc, fp, fv);
                 } catch (IOException e) {
                     v.printErrorFIle(e.getMessage());
                 }
@@ -274,7 +282,10 @@ public class Controlador {
     }
 
     public void case6(int linhas){
+        Crono.start();
         List<String> prods= q.querie1();
+        double time = Crono.stop();
+
 
         //int linhas=10;
         int size = prods.size();
@@ -287,7 +298,7 @@ public class Controlador {
             if(op>0 && op<=totalpag){
                    pag=op;
             }
-            v.querie1(prods,pag,linhas);
+            v.querie1(prods,pag,linhas, time);
 
             if (op!=pag){
                 v.printErrorPagina(op);
@@ -308,7 +319,10 @@ public class Controlador {
                 v.printMes();
                 mes = this.i.lerInt();
                 try {
-                    v.querie2(q.querie2(mes), mes);
+                    Crono.start();
+                    Map<Integer,int[]> q2 =q.querie2(mes);
+                    double time = Crono.stop();
+                    v.querie2(q2, mes, time);
                     valid = false;
                     v.printDone();
                 }catch (ValorInvalidoException e){
@@ -327,7 +341,10 @@ public class Controlador {
                 v.printCliente();
                 c = this.i.lerString();
                 try {
-                    v.querie3(q.querie3(c), c);
+                    Crono.start();
+                    Map<Integer,double[]> q3 = q.querie3(c);
+                    double time = Crono.stop();
+                    v.querie3(q3, c, time);
                     valid = false;
                     v.printDone();
                 }catch (ValorInvalidoException e){
@@ -347,7 +364,10 @@ public class Controlador {
                 v.printProduto();
                 p = this.i.lerString();
                 try {
-                    v.querie4(q.querie4(p), p);
+                    Crono.start();
+                    Map<Integer,double[]> q4 = q.querie4(p);
+                    double time = Crono.stop();
+                    v.querie4(q4, p, time);
                     valid = false;
                     v.printDone();
                 }catch (ValorInvalidoException e){
@@ -369,7 +389,9 @@ public class Controlador {
                 v.printCliente();
                 c = this.i.lerString();
                 try {
+                    Crono.start();
                     q5result = q.querie5(c);
+                    double time = Crono.stop();
 
                     int size = q5result.size();
                     int totalpag = size/linhas ;
@@ -381,7 +403,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
-                        v.querie5(q5result,c,pag,linhas);
+                        v.querie5(q5result,c,pag,linhas,time);
 
                         if (op!=pag){
                             v.printErrorPagina(op);
@@ -411,7 +433,9 @@ public class Controlador {
                 v.printLimite();
                 limite = this.i.lerInt();
                 try {
+                    Crono.start();
                     q6result = q.querie6(limite);
+                    double time = Crono.stop();
                     valid = false;
 
                     int size = Math.min(q6result.size(), limite);
@@ -424,7 +448,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
-                        v.querie6(q6result,pag,linhas,limite);
+                        v.querie6(q6result,pag,linhas,limite, time);
 
                         if (op!=pag){
                             v.printErrorPagina(op);
@@ -451,9 +475,11 @@ public class Controlador {
         if (load){
             while (valid) {
                 //try {
+                    Crono.start();
                     q7 = q.querie7();
+                    double time = Crono.stop();
 
-                    v.querie7(q7);
+                    v.querie7(q7,time);
                     valid = false;
                     v.printDone();
 
@@ -478,7 +504,9 @@ public class Controlador {
                 v.printLimite();
                 limite = this.i.lerInt();
                 try {
+                    Crono.start();
                     q8result = q.querie8(limite);
+                    double time = Crono.stop();
 
                     int size = Math.min(q8result.size(), limite);
                     int totalpag = size/linhas ;
@@ -490,7 +518,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
-                        v.querie8(q8result,limite,pag,linhas);
+                        v.querie8(q8result,limite,pag,linhas , time);
 
                         if (op!=pag){
                             v.printErrorPagina(op);
@@ -525,7 +553,9 @@ public class Controlador {
                 v.printProduto();
                 p = this.i.lerString();
                 try {
+                    Crono.start();
                     q9result = q.querie9(limite,p);
+                    double time = Crono.stop();
 
                     int size = Math.min(q9result.size(), limite);
                     int totalpag = size/linhas ;
@@ -537,7 +567,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
-                        v.querie9(q9result,limite,p,pag,linhas);
+                        v.querie9(q9result,limite,p,pag,linhas, time);
 
                         if (op!=pag){
                             v.printErrorPagina(op);
@@ -563,8 +593,9 @@ public class Controlador {
         Map<Integer,Map<Integer,Map<String,Double>>> q10result;
 
         if (load) {
+            Crono.start();
             q10result = q.querie10();
-
+            double time = Crono.stop();
             int op=1;
             int m=op;
             int oppag=op;
@@ -586,7 +617,7 @@ public class Controlador {
                         v.insiraPag();
                         oppag = this.i.lerInt();
                         if (oppag > 0 && oppag <= totalpag) {
-                            v.querie10(q10result.get(m),m,oppag,totalpag,linhas,size);
+                            v.querie10(q10result.get(m),m,oppag,totalpag,linhas,size,time);
                             v.printBarraN();
                         } else if (oppag != 0) {
                             v.printErrorPagina(oppag);

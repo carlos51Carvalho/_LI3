@@ -46,7 +46,7 @@ public class Vista implements Serializable {
         System.out.println();
     }
     public void flush(){
-        System.out.println("\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
     public void pressioneEnter(){
@@ -94,8 +94,8 @@ public class Vista implements Serializable {
         System.out.println("FilePath Vendas: ");
     }
 
-    public void printFilePaths(String fc,String fp,String fv){
-        System.out.printf("FilePath Clientes lido: %s\nFilePath Produtos lido:%s\nFilePath Vendas lido:%s\n",fc,fp,fv );
+    public void printFilePaths(String fc,String fp,String fv, double time){
+        System.out.printf("FilePath Clientes lido: %s\nFilePath Produtos lido:%s\nFilePath Vendas lido:%s\nTempo de leitura: %f",fc,fp,fv,time );
     }
 
     //====== Queries =======//
@@ -233,10 +233,11 @@ public class Vista implements Serializable {
         System.out.println("Insira a pagina que quer ver ou 0 para sair: ");
     }
 
-    public void querie1(List<String> q1,int pag, int linhas){
+    public void querie1(List<String> q1,int pag, int linhas, double time){
         int i;
         int size = q1.size();
         int totalpag = size/linhas ;
+        System.out.println("Tempo de execução: " + time + "\n");
         if(size%linhas!=0)totalpag++;
         System.out.printf("O total de produtos nunca comprados é %d.\n",q1.size());
         System.out.printf("A apresentar pagina %d de %d :\n",pag,totalpag);
@@ -247,10 +248,11 @@ public class Vista implements Serializable {
 
     }
 
-    public void querie2(Map<Integer,int[]> q2, int mes){
+    public void querie2(Map<Integer,int[]> q2, int mes, double time){
+        System.out.println("Tempo de execução: " + time + "\n");
         System.out.printf("Para o Més %d:\n\n", mes);
         System.out.printf("O numero global de clientes diferentes que fizeram compras -> %d   \n", q2.get(0)[0]);
-        System.out.printf("O numero total de vendas diferentes efetuadas -> %d    \n", q2.get(0)[1]);
+        System.out.printf("O numero total de vendas diferentes efetuadas -> %d    \n\n", q2.get(0)[1]);
         System.out.println("               nºclientes        nºvendas");
         for (Map.Entry<Integer,int[]> e : q2.entrySet()){
             if (e.getKey()!=0) System.out.printf("FILIAL %d:     %6d            %6d\n", e.getKey(),e.getValue()[0],e.getValue()[1]);
@@ -263,7 +265,8 @@ public class Vista implements Serializable {
     //int[1] n produtos diferentes
     //int[2] faturado
 
-    public void querie3(Map<Integer,double[]> q3, String c){
+    public void querie3(Map<Integer,double[]> q3, String c, double time){
+        System.out.println("Tempo de execução: " + time + "\n");
         System.out.println("Para o cliente:"+ c +"\n");
         System.out.println("            nªvendas          n0ºprodutos        faturado");
         for (Map.Entry<Integer,double[]> e : q3.entrySet()){
@@ -275,7 +278,8 @@ public class Vista implements Serializable {
     //n clientes
     //gasto
 
-    public void querie4(Map<Integer,double[]> q4, String p){
+    public void querie4(Map<Integer,double[]> q4, String p, double time){
+        System.out.println("Tempo de execução: " + time + "\n");
         System.out.println("Para o produto:"+ p +"\n");
         System.out.println("              quant           nºclientes       gasto");
         for (Map.Entry<Integer,double[]> e : q4.entrySet()){
@@ -283,7 +287,8 @@ public class Vista implements Serializable {
         }
     }
 
-    public void querie5(TreeSet<Map.Entry<String,Integer>>q5, String c,int pag,int linhas){
+    public void querie5(TreeSet<Map.Entry<String,Integer>>q5, String c,int pag,int linhas, double time){
+        System.out.println("Tempo de execução: " + time + "\n");
         System.out.println("Para o cliente "+ c +":\n");
 
         int size = q5.size();
@@ -310,10 +315,11 @@ public class Vista implements Serializable {
 
 
     //corrigir
-    public void querie6(TreeSet<Map.Entry<String, int[]>> q6,int pag, int linhas, int limite){
+    public void querie6(TreeSet<Map.Entry<String, int[]>> q6,int pag, int linhas, int limite, double time){
         int i;
         int size = Math.min(q6.size(), limite);
         int totalpag = size/linhas ;
+        System.out.println("Tempo de execução: " + time + "\n");
         if(size%linhas!=0)totalpag++;
 
 
@@ -342,8 +348,8 @@ public class Vista implements Serializable {
 
     }
 
-    public void querie7(Map<Integer, TreeSet<Map.Entry <String,Double>>> q7){
-
+    public void querie7(Map<Integer, TreeSet<Map.Entry <String,Double>>> q7, double time){
+        System.out.println("Tempo de execução: " + time + "\n");
         System.out.println("Os 3 maiores compradores para cada filial foram: ");
         for (Map.Entry<Integer, TreeSet<Map.Entry <String,Double>>> e : q7.entrySet()){
             System.out.printf("Filial %2d:\n",e.getKey());
@@ -356,9 +362,10 @@ public class Vista implements Serializable {
     }
 
     //13 -> Q8 -Determinar os códigos dos X clientes que compraram mais produtos diferentes
-    public void querie8(TreeSet<Map.Entry<String,Integer>> q8, int limite, int pag, int linhas){
+    public void querie8(TreeSet<Map.Entry<String,Integer>> q8, int limite, int pag, int linhas, double time){
         int size = Math.min(q8.size(), limite);
         int totalpag = size/linhas;
+        System.out.println("Tempo de execução: " + time + "\n");
         if(size%linhas!=0)totalpag++;
 
         if (q8.size()<= limite){
@@ -385,9 +392,10 @@ public class Vista implements Serializable {
 
 
 //14 -> Q9 -Determinar os códigos de clientes que mais compraram um X produto, e quanto gatou");
-   public void querie9(TreeSet<Map.Entry<String,Double>> q9, int limite, String prod, int pag, int linhas){
+   public void querie9(TreeSet<Map.Entry<String,Double>> q9, int limite, String prod, int pag, int linhas, double time){
        int size = Math.min(q9.size(), limite);
        int totalpag = size/linhas;
+       System.out.println("Tempo de execução: " + time + "\n");
        if(size%linhas!=0)totalpag++;
 
        if (q9.size()<= limite){
@@ -413,8 +421,8 @@ public class Vista implements Serializable {
    }
 
 //|15 -> Q10-Determinar a faturação total de cada produto, mês a mês, filial a filial         |
-    public void querie10(Map<Integer,Map<String,Double>> q10, int mes, int pag,int totalpag, int linhas,int size) {
-
+    public void querie10(Map<Integer,Map<String,Double>> q10, int mes, int pag,int totalpag, int linhas,int size, double time) {
+        System.out.println("Tempo de execução: " + time + "\n");
         List<Iterator<Map.Entry<String, Double>>> lista = new ArrayList<>();
         Map.Entry<String, Double> aux;
 
