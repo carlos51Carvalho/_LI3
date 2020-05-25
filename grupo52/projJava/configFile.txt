@@ -1,0 +1,5 @@
+Clientes:Dados_Iniciais/Clientes.txt
+Produtos:Dados_Iniciais/Produtos.txt
+Vendas:Dados_Iniciais/Vendas_1M.txt
+Filiais:3
+Linhas:25
