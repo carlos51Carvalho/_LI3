@@ -14,7 +14,7 @@ public class Queries implements Serializable{
     private InterfaceProdutos produtos;
     private InterfaceFaturacao fat;
     private InterfaceFiliais fil;
-    private Vendas vendas;
+    private InterfaceVendas vendas;
 
     public Queries(){
         this.clientes = new Clientes3();

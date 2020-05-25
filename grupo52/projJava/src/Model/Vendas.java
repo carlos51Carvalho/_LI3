@@ -8,7 +8,8 @@ import java.util.TreeSet;
 /**
  * Classe responsavel por guardar a informação relativa a leitura de um ficheiro de vendas
  */
-public class Vendas implements Serializable {
+public class Vendas implements Serializable, InterfaceVendas
+{
 
     private String nome;
     private int errados;
