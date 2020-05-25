@@ -30,57 +30,28 @@ public class Faturacao implements InterfaceFaturacao, Serializable {
      * Método que adiciona um produto a variavel faturações do bojeto
      * @param p     codigo de produto
      */
-    public void addProd(String p) {
-        ProdFat prd = new ProdFat(p);
-        faturacoes.get(hashProd(p)).add(prd);
+    public void addProd(String p,int nfiliais) {
+        if(pBinaria(p,hashProd(p))==-1) {
+            ProdFat prd = new ProdFat(p,nfiliais);
+            faturacoes.get(hashProd(p)).add(prd);
+        }
     }
 
     /**
      * Método que adiciona um set de produtos a variavel faturaçõoes do objeto
      * @param produtos      set de codigos de produto
      */
-    public void addProds(Set<String> produtos) {
+    public void addProds(Set<String> produtos,int nfiliais) {
         for (String p : produtos)
-            addProd(p);
+            addProd(p,nfiliais);
     }
 
-    /**
-     * Método de devolve uma lista de produtos dado uma chave
-     * @param i     int com chave
-     * @return  Lista de produtos
-     */
-
-    public List<ProdFat> getArr(int i){
-        return faturacoes.get(i);
-    }
-
-
-/*
-    public static int pBinaria(String p, List<ProdFat> f){
-        int r = -1;
-        int meio;
-        int inicio = 0;
-        int fim = f.size()-1;
-        while (inicio <= fim && r==-1) {
-                 meio = (inicio + fim)/2;
-                 if (p.compareTo(f.get(meio).getProd()) == 0) {
-                     r = meio;
-                 }
-                 if (p.compareTo(f.get(meio).getProd()) < 0)
-                     fim = meio - 1;
-                 else
-                     inicio = meio + 1;
-        }
-    return r;
-
-}
-*/
 
     /**
      * Método que faz uma procura binaria numa lista de produtos
      * @param p     codigo de produto
      * @param k     int chave
-     * @return
+     * @return posicao do produto na lista (-1 se nao existe)
      */
     public int pBinaria(String p, int k){
         List<ProdFat> f = faturacoes.get(k);

@@ -9,8 +9,8 @@ public interface InterfaceFiliais {
 
     boolean existeProd(String cl, int ip, int f, int m, String p);
     void acrescentaFil(String[] cl);
-    void addCl(String cl);
-    void addCls(Set<String> clientes);
+    void addCl(String cl,int nfilias);
+    void addCls(Set<String> clientes,int nfilias);
     int numeroComparadores();
     int naocompram();
     boolean getMesUsed(int key, int ip, int f, int m);

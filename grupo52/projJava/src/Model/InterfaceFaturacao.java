@@ -6,8 +6,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public interface InterfaceFaturacao {
-    void addProd(String p);
-    void addProds(Set<String> produtos);
+    void addProd(String p,int nfiliais);
+    void addProds(Set<String> produtos,int nfiliais);
     void acrescentaFat(String[] p);
     int numeroProdUsados();
     int pBinaria(String p, int k);

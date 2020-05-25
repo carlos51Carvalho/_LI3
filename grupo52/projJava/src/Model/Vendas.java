@@ -101,7 +101,7 @@ public class Vendas implements Serializable {
      * @return boolean de verificaçao
      */
 
-    public static boolean validate(String[] s, TreeSet<String> clientes, TreeSet<String> produtos){
+    public static boolean validate(String[] s, TreeSet<String> clientes, TreeSet<String> produtos,int nfiliais){
         return s.length == 7
                 && produtos.contains(s[0])
                 && Double.parseDouble(s[1]) >= 0.0
@@ -109,7 +109,7 @@ public class Vendas implements Serializable {
                 && (s[3].length()==1) && (s[3].equals("P") || s[3].equals("N"))
                 && clientes.contains(s[4])
                 && Integer.parseInt(s[5]) >= 0 && Integer.parseInt(s[5]) <= 12
-                && Integer.parseInt(s[6]) >= 0 && Integer.parseInt(s[6]) <= 3;
+                && Integer.parseInt(s[6]) >= 0 && Integer.parseInt(s[6]) <= nfiliais;
     }
 
     /**
@@ -120,9 +120,9 @@ public class Vendas implements Serializable {
      * @param p         set de produtos
      * @param filepath  caminho ate ao ficheiro a ler
      * @return int com quantas vendas lidas
-     * @throws IOException
+     * @throws IOException exceção quando dá erro na abertura/leitura do ficheiro
      */
-    public int ler_vendas(InterfaceFaturacao fat, InterfaceFiliais fil, TreeSet<String> c, TreeSet<String> p, String filepath) throws IOException
+    public int ler_vendas(InterfaceFaturacao fat, InterfaceFiliais fil, TreeSet<String> c, TreeSet<String> p, String filepath,int nfiliais) throws IOException
     {
         Crono.start();
     int i = 0;
@@ -142,7 +142,7 @@ public class Vendas implements Serializable {
         while ((line = br.readLine()) != null) {
             String[] st = line.split(" ");
             t++;
-            if (validate(st,c,p)) {
+            if (validate(st,c,p,nfiliais)) {
                 fat.acrescentaFat(st);
                 fil.acrescentaFil(st);
                 i++;

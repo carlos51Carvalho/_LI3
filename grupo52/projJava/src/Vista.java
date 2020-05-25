@@ -1,8 +1,5 @@
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Vista implements Serializable {
 
@@ -46,7 +43,14 @@ public class Vista implements Serializable {
     }
 
     public void printBarraN(){
-        System.out.println("");
+        System.out.println();
+    }
+    public void flush(){
+        System.out.println("\n\n\n\n\n\n\n\n\n\n");
+    }
+
+    public void pressioneEnter(){
+        System.out.println("\nPressione enter para continuar");
     }
 
     public void printExit(){
@@ -199,7 +203,7 @@ public class Vista implements Serializable {
     public void querie_2_2(Map<Integer,double[] > res2){
         System.out.println("Faturação total mês a mẽs filial a filial:\n");
         System.out.printf("Global ->   %f\n\n", res2.get(0)[0]);
-        System.out.printf("\n           Filial 1                Filial 2                Filial 3   \n");
+        System.out.print("\n           Filial 1                Filial 2                Filial 3   \n");
         for(Map.Entry<Integer,double[]> e: res2.entrySet()){
             if (e.getKey() != 0){
                 System.out.printf("Mes %3d:   %8f       %8f       %8f\n", e.getKey(),e.getValue()[1],e.getValue()[2],e.getValue()[3]);
@@ -209,14 +213,14 @@ public class Vista implements Serializable {
 
     public void querie_2_3(Map<Integer,int[] > res3) {
         System.out.println("Total de clientes que realizaram compras mẽs a mẽs filial a filial: \n");
-        System.out.printf("\nMes:            1         2         3         4         5         6         7         8         9         10        11        12      \n");
+        System.out.print("\nMes:            1         2         3         4         5         6         7         8         9         10        11        12      \n");
         for (Map.Entry<Integer, int[]> e : res3.entrySet()) {
             if (e.getKey() != 0) {
                 System.out.printf("Filial %3d:", e.getKey());
                 for (int i = 0; i < 12; i++) {
                     System.out.printf("     %5d", e.getValue()[i]);
                 }
-                    System.out.printf("\n");
+                System.out.print("\n");
             }
         }
     }
@@ -236,9 +240,9 @@ public class Vista implements Serializable {
         if(size%linhas!=0)totalpag++;
         System.out.printf("O total de produtos nunca comprados é %d.\n",q1.size());
         System.out.printf("A apresentar pagina %d de %d :\n",pag,totalpag);
-        for (i=(pag-1)*linhas;i<=pag*linhas;i++){
+        for (i=(pag-1)*linhas;i<pag*linhas;i++){
             if(i<size)System.out.println(q1.get(i));
-            else System.out.println("");
+            else System.out.println();
         }
 
     }
@@ -261,9 +265,9 @@ public class Vista implements Serializable {
 
     public void querie3(Map<Integer,double[]> q3, String c){
         System.out.println("Para o cliente:"+ c +"\n");
-        System.out.println("            nªvendas          nºprodutos        faturado");
+        System.out.println("            nªvendas          n0ºprodutos        faturado");
         for (Map.Entry<Integer,double[]> e : q3.entrySet()){
-            System.out.printf("Mes %2d:     %d                 %d                 %8f  \n", e.getKey(),(int)e.getValue()[0],(int) e.getValue()[1], e.getValue()[2]);
+            System.out.printf("Mes %2d:     %2d                 %2d                 %8f  \n", e.getKey(),(int)e.getValue()[0],(int) e.getValue()[1], e.getValue()[2]);
         }
     }
 
@@ -296,12 +300,12 @@ public class Vista implements Serializable {
         Map.Entry<String,Integer> aux;
         while(it.hasNext()){
             aux=it.next();
-            if(i>pag*linhas || i>size)break;
+            if(i>=pag*linhas || i>size)break;
             if(i>=(pag-1)*linhas)System.out.println(aux.getKey()+"        " + aux.getValue());
             i++;
         }
 
-        for (int k = i;k<=pag*linhas;k++) System.out.println("");
+        for (int k = i;k<=pag*linhas;k++) System.out.println();
     }
 
 
@@ -314,8 +318,8 @@ public class Vista implements Serializable {
 
 
         if (q6.size()<= limite){
-            System.out.printf("O limite ultrapassa o tamanho da lista dos produtos. ");
-        }else System.out.println("");
+            System.out.print("O limite ultrapassa o tamanho da lista dos produtos. ");
+        }else System.out.println();
         System.out.printf("Output com %d linhas.\n",size);
 
 
@@ -328,13 +332,13 @@ public class Vista implements Serializable {
         Map.Entry<String,int[]> aux;
         while(it.hasNext()){
             aux=it.next();
-            if(i>pag*linhas || i>size)break;
+            if(i>=pag*linhas || i>size)break;
             if(i>=(pag-1)*linhas)System.out.printf("%s\t%10d\t%10d\n",aux.getKey(),aux.getValue()[0],aux.getValue()[1]);
             i++;
         }
 
 
-        for (int k = i;k<=pag*linhas;k++) System.out.println("");
+        for (int k = i;k<=pag*linhas;k++) System.out.println();
 
     }
 
@@ -346,7 +350,7 @@ public class Vista implements Serializable {
             for (Map.Entry <String,Double> m : e.getValue()){
                 System.out.println("->" + m.getKey());
             }
-            System.out.println("");
+            System.out.println();
         }
 
     }
@@ -358,8 +362,8 @@ public class Vista implements Serializable {
         if(size%linhas!=0)totalpag++;
 
         if (q8.size()<= limite){
-            System.out.printf("O limite ultrapassa o tamanho da lista de clientes. ");
-        }else System.out.println("");
+            System.out.print("O limite ultrapassa o tamanho da lista de clientes. ");
+        }else System.out.println();
         System.out.printf("Output dos %d clientes que mais compraram produtos diferentes.\n",size);
 
 
@@ -371,12 +375,12 @@ public class Vista implements Serializable {
         Map.Entry<String,Integer> aux;
         while(it.hasNext()){
             aux=it.next();
-            if(i>pag*linhas || i>size)break;
+            if(i>=pag*linhas || i>size)break;
             if(i>=(pag-1)*linhas)System.out.println(aux.getKey()+"   ->  [" + aux.getValue()+"]");
             i++;
         }
 
-        for (int k = i;k<=pag*linhas;k++) System.out.println("");
+        for (int k = i;k<=pag*linhas;k++) System.out.println();
     }
 
 
@@ -387,8 +391,8 @@ public class Vista implements Serializable {
        if(size%linhas!=0)totalpag++;
 
        if (q9.size()<= limite){
-           System.out.printf("O limite ultrapassa o tamanho da lista dos produtos. ");
-       }else System.out.println("");
+           System.out.print("O limite ultrapassa o tamanho da lista dos produtos. ");
+       }else System.out.println();
        System.out.printf("Output dos %d clientes que mais compraram o produto %s.\n",size,prod);
 
 
@@ -400,14 +404,47 @@ public class Vista implements Serializable {
        Map.Entry<String,Double> aux;
        while(it.hasNext()){
            aux=it.next();
-           if(i>pag*linhas || i>size)break;
+           if(i>=pag*linhas || i>size)break;
            if(i>=(pag-1)*linhas)System.out.printf("%6s     %.2f\n",aux.getKey(),aux.getValue());
            i++;
        }
 
-       for (int k = i;k<=pag*linhas;k++) System.out.println("");
+       for (int k = i;k<=pag*linhas;k++) System.out.println();
    }
 
+//|15 -> Q10-Determinar a faturação total de cada produto, mês a mês, filial a filial         |
+    public void querie10(Map<Integer,Map<String,Double>> q10, int mes, int pag,int totalpag, int linhas,int size) {
+
+        List<Iterator<Map.Entry<String, Double>>> lista = new ArrayList<>();
+        Map.Entry<String, Double> aux;
+
+        System.out.printf("Mes %d.\n", mes);
+        System.out.printf("A apresentar pagina %d de %d :\n", pag, totalpag);
+        for (Map.Entry<Integer, Map<String, Double>> m : q10.entrySet()) {
+            System.out.printf("Filial %2d\t\t", m.getKey());
+            lista.add(m.getValue().entrySet().iterator());
+        }
+        System.out.print("\n");
+        int i = 0;
+        int k;
+        for (k = 0; k <= (pag - 1) * linhas; k++){
+            for (Iterator<Map.Entry<String, Double>> m : lista) {
+                if (m.hasNext()) {
+                    m.next();
+                }
+            }
+        }
+
+        for (k =  (pag - 1) * linhas; k <= (pag) * linhas; k++){
+            for (Iterator<Map.Entry<String, Double>> m : lista) {
+                if (m.hasNext()) {
+                    aux=m.next();
+                    System.out.printf("%s->%.2f\t",aux.getKey(),aux.getValue());
+                }else System.out.print("         \t");
+            }
+            System.out.print("\n");
+        }
+    }
 
 }
 

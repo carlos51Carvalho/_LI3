@@ -24,11 +24,11 @@ public class ClFil implements Serializable {
      * Construtor paramtrizado
      * @param p     codigo de cliente
      */
-    public ClFil(String p){
+    public ClFil(String p,int nfilias){
         this.cl = p;
         this.used = false;
         this.fil = new HashMap<>();
-        for (int i = 1; i<4 ; i++)
+        for (int i = 1; i<=nfilias ; i++)
             this.fil.put(i, new FilFil());
     }
 
@@ -220,7 +220,6 @@ public class ClFil implements Serializable {
         if (!res.containsKey(0))res.put(0,new int[2]);
 
         for (Map.Entry<Integer, FilFil> f: this.fil.entrySet() ){
-            aux=0;
             if (!res.containsKey(f.getKey()))res.put(f.getKey(),new int[2]);
 
             aux = f.getValue().getVendasPorMes(mes);
@@ -265,9 +264,8 @@ public class ClFil implements Serializable {
     }
 
     /**
-     * Get para a Querie 5
+     * Get para a Querie 5 (retorna  Map com resposta á querie 5 por referencia)
      * @param q5        Map onde vai ser guardada a informação
-     * @return Map com resposta á querie 5
      */
     public void getQuerie5(Map<String, Integer> q5){
         for (FilFil f: this.fil.values() ) {
@@ -275,25 +273,23 @@ public class ClFil implements Serializable {
         }
     }
     /**
-     * Get para a Querie 6
+     * Get para a Querie 6 (retorna Map com resposta á querie 6 por referencia)
      * @param res       Map onde vai ser guardada a informação
-     * @return Map com resposta á querie 6
      */
     public void getQuerie6(Map<String,int[]> res){
         for (FilFil f: this.fil.values() )
             f.getQuerie6(res);
     }
     /**
-     * Get para a Querie 7
+     * Get para a Querie 7 (retorna Map com resposta á querie 7 por referencia)
      * @param res       Map onde vai ser guardada a informação
      * @param c         String com codigo de cliente
-     * @return Map com resposta á querie 7
      */
 
     public void getQuerie7(Map<Integer, Map<String, Double>> res, String c ) {
         double med;
         String d = null;
-        double aux = 0.0;
+        double aux;
         for (Map.Entry<Integer, FilFil> f : this.fil.entrySet()) {
             if (f.getValue().getUsed() == 1) {
                 med = f.getValue().getQuerie7();

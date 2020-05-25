@@ -40,13 +40,13 @@ public class Queries implements Serializable{
         this.vendas = new Vendas();
     }
 
-    public void leituras(String fc, String fp, String fv) throws Exception {
+    public void leituras(String fc, String fp, String fv,int nfiliais) throws Exception {
         //Crono.start();
         clientes.ler_clientes(fc);
         produtos.ler_produtos(fp);
-        fat.addProds(produtos.getSetDeProdutos());
-        fil.addCls(clientes.getSetDeClientes());
-        vendas.ler_vendas(fat, fil, clientes.getSetDeClientes(), produtos.getSetDeProdutos(), fv);
+        fat.addProds(produtos.getSetDeProdutos(),nfiliais);
+        fil.addCls(clientes.getSetDeClientes(),nfiliais);
+        vendas.ler_vendas(fat, fil, clientes.getSetDeClientes(), produtos.getSetDeProdutos(), fv,nfiliais);
         //System.out.println(Crono.getTImeString());
     }
 
@@ -311,7 +311,7 @@ public class Queries implements Serializable{
 
     // querie 10
 
-    public static  Map<Integer,Map<Integer,Map<String,Double>>> querie10(InterfaceFaturacao fat){
+    public  Map<Integer,Map<Integer,Map<String,Double>>> querie10(){
         Map<Integer,                    //mes
                 Map<Integer,            //fil
                         Map<String,     //Model.Produto

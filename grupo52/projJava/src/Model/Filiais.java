@@ -19,7 +19,7 @@ public class Filiais implements InterfaceFiliais, Serializable {
     /**
      * Método que calcula a chave de um cliente
      * @param p     codigo de pcliente
-     * @return
+     * @return chave do cliente
      */
     public int hashProd(String p) {
         return p.charAt(0) - 'A';
@@ -29,18 +29,20 @@ public class Filiais implements InterfaceFiliais, Serializable {
      * Método que adiciona um cliente á variavel filiais
      * @param cl        codigo de cliente
      */
-    public void addCl(String cl) {
-        ClFil cls = new ClFil(cl);
-        filiais.get(hashProd(cl)).add(cls);
+    public void addCl(String cl,int nfilias) {
+        if(pBinaria(cl,hashProd(cl))==-1) {
+            ClFil cls = new ClFil(cl,nfilias);
+            filiais.get(hashProd(cl)).add(cls);
+        }
     }
 
     /**
      * Método que adiciona um Set de clientes a variavel filiais
      * @param clientes      Set de codigos de cliente
      */
-    public void addCls(Set<String> clientes) {
+    public void addCls(Set<String> clientes,int nfilias) {
         for (String cl : clientes)
-            addCl(cl);
+            addCl(cl,nfilias);
     }
 
 //    public List<ClFil> getArr(int i){
@@ -52,7 +54,7 @@ public class Filiais implements InterfaceFiliais, Serializable {
      * Método que faz uma procura binaria numa lista
      * @param p     codigo de cliente
      * @param k     int com chave
-     * @return
+     * @return posicao do cliente no array
      */
     public int pBinaria(String p, int k){
         List<ClFil> f = filiais.get(k);
@@ -228,11 +230,10 @@ public class Filiais implements InterfaceFiliais, Serializable {
     }
 
     /**
-     * Get para Querie 5
+     * Get para Querie 5 (retorna Map com resposta da querie 5 por referencia)
      * @param kc        int com chave
      * @param ip        int com posição na lista
      * @param q5        Map a preencher
-     * @return Map com resposta da querie 5
      */
     public void getQuerie5(int kc, int ip,Map<String, Integer> q5){
         filiais.get(kc).get(ip).getQuerie5(q5);

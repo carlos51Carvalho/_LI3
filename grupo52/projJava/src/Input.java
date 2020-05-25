@@ -1,19 +1,3 @@
-/**
- * Classe que abstrai a utilização da classe Scanner, escondendo todos os
- * problemas relacionados com excepções, e que oferece métodos simples e
- * robustos para a leitura de valores de tipos simples e String.
- *
- * É uma classe de serviços, como Math e outras de Java, pelo que devem ser
- * usados os métodos de classe implementados.
- *
- * Utilizável em BlueJ, NetBeans, CodeBlocks ou Eclipse.
- *
- * Utilização típica:  int x = Input.lerInt();
- *                     String nome = Input.lerString();
- *
- * @author F. Mário Martins
- * @version 1.0 (6/2006)
- */
 import static java.lang.System.out;
 import static java.lang.System.in;
 
@@ -21,13 +5,29 @@ import java.io.Serializable;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
+/**
+ * Classe que abstrai a utiliza&ccedil;&atilde;o da classe Scanner, escondendo todos os
+ * problemas relacionados com excep&ccedil;&otilde;es, e que oferece m&eacute;todos simples e
+ * robustos para a leitura de valores de tipos simples e String.
+ *
+ * &Eacute; uma classe de servi&ccedil;os, como Math e outras de Java, pelo que devem ser
+ * usados os m&eacute;todos de classe implementados.
+ *
+ * Utiliz&aacute;vel em BlueJ, NetBeans, CodeBlocks ou Eclipse.
+ *
+ * Utiliza&ccedil;&atilde;o t&iacute;pica:  int x = Input.lerInt();
+ *                     String nome = Input.lerString();
+ *
+ * @author F. M&aacute;rio Martins
+ * @version 1.0 (6/2006)
+ */
 public class Input implements Serializable {
 
     /**
      * Métodos de Classe
      */
 
-    public static String lerString() {
+    public String lerString() {
         Scanner input = new Scanner(in);
         boolean ok = false;
         String txt = "";
@@ -46,7 +46,7 @@ public class Input implements Serializable {
     }
 
 
-    public static int lerInt() {
+    public int lerInt() {
         Scanner input = new Scanner(in);
         boolean ok = false;
         int i = 0;
@@ -64,7 +64,7 @@ public class Input implements Serializable {
         return i;
     }
 
-    public static double lerDouble() {
+    public double lerDouble() {
         Scanner input = new Scanner(in);
         boolean ok = false;
         double d = 0.0;
@@ -82,7 +82,7 @@ public class Input implements Serializable {
         return d;
     }
 
-    public static float lerFloat() {
+    public float lerFloat() {
         Scanner input = new Scanner(in);
         boolean ok = false;
         float f = 0.0f;
@@ -100,7 +100,7 @@ public class Input implements Serializable {
         return f;
     }
 
-    public static boolean lerBoolean() {
+    public boolean lerBoolean() {
         Scanner input = new Scanner(in);
         boolean ok = false;
         boolean b = false;
@@ -118,7 +118,7 @@ public class Input implements Serializable {
         return b;
     }
 
-    public static short lerShort() {
+    public short lerShort() {
         Scanner input = new Scanner(in);
         boolean ok = false;
         short s = 0;

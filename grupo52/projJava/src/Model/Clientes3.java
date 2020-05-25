@@ -82,9 +82,8 @@ public class Clientes3 implements InterfaceClientes, Serializable
      */
     public void addCliente(Cliente c){
         int i=c.hashCliente();
-        if(!this.clientes.containsKey(i)){
-            this.clientes.put(i,new TreeSet<>(new ComparatorCliente()));
-        }
+        if(!this.clientes.containsKey(i)) this.clientes.put(i,new TreeSet<>(new ComparatorCliente()));
+
         this.clientes.get(i).add(c);
     }
 
@@ -151,9 +150,9 @@ public class Clientes3 implements InterfaceClientes, Serializable
 
     /**
      * Método que lê de um ficheiro
-     * @param filepath
+     * @param filepath ficheiro a ler
      * @return int com número de linhas lidas
-     * @throws IOException
+     * @throws IOException excessao se da erro na abertura/leitura do ficheiro
      */
 
     public int ler_clientes(String filepath) throws IOException {

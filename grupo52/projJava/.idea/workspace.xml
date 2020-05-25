@@ -19,17 +19,44 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="">
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="Adiçao de dados a estruturas ja existentes agora suportado&#10;Adição do ficheiro config que contêm o path para os 3 ficheiros, o numero de filiais existentes e o numero de linhas exibidas no output de queries com paginação&#10;Adicao de vista para a querie 10, ainda por testar, pois a q10 esta a dar um erro">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/out/production/projJava/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/out/production/projJava/out/production/projJava/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/out/production/projJava/out/production/projJava/out/production/projJava/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/out/production/projJava/out/production/projJava/out/production/projJava/projJava.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/out/production/projJava/out/production/projJava/projJava.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/out/production/projJava/projJava.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Controlador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ClFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ClFil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/FilFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/FilFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorCliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorCliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorProduto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorProduto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ComparatorQ9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Faturacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Faturacao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Filiais.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Filiais.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/MesFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/MesFil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/PrdFil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/PrdFil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/InterfaceFaturacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/InterfaceFaturacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/InterfaceFiliais.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/InterfaceFiliais.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/ProdFat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/ProdFat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Vista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Vista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ClFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ClFil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Clientes3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Clientes3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Faturacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Faturacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/FilFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/FilFat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MesFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MesFat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Filiais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Filiais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/InterfaceFaturacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/InterfaceFaturacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/InterfaceFiliais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/InterfaceFiliais.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/ProdFat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ProdFat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Vendas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vista.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +83,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -117,14 +145,7 @@
       <option name="project" value="LOCAL" />
       <updated>1590279981154</updated>
     </task>
-    <task id="LOCAL-00004" summary="Todas as Filiais e Vendas comentadas">
-      <created>1590329713780</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1590329713780</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,20 +156,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="novos ficheiros" />
     <MESSAGE value="View da querie1, querie 5 e querie6 já com paginacao e escolha de paginas" />
     <MESSAGE value="Bugs nas views das queries que necessitam de paginação corrigidos" />
-    <MESSAGE value="Todas as Filiais e Vendas comentadas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Todas as Filiais e Vendas comentadas" />
+    <MESSAGE value="Adiçao de dados a estruturas ja existentes agora suportado&#10;Adição do ficheiro config que contêm o path para os 3 ficheiros, o numero de filiais existentes e o numero de linhas exibidas no output de queries com paginação&#10;Adicao de vista para a querie 10, ainda por testar, pois a q10 esta a dar um erro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adiçao de dados a estruturas ja existentes agora suportado&#10;Adição do ficheiro config que contêm o path para os 3 ficheiros, o numero de filiais existentes e o numero de linhas exibidas no output de queries com paginação&#10;Adicao de vista para a querie 10, ainda por testar, pois a q10 esta a dar um erro" />
   </component>
   <component name="WindowStateProjectService">
     <state x="412" y="198" width="599" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590295013246">
@@ -159,38 +179,34 @@
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/69.27.1851.1053@69.27.1851.1053" timestamp="1589909431318" />
-    <state x="544" y="149" width="888" height="807" key="CommitChangelistDialog2" timestamp="1590335099035">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="544" y="149" width="888" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1590335099035" />
-    <state width="1253" height="374" key="GridCell.Tab.0.bottom" timestamp="1590296316797">
+    <state width="1253" height="560" key="GridCell.Tab.0.bottom" timestamp="1590369010025">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="374" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1590296316797" />
+    <state width="1253" height="560" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1590369010025" />
     <state width="1805" height="106" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774648" />
-    <state width="1253" height="374" key="GridCell.Tab.0.center" timestamp="1590296316797">
+    <state width="1253" height="560" key="GridCell.Tab.0.center" timestamp="1590369010024">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="374" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1590296316797" />
+    <state width="1253" height="560" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1590369010024" />
     <state width="1805" height="106" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774646" />
-    <state width="1253" height="374" key="GridCell.Tab.0.left" timestamp="1590296316796">
+    <state width="1253" height="560" key="GridCell.Tab.0.left" timestamp="1590369010023">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="374" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1590296316796" />
+    <state width="1253" height="560" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1590369010023" />
     <state width="1805" height="106" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774644" />
-    <state width="1253" height="374" key="GridCell.Tab.0.right" timestamp="1590296316797">
+    <state width="1253" height="560" key="GridCell.Tab.0.right" timestamp="1590369010024">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="374" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1590296316797" />
+    <state width="1253" height="560" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1590369010024" />
     <state width="1805" height="106" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1589911774647" />
-    <state x="192" y="85" width="1039" height="622" key="MergeDialog" timestamp="1590177745192">
+    <state x="192" y="85" width="1039" height="622" key="MergeDialog" timestamp="1590355323021">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="192" y="85" width="1039" height="622" key="MergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1590177745192" />
-    <state x="487" y="311" width="458" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590177876943">
+    <state x="192" y="85" width="1039" height="622" key="MergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1590355323021" />
+    <state x="487" y="311" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590355282014">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="487" y="311" width="458" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1299.741@67.27.1299.741" timestamp="1590177876943" />
+    <state x="487" y="311" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1299.741@67.27.1299.741" timestamp="1590355282014" />
     <state x="449" y="157" width="524" height="478" key="extract.method.dialog" timestamp="1590287684600">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

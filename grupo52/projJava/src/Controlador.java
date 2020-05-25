@@ -1,6 +1,6 @@
 import Model.*;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -28,6 +28,55 @@ public class Controlador {
         int op;
         boolean load = false;
         int value;
+
+        //->leitura do ficheiro config
+        String fc,fp,fv;
+        int nfiliais;
+        int nlinhasoutput;
+        fc = "Dados_Iniciais/Clientes.txt";
+        fp = "Dados_Iniciais/Produtos.txt";
+        fv = "Dados_Iniciais/Vendas_1M.txt";
+        nfiliais=3;
+        nlinhasoutput=10;
+        try {
+            String st;
+            String[] linhaPartida;
+            File file = new File("configFile.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            while ((st = br.readLine()) != null) {
+                linhaPartida = st.split(":", 2);
+                switch(linhaPartida[0]){
+                    case "Clientes":
+                        fc=linhaPartida[1];
+                        break;
+                    case "Produtos":
+                        fp=linhaPartida[1];
+                        break;
+                    case "Vendas":
+                        fv=linhaPartida[1];
+                        break;
+                    case "Filiais":
+                        nfiliais=Integer.parseInt(linhaPartida[1]);
+                        break;
+                    case "Linhas":
+                        nlinhasoutput=Integer.parseInt(linhaPartida[1]);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }catch (IOException e){
+            v.printErrorFIle(e.getMessage());
+            try{
+                PrintWriter p = new PrintWriter("configFile.txt");
+                p.print("Clientes:"+fc+ "\nProdutos:"+fp+"\nVendas:" + fv + "\nFiliais:"+nfiliais+"\nLinhas:"+nlinhasoutput);
+                p.flush();
+                p.close();
+            }catch (IOException n){
+                v.printErrorFIle(n.getMessage());
+            }
+        }
+
         v.printHeader();
         do{//chamar menu da view
             this.v.printmenu();
@@ -36,20 +85,24 @@ public class Controlador {
             System.out.println("\nEscolha a instrução: ");
             op = this.i.lerInt();
             //switch
-
+            this.v.flush();
             //processar no controlador
             switch (op){
                 case 0:
                     v.printExit();
                     break;
                 case 1:
-                    load = case1(load);
+                    load = case1(load,fc,fp,fv,nfiliais);
+                    v.pressioneEnter();
+                    this.i.lerString();
                     break;
                 case 2:
                     if (load) {
                        v.queriesEstatisticas(q.getNome(),q.getErrados(),q.getTprod(),q.getDprod(),q.getPnc(),
                                q.getTcl(),q.getTclc(),q.getTclsc(),q.getTvendaszero(),q.getFattotal());
-                        v.printDone();
+
+                        v.pressioneEnter();
+                        this.i.lerString();
                     }
                     else v.printNotLoad();
                     break;
@@ -57,7 +110,9 @@ public class Controlador {
                 case 3:
                     if (load){
                         v.querie_2_1(q.getRes());
-                        v.printDone();
+
+                        v.pressioneEnter();
+                        this.i.lerString();
                     }
                     else v.printNotLoad();
                     break;
@@ -65,62 +120,87 @@ public class Controlador {
                 case 4:
                     if (load) {
                         v.querie_2_2(q.getRes2());
-                        v.printDone();
+
+                        v.pressioneEnter();
+                        this.i.lerString();
                     }
                     else v.printNotLoad();
                     break;
                 case 5:
                     if (load) {
                         v.querie_2_3(q.getRes3());
-                        v.printDone();
+
+                        v.pressioneEnter();
+                        this.i.lerString();
                     }
                     else v.printNotLoad();
                     break;
                 case 6:
                     if (load) {
-                       case6();
+                       case6(nlinhasoutput);
+
+                        v.pressioneEnter();
+                        this.i.lerString();
                     }
                     else v.printNotLoad();
                     break;
 
                 case 7:
                     case7(load);
+
+                    v.pressioneEnter();
+                    this.i.lerString();
                     break;
 
                 case 8:
                     case8(load);
+
+                    v.pressioneEnter();
+                    this.i.lerString();
                     break;
                 case 9:
                     case9(load);
+
+                    v.pressioneEnter();
+                    this.i.lerString();
                     break;
                 case 10:
-                    case10(load);
+                    case10(load,nlinhasoutput);
                     break;
                 case 11:
-                    case11(load);
+                    case11(load,nlinhasoutput);
                     break;
                 case 12:
                     case12(load);
+
+                    v.pressioneEnter();
+                    this.i.lerString();
                     break;
                 case 13:
-                    case13(load);
+                    case13(load,nlinhasoutput);
                     break;
                 case 14:
-                    case14(load);
+                    case14(load,nlinhasoutput);
                     break;
                 case 15:
-                    //Imprimir
+                    case15(load,nlinhasoutput);
                     break;
                 case 16:
                     q.gravarObj("dados.dat");
+
+                    v.pressioneEnter();
+                    this.i.lerString();
                     break;
                 default:
                     v.printError();
+
+                    v.pressioneEnter();
+                    this.i.lerString();
                     break;
+            }
 
-        }
-
-            } while(op!=0);
+            this.v.flush();
+        } while(op!=0);
 
     }
 
@@ -128,12 +208,7 @@ public class Controlador {
 
 
 
-    public boolean case1(boolean load) throws Exception {
-        String fc,fp,fv;
-        fc = "Dados_Iniciais/Clientes.txt";     //estar no config;
-        fp = "Dados_Iniciais/Produtos.txt";
-        fv = "Dados_Iniciais/Vendas_1M.txt";
-
+    public boolean case1(boolean load,String fc,String fp,String fv,int nfiliais) throws Exception {
         //boolean load = false;
         boolean opl = true;
         boolean escrever = true;
@@ -160,13 +235,6 @@ public class Controlador {
                     v.printEscrever();
                     escrita = this.i.lerInt();
                     if (escrita == 1){
-//                    this.clientes = new Clientes3();
-//                    this.produtos = new Produtos3();
-//                    this.fat = new Faturacao();
-//                    this.fil = new Filiais();
-//                    this.v = new Vista();
-//                    this.i = new Input();
-//                    this.vendas = new Vendas();
                         //reiniciar modelo;
                         q.reiniciarModelo();
                         load = false;
@@ -185,7 +253,7 @@ public class Controlador {
                     fp = this.i.lerString();
                     v.fileNameV();
                     fv = this.i.lerString();
-                    q.leituras(fc, fp, fv);
+                    q.leituras(fc, fp, fv,nfiliais);
                     load = true;
                     v.printFilePaths(fc, fp, fv);
                 } catch (IOException e) {
@@ -193,7 +261,7 @@ public class Controlador {
                 }
             }else{
                 try {
-                    q.leituras(fc, fp, fv);
+                    q.leituras(fc, fp, fv,nfiliais);
                     load = true;
                     v.printFilePaths(fc, fp, fv);
                 } catch (IOException e) {
@@ -205,10 +273,10 @@ public class Controlador {
         return load;
     }
 
-    public void case6() throws Exception{
+    public void case6(int linhas){
         List<String> prods= q.querie1();
 
-        int linhas=10;
+        //int linhas=10;
         int size = prods.size();
         int totalpag = size/linhas ;
         if(size%linhas!=0)totalpag++;
@@ -231,7 +299,7 @@ public class Controlador {
 
     }
 
-    public void case7(boolean load) throws ValorInvalidoException {
+    public void case7(boolean load){
         int mes;
         boolean valid = true;
 
@@ -250,7 +318,7 @@ public class Controlador {
         } else v.printNotLoad();
     }
 
-    public void case8(boolean load) throws ValorInvalidoException {
+    public void case8(boolean load){
         String c;
         boolean valid = true;
 
@@ -270,7 +338,7 @@ public class Controlador {
 
     }
 
-    public void case9(boolean load) throws ValorInvalidoException {
+    public void case9(boolean load){
         String p;
         boolean valid = true;
 
@@ -289,8 +357,8 @@ public class Controlador {
         } else v.printNotLoad();
     }
 
-    public void case10(boolean load) throws ValorInvalidoException {
-        int linhas=10;
+    public void case10(boolean load,int linhas){
+        //int linhas=10;
 
         String c;
         boolean valid = true;
@@ -333,8 +401,8 @@ public class Controlador {
     }
 
 
-    public void case11(boolean load) throws ValorInvalidoException {
-        int linhas=10;
+    public void case11(boolean load,int linhas){
+        //int linhas=10;
         int limite;
         boolean valid = true;
         TreeSet<Map.Entry<String, int[]>> q6result;
@@ -398,8 +466,8 @@ public class Controlador {
     }
 
 
-    public void case13(boolean load) throws ValorInvalidoException {
-        int linhas=10;
+    public void case13(boolean load,int linhas){
+        //int linhas=10;
 
         int limite;
         boolean valid = true;
@@ -442,8 +510,8 @@ public class Controlador {
     }
 
 
-    public void case14(boolean load) throws ValorInvalidoException {
-        int linhas=10;
+    public void case14(boolean load,int linhas){
+        //int linhas=10;
 
         String p;
         int limite;
@@ -489,5 +557,47 @@ public class Controlador {
         } else v.printNotLoad();
     }
 
+    public void case15(boolean load,int linhas){
+        boolean valid = true;
+        //Map<Integer,Map<Integer,Map<String,Double>>> querie10
+        Map<Integer,Map<Integer,Map<String,Double>>> q10result;
+
+        if (load) {
+            q10result = q.querie10();
+
+            int op=1;
+            int m=op;
+            int oppag=op;
+
+            while(op!=0){
+                v.printMes();
+                op = this.i.lerInt();
+                if(op>0 && op<=12){
+                    while(oppag!=0) {
+                        int size = 0;
+                        for (Map<String, Double> aux : q10result.get(op).values()) {
+                            size = Math.max(size, aux.size());
+                        }
+                        //int nfil = q10result.get(op).size();
+                        int totalpag = size / linhas;
+                        if (size % linhas != 0) totalpag++;
+
+
+                        v.insiraPag();
+                        oppag = this.i.lerInt();
+                        if (oppag > 0 && oppag <= totalpag) {
+                            v.querie10(q10result.get(m),m,oppag,totalpag,linhas,size);
+                            v.printBarraN();
+                        } else if (oppag != 0) {
+                            v.printErrorPagina(oppag);
+                        }
+                    }
+                }else if(op!=0){
+                    v.printErrorMes();
+                }
+
+            }
+        } else v.printNotLoad();
+    }
 
 }

@@ -3,7 +3,8 @@ import Model.*;
 public class Main
 {
 
-    public static void main (String[] args) throws Exception {
+    public static void main (String[] args) {
+        /*
         int f = 0;
         int fi = 0;
         InterfaceClientes clientes = new Clientes3();

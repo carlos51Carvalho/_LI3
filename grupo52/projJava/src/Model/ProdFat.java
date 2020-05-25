@@ -36,6 +36,18 @@ public class ProdFat implements Serializable {
         for (int i = 1; i<4 ; i++)
             this.fil.put(i, new FilFat());
     }
+    /**
+     * Construtor so com parametro prod
+     * @param p         codigo de produto
+     * @param nfiliais  numero de filiais existentes
+     */
+    public ProdFat(String p,int nfiliais){
+        this.prod = p;
+        this.used =false;
+        this.fil = new HashMap<>();
+        for (int i = 1; i<=nfiliais ; i++)
+            this.fil.put(i, new FilFat());
+    }
 
     /**
      * Get da variavel prod do objeto
