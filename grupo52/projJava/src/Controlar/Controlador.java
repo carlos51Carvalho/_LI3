@@ -1,4 +1,8 @@
+package Controlar;
+
+
 import Model.*;
+import View.Vista;
 
 import java.io.*;
 import java.util.List;
@@ -17,7 +21,7 @@ public class Controlador {
         this.i = new Input();
     }
 
-    public Controlador(Queries q,Vista v, Input i){
+    public Controlador(Queries q, Vista v, Input i){
         this.q=q;
         this.v = v;
         this.i = i;
@@ -229,7 +233,7 @@ public class Controlador {
                 Crono.start();
                 q=q.lerObj("dados.dat");         //nome do ficheiro pode estar no config
                 double time = Crono.stop();
-                //Vista
+                //View.Vista
                 load = true;
             }catch (IOException e){
                 v.printErrorFIle(e.getMessage());

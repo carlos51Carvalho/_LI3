@@ -1,3 +1,5 @@
+package Controlar;
+
 import static java.lang.System.out;
 import static java.lang.System.in;
 
@@ -15,8 +17,8 @@ import java.util.InputMismatchException;
  *
  * Utiliz&aacute;vel em BlueJ, NetBeans, CodeBlocks ou Eclipse.
  *
- * Utiliza&ccedil;&atilde;o t&iacute;pica:  int x = Input.lerInt();
- *                     String nome = Input.lerString();
+ * Utiliza&ccedil;&atilde;o t&iacute;pica:  int x = Controlar.Input.lerInt();
+ *                     String nome = Controlar.Input.lerString();
  *
  * @author F. M&aacute;rio Martins
  * @version 1.0 (6/2006)

@@ -1,4 +1,7 @@
+import Controlar.Controlador;
+import Controlar.Input;
 import Model.*;
+import View.Vista;
 
 public class GestVendas {
 

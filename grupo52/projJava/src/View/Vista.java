@@ -1,9 +1,11 @@
+package View;
+
 import java.io.Serializable;
 import java.util.*;
 
 public class Vista implements Serializable {
 
-    //public Vista(){
+    //public View.Vista(){
 
 
 
