@@ -109,8 +109,8 @@ public class Queries implements Serializable{
     public int getTvendaszero(){
         return vendas.getTvendaszero();
     }
-    public int getFattotal(){
-        return vendas.getTvendaszero();
+    public double getFattotal(){
+        return vendas.getFattotal();
     }
     public int[] getRes(){
         return vendas.getRes();

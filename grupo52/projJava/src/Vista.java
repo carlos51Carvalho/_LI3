@@ -54,7 +54,7 @@ public class Vista implements Serializable {
     }
 
     public void printExit(){
-        System.out.println("\nHasta la vista BaBy!");
+        System.out.println("\nObrigado por usar GestVendasApp!");
     }
     public void printDone(){
         System.out.println("\nInstrução Concluida");
@@ -366,6 +366,7 @@ public class Vista implements Serializable {
         int size = Math.min(q8.size(), limite);
         int totalpag = size/linhas;
         System.out.println("Tempo de execução: " + time + "\n");
+
         if(size%linhas!=0)totalpag++;
 
         if (q8.size()<= limite){
@@ -396,6 +397,7 @@ public class Vista implements Serializable {
        int size = Math.min(q9.size(), limite);
        int totalpag = size/linhas;
        System.out.println("Tempo de execução: " + time + "\n");
+
        if(size%linhas!=0)totalpag++;
 
        if (q9.size()<= limite){
@@ -423,13 +425,14 @@ public class Vista implements Serializable {
 //|15 -> Q10-Determinar a faturação total de cada produto, mês a mês, filial a filial         |
     public void querie10(Map<Integer,Map<String,Double>> q10, int mes, int pag,int totalpag, int linhas,int size, double time) {
         System.out.println("Tempo de execução: " + time + "\n");
+
         List<Iterator<Map.Entry<String, Double>>> lista = new ArrayList<>();
         Map.Entry<String, Double> aux;
 
         System.out.printf("Mes %d.\n", mes);
         System.out.printf("A apresentar pagina %d de %d :\n", pag, totalpag);
         for (Map.Entry<Integer, Map<String, Double>> m : q10.entrySet()) {
-            System.out.printf("Filial %2d\t\t", m.getKey());
+            System.out.printf("Filial %2d\t\t\t", m.getKey());
             lista.add(m.getValue().entrySet().iterator());
         }
         System.out.print("\n");
@@ -447,8 +450,8 @@ public class Vista implements Serializable {
             for (Iterator<Map.Entry<String, Double>> m : lista) {
                 if (m.hasNext()) {
                     aux=m.next();
-                    System.out.printf("%s->%.2f\t",aux.getKey(),aux.getValue());
-                }else System.out.print("         \t");
+                    System.out.printf("%s->%6.2f\t\t",aux.getKey(),aux.getValue());
+                }else System.out.print("         \t\t");
             }
             System.out.print("\n");
         }

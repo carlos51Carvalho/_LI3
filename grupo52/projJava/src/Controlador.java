@@ -90,6 +90,7 @@ public class Controlador {
             //processar no controlador
             switch (op){
                 case 0:
+                    v.flush();
                     v.printExit();
                     break;
                 case 1:
@@ -200,6 +201,7 @@ public class Controlador {
                     break;
             }
 
+            v.flush();
             this.v.flush();
         } while(op!=0);
 
@@ -298,6 +300,7 @@ public class Controlador {
             if(op>0 && op<=totalpag){
                    pag=op;
             }
+            v.flush();
             v.querie1(prods,pag,linhas, time);
 
             if (op!=pag){
@@ -322,6 +325,7 @@ public class Controlador {
                     Crono.start();
                     Map<Integer,int[]> q2 =q.querie2(mes);
                     double time = Crono.stop();
+                    v.flush();
                     v.querie2(q2, mes, time);
                     valid = false;
                     v.printDone();
@@ -344,6 +348,7 @@ public class Controlador {
                     Crono.start();
                     Map<Integer,double[]> q3 = q.querie3(c);
                     double time = Crono.stop();
+                    v.flush();
                     v.querie3(q3, c, time);
                     valid = false;
                     v.printDone();
@@ -367,6 +372,7 @@ public class Controlador {
                     Crono.start();
                     Map<Integer,double[]> q4 = q.querie4(p);
                     double time = Crono.stop();
+                    v.flush();
                     v.querie4(q4, p, time);
                     valid = false;
                     v.printDone();
@@ -403,6 +409,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
+                        v.flush();
                         v.querie5(q5result,c,pag,linhas,time);
 
                         if (op!=pag){
@@ -448,6 +455,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
+                        v.flush();
                         v.querie6(q6result,pag,linhas,limite, time);
 
                         if (op!=pag){
@@ -478,7 +486,7 @@ public class Controlador {
                     Crono.start();
                     q7 = q.querie7();
                     double time = Crono.stop();
-
+                    v.flush();
                     v.querie7(q7,time);
                     valid = false;
                     v.printDone();
@@ -518,6 +526,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
+                        v.flush();
                         v.querie8(q8result,limite,pag,linhas , time);
 
                         if (op!=pag){
@@ -567,6 +576,7 @@ public class Controlador {
                         if(op>0 && op<=totalpag){
                             pag=op;
                         }
+                        v.flush();
                         v.querie9(q9result,limite,p,pag,linhas, time);
 
                         if (op!=pag){
@@ -604,6 +614,7 @@ public class Controlador {
                 v.printMes();
                 op = this.i.lerInt();
                 if(op>0 && op<=12){
+                    oppag =1;
                     while(oppag!=0) {
                         int size = 0;
                         for (Map<String, Double> aux : q10result.get(op).values()) {
@@ -617,6 +628,7 @@ public class Controlador {
                         v.insiraPag();
                         oppag = this.i.lerInt();
                         if (oppag > 0 && oppag <= totalpag) {
+                            v.flush();
                             v.querie10(q10result.get(m),m,oppag,totalpag,linhas,size,time);
                             v.printBarraN();
                         } else if (oppag != 0) {
