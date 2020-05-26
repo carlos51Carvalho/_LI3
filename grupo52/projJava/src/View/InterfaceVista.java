@@ -21,6 +21,9 @@ public interface InterfaceVista {
     void fileNameP();
     void fileNameV();
     void printFilePaths(String fc,String fp,String fv, double time);
+    void printFilePath(String f,double time);
+    void aEscreverParaFicheiro(String f);
+    void printSaidaSemLeitura();
     void printMes();
     void printErrorMes();
     void printErrorCliente();

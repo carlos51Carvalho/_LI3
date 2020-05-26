@@ -2,6 +2,7 @@ package Controlar;
 
 
 import Model.*;
+import View.InterfaceVista;
 import View.Vista;
 
 import java.io.*;
@@ -9,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
-public class Controlador {
+public class Controlador implements InterfaceControlador {
 
-    private Queries q;
-    private Vista v;
-    private Input i;
+    private InterfaceQueries q;
+    private InterfaceVista v;
+    private InterfaceInput i;
 
     public Controlador(){
         this.q = new Queries();
@@ -21,17 +22,16 @@ public class Controlador {
         this.i = new Input();
     }
 
-    public Controlador(Queries q, Vista v, Input i){
+    public Controlador(InterfaceQueries q, InterfaceVista v, InterfaceInput i){
         this.q=q;
         this.v = v;
         this.i = i;
     }
     
     
-    public void run() throws Exception {
+    public void run(){
         int op;
         boolean load = false;
-        int value;
 
         //->leitura do ficheiro config
         String fc,fp,fv,datfile;
@@ -220,7 +220,7 @@ public class Controlador {
 
 
 
-    public boolean case1(boolean load,String fc,String fp,String fv,int nfiliais,String datfile) throws Exception {
+    public boolean case1(boolean load,String fc,String fp,String fv,int nfiliais,String datfile){
         boolean escrever = true;
         int opleit;
         int escrita;
@@ -242,7 +242,7 @@ public class Controlador {
                     double time = Crono.stop();
                     v.printFilePath(datfile, time);
                     load = true;
-                } catch (IOException e) {
+                } catch (IOException |ClassNotFoundException e) {
                     v.printErrorFIle(e.getMessage());
                 }
 
@@ -273,7 +273,7 @@ public class Controlador {
                         double time = Crono.stop();
                         v.printFilePaths(fc, fp, fv, time);
                         load = true;
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         v.printErrorFIle(e.getMessage());
                     }
                 } else {
@@ -283,7 +283,7 @@ public class Controlador {
                         double time = Crono.stop();
                         v.printFilePaths(fc, fp, fv, time);
                         load = true;
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         v.printErrorFIle(e.getMessage());
                     }
                 }
@@ -396,8 +396,6 @@ public class Controlador {
     }
 
     public void case10(boolean load,int linhas){
-        //int linhas=10;
-
         String c;
         boolean valid = true;
         TreeSet<Map.Entry<String,Integer>> q5result;
@@ -443,7 +441,6 @@ public class Controlador {
 
 
     public void case11(boolean load,int linhas){
-        //int linhas=10;
         int limite;
         boolean valid = true;
         TreeSet<Map.Entry<String, int[]>> q6result;
@@ -513,8 +510,6 @@ public class Controlador {
 
 
     public void case13(boolean load,int linhas){
-        //int linhas=10;
-
         int limite;
         boolean valid = true;
         TreeSet<Map.Entry<String,Integer>> q8result;
@@ -560,8 +555,6 @@ public class Controlador {
 
 
     public void case14(boolean load,int linhas){
-        //int linhas=10;
-
         String p;
         int limite;
         boolean valid = true;
@@ -610,8 +603,6 @@ public class Controlador {
     }
 
     public void case15(boolean load,int linhas){
-        boolean valid = true;
-        //Map<Integer,Map<Integer,Map<String,Double>>> querie10
         Map<Integer,Map<Integer,Map<String,Double>>> q10result;
 
         if (load) {
@@ -669,7 +660,7 @@ public class Controlador {
                 Crono.start();
                 q.gravarObj(datfile);
                 double time = Crono.stop();
-
+                v.flush();
                 v.printFilePath(datfile,time);
             }catch(IOException e){
                 v.printErrorFIle(e.getMessage());

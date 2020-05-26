@@ -23,7 +23,7 @@ import java.util.InputMismatchException;
  * @author F. M&aacute;rio Martins
  * @version 1.0 (6/2006)
  */
-public class Input implements Serializable {
+public class Input implements InterfaceInput {
 
     /**
      * Métodos de Classe

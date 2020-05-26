@@ -3,7 +3,7 @@ package View;
 import java.io.Serializable;
 import java.util.*;
 
-public class Vista implements Serializable, InterfaceVista {
+public class Vista implements InterfaceVista {
 
     //public View.Vista(){
 

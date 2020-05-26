@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class Queries implements Serializable{
+public class Queries implements Serializable,InterfaceQueries{
 
     private InterfaceClientes clientes;
     private InterfaceProdutos produtos;
@@ -23,7 +23,7 @@ public class Queries implements Serializable{
         this.fil = new Filiais();
         this.vendas = new Vendas();
     }
-    public Queries(InterfaceClientes cl, InterfaceProdutos pr, InterfaceFaturacao fat, InterfaceFiliais fil, Vendas v){
+    public Queries(InterfaceClientes cl, InterfaceProdutos pr, InterfaceFaturacao fat, InterfaceFiliais fil, InterfaceVendas v){
         this.clientes = cl;
         this.produtos = pr;
         this.fat = fat;
@@ -32,7 +32,7 @@ public class Queries implements Serializable{
 
     }
 
-    public void reiniciarModelo(){//mudar para apenas limpar as estruturas?
+    public void reiniciarModelo(){
         this.clientes = new Clientes3();
         this.produtos = new Produtos3();
         this.fat = new Faturacao();
@@ -75,7 +75,7 @@ public class Queries implements Serializable{
         return mes >= 1 && mes <= 12;
     }
 
-    public static int hashCL(String cl) {
+    public static int hashCL(String cl){
         return cl.charAt(0) - 'A';
     }
 
@@ -127,8 +127,7 @@ public class Queries implements Serializable{
 
     // querie 1
     public List<String> querie1(){
-        List<String> res = this.fat.getQuerie1();
-        return res;
+        return this.fat.getQuerie1();
     }
 
 
