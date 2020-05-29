@@ -25,8 +25,8 @@ public class Cliente implements Serializable
 
     public static boolean validaNum(String p) {
         boolean r = true;
-        for (int i = 2; i < 6 && r; i++) {
-            if (i == 2) {
+        for (int i = 1; i < 5 && r; i++) {
+            if (i == 1) {
                 if (p.charAt(i) < '1' && p.charAt(i) > '9') r = false;
                 else {
                     if (p.charAt(i) < '0' && p.charAt(i) > '9') r = false;
