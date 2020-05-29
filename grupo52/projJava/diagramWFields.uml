@@ -3,316 +3,316 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="1572.3189264828738" y="1027.0">Model.ComparatorQ9</node>
-    <node x="1171.152259816207" y="1027.0">Model.ComparatorQ6</node>
-    <node x="431.1522598162069" y="1273.0">View.Vista</node>
-    <node x="2239.318926482874" y="724.0">Model.Clientes3</node>
-    <node x="1771.1388888888891" y="403.0">Model.InterfaceFiliais</node>
-    <node x="395.1522598162069" y="1027.0">View.InterfaceVista</node>
-    <node x="1369.580037593985" y="1700.0">GestVendas</node>
-    <node x="49.15225981620688" y="1026.0">Model.Faturacao</node>
-    <node x="1471.7274582289058" y="580.0">Model.Vendas</node>
-    <node x="2860.6511904761905" y="725.0">Model.ComparatorProduto</node>
-    <node x="2409.5741624895572" y="403.0">Model.ComparatorCliente</node>
-    <node x="1737.3189264828738" y="1027.0">Model.InterfaceVendas</node>
-    <node x="2395.079761904762" y="1027.0">Model.InterfaceClientes</node>
-    <node x="2014.3189264828738" y="214.0">Model.MesFil</node>
-    <node x="2057.329761904762" y="1026.0">Model.Filiais</node>
-    <node x="819.1522598162071" y="1027.0">Model.NotValideException</node>
-    <node x="73.65225981620688" y="700.0">Model.ProdFat</node>
-    <node x="1031.152259816207" y="1014.0">Model.Crono</node>
-    <node x="59.472222222222626" y="390.0">Model.FilFat</node>
-    <node x="1995.4439264828738" y="1273.0">Controlar.Input</node>
-    <node x="118.47222222222263" y="202.0">Model.MesFat</node>
-    <node x="2308.6441248955725" y="238.0">Model.Cliente</node>
-    <node x="2018.3189264828738" y="700.0">Model.ClFil</node>
-    <node x="2971.7761904761905" y="402.0">Model.Produto</node>
-    <node x="1265.560791562239" y="403.0">Model.InterfaceFaturacao</node>
-    <node x="2766.829761904762" y="1026.0">Model.Produtos3</node>
-    <node x="2058.818926482874" y="0.0">Model.PrdFil</node>
-    <node x="2553.318926482874" y="725.0">Model.InterfaceProdutos</node>
-    <node x="2004.3189264828738" y="390.0">Model.FilFil</node>
-    <node x="1605.8189264828738" y="1224.0">Model.Queries</node>
-    <node x="998.8189264828738" y="1476.0">Controlar.Controlador</node>
-    <node x="1408.3189264828738" y="1027.0">Model.ComparatorQ5</node>
-    <node x="575.1522598162071" y="1027.0">Model.ValorInvalidoException</node>
+    <node x="1600.9624310776935" y="1007.0">Model.ComparatorQ9</node>
+    <node x="1287.9624310776935" y="1007.0">Model.ComparatorQ6</node>
+    <node x="1143.9624310776935" y="1253.0">View.Vista</node>
+    <node x="2388.0874310776935" y="694.0">Model.Clientes3</node>
+    <node x="1806.9925960735166" y="403.0">Model.InterfaceFiliais</node>
+    <node x="1107.9624310776935" y="1007.0">View.InterfaceVista</node>
+    <node x="1035.8402088554712" y="1680.0">GestVendas</node>
+    <node x="97.46243107769351" y="1006.0">Model.Faturacao</node>
+    <node x="1463.9624310776935" y="550.0">Model.Vendas</node>
+    <node x="2996.5492481203" y="695.0">Model.ComparatorProduto</node>
+    <node x="2494.3374310776935" y="403.0">Model.ComparatorCliente</node>
+    <node x="1764.9624310776935" y="1007.0">Model.InterfaceVendas</node>
+    <node x="2525.4778195488716" y="1007.0">Model.InterfaceClientes</node>
+    <node x="2163.0874310776935" y="214.0">Model.MesFil</node>
+    <node x="2193.2278195488716" y="1006.0">Model.Filiais</node>
+    <node x="895.9624310776935" y="1007.0">Model.NotValideException</node>
+    <node x="121.96243107769351" y="670.0">Model.ProdFat</node>
+    <node x="511.9624310776935" y="994.0">Model.Crono</node>
+    <node x="59.47222222222217" y="390.0">Model.FilFat</node>
+    <node x="443.4624310776935" y="1253.0">Controlar.Input</node>
+    <node x="118.47222222222217" y="202.0">Model.MesFat</node>
+    <node x="2480.492596073517" y="238.0">Model.Cliente</node>
+    <node x="2167.0874310776935" y="670.0">Model.ClFil</node>
+    <node x="3107.6742481203" y="402.0">Model.Produto</node>
+    <node x="1334.7425960735168" y="403.0">Model.InterfaceFaturacao</node>
+    <node x="2902.7278195488716" y="1006.0">Model.Produtos3</node>
+    <node x="2207.5874310776935" y="0.0">Model.PrdFil</node>
+    <node x="2702.0874310776935" y="695.0">Model.InterfaceProdutos</node>
+    <node x="2153.0874310776935" y="390.0">Model.FilFil</node>
+    <node x="1727.9624310776935" y="1204.0">Model.Queries</node>
+    <node x="881.6290977443601" y="1456.0">Controlar.Controlador</node>
+    <node x="1953.9624310776935" y="1007.0">Model.ComparatorQ5</node>
+    <node x="651.9624310776935" y="1007.0">Model.ValorInvalidoException</node>
   </nodes>
   <notes />
   <edges>
     <edge source="Controlar.Controlador" target="Model.ValorInvalidoException">
-      <point x="-28.333333333333485" y="-52.0" />
-      <point x="1038.4855931495404" y="1406.0" />
-      <point x="631.1522598162071" y="1406.0" />
+      <point x="-17.0" y="-52.0" />
+      <point x="932.6290977443601" y="1376.0" />
+      <point x="707.9624310776935" y="1376.0" />
       <point x="-56.0" y="27.0" />
     </edge>
     <edge source="GestVendas" target="Model.Produtos3">
       <point x="60.44444444444434" y="-27.0" />
-      <point x="1494.0244820384294" y="1680.0" />
-      <point x="3002.329761904762" y="1680.0" />
+      <point x="1160.2846532999156" y="1660.0" />
+      <point x="3138.2278195488716" y="1660.0" />
       <point x="78.5" y="28.0" />
     </edge>
     <edge source="Model.Queries" target="Model.InterfaceFiliais">
       <point x="34.57142857142867" y="-76.0" />
-      <point x="1761.3903550543025" y="1134.0" />
-      <point x="1959.6939264828738" y="1134.0" />
-      <point x="1959.6939264828738" y="500.0" />
-      <point x="1903.1388888888891" y="500.0" />
+      <point x="1883.533859649122" y="1114.0" />
+      <point x="2108.4624310776935" y="1114.0" />
+      <point x="2108.4624310776935" y="510.0" />
+      <point x="1938.9925960735166" y="510.0" />
       <point x="44.0" y="27.0" />
     </edge>
     <edge source="Model.Queries" target="Model.Faturacao">
       <point x="-115.23809523809518" y="-76.0" />
-      <point x="1611.5808312447787" y="1204.0" />
-      <point x="292.9022598162069" y="1204.0" />
+      <point x="1733.724335839598" y="1184.0" />
+      <point x="341.2124310776935" y="1184.0" />
       <point x="81.25" y="28.0" />
     </edge>
     <edge source="Model.Queries" target="Model.Filiais">
       <point x="69.14285714285711" y="-76.0" />
-      <point x="1795.961783625731" y="1164.0" />
-      <point x="2122.829761904762" y="1164.0" />
+      <point x="1918.1052882205504" y="1144.0" />
+      <point x="2258.7278195488716" y="1144.0" />
       <point x="-65.5" y="28.0" />
     </edge>
     <edge source="Model.ClFil" target="Model.FilFil">
       <point x="67.0" y="-52.0" />
-      <point x="2185.818926482874" y="560.0" />
-      <point x="2195.1522598162073" y="560.0" />
-      <point x="76.33333333333331" y="40.0" />
+      <point x="2334.5874310776935" y="530.0" />
+      <point x="2343.920764411027" y="530.0" />
+      <point x="76.33333333333348" y="40.0" />
     </edge>
     <edge source="Model.Queries" target="Model.InterfaceClientes">
-      <point x="92.19047619047615" y="-76.0" />
-      <point x="1819.00940267335" y="1184.0" />
-      <point x="2487.079761904762" y="1184.0" />
-      <point x="0.0" y="27.0" />
+      <point x="80.66666666666674" y="-76.0" />
+      <point x="1929.62909774436" y="1154.0" />
+      <point x="2556.1444862155377" y="1154.0" />
+      <point x="-61.333333333333485" y="27.0" />
     </edge>
     <edge source="Model.Clientes3" target="Model.ComparatorCliente">
-      <point x="110.25" y="-28.0" />
-      <point x="2496.568926482874" y="560.0" />
-      <point x="2501.5741624895572" y="560.0" />
+      <point x="36.75" y="-28.0" />
+      <point x="2571.8374310776935" y="530.0" />
+      <point x="2586.3374310776935" y="530.0" />
       <point x="0.0" y="27.0" />
     </edge>
     <edge source="GestVendas" target="Model.Clientes3">
       <point x="46.22222222222217" y="-27.0" />
-      <point x="1479.8022598162072" y="1660.0" />
-      <point x="2589.579761904762" y="1660.0" />
-      <point x="2589.579761904762" y="964.0" />
-      <point x="2496.568926482874" y="964.0" />
+      <point x="1146.0624310776934" y="1640.0" />
+      <point x="2732.312040517961" y="1640.0" />
+      <point x="2732.312040517961" y="934.0" />
+      <point x="2645.3374310776935" y="934.0" />
       <point x="110.25" y="28.0" />
     </edge>
     <edge source="Model.Produtos3" target="Model.Produto">
       <point x="134.57142857142844" y="-28.0" />
-      <point x="3058.4011904761905" y="994.0" />
-      <point x="3077.1511904761905" y="994.0" />
-      <point x="3077.1511904761905" y="560.0" />
-      <point x="3103.9011904761905" y="560.0" />
+      <point x="3194.2992481203" y="974.0" />
+      <point x="3213.0492481203" y="974.0" />
+      <point x="3213.0492481203" y="530.0" />
+      <point x="3239.7992481203" y="530.0" />
       <point x="56.625" y="28.0" />
     </edge>
-    <edge source="Model.FilFat" target="Model.MesFat">
-      <point x="-78.33333333333348" y="-40.0" />
-      <point x="98.63888888888914" y="370.0" />
-      <point x="137.97222222222263" y="370.0" />
-      <point x="-39.0" y="64.0" />
-    </edge>
     <edge source="Model.FilFil" target="Model.MesFil">
-      <point x="1.4210854715202004E-14" y="-40.0" />
-      <point x="1.4210854715202004E-14" y="52.0" />
+      <point x="76.33333333333348" y="-40.0" />
+      <point x="2343.920764411027" y="370.0" />
+      <point x="2337.25409774436" y="370.0" />
+      <point x="69.66666666666652" y="52.0" />
+    </edge>
+    <edge source="Model.FilFat" target="Model.MesFat">
+      <point x="0.0" y="-40.0" />
+      <point x="0.0" y="64.0" />
     </edge>
     <edge source="Model.Vendas" target="Model.InterfaceVendas">
       <point x="100.83333333333337" y="172.0" />
-      <point x="1693.560791562239" y="974.0" />
-      <point x="1800.3189264828738" y="974.0" />
+      <point x="1685.795764411027" y="964.0" />
+      <point x="1827.9624310776935" y="964.0" />
       <point x="-21.0" y="-27.0" />
     </edge>
     <edge source="Model.InterfaceVendas" target="Model.InterfaceFaturacao">
       <point x="21.0" y="-27.0" />
-      <point x="1842.3189264828738" y="530.0" />
-      <point x="1441.560791562239" y="530.0" />
+      <point x="1869.9624310776935" y="500.0" />
+      <point x="1510.7425960735168" y="500.0" />
       <point x="80.0" y="27.0" />
     </edge>
     <edge source="Model.Queries" target="Model.Vendas">
-      <point x="0.0" y="-76.0" />
-      <point x="1726.8189264828738" y="994.0" />
-      <point x="1612.8941248955725" y="994.0" />
+      <point x="-23.047619047619037" y="-76.0" />
+      <point x="1825.9148120300742" y="1104.0" />
+      <point x="1590.4624310776935" y="1104.0" />
+      <point x="1590.4624310776935" y="974.0" />
+      <point x="1605.12909774436" y="974.0" />
       <point x="20.16666666666663" y="172.0" />
     </edge>
     <edge source="Model.Vendas" target="Model.InterfaceFaturacao">
       <point x="-60.5" y="-172.0" />
-      <point x="1532.2274582289058" y="540.0" />
-      <point x="1409.560791562239" y="540.0" />
+      <point x="1524.4624310776935" y="510.0" />
+      <point x="1478.7425960735168" y="510.0" />
       <point x="48.0" y="27.0" />
     </edge>
     <edge source="Model.Produtos3" target="Model.ComparatorProduto">
       <point x="0.0" y="-28.0" />
-      <point x="2923.829761904762" y="994.0" />
-      <point x="2952.6511904761905" y="994.0" />
+      <point x="3059.7278195488716" y="974.0" />
+      <point x="3088.5492481203" y="974.0" />
       <point x="0.0" y="27.0" />
     </edge>
     <edge source="Model.InterfaceProdutos" target="Model.Produtos3">
       <point x="73.59999999999991" y="27.0" />
-      <point x="2718.9189264828738" y="964.0" />
-      <point x="2834.1154761904763" y="964.0" />
+      <point x="2867.6874310776934" y="954.0" />
+      <point x="2970.0135338345854" y="954.0" />
       <point x="-89.71428571428578" y="-28.0" />
     </edge>
     <edge source="Model.ProdFat" target="Model.FilFat">
-      <point x="0.0" y="-52.0" />
-      <point x="0.0" y="40.0" />
+      <point x="-69.0" y="-52.0" />
+      <point x="156.4624310776935" y="490.0" />
+      <point x="98.63888888888891" y="490.0" />
+      <point x="-78.33333333333333" y="40.0" />
     </edge>
     <edge source="Model.Queries" target="Model.NotValideException">
-      <point x="-92.19047619047615" y="-76.0" />
-      <point x="1634.6284502923977" y="1184.0" />
-      <point x="963.1522598162071" y="1184.0" />
+      <point x="-80.66666666666652" y="-76.0" />
+      <point x="1768.295764411027" y="1154.0" />
+      <point x="1039.9624310776935" y="1154.0" />
       <point x="48.0" y="27.0" />
     </edge>
     <edge source="Model.Queries" target="Model.ComparatorQ9">
-      <point x="-11.523809523809405" y="-76.0" />
-      <point x="1715.2951169590644" y="1114.0" />
-      <point x="1644.3189264828738" y="1114.0" />
+      <point x="-11.523809523809632" y="-76.0" />
+      <point x="1837.4386215538839" y="1094.0" />
+      <point x="1672.9624310776935" y="1094.0" />
       <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="GestVendas" target="Controlar.Controlador">
+      <point x="-3.5555555555556566" y="-27.0" />
+      <point x="1096.2846532999156" y="1580.0" />
+      <point x="983.6290977443601" y="1580.0" />
+      <point x="34.0" y="52.0" />
     </edge>
     <edge source="Model.Vendas" target="Model.InterfaceFiliais">
       <point x="60.5" y="-172.0" />
-      <point x="1653.2274582289058" y="560.0" />
-      <point x="1815.1388888888891" y="560.0" />
+      <point x="1645.4624310776935" y="530.0" />
+      <point x="1850.9925960735166" y="530.0" />
       <point x="-44.0" y="27.0" />
     </edge>
-    <edge source="GestVendas" target="Controlar.Controlador">
-      <point x="-10.666666666666742" y="-27.0" />
-      <point x="1422.9133709273183" y="1610.0" />
-      <point x="1032.8189264828738" y="1610.0" />
-      <point x="-34.0" y="52.0" />
-    </edge>
     <edge source="Controlar.Controlador" target="Model.NotValideException">
-      <point x="-17.0" y="-52.0" />
-      <point x="1049.8189264828738" y="1396.0" />
-      <point x="867.1522598162071" y="1396.0" />
+      <point x="-5.6666666666667425" y="-52.0" />
       <point x="-48.0" y="27.0" />
     </edge>
     <edge source="GestVendas" target="Model.Queries">
-      <point x="10.666666666666742" y="-27.0" />
-      <point x="1444.2467042606518" y="1610.0" />
-      <point x="1802.9744820384296" y="1610.0" />
-      <point x="1802.9744820384296" y="1426.0" />
-      <point x="1823.6189264828738" y="1426.0" />
-      <point x="96.79999999999995" y="76.0" />
+      <point x="17.77777777777783" y="-27.0" />
+      <point x="1117.617986633249" y="1600.0" />
+      <point x="1918.0068755221378" y="1600.0" />
+      <point x="1918.0068755221378" y="1436.0" />
+      <point x="1897.3624310776936" y="1436.0" />
+      <point x="48.40000000000009" y="76.0" />
     </edge>
     <edge source="Model.Queries" target="Model.InterfaceVendas">
-      <point x="11.523809523809632" y="-76.0" />
-      <point x="1738.3427360066835" y="1114.0" />
-      <point x="1821.3189264828738" y="1114.0" />
+      <point x="0.0" y="-76.0" />
       <point x="0.0" y="27.0" />
     </edge>
     <edge source="Model.InterfaceClientes" target="Model.Clientes3">
       <point x="-46.0" y="-27.0" />
-      <point x="2441.079761904762" y="984.0" />
-      <point x="2349.568926482874" y="984.0" />
+      <point x="2571.4778195488716" y="954.0" />
+      <point x="2498.3374310776935" y="954.0" />
       <point x="-36.75" y="28.0" />
     </edge>
     <edge source="GestVendas" target="Model.Filiais">
       <point x="32.0" y="-27.0" />
-      <point x="1465.580037593985" y="1640.0" />
-      <point x="2415.283013784461" y="1640.0" />
-      <point x="2415.283013784461" y="1164.0" />
-      <point x="2253.829761904762" y="1164.0" />
+      <point x="1131.8402088554712" y="1620.0" />
+      <point x="2556.4509294068503" y="1620.0" />
+      <point x="2556.4509294068503" y="1144.0" />
+      <point x="2389.7278195488716" y="1144.0" />
       <point x="65.5" y="28.0" />
     </edge>
     <edge source="GestVendas" target="Model.Faturacao">
       <point x="-39.111111111111086" y="-27.0" />
-      <point x="1394.468926482874" y="1650.0" />
-      <point x="130.40225981620688" y="1650.0" />
+      <point x="1060.7290977443602" y="1630.0" />
+      <point x="178.7124310776935" y="1630.0" />
       <point x="-81.25" y="28.0" />
     </edge>
     <edge source="Model.Queries" target="Model.ComparatorQ5">
-      <point x="-23.047619047619037" y="-76.0" />
-      <point x="1703.7713074352548" y="1124.0" />
-      <point x="1480.3189264828738" y="1124.0" />
+      <point x="23.047619047619037" y="-76.0" />
+      <point x="1872.0100501253123" y="1104.0" />
+      <point x="2025.9624310776935" y="1104.0" />
       <point x="0.0" y="27.0" />
     </edge>
     <edge source="Model.Queries" target="Model.ComparatorQ6">
       <point x="-69.14285714285711" y="-76.0" />
-      <point x="1657.6760693400167" y="1164.0" />
-      <point x="1243.152259816207" y="1164.0" />
+      <point x="1779.8195739348362" y="1144.0" />
+      <point x="1359.9624310776935" y="1144.0" />
       <point x="0.0" y="27.0" />
     </edge>
-    <edge source="Model.Clientes3" target="Model.Cliente">
-      <point x="-110.25" y="-28.0" />
-      <point x="2276.068926482874" y="550.0" />
-      <point x="2349.0191248955725" y="550.0" />
-      <point x="2349.0191248955725" y="370.0" />
-      <point x="2322.6441248955725" y="370.0" />
-      <point x="-56.0" y="28.0" />
-    </edge>
-    <edge source="Controlar.Controlador" target="Controlar.Input">
-      <point x="39.66666666666674" y="-52.0" />
-      <point x="1106.4855931495406" y="1436.0" />
-      <point x="2004.2439264828738" y="1436.0" />
-      <point x="-35.200000000000045" y="27.0" />
-    </edge>
     <edge source="GestVendas" target="Controlar.Input">
-      <point x="17.77777777777783" y="-27.0" />
-      <point x="1451.3578153717629" y="1620.0" />
-      <point x="2062.2883709273183" y="1620.0" />
-      <point x="2062.2883709273183" y="1456.0" />
-      <point x="2057.0439264828738" y="1456.0" />
-      <point x="17.59999999999991" y="27.0" />
+      <point x="-17.77777777777783" y="-27.0" />
+      <point x="1082.0624310776934" y="1600.0" />
+      <point x="510.7889306599825" y="1600.0" />
+      <point x="510.7889306599825" y="1426.0" />
+      <point x="469.8624310776936" y="1426.0" />
+      <point x="-17.59999999999991" y="27.0" />
     </edge>
     <edge source="Model.ComparatorCliente" target="Model.Cliente">
       <point x="0.0" y="-27.0" />
-      <point x="2501.5741624895572" y="370.0" />
-      <point x="2406.6441248955725" y="370.0" />
-      <point x="28.0" y="28.0" />
+      <point x="2586.3374310776935" y="370.0" />
+      <point x="2550.492596073517" y="370.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="Model.Clientes3" target="Model.Cliente">
+      <point x="-110.25" y="-28.0" />
+      <point x="2424.8374310776935" y="530.0" />
+      <point x="2432.2124310776935" y="530.0" />
+      <point x="2432.2124310776935" y="360.0" />
+      <point x="2494.492596073517" y="360.0" />
+      <point x="-56.0" y="28.0" />
+    </edge>
+    <edge source="Controlar.Controlador" target="Controlar.Input">
+      <point x="-39.66666666666674" y="-52.0" />
+      <point x="909.9624310776934" y="1396.0" />
+      <point x="522.6624310776936" y="1396.0" />
+      <point x="35.200000000000045" y="27.0" />
     </edge>
     <edge source="Model.Queries" target="Model.Produtos3">
       <point x="115.23809523809518" y="-76.0" />
-      <point x="1842.057021720969" y="1204.0" />
-      <point x="2845.329761904762" y="1204.0" />
+      <point x="1964.2005263157885" y="1184.0" />
+      <point x="2981.2278195488716" y="1184.0" />
       <point x="-78.5" y="28.0" />
-    </edge>
-    <edge source="Model.Queries" target="Model.ValorInvalidoException">
-      <point x="-103.71428571428555" y="-76.0" />
-      <point x="1623.1046407685883" y="1194.0" />
-      <point x="743.1522598162071" y="1194.0" />
-      <point x="56.0" y="27.0" />
     </edge>
     <edge source="Model.InterfaceVendas" target="Model.InterfaceFiliais">
       <point x="63.0" y="-27.0" />
-      <point x="1884.3189264828738" y="994.0" />
-      <point x="1911.9439264828738" y="994.0" />
-      <point x="1911.9439264828738" y="520.0" />
-      <point x="1844.4722222222226" y="520.0" />
-      <point x="-14.666666666666629" y="27.0" />
+      <point x="1911.9624310776935" y="974.0" />
+      <point x="1906.7124310776935" y="974.0" />
+      <point x="1906.7124310776935" y="530.0" />
+      <point x="1880.3259294068498" y="530.0" />
+      <point x="-14.666666666666742" y="27.0" />
+    </edge>
+    <edge source="Model.Queries" target="Model.ValorInvalidoException">
+      <point x="-92.19047619047615" y="-76.0" />
+      <point x="1756.7719548872174" y="1164.0" />
+      <point x="819.9624310776935" y="1164.0" />
+      <point x="56.0" y="27.0" />
     </edge>
     <edge source="GestVendas" target="View.Vista">
-      <point x="-24.888888888888914" y="-27.0" />
-      <point x="1408.691148705096" y="1630.0" />
-      <point x="486.23809523809564" y="1630.0" />
-      <point x="486.23809523809564" y="1456.0" />
-      <point x="439.95225981620683" y="1456.0" />
-      <point x="-35.200000000000045" y="27.0" />
+      <point x="10.666666666666742" y="-27.0" />
+      <point x="1110.506875522138" y="1590.0" />
+      <point x="1217.9179866332488" y="1590.0" />
+      <point x="1217.9179866332488" y="1406.0" />
+      <point x="1223.1624310776933" y="1406.0" />
+      <point x="35.19999999999982" y="27.0" />
     </edge>
     <edge source="Model.Faturacao" target="Model.ProdFat">
-      <point x="-121.875" y="-28.0" />
-      <point x="89.77725981620688" y="964.0" />
-      <point x="108.15225981620688" y="964.0" />
-      <point x="-69.0" y="52.0" />
+      <point x="40.625" y="-28.0" />
+      <point x="300.5874310776935" y="954.0" />
+      <point x="294.4624310776935" y="954.0" />
+      <point x="69.0" y="52.0" />
     </edge>
     <edge source="Model.ComparatorProduto" target="Model.Produto">
       <point x="0.0" y="-27.0" />
-      <point x="2952.6511904761905" y="560.0" />
-      <point x="2990.6511904761905" y="560.0" />
+      <point x="3088.5492481203" y="530.0" />
+      <point x="3126.5492481203" y="530.0" />
       <point x="-56.625" y="28.0" />
     </edge>
     <edge source="Model.Queries" target="Model.Clientes3">
       <point x="46.095238095238074" y="-76.0" />
-      <point x="1772.914164578112" y="1144.0" />
-      <point x="2035.829761904762" y="1144.0" />
-      <point x="2035.829761904762" y="984.0" />
-      <point x="2276.068926482874" y="984.0" />
+      <point x="1895.0576691729316" y="1124.0" />
+      <point x="2171.727819548871" y="1124.0" />
+      <point x="2171.727819548871" y="954.0" />
+      <point x="2424.8374310776935" y="954.0" />
       <point x="-110.25" y="28.0" />
     </edge>
     <edge source="Model.Produtos3" target="Model.Cliente">
       <point x="-44.85714285714312" y="-28.0" />
-      <point x="2878.972619047619" y="954.0" />
-      <point x="2747.818926482874" y="954.0" />
-      <point x="2747.818926482874" y="360.0" />
-      <point x="2434.6441248955725" y="360.0" />
+      <point x="3014.8706766917285" y="944.0" />
+      <point x="2896.5874310776935" y="944.0" />
+      <point x="2896.5874310776935" y="350.0" />
+      <point x="2606.492596073517" y="350.0" />
       <point x="56.0" y="28.0" />
     </edge>
     <edge source="View.Vista" target="View.InterfaceVista">
@@ -320,131 +320,133 @@
       <point x="0.0" y="27.0" />
     </edge>
     <edge source="Controlar.Controlador" target="Model.Queries">
-      <point x="5.6666666666667425" y="-52.0" />
-      <point x="1072.4855931495406" y="1406.0" />
-      <point x="1630.018926482874" y="1406.0" />
-      <point x="-96.79999999999995" y="76.0" />
+      <point x="51.0" y="-52.0" />
+      <point x="1000.6290977443601" y="1426.0" />
+      <point x="1800.5624310776934" y="1426.0" />
+      <point x="-48.40000000000009" y="76.0" />
     </edge>
     <edge source="Model.Clientes3" target="Model.InterfaceClientes">
       <point x="36.75" y="28.0" />
-      <point x="2423.068926482874" y="974.0" />
-      <point x="2533.079761904762" y="974.0" />
+      <point x="2571.8374310776935" y="944.0" />
+      <point x="2663.4778195488716" y="944.0" />
       <point x="46.0" y="-27.0" />
     </edge>
     <edge source="GestVendas" target="Model.InterfaceClientes">
       <point x="39.111111111111086" y="-27.0" />
-      <point x="1472.691148705096" y="1650.0" />
-      <point x="2498.6250000000005" y="1650.0" />
-      <point x="2498.6250000000005" y="1184.0" />
-      <point x="2548.4130952380956" y="1184.0" />
+      <point x="1138.9513199665823" y="1630.0" />
+      <point x="2665.5694444444443" y="1630.0" />
+      <point x="2665.5694444444443" y="1164.0" />
+      <point x="2678.8111528822046" y="1164.0" />
       <point x="61.333333333333485" y="27.0" />
     </edge>
     <edge source="Model.Filiais" target="Model.InterfaceFiliais">
       <point x="-98.25" y="-28.0" />
-      <point x="2090.079761904762" y="974.0" />
-      <point x="1988.7355931495404" y="974.0" />
-      <point x="1988.7355931495404" y="490.0" />
-      <point x="1932.4722222222226" y="490.0" />
+      <point x="2225.9778195488716" y="944.0" />
+      <point x="2137.50409774436" y="944.0" />
+      <point x="2137.50409774436" y="500.0" />
+      <point x="1968.3259294068498" y="500.0" />
       <point x="73.33333333333326" y="27.0" />
     </edge>
     <edge source="Model.Faturacao" target="Model.InterfaceFaturacao">
       <point x="121.875" y="-28.0" />
-      <point x="333.5272598162069" y="964.0" />
-      <point x="339.8658291562235" y="964.0" />
-      <point x="339.8658291562235" y="540.0" />
-      <point x="1313.560791562239" y="540.0" />
+      <point x="381.8374310776935" y="954.0" />
+      <point x="388.8578049289881" y="954.0" />
+      <point x="388.8578049289881" y="510.0" />
+      <point x="1382.7425960735168" y="510.0" />
       <point x="-48.0" y="27.0" />
     </edge>
     <edge source="Model.Queries" target="Model.InterfaceProdutos">
-      <point x="103.71428571428578" y="-76.0" />
-      <point x="1830.5332121971596" y="1194.0" />
-      <point x="2663.954761904762" y="1194.0" />
-      <point x="2663.954761904762" y="994.0" />
-      <point x="2608.5189264828737" y="994.0" />
-      <point x="-36.80000000000018" y="27.0" />
-    </edge>
-    <edge source="GestVendas" target="Model.Vendas">
-      <point x="-32.0" y="-27.0" />
-      <point x="1401.580037593985" y="1640.0" />
-      <point x="384.6522598162069" y="1640.0" />
-      <point x="384.6522598162069" y="984.0" />
-      <point x="1532.2274582289058" y="984.0" />
-      <point x="-60.5" y="172.0" />
+      <point x="57.619047619047706" y="-76.0" />
+      <point x="1906.5814786967412" y="1134.0" />
+      <point x="2182.727819548871" y="1134.0" />
+      <point x="2182.727819548871" y="964.0" />
+      <point x="2720.4874310776936" y="964.0" />
+      <point x="-73.59999999999991" y="27.0" />
     </edge>
     <edge source="Model.Queries" target="Model.InterfaceFaturacao">
-      <point x="-57.61904761904748" y="-76.0" />
-      <point x="1669.1998788638264" y="1154.0" />
-      <point x="1325.652259816207" y="1154.0" />
-      <point x="1325.652259816207" y="530.0" />
-      <point x="1345.560791562239" y="530.0" />
-      <point x="-16.0" y="27.0" />
+      <point x="-46.095238095238074" y="-76.0" />
+      <point x="1802.8671929824554" y="1124.0" />
+      <point x="1453.4624310776935" y="1124.0" />
+      <point x="1453.4624310776935" y="500.0" />
+      <point x="1446.7425960735168" y="500.0" />
+      <point x="16.0" y="27.0" />
     </edge>
     <edge source="Model.InterfaceVendas" target="Model.Vendas">
       <point x="-63.0" y="-27.0" />
-      <point x="1758.3189264828738" y="984.0" />
-      <point x="1653.2274582289058" y="984.0" />
+      <point x="1785.9624310776935" y="974.0" />
+      <point x="1645.4624310776935" y="974.0" />
       <point x="60.5" y="172.0" />
+    </edge>
+    <edge source="GestVendas" target="Model.Vendas">
+      <point x="-46.22222222222217" y="-27.0" />
+      <point x="1053.617986633249" y="1640.0" />
+      <point x="86.96243107769351" y="1640.0" />
+      <point x="86.96243107769351" y="964.0" />
+      <point x="1484.12909774436" y="964.0" />
+      <point x="-100.83333333333337" y="172.0" />
     </edge>
     <edge source="GestVendas" target="Model.InterfaceFaturacao">
       <point x="-60.44444444444457" y="-27.0" />
-      <point x="1373.1355931495405" y="1680.0" />
-      <point x="0.0" y="1680.0" />
-      <point x="0.0" y="530.0" />
-      <point x="1281.560791562239" y="530.0" />
+      <point x="1039.3957644110267" y="1660.0" />
+      <point x="0.0" y="1660.0" />
+      <point x="0.0" y="500.0" />
+      <point x="1350.7425960735168" y="500.0" />
       <point x="-80.0" y="27.0" />
     </edge>
     <edge source="GestVendas" target="Model.InterfaceProdutos">
       <point x="53.33333333333326" y="-27.0" />
-      <point x="1486.9133709273183" y="1670.0" />
-      <point x="2737.579761904762" y="1670.0" />
-      <point x="2737.579761904762" y="984.0" />
-      <point x="2645.318926482874" y="984.0" />
+      <point x="1153.1735421888045" y="1650.0" />
+      <point x="2873.4778195488716" y="1650.0" />
+      <point x="2873.4778195488716" y="974.0" />
+      <point x="2794.0874310776935" y="974.0" />
       <point x="0.0" y="27.0" />
     </edge>
     <edge source="Model.Produtos3" target="Model.InterfaceProdutos">
       <point x="-134.57142857142844" y="-28.0" />
-      <point x="2789.2583333333337" y="974.0" />
-      <point x="2682.118926482874" y="974.0" />
+      <point x="2925.156390977443" y="964.0" />
+      <point x="2830.8874310776937" y="964.0" />
       <point x="36.80000000000018" y="27.0" />
     </edge>
     <edge source="Model.Queries" target="Model.Crono">
-      <point x="-80.66666666666674" y="-76.0" />
-      <point x="1646.152259816207" y="1174.0" />
-      <point x="1121.152259816207" y="1174.0" />
+      <point x="-103.71428571428578" y="-76.0" />
+      <point x="1745.2481453634077" y="1174.0" />
+      <point x="601.9624310776935" y="1174.0" />
       <point x="30.0" y="40.0" />
     </edge>
     <edge source="Controlar.Controlador" target="View.Vista">
-      <point x="-39.66666666666674" y="-52.0" />
-      <point x="1027.152259816207" y="1416.0" />
-      <point x="510.3522598162069" y="1416.0" />
-      <point x="35.200000000000045" y="27.0" />
+      <point x="28.333333333333258" y="-52.0" />
+      <point x="977.9624310776934" y="1406.0" />
+      <point x="1187.9624310776935" y="1406.0" />
+      <point x="0.0" y="27.0" />
     </edge>
     <edge source="Model.Filiais" target="Model.ClFil">
       <point x="32.75" y="-28.0" />
-      <point x="2221.079761904762" y="954.0" />
-      <point x="2118.818926482874" y="954.0" />
+      <point x="2356.9778195488716" y="924.0" />
+      <point x="2267.5874310776935" y="924.0" />
       <point x="0.0" y="52.0" />
     </edge>
     <edge source="Model.MesFil" target="Model.PrdFil">
-      <point x="69.66666666666669" y="-52.0" />
-      <point x="2188.4855931495404" y="177.0" />
-      <point x="2158.818926482874" y="177.0" />
-      <point x="40.0" y="76.0" />
+      <point x="-69.66666666666674" y="-52.0" />
+      <point x="2197.9207644110265" y="177.0" />
+      <point x="2227.5874310776935" y="177.0" />
+      <point x="-40.0" y="76.0" />
     </edge>
     <edge source="GestVendas" target="Model.InterfaceFiliais">
-      <point x="-53.33333333333326" y="-27.0" />
-      <point x="1380.2467042606518" y="1670.0" />
-      <point x="31.54114870509602" y="1670.0" />
-      <point x="31.54114870509602" y="550.0" />
-      <point x="1785.8055555555559" y="550.0" />
-      <point x="-73.33333333333337" y="27.0" />
+      <point x="-53.333333333333485" y="-27.0" />
+      <point x="1046.5068755221378" y="1650.0" />
+      <point x="79.8513199665822" y="1650.0" />
+      <point x="79.8513199665822" y="520.0" />
+      <point x="1821.6592627401833" y="520.0" />
+      <point x="-73.33333333333326" y="27.0" />
     </edge>
     <edge source="Controlar.Controlador" target="Model.Crono">
-      <point x="-5.6666666666667425" y="-52.0" />
+      <point x="-28.333333333333485" y="-52.0" />
+      <point x="921.2957644110267" y="1386.0" />
+      <point x="541.9624310776935" y="1386.0" />
       <point x="-30.0" y="40.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="781.0" y="418.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="781.0" y="550.0" />
   <SelectedNodes>
     <node>Model.ValorInvalidoException</node>
   </SelectedNodes>
