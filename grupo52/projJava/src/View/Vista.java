@@ -3,45 +3,45 @@ package View;
 import java.io.Serializable;
 import java.util.*;
 
-public class Vista implements Serializable, InterfaceVista {
+public class Vista implements InterfaceVista {
 
     //public View.Vista(){
 
 
 
     public void printHeader(){
-        System.out.println("|==========================================================================================|");
-        System.out.println("||                                    Welcome to                                          ||");
-        System.out.println("||                             SISTEMA GESTÃO DE VENDAS                                   ||");
-        System.out.println("|==========================================================================================|");
+        System.out.println("|============================================================================================|");
+        System.out.println("||                                     Welcome to                                           ||");
+        System.out.println("||                              SISTEMA GESTÃO DE VENDAS                                    ||");
+        System.out.println("|============================================================================================|");
     }
 
 
     public void printmenu(){
         System.out.println("_____________________________________________________________________________________________");
-        System.out.println("|Por favor escolha a instrução a executar:                                                  |");
-        System.out.println("|1  -> Load dos ficheiros.                                                                  |");
-        System.out.println("|2  -> Dados obtidos, diretamente após leitura (Queries estatisticas 1.1).                  |");
-        System.out.println("|3  -> Número TOTAL de compras relizadas por més.                                           |");
-        System.out.println("|4  -> Faturação total por mês para cada filial e o valor total global.                     |");
-        System.out.println("|5  -> Número de distintos clientes que compraram em cada mês filial a filial.              |");
-        System.out.println("|6  -> Q1 -Lista ordenada alfabeticamente com os códigos dos produtos nunca comprados.      |");
-        System.out.println("|7  -> Q2 -Número total de vendas realizadas e o total de compradores distintos num mês.    |");
-        System.out.println("|8  -> Q3 -Determinar para  cada  mês,  quantas  compras um certo cliente fez,              |");
-        System.out.println("|          quantos produtos distintos comprou e quanto gastou no total.                     |");
-        System.out.println("|9  -> Q4 -Determinar, mês a mês, quantas vezes um certo produto foi comprado, por quantos  |");
-        System.out.println("|          clientes diferentes e o total faturado.                                          |");
-        System.out.println("|10 -> Q5 -Determinar a lista ordenada por ordem  decrescente de quantidade de códigos de   |");
-        System.out.println("|          produtos que mais comprou.                                                       |");
-        System.out.println("|11 -> Q6 -Determinar o conjunto dos X produtos mais vendidos em todo o ano indicando o     |");
-        System.out.println("|          número total de distintos clientes que o compraram.                              |");
-        System.out.println("|12 -> Q7 -Determinar, para cada filial, a lista dos três  maiores  compradores (dinheiro)  |");
-        System.out.println("|13 -> Q8 -Determinar os códigos dos X clientes que compraram mais produtos diferentes      |");
-        System.out.println("|14 -> Q9 -Determinar os códigos de clientes que mais compraram um X produto, e quanto gatou|");
-        System.out.println("|15 -> Q10-Determinar a faturação total de cada produto, mês a mês, filial a filial         |");
-        System.out.println("|16 -> Gravar em Binário                                                                    |");
-        System.out.println("|0  -> Exit Program                                                                         |");
-        System.out.println("|___________________________________________________________________________________________|");
+        System.out.println("|Por favor escolha a instrução a executar:                                                   |");
+        System.out.println("|1  -> Load dos ficheiros.                                                                   |");
+        System.out.println("|2  -> Dados obtidos, diretamente após leitura (Queries estatisticas 1.1).                   |");
+        System.out.println("|3  -> Número TOTAL de compras relizadas por més.                                            |");
+        System.out.println("|4  -> Faturação total por mês para cada filial e o valor total global.                      |");
+        System.out.println("|5  -> Número de distintos clientes que compraram em cada mês filial a filial.               |");
+        System.out.println("|6  -> Q1 -Lista ordenada alfabeticamente com os códigos dos produtos nunca comprados.       |");
+        System.out.println("|7  -> Q2 -Número total de vendas realizadas e o total de compradores distintos num mês.     |");
+        System.out.println("|8  -> Q3 -Determinar para  cada  mês,  quantas  compras um certo cliente fez,               |");
+        System.out.println("|          quantos produtos distintos comprou e quanto gastou no total.                      |");
+        System.out.println("|9  -> Q4 -Determinar, mês a mês, quantas vezes um certo produto foi comprado, por quantos   |");
+        System.out.println("|          clientes diferentes e o total faturado.                                           |");
+        System.out.println("|10 -> Q5 -Determinar a lista ordenada por ordem  decrescente de quantidade de códigos de    |");
+        System.out.println("|          produtos que mais comprou.                                                        |");
+        System.out.println("|11 -> Q6 -Determinar o conjunto dos X produtos mais vendidos em todo o ano indicando o      |");
+        System.out.println("|          número total de distintos clientes que o compraram.                               |");
+        System.out.println("|12 -> Q7 -Determinar, para cada filial, a lista dos três  maiores  compradores (dinheiro)   |");
+        System.out.println("|13 -> Q8 -Determinar os códigos dos X clientes que compraram mais produtos diferentes       |");
+        System.out.println("|14 -> Q9 -Determinar os códigos de clientes que mais compraram um X produto, e quanto gastou|");
+        System.out.println("|15 -> Q10-Determinar a faturação total de cada produto, mês a mês, filial a filial          |");
+        System.out.println("|16 -> Gravar em Binário                                                                     |");
+        System.out.println("|0  -> Exit Program                                                                          |");
+        System.out.println("|____________________________________________________________________________________________|");
     }
 
     public void printBarraN(){
@@ -81,7 +81,7 @@ public class Vista implements Serializable, InterfaceVista {
         System.out.println("Não encontrou fiheiro -> " +e);
     }
     public void printOpLeitura(){
-        System.out.println("\nDeseja ler do ficheiro .dat (1), dos ficheiros predfenidos (2) ou ficheiros escolhidos por si (3)?");
+        System.out.println("\nInsira (1) para ler do ficheiro .dat, (2) para ler dos ficheiros predefinidos, (3) para ler de ficheiros escolhidos por si, ou (0) sair sem ler.");
     }
 
     public void fileNameC(){
@@ -98,6 +98,16 @@ public class Vista implements Serializable, InterfaceVista {
 
     public void printFilePaths(String fc,String fp,String fv, double time){
         System.out.printf("FilePath Clientes lido: %s\nFilePath Produtos lido:%s\nFilePath Vendas lido:%s\nTempo de leitura: %f",fc,fp,fv,time );
+    }
+    public void printFilePath(String f,double time){
+        System.out.printf("FilePath do ficheiro .dat: %s\nTempo de leitura: %f",f,time );
+    }
+    public void aEscreverParaFicheiro(String f){
+        System.out.printf("A escrever para o ficheiro %s\n",f);
+    }
+
+    public void printSaidaSemLeitura(){
+        System.out.println("Saida sem Leitura de ficheiros");
     }
 
     //====== Queries =======//
@@ -434,7 +444,7 @@ public class Vista implements Serializable, InterfaceVista {
         System.out.printf("Mes %d.\n", mes);
         System.out.printf("A apresentar pagina %d de %d :\n", pag, totalpag);
         for (Map.Entry<Integer, Map<String, Double>> m : q10.entrySet()) {
-            System.out.printf("Filial %2d\t\t\t", m.getKey());
+            System.out.printf("Filial %2d\t\t\t\t", m.getKey());
             lista.add(m.getValue().entrySet().iterator());
         }
         System.out.print("\n");
@@ -452,8 +462,8 @@ public class Vista implements Serializable, InterfaceVista {
             for (Iterator<Map.Entry<String, Double>> m : lista) {
                 if (m.hasNext()) {
                     aux=m.next();
-                    System.out.printf("%s->%6.2f\t\t",aux.getKey(),aux.getValue());
-                }else System.out.print("         \t\t");
+                    System.out.printf("%s->%8.2f\t\t",aux.getKey(),aux.getValue());
+                }else System.out.print("         \t\t\t\t");
             }
             System.out.print("\n");
         }

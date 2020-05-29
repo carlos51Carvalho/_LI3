@@ -2,6 +2,7 @@ package Controlar;
 
 
 import Model.*;
+import View.InterfaceVista;
 import View.Vista;
 
 import java.io.*;
@@ -9,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
-public class Controlador {
+public class Controlador implements InterfaceControlador {
 
-    private Queries q;
-    private Vista v;
-    private Input i;
+    private InterfaceQueries q;
+    private InterfaceVista v;
+    private InterfaceInput i;
 
     public Controlador(){
         this.q = new Queries();
@@ -21,20 +22,19 @@ public class Controlador {
         this.i = new Input();
     }
 
-    public Controlador(Queries q, Vista v, Input i){
+    public Controlador(InterfaceQueries q, InterfaceVista v, InterfaceInput i){
         this.q=q;
         this.v = v;
         this.i = i;
     }
     
     
-    public void run() throws Exception {
+    public void run(){
         int op;
         boolean load = false;
-        int value;
 
         //->leitura do ficheiro config
-        String fc,fp,fv;
+        String fc,fp,fv,datfile;
         int nfiliais;
         int nlinhasoutput;
         fc = "Dados_Iniciais/Clientes.txt";
@@ -42,6 +42,7 @@ public class Controlador {
         fv = "Dados_Iniciais/Vendas_3M.txt";
         nfiliais=3;
         nlinhasoutput=20;
+        datfile="dados.dat";
         try {
             String st;
             String[] linhaPartida;
@@ -65,6 +66,9 @@ public class Controlador {
                     case "Linhas":
                         nlinhasoutput=Integer.parseInt(linhaPartida[1]);
                         break;
+                    case "Datfile":
+                        datfile=linhaPartida[1];
+                        break;
                     default:
                         break;
                 }
@@ -73,7 +77,12 @@ public class Controlador {
             v.printErrorFIle(e.getMessage());
             try{
                 PrintWriter p = new PrintWriter("configFile.txt");
-                p.print("Clientes:"+fc+ "\nProdutos:"+fp+"\nVendas:" + fv + "\nFiliais:"+nfiliais+"\nLinhas:"+nlinhasoutput);
+                p.print("Clientes:"+fc+
+                        "\nProdutos:"+fp+
+                        "\nVendas:"+fv+
+                        "\nFiliais:"+nfiliais+
+                        "\nLinhas:"+nlinhasoutput+
+                        "\nDatfile:"+datfile);
                 p.flush();
                 p.close();
             }catch (IOException n){
@@ -94,11 +103,9 @@ public class Controlador {
             //processar no controlador
             switch (op){
                 case 0:
-                    v.flush();
-                    v.printExit();
                     break;
                 case 1:
-                    load = case1(load,fc,fp,fv,nfiliais);
+                    load = case1(load,fc,fp,fv,nfiliais,datfile);
                     v.pressioneEnter();
                     this.i.lerString();
                     break;
@@ -144,9 +151,6 @@ public class Controlador {
                 case 6:
                     if (load) {
                        case6(nlinhasoutput);
-
-                        v.pressioneEnter();
-                        this.i.lerString();
                     }
                     else v.printNotLoad();
                     break;
@@ -192,7 +196,7 @@ public class Controlador {
                     case15(load,nlinhasoutput);
                     break;
                 case 16:
-                    q.gravarObj("dados.dat");
+                    case16(load,datfile);
 
                     v.pressioneEnter();
                     this.i.lerString();
@@ -206,7 +210,8 @@ public class Controlador {
             }
 
             v.flush();
-            this.v.flush();
+            v.flush();
+            v.printExit();
         } while(op!=0);
 
     }
@@ -215,73 +220,76 @@ public class Controlador {
 
 
 
-    public boolean case1(boolean load,String fc,String fp,String fv,int nfiliais) throws Exception {
-        //boolean load = false;
-        boolean opl = true;
+    public boolean case1(boolean load,String fc,String fp,String fv,int nfiliais,String datfile){
         boolean escrever = true;
-        int opleit=0;
+        int opleit;
         int escrita;
 
-        while(opleit<1||opleit>3){
+
+        v.printOpLeitura();
+        opleit = this.i.lerInt();
+        while(opleit<0||opleit>3){
+            v.printError();
             v.printOpLeitura();
             opleit = this.i.lerInt();
-            if(opleit<1||opleit>3)v.printError();
         }
 
-        if (opleit == 1) {//ler binario
-            try {
-                Crono.start();
-                q=q.lerObj("dados.dat");         //nome do ficheiro pode estar no config
-                double time = Crono.stop();
-                //View.Vista
-                load = true;
-            }catch (IOException e){
-                v.printErrorFIle(e.getMessage());
-            }
+        if(opleit!=0) {
+            if (opleit == 1) {//ler binario
+                try {
+                    Crono.start();
+                    q = q.lerObj(datfile);         //nome do ficheiro pode estar no config
+                    double time = Crono.stop();
+                    v.printFilePath(datfile, time);
+                    load = true;
+                } catch (IOException |ClassNotFoundException e) {
+                    v.printErrorFIle(e.getMessage());
+                }
 
-        }else{
-            if(load){
-                while (escrever) {
-                    v.printEscrever();
-                    escrita = this.i.lerInt();
-                    if (escrita == 1){
-                        //reiniciar modelo;
-                        q.reiniciarModelo();
-                        load = false;
-                        escrever =false;
+            } else {
+                if (load) {
+                    while (escrever) {
+                        v.printEscrever();
+                        escrita = this.i.lerInt();
+                        if (escrita == 1) {
+                            //reiniciar modelo;
+                            q.reiniciarModelo();
+                            load = false;
+                            escrever = false;
+                        } else if (escrita == 2) escrever = false;
+                        else v.printError();
                     }
-                    else if (escrita == 2) escrever = false;
-                    else v.printError();
+                }
+                if (opleit == 3) {
+                    try {
+                        v.fileNameC();
+                        fc = this.i.lerString();
+                        v.fileNameP();
+                        fp = this.i.lerString();
+                        v.fileNameV();
+                        fv = this.i.lerString();
+                        Crono.start();
+                        q.leituras(fc, fp, fv, nfiliais);
+                        double time = Crono.stop();
+                        v.printFilePaths(fc, fp, fv, time);
+                        load = true;
+                    } catch (Exception e) {
+                        v.printErrorFIle(e.getMessage());
+                    }
+                } else {
+                    try {
+                        Crono.start();
+                        q.leituras(fc, fp, fv, nfiliais);
+                        double time = Crono.stop();
+                        v.printFilePaths(fc, fp, fv, time);
+                        load = true;
+                    } catch (Exception e) {
+                        v.printErrorFIle(e.getMessage());
+                    }
                 }
             }
-            if (opleit == 3) {
-                try {
-                    opl = false;
-                    v.fileNameC();
-                    fc = this.i.lerString();
-                    v.fileNameP();
-                    fp = this.i.lerString();
-                    v.fileNameV();
-                    fv = this.i.lerString();
-                    Crono.start();
-                    q.leituras(fc, fp, fv,nfiliais);
-                    double time = Crono.stop();
-                    v.printFilePaths(fc, fp, fv, time);
-                    load = true;
-                } catch (IOException e) {
-                    v.printErrorFIle(e.getMessage());
-                }
-            }else{
-                try {
-                    Crono.start();
-                    q.leituras(fc, fp, fv,nfiliais);
-                    double time = Crono.stop();
-                    v.printFilePaths(fc, fp, fv, time);
-                    load = true;
-                } catch (IOException e) {
-                    v.printErrorFIle(e.getMessage());
-                }
-            }
+        }else{
+            v.printSaidaSemLeitura();
         }
 
         return load;
@@ -388,8 +396,6 @@ public class Controlador {
     }
 
     public void case10(boolean load,int linhas){
-        //int linhas=10;
-
         String c;
         boolean valid = true;
         TreeSet<Map.Entry<String,Integer>> q5result;
@@ -435,7 +441,6 @@ public class Controlador {
 
 
     public void case11(boolean load,int linhas){
-        //int linhas=10;
         int limite;
         boolean valid = true;
         TreeSet<Map.Entry<String, int[]>> q6result;
@@ -505,8 +510,6 @@ public class Controlador {
 
 
     public void case13(boolean load,int linhas){
-        //int linhas=10;
-
         int limite;
         boolean valid = true;
         TreeSet<Map.Entry<String,Integer>> q8result;
@@ -552,8 +555,6 @@ public class Controlador {
 
 
     public void case14(boolean load,int linhas){
-        //int linhas=10;
-
         String p;
         int limite;
         boolean valid = true;
@@ -602,8 +603,6 @@ public class Controlador {
     }
 
     public void case15(boolean load,int linhas){
-        boolean valid = true;
-        //Map<Integer,Map<Integer,Map<String,Double>>> querie10
         Map<Integer,Map<Integer,Map<String,Double>>> q10result;
 
         if (load) {
@@ -612,32 +611,38 @@ public class Controlador {
             double time = Crono.stop();
             int op=1;
             int m=op;
-            int oppag=op;
+            int oppag;
+            int pag;
 
             while(op!=0){
                 v.printMes();
                 op = this.i.lerInt();
                 if(op>0 && op<=12){
                     oppag =1;
+                    pag=1;
                     while(oppag!=0) {
                         int size = 0;
                         for (Map<String, Double> aux : q10result.get(op).values()) {
                             size = Math.max(size, aux.size());
                         }
-                        //int nfil = q10result.get(op).size();
+
                         int totalpag = size / linhas;
                         if (size % linhas != 0) totalpag++;
 
 
+                        if (oppag > 0 && oppag <= totalpag) {
+                            pag=oppag;
+                        }
+
+                        v.flush();
+                        v.querie10(q10result.get(m),m,pag,totalpag,linhas,size,time);
+
+                        if (oppag==pag) v.printBarraN();
+                        else v.printErrorPagina(oppag);
+
+
                         v.insiraPag();
                         oppag = this.i.lerInt();
-                        if (oppag > 0 && oppag <= totalpag) {
-                            v.flush();
-                            v.querie10(q10result.get(m),m,oppag,totalpag,linhas,size,time);
-                            v.printBarraN();
-                        } else if (oppag != 0) {
-                            v.printErrorPagina(oppag);
-                        }
                     }
                 }else if(op!=0){
                     v.printErrorMes();
@@ -647,4 +652,20 @@ public class Controlador {
         } else v.printNotLoad();
     }
 
+    public void case16(boolean load, String datfile){
+        if(load){
+            try{
+                v.aEscreverParaFicheiro(datfile);
+                v.printBarraN();
+                Crono.start();
+                q.gravarObj(datfile);
+                double time = Crono.stop();
+                v.flush();
+                v.printFilePath(datfile,time);
+            }catch(IOException e){
+                v.printErrorFIle(e.getMessage());
+            }
+
+        }else v.printNotLoad();
+    }
 }

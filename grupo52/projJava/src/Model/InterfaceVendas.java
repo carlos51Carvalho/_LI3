@@ -31,7 +31,7 @@ public interface InterfaceVendas {
     double getFattotal();
     Vendas setFattotal(double fattotal);
     int[] getRes();
-    Vendas setRes(int[] res);
+    //Vendas setRes(int[] res);
     Map<Integer,double[]> getRes2();
     Map<Integer,int[]> getRes3();
 

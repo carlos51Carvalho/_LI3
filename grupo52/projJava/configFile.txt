@@ -3,3 +3,4 @@ Produtos:Dados_Iniciais/Produtos.txt
 Vendas:Dados_Iniciais/Vendas_1M.txt
 Filiais:3
 Linhas:25
+Datfile:dados.dat
