@@ -39,7 +39,7 @@ public class Controlador {
         int nlinhasoutput;
         fc = "Dados_Iniciais/Clientes.txt";
         fp = "Dados_Iniciais/Produtos.txt";
-        fv = "Dados_Iniciais/Vendas_1M.txt";
+        fv = "Dados_Iniciais/Vendas_3M.txt";
         nfiliais=3;
         nlinhasoutput=20;
         try {

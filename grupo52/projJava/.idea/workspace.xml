@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="projJava:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,13 +24,32 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="packages">
-      <change afterPath="$PROJECT_DIR$/src/Model/InterfaceVendas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/InterfaceVista.java" afterDir="false" />
+    <list default="true" id="2570a764-5f48-48ed-819e-3b38bc58bfd1" name="Default Changelist" comment="InterfaceVendas e InterfaceVista criadas, falta inserilas no controlador e na main e por ai fora, não sei se tmb é necessario criar uma interface queries">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/projJava_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diagram1.uml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diagramWFields.uml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projJava.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_05_20,_20_28_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_05_20,_21_34_[Default_Changelist]/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_05_20,_21_34_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_05_20,_23_47_[Default_Changelist]/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_05_20,_23_47_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_05_20__20_28__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_05_20__21_34__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_05_20__23_47__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_05_20,_01_48_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_05_20,_13_54_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_05_20__01_48__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_05_20__13_54__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Queries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Vendas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Vista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Controlador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/GestVendas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/GestVendas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Input.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projJava/Model/Queries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projJava/Vista.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controlar/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlar/Controlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,9 +90,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunManager" selected="Application.GestVendas">
     <configuration name="GestVendas" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -105,6 +134,7 @@
       <workItem from="1589903971644" duration="8293000" />
       <workItem from="1589912632253" duration="457000" />
       <workItem from="1589913578182" duration="2001000" />
+      <workItem from="1590713229818" duration="1008000" />
     </task>
     <task id="LOCAL-00001" summary="novos ficheiros">
       <created>1589904704223</created>
@@ -155,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590433231392</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="InterfaceVendas e InterfaceVista criadas, falta inserilas no controlador e na main e por ai fora, não sei se tmb é necessario criar uma interface queries">
+      <created>1590434516891</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1590434516891</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +218,8 @@
     <MESSAGE value="Crono inseridos no controlador" />
     <MESSAGE value="Pequenas correçoes" />
     <MESSAGE value="packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="packages" />
+    <MESSAGE value="InterfaceVendas e InterfaceVista criadas, falta inserilas no controlador e na main e por ai fora, não sei se tmb é necessario criar uma interface queries" />
+    <option name="LAST_COMMIT_MESSAGE" value="InterfaceVendas e InterfaceVista criadas, falta inserilas no controlador e na main e por ai fora, não sei se tmb é necessario criar uma interface queries" />
   </component>
   <component name="WindowStateProjectService">
     <state x="412" y="198" width="599" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590295013246">
@@ -192,34 +230,50 @@
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state x="802" y="260" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/69.27.1851.1053@69.27.1851.1053" timestamp="1589909431318" />
+    <state x="717" y="345" width="525" height="416" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1590713463792">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state x="717" y="345" width="525" height="416" key="#com.intellij.ide.util.TreeClassChooserDialog/69.27.1851.1053@69.27.1851.1053" timestamp="1590713463792" />
+    <state x="730" y="405" width="530" height="577" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1590460798932">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state x="730" y="405" width="530" height="577" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/69.27.1851.1053@69.27.1851.1053" timestamp="1590460798932" />
     <state x="544" y="149" width="888" height="807" key="CommitChangelistDialog2" timestamp="1590335099035">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="544" y="149" width="888" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1590335099035" />
-    <state width="1805" height="2" key="GridCell.Tab.0.bottom" timestamp="1590432832486">
+    <state x="772" y="295" width="424" height="513" key="FileChooserDialogImpl" timestamp="1590714144076">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state x="772" y="295" width="424" height="513" key="FileChooserDialogImpl/69.27.1851.1053@69.27.1851.1053" timestamp="1590714144076" />
+    <state width="1805" height="647" key="GridCell.Tab.0.bottom" timestamp="1590547310506">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1253" height="374" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1590296316797" />
-    <state width="1805" height="2" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1590432832486" />
-    <state width="1805" height="2" key="GridCell.Tab.0.center" timestamp="1590432832485">
+    <state width="1805" height="647" key="GridCell.Tab.0.bottom/69.27.1851.1053@69.27.1851.1053" timestamp="1590547310506" />
+    <state width="1805" height="647" key="GridCell.Tab.0.center" timestamp="1590547310506">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1253" height="374" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1590296316797" />
-    <state width="1805" height="2" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1590432832485" />
-    <state width="1805" height="2" key="GridCell.Tab.0.left" timestamp="1590432832484">
+    <state width="1805" height="647" key="GridCell.Tab.0.center/69.27.1851.1053@69.27.1851.1053" timestamp="1590547310506" />
+    <state width="1805" height="647" key="GridCell.Tab.0.left" timestamp="1590547310505">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1253" height="374" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1590296316796" />
-    <state width="1805" height="2" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1590432832484" />
-    <state width="1805" height="2" key="GridCell.Tab.0.right" timestamp="1590432832486">
+    <state width="1805" height="647" key="GridCell.Tab.0.left/69.27.1851.1053@69.27.1851.1053" timestamp="1590547310505" />
+    <state width="1805" height="647" key="GridCell.Tab.0.right" timestamp="1590547310506">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
     <state width="1253" height="374" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1590296316797" />
-    <state width="1805" height="2" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1590432832486" />
+    <state width="1805" height="647" key="GridCell.Tab.0.right/69.27.1851.1053@69.27.1851.1053" timestamp="1590547310506" />
     <state x="192" y="85" width="1039" height="622" key="MergeDialog" timestamp="1590177745192">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="192" y="85" width="1039" height="622" key="MergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1590177745192" />
+    <state x="477" y="130" width="1024" height="845" key="SettingsEditor" timestamp="1590713508137">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state x="477" y="130" width="1024" height="845" key="SettingsEditor/69.27.1851.1053@69.27.1851.1053" timestamp="1590713508137" />
     <state x="723" y="286" width="603" height="524" key="StructurePopup" timestamp="1590434119716">
       <screen x="69" y="27" width="1851" height="1053" />
     </state>
@@ -232,5 +286,9 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="157" width="524" height="478" key="extract.method.dialog/67.27.1299.741@67.27.1299.741" timestamp="1590287684600" />
+    <state x="303" y="154" width="1372" height="796" key="new project wizard" timestamp="1590460870909">
+      <screen x="69" y="27" width="1851" height="1053" />
+    </state>
+    <state x="303" y="154" width="1372" height="796" key="new project wizard/69.27.1851.1053@69.27.1851.1053" timestamp="1590460870909" />
   </component>
 </project>
