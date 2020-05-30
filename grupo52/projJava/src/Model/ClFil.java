@@ -322,7 +322,7 @@ public class ClFil implements Serializable {
      * @return int com resposta á querie 8
      */
     public int getQuerie8(){
-        Set<String> aux = new HashSet<>();
+        Set<String> aux = new TreeSet<>();
         for (FilFil f: this.fil.values() ) {
             if (f.getUsed() == 1) f.getSetProds(aux);
         }

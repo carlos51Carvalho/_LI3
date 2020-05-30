@@ -246,7 +246,7 @@ public class Filiais implements InterfaceFiliais, Serializable {
      */
 
     public Map<String,int[]> getQuerie6() {
-        Map<String,int[]> res = new TreeMap<>();
+        Map<String,int[]> res = new HashMap<>();
         for (int i = 0; i < 26; i++) {
             for (ClFil c : filiais.get(i)) {
                 c.getQuerie6(res);
@@ -260,7 +260,7 @@ public class Filiais implements InterfaceFiliais, Serializable {
      * @return Map com resposta da querie 7
      */
     public Map<Integer, Map<String, Double>> getQuerie7() {
-        Map<Integer, Map<String, Double>> res = new TreeMap<>();
+        Map<Integer, Map<String, Double>> res = new HashMap<>();
 
         for (int i = 0; i < 26; i++) {
             for (ClFil c : filiais.get(i)) {
@@ -277,7 +277,7 @@ public class Filiais implements InterfaceFiliais, Serializable {
      */
 
     public Map<String, Integer> getQuerie8(){
-        Map<String, Integer> res = new TreeMap<>();
+        Map<String, Integer> res = new HashMap<>();
 
         for (int i = 0; i < 26; i++) {
             for (ClFil c : filiais.get(i)) {
@@ -293,7 +293,7 @@ public class Filiais implements InterfaceFiliais, Serializable {
      * @return Map com resposta da querie 9
      */
     public Map<String,Double> getQuerie9(String prod) {
-        Map<String,Double> res = new TreeMap<>();
+        Map<String,Double> res = new HashMap<>();
         for (int i = 0; i < 26; i++) {
             for (ClFil cl : filiais.get(i)) {
                 String c = cl.getCl();
